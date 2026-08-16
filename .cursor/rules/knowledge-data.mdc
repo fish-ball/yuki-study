@@ -1,0 +1,42 @@
+---
+description: knowledge 与 mastery 数据文件的字段与写入约定
+globs: knowledge/**/*.yaml,mastery/**/*.yaml,assessments/**/*
+alwaysApply: false
+---
+
+# 知识点与掌握度数据约定
+
+## knowledge/<subject>/tree.yaml
+
+- 根字段：`subject`、`version`、`nodes`（列表）
+- 每个节点必填：`id`、`name`、`parent`、`children`、`exam_weight`、`prerequisites`、`status_default`
+- `id` 稳定，格式：`<subject>.<module>.<point>`，例如 `math.quadratic.formula`
+- `exam_weight` 仅：`high` | `mid` | `low`
+- `parent`：根模块为 `null`；子节点写父 `id`
+- `children`：子节点 id 列表；叶节点为 `[]`；**兄弟展示顺序以该列表为准**
+- `prerequisites`：前置知识点 id 列表，构成学习 DAG
+- `status_default`：固定为 `unlearned`
+- `nodes` 列表顺序写入 `sort_index`（同科内从 0 递增）；根模块顺序即 YAML 出现顺序
+- **展示/练习推荐顺序**：优先按 `prerequisites` 拓扑深度（最长路径分层），同层再按 `sort_index`
+- 管理台点阵：仅叶节点；按根模块分列，列内按拓扑深度 + `sort_index` 排布
+- 增删节点时同步更新父节点 `children`，并在对应 `mastery/<subject>.yaml` 增补条目（默认 L0）
+
+## mastery/<subject>.yaml
+
+- 根字段：`subject`、`updated_at`、`items`
+- 每条 `items` 仅允许字段：`knowledge_id`、`level`、`last_assessed`、`wrong_count`、`notes`
+- `level`：`L0`|`L1`|`L2`|`L3`|`L4`
+- `last_assessed`：ISO 日期 `YYYY-MM-DD` 或 `null`
+- `wrong_count`：非负整数
+- 禁止写入讲解长文；笔记放 `notes` 短句
+
+## mastery/summary.yaml
+
+- 汇总各科 L0–L4 计数、薄弱 `knowledge_id` 列表、下一优先科目
+- 每次批量批改或周计划生成前应刷新
+
+## assessments
+
+- 文件名：`YYYY-MM-DD-<subject>-<theme>.md`
+- 必须在 front matter 或文首列出考查的 `knowledge_id` 列表
+- 登记到 `assessments/_index.yaml`

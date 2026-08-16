@@ -1,0 +1,173 @@
+subject: english
+updated_at: null
+items:
+  - knowledge_id: english.vocab
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.vocab.core
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.vocab.word_form
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.vocab.collocation
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.vocab.context
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.grammar
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.grammar.tense
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.grammar.passive
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.grammar.clause
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.grammar.nonfinite
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.grammar.comparison
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.grammar.modal
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.grammar.sentence
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.listening
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.listening.info
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.listening.dialogue
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.listening.speak
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.listening.retell
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.reading
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.reading.detail
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.reading.infer
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.reading.main
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.reading.vocab_guess
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.reading.task
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.cloze
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.cloze.logic
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.cloze.collocation
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.cloze.discourse
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.writing
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.writing.outline
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.writing.sentence
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.writing.email
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.writing.essay
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: english.writing.error
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""

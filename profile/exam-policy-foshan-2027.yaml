@@ -1,0 +1,82 @@
+# 佛山中考计分摘要（面向 2027 考季）
+# 说明：以市教育局改革口径为准；Agent 据此权衡复习优先级，不替代官方文件。
+
+region: 佛山市
+district_note: 顺德区组织实施体育与实验操作等市统一要求科目
+total_score: 700
+
+scoring_mode: "4全计 + 4折算60%"
+
+subjects:
+  chinese:
+    name: 语文
+    paper_full: 120
+    admit_ratio: 1.0
+    admit_score: 120
+    phase: 1
+  math:
+    name: 数学
+    paper_full: 120
+    admit_ratio: 1.0
+    admit_score: 120
+    phase: 1
+  english:
+    name: 英语
+    paper_full: 120
+    admit_ratio: 1.0
+    admit_score: 120
+    includes:
+      listening_speaking: 30  # 机考听说
+      written: 90
+    phase: 1
+  physics:
+    name: 物理
+    paper_full: 100
+    admit_ratio: 1.0
+    admit_score: 100
+    phase: 1
+  chemistry:
+    name: 化学
+    paper_full: 100
+    admit_ratio: 0.6
+    admit_score: 60
+    phase: 1
+    note: 2027 年起按卷面 60% 折算计入总分，仍须扎实掌握
+  morality:
+    name: 道德与法治
+    paper_full: 100
+    admit_ratio: 0.6
+    admit_score: 60
+    phase: 2
+  history:
+    name: 历史
+    paper_full: 100
+    admit_ratio: 0.6
+    admit_score: 60
+    phase: 2
+  pe:
+    name: 体育与健康
+    paper_full: 100
+    admit_ratio: 0.6
+    admit_score: 60
+    phase: 2
+
+grade_only:
+  - name: 物理实验操作
+    levels: [A, B, C, D]
+  - name: 化学实验操作
+    levels: [A, B, C, D]
+  - name: 生物学实验操作
+    levels: [A, B, C, D]
+    note: 2027 起实验操作等级使用方式以当年招生文件为准
+
+not_in_admit_score:
+  - geography
+  - biology_written
+  - music
+  - art
+  - information_technology
+
+priority_hint:
+  phase1_order: [math, chinese, english, physics, chemistry]
+  reason: 语数英物全计分值高；化学虽折算但仍为基础科学且与物理实验关联

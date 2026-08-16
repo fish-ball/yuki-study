@@ -1,0 +1,246 @@
+subject: english
+version: 1
+nodes:
+  - id: english.vocab
+    name: 词汇
+    parent: null
+    children: [english.vocab.core, english.vocab.word_form, english.vocab.collocation, english.vocab.context]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: english.vocab.core
+    name: 课标核心词汇默写
+    parent: english.vocab
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: english.vocab.word_form
+    name: 词形变化
+    parent: english.vocab
+    children: []
+    exam_weight: high
+    prerequisites: [english.vocab.core]
+    status_default: unlearned
+  - id: english.vocab.collocation
+    name: 固定搭配与短语
+    parent: english.vocab
+    children: []
+    exam_weight: high
+    prerequisites: [english.vocab.core]
+    status_default: unlearned
+  - id: english.vocab.context
+    name: 语境选词
+    parent: english.vocab
+    children: []
+    exam_weight: mid
+    prerequisites: [english.vocab.collocation]
+    status_default: unlearned
+
+  - id: english.grammar
+    name: 语法
+    parent: null
+    children: [english.grammar.tense, english.grammar.passive, english.grammar.clause, english.grammar.nonfinite, english.grammar.comparison, english.grammar.modal, english.grammar.sentence]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: english.grammar.tense
+    name: 时态
+    parent: english.grammar
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: english.grammar.passive
+    name: 被动语态
+    parent: english.grammar
+    children: []
+    exam_weight: high
+    prerequisites: [english.grammar.tense]
+    status_default: unlearned
+  - id: english.grammar.clause
+    name: 宾语从句与状语从句
+    parent: english.grammar
+    children: []
+    exam_weight: high
+    prerequisites: [english.grammar.tense]
+    status_default: unlearned
+  - id: english.grammar.nonfinite
+    name: 非谓语动词初步
+    parent: english.grammar
+    children: []
+    exam_weight: mid
+    prerequisites: [english.grammar.tense]
+    status_default: unlearned
+  - id: english.grammar.comparison
+    name: 形容词副词比较等级
+    parent: english.grammar
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: english.grammar.modal
+    name: 情态动词
+    parent: english.grammar
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: english.grammar.sentence
+    name: 句型转换与特殊疑问句
+    parent: english.grammar
+    children: []
+    exam_weight: mid
+    prerequisites: [english.grammar.tense]
+    status_default: unlearned
+
+  - id: english.listening
+    name: 听说专项（机考占位）
+    parent: null
+    children: [english.listening.info, english.listening.dialogue, english.listening.speak, english.listening.retell]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: english.listening.info
+    name: 听信息抓取
+    parent: english.listening
+    children: []
+    exam_weight: high
+    prerequisites: [english.vocab.core]
+    status_default: unlearned
+  - id: english.listening.dialogue
+    name: 听对话理解
+    parent: english.listening
+    children: []
+    exam_weight: high
+    prerequisites: [english.listening.info]
+    status_default: unlearned
+  - id: english.listening.speak
+    name: 朗读与情景问答
+    parent: english.listening
+    children: []
+    exam_weight: high
+    prerequisites: [english.vocab.core]
+    status_default: unlearned
+  - id: english.listening.retell
+    name: 信息转述/简述
+    parent: english.listening
+    children: []
+    exam_weight: mid
+    prerequisites: [english.listening.speak]
+    status_default: unlearned
+
+  - id: english.reading
+    name: 阅读
+    parent: null
+    children: [english.reading.detail, english.reading.infer, english.reading.main, english.reading.vocab_guess, english.reading.task]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: english.reading.detail
+    name: 细节理解
+    parent: english.reading
+    children: []
+    exam_weight: high
+    prerequisites: [english.vocab.core]
+    status_default: unlearned
+  - id: english.reading.infer
+    name: 推理判断
+    parent: english.reading
+    children: []
+    exam_weight: high
+    prerequisites: [english.reading.detail]
+    status_default: unlearned
+  - id: english.reading.main
+    name: 主旨大意
+    parent: english.reading
+    children: []
+    exam_weight: high
+    prerequisites: [english.reading.detail]
+    status_default: unlearned
+  - id: english.reading.vocab_guess
+    name: 词义猜测
+    parent: english.reading
+    children: []
+    exam_weight: mid
+    prerequisites: [english.vocab.context]
+    status_default: unlearned
+  - id: english.reading.task
+    name: 任务型阅读
+    parent: english.reading
+    children: []
+    exam_weight: high
+    prerequisites: [english.reading.main]
+    status_default: unlearned
+
+  - id: english.cloze
+    name: 完形填空
+    parent: null
+    children: [english.cloze.logic, english.cloze.collocation, english.cloze.discourse]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: english.cloze.logic
+    name: 逻辑关系选择
+    parent: english.cloze
+    children: []
+    exam_weight: high
+    prerequisites: [english.grammar.clause]
+    status_default: unlearned
+  - id: english.cloze.collocation
+    name: 搭配与词义辨析
+    parent: english.cloze
+    children: []
+    exam_weight: high
+    prerequisites: [english.vocab.collocation]
+    status_default: unlearned
+  - id: english.cloze.discourse
+    name: 语篇连贯
+    parent: english.cloze
+    children: []
+    exam_weight: mid
+    prerequisites: [english.cloze.logic]
+    status_default: unlearned
+
+  - id: english.writing
+    name: 书面表达
+    parent: null
+    children: [english.writing.outline, english.writing.sentence, english.writing.email, english.writing.essay, english.writing.error]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: english.writing.outline
+    name: 审题与要点覆盖
+    parent: english.writing
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: english.writing.sentence
+    name: 句子正确与连贯
+    parent: english.writing
+    children: []
+    exam_weight: high
+    prerequisites: [english.grammar.tense, english.grammar.clause]
+    status_default: unlearned
+  - id: english.writing.email
+    name: 应用文（邮件/留言）
+    parent: english.writing
+    children: []
+    exam_weight: high
+    prerequisites: [english.writing.outline, english.writing.sentence]
+    status_default: unlearned
+  - id: english.writing.essay
+    name: 短文写作
+    parent: english.writing
+    children: []
+    exam_weight: high
+    prerequisites: [english.writing.outline, english.writing.sentence]
+    status_default: unlearned
+  - id: english.writing.error
+    name: 短文改错意识
+    parent: english.writing
+    children: []
+    exam_weight: low
+    prerequisites: [english.grammar.tense]
+    status_default: unlearned

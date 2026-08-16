@@ -1,0 +1,288 @@
+{
+  "id": "cfab8c33-31b5-40c7-816c-209866b00f96",
+  "paper_id": "2026-08-16-chemistry-preview-basic1",
+  "mode": "paper",
+  "subject_id": "chemistry",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-16T23:45:57",
+  "finished_at": "2026-08-16T23:53:37",
+  "total_questions": 10,
+  "correct_count": 10,
+  "attempt_count": 15,
+  "current_index": 14,
+  "latest_by_question": {
+    "2026-08-16-chemistry-preview-basic1__q01": {
+      "id": "686628e3-3e09-4763-9281-f5eec4442db8",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q01",
+      "user_answer": "错",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:46:13"
+    },
+    "2026-08-16-chemistry-preview-basic1__q02": {
+      "id": "70298d34-ec42-4086-9bdb-1f7f7a107ce3",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q02",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:46:19"
+    },
+    "2026-08-16-chemistry-preview-basic1__q03": {
+      "id": "42c9d9d8-eef8-480b-bcf9-46f182e2bd47",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q03",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:46:22"
+    },
+    "2026-08-16-chemistry-preview-basic1__q04": {
+      "id": "e3848681-a14f-4bb0-bba7-a626c1753237",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q04",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:46:28"
+    },
+    "2026-08-16-chemistry-preview-basic1__q05": {
+      "id": "b154ad98-2cb7-4239-a8b0-28109f598392",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q05",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:46:31"
+    },
+    "2026-08-16-chemistry-preview-basic1__q06": {
+      "id": "a33dc695-396a-4cc5-8daf-8e0905f4fd3d",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q06",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:46:36"
+    },
+    "2026-08-16-chemistry-preview-basic1__q07": {
+      "id": "f91b37f4-dd6b-408d-bf31-ee0478d22bc1",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q07",
+      "user_answer": "新物质",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:46:57"
+    },
+    "2026-08-16-chemistry-preview-basic1__q08": {
+      "id": "9bf36c91-8fc1-4aad-9000-e6d1807baca8",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q08",
+      "user_answer": "H C N Fe Cu",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:48:10"
+    },
+    "2026-08-16-chemistry-preview-basic1__q09": {
+      "id": "e232e2ed-0c12-494b-b4b4-0351a97024cf",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q09",
+      "user_answer": "钠 硫 磷 钾 氦",
+      "is_correct": 0,
+      "feedback": "不正确。正确答案是 D。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:49:16"
+    },
+    "2026-08-16-chemistry-preview-basic1__q10": {
+      "id": "5e0bd9e2-fb17-4559-a8ef-10820f923c8f",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q10",
+      "user_answer": "新物质",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:49:34"
+    },
+    "2026-08-16-chemistry-preview-basic1__q11": {
+      "id": "f5a2e198-3a85-4700-a05b-91e050e29359",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q11",
+      "user_answer": "H；C；N；Fe；Cu",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:50:04"
+    },
+    "2026-08-16-chemistry-preview-basic1__q12": {
+      "id": "78602179-d3f8-4a8a-99db-9bddc46cc88f",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q12",
+      "user_answer": "钠；硫；磷；钾；氦",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:50:26"
+    },
+    "2026-08-16-chemistry-preview-basic1__q13": {
+      "id": "4105c2ce-9952-453b-a41f-7f18edd8ef17",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q13",
+      "user_answer": "H2O；2；1",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:51:44"
+    },
+    "2026-08-16-chemistry-preview-basic1__q14": {
+      "id": "0e96cbdd-481f-4c14-9915-145f9b16ad7f",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q14",
+      "user_answer": "不知道；不知道",
+      "is_correct": 0,
+      "feedback": "不完全正确，请对照解析检查每一空。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:52:07"
+    },
+    "2026-08-16-chemistry-preview-basic1__q15": {
+      "id": "561b7807-45d4-412a-8430-885a400254dc",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q15",
+      "user_answer": "铁生锈是化学变化，因为产生了铁锈；水汽化成水蒸气是物理变化，因为没有产生新物质",
+      "is_correct": null,
+      "feedback": "简答题已记录，请对照解析自我订正或请老师批改。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:53:29"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "686628e3-3e09-4763-9281-f5eec4442db8",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q01",
+      "user_answer": "错",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:46:13"
+    },
+    {
+      "id": "70298d34-ec42-4086-9bdb-1f7f7a107ce3",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q02",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:46:19"
+    },
+    {
+      "id": "42c9d9d8-eef8-480b-bcf9-46f182e2bd47",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q03",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:46:22"
+    },
+    {
+      "id": "e3848681-a14f-4bb0-bba7-a626c1753237",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q04",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:46:28"
+    },
+    {
+      "id": "b154ad98-2cb7-4239-a8b0-28109f598392",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q05",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:46:31"
+    },
+    {
+      "id": "a33dc695-396a-4cc5-8daf-8e0905f4fd3d",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q06",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:46:36"
+    },
+    {
+      "id": "f91b37f4-dd6b-408d-bf31-ee0478d22bc1",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q07",
+      "user_answer": "新物质",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:46:57"
+    },
+    {
+      "id": "9bf36c91-8fc1-4aad-9000-e6d1807baca8",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q08",
+      "user_answer": "H C N Fe Cu",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:48:10"
+    },
+    {
+      "id": "e232e2ed-0c12-494b-b4b4-0351a97024cf",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q09",
+      "user_answer": "钠 硫 磷 钾 氦",
+      "is_correct": 0,
+      "feedback": "不正确。正确答案是 D。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:49:16"
+    },
+    {
+      "id": "5e0bd9e2-fb17-4559-a8ef-10820f923c8f",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q10",
+      "user_answer": "新物质",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:49:34"
+    },
+    {
+      "id": "f5a2e198-3a85-4700-a05b-91e050e29359",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q11",
+      "user_answer": "H；C；N；Fe；Cu",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:50:04"
+    },
+    {
+      "id": "78602179-d3f8-4a8a-99db-9bddc46cc88f",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q12",
+      "user_answer": "钠；硫；磷；钾；氦",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:50:26"
+    },
+    {
+      "id": "4105c2ce-9952-453b-a41f-7f18edd8ef17",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q13",
+      "user_answer": "H2O；2；1",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:51:44"
+    },
+    {
+      "id": "0e96cbdd-481f-4c14-9915-145f9b16ad7f",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q14",
+      "user_answer": "不知道；不知道",
+      "is_correct": 0,
+      "feedback": "不完全正确，请对照解析检查每一空。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:52:07"
+    },
+    {
+      "id": "561b7807-45d4-412a-8430-885a400254dc",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q15",
+      "user_answer": "铁生锈是化学变化，因为产生了铁锈；水汽化成水蒸气是物理变化，因为没有产生新物质",
+      "is_correct": null,
+      "feedback": "简答题已记录，请对照解析自我订正或请老师批改。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:53:29"
+    }
+  ]
+}

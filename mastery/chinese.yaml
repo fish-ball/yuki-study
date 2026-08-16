@@ -1,0 +1,178 @@
+subject: chinese
+updated_at: null
+items:
+  - knowledge_id: chinese.lang
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.lang.pinyin
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.lang.char
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.lang.words
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.lang.sentence
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.lang.rhetoric
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.lang.coherence
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.poetry
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.poetry.recite
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.poetry.read
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.poetry.imagery
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.poetry.theme
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.poetry.common
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.wenyan
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.wenyan.translate
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.wenyan.sentence
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.wenyan.content
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.wenyan.compare
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.modern
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.modern.narrative
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.modern.expository
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.modern.argument
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.modern.method
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.modern.language
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.classic
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.classic.plot
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.classic.character
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.classic.theme
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.writing
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.writing.topic
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.writing.structure
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.writing.material
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.writing.language
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.writing.narrative
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: chinese.writing.argument
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""

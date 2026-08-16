@@ -1,0 +1,36 @@
+{
+  "id": "b514119e-83cf-489a-bc62-63a6280d7126",
+  "paper_id": "2026-08-16-chemistry-preview-basic1",
+  "mode": "paper",
+  "subject_id": "chemistry",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-16T23:44:52",
+  "finished_at": "2026-08-16T23:45:00",
+  "total_questions": 10,
+  "correct_count": 1,
+  "attempt_count": 1,
+  "current_index": 0,
+  "latest_by_question": {
+    "2026-08-16-chemistry-preview-basic1__q01": {
+      "id": "9b555abf-de5a-4580-b6e3-ab6d45550339",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q01",
+      "user_answer": "错",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:44:57"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "9b555abf-de5a-4580-b6e3-ab6d45550339",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q01",
+      "user_answer": "错",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:44:57"
+    }
+  ]
+}

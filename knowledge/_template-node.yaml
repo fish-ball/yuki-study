@@ -1,0 +1,10 @@
+# 知识点节点字段模板（新建节点时对照）
+id: subject.module.point
+name: 中文名称
+parent: subject.module   # 根模块为 null
+children: []
+exam_weight: high        # high | mid | low
+prerequisites: []
+status_default: unlearned
+# 教程正文不写在 tree 里：见 knowledge/<subject>/tutorials/<id>.md
+# 触达本点时由 ensure-tutorial Skill / 管理台「学一学」自动确保教程存在

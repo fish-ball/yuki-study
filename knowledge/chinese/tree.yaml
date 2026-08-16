@@ -1,0 +1,253 @@
+subject: chinese
+version: 1
+nodes:
+  - id: chinese.lang
+    name: 语言运用
+    parent: null
+    children: [chinese.lang.pinyin, chinese.lang.char, chinese.lang.words, chinese.lang.sentence, chinese.lang.rhetoric, chinese.lang.coherence]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.lang.pinyin
+    name: 字音字形
+    parent: chinese.lang
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.lang.char
+    name: 词语理解与运用
+    parent: chinese.lang
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.lang.words
+    name: 病句辨析与修改
+    parent: chinese.lang
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.lang.sentence
+    name: 句子衔接与仿写
+    parent: chinese.lang
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.lang.rhetoric
+    name: 修辞与表达效果
+    parent: chinese.lang
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.lang.coherence
+    name: 口语交际与综合性学习
+    parent: chinese.lang
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+
+  - id: chinese.poetry
+    name: 古诗文
+    parent: null
+    children: [chinese.poetry.recite, chinese.poetry.read, chinese.poetry.imagery, chinese.poetry.theme, chinese.poetry.common]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.poetry.recite
+    name: 课标古诗文默写
+    parent: chinese.poetry
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.poetry.read
+    name: 古诗词阅读理解
+    parent: chinese.poetry
+    children: []
+    exam_weight: high
+    prerequisites: [chinese.poetry.imagery]
+    status_default: unlearned
+  - id: chinese.poetry.imagery
+    name: 意象意境与手法
+    parent: chinese.poetry
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.poetry.theme
+    name: 古诗词情感主旨
+    parent: chinese.poetry
+    children: []
+    exam_weight: high
+    prerequisites: [chinese.poetry.imagery]
+    status_default: unlearned
+  - id: chinese.poetry.common
+    name: 常见文言实词虚词
+    parent: chinese.poetry
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+
+  - id: chinese.wenyan
+    name: 文言文阅读
+    parent: null
+    children: [chinese.wenyan.translate, chinese.wenyan.sentence, chinese.wenyan.content, chinese.wenyan.compare]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.wenyan.translate
+    name: 文言句子翻译
+    parent: chinese.wenyan
+    children: []
+    exam_weight: high
+    prerequisites: [chinese.poetry.common]
+    status_default: unlearned
+  - id: chinese.wenyan.sentence
+    name: 文言特殊句式与用法
+    parent: chinese.wenyan
+    children: []
+    exam_weight: mid
+    prerequisites: [chinese.poetry.common]
+    status_default: unlearned
+  - id: chinese.wenyan.content
+    name: 文言内容理解与主旨
+    parent: chinese.wenyan
+    children: []
+    exam_weight: high
+    prerequisites: [chinese.wenyan.translate]
+    status_default: unlearned
+  - id: chinese.wenyan.compare
+    name: 课内外文言比较阅读
+    parent: chinese.wenyan
+    children: []
+    exam_weight: high
+    prerequisites: [chinese.wenyan.content]
+    status_default: unlearned
+
+  - id: chinese.modern
+    name: 现代文阅读
+    parent: null
+    children: [chinese.modern.narrative, chinese.modern.expository, chinese.modern.argument, chinese.modern.method, chinese.modern.language]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.modern.narrative
+    name: 记叙文/散文阅读
+    parent: chinese.modern
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.modern.expository
+    name: 说明文阅读
+    parent: chinese.modern
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.modern.argument
+    name: 议论文阅读
+    parent: chinese.modern
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.modern.method
+    name: 阅读方法与答题规范
+    parent: chinese.modern
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.modern.language
+    name: 语句赏析与作用题
+    parent: chinese.modern
+    children: []
+    exam_weight: high
+    prerequisites: [chinese.lang.rhetoric]
+    status_default: unlearned
+
+  - id: chinese.classic
+    name: 名著阅读
+    parent: null
+    children: [chinese.classic.plot, chinese.classic.character, chinese.classic.theme]
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.classic.plot
+    name: 名著情节与内容
+    parent: chinese.classic
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.classic.character
+    name: 名著人物形象
+    parent: chinese.classic
+    children: []
+    exam_weight: mid
+    prerequisites: [chinese.classic.plot]
+    status_default: unlearned
+  - id: chinese.classic.theme
+    name: 名著主题与探究
+    parent: chinese.classic
+    children: []
+    exam_weight: mid
+    prerequisites: [chinese.classic.character]
+    status_default: unlearned
+
+  - id: chinese.writing
+    name: 作文
+    parent: null
+    children: [chinese.writing.topic, chinese.writing.structure, chinese.writing.material, chinese.writing.language, chinese.writing.narrative, chinese.writing.argument]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.writing.topic
+    name: 审题立意
+    parent: chinese.writing
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.writing.structure
+    name: 谋篇布局
+    parent: chinese.writing
+    children: []
+    exam_weight: high
+    prerequisites: [chinese.writing.topic]
+    status_default: unlearned
+  - id: chinese.writing.material
+    name: 选材与细节
+    parent: chinese.writing
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chinese.writing.language
+    name: 语言升格
+    parent: chinese.writing
+    children: []
+    exam_weight: mid
+    prerequisites: [chinese.lang.rhetoric]
+    status_default: unlearned
+  - id: chinese.writing.narrative
+    name: 记叙文写作
+    parent: chinese.writing
+    children: []
+    exam_weight: high
+    prerequisites: [chinese.writing.structure, chinese.writing.material]
+    status_default: unlearned
+  - id: chinese.writing.argument
+    name: 议论文写作
+    parent: chinese.writing
+    children: []
+    exam_weight: mid
+    prerequisites: [chinese.writing.structure]
+    status_default: unlearned

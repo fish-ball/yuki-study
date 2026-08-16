@@ -1,0 +1,46 @@
+# 学生档案（Agent 每次任务优先读取）
+name: yuki
+grade: 初三
+# 当前学段：初二升初三暑假，初三新课尚未正式开课；化学按「预习」推进，目标先冲 L1～L2
+stage: summer_before_grade9
+stage_note: 尚未系统学习初三化学；从化学基本概念起预习
+region:
+  province: 广东
+  city: 佛山
+  district: 顺德
+exam_year: 2027
+exam_policy_file: profile/exam-policy-foshan-2027.yaml
+
+# 第一期：核心五科
+phase1_subjects:
+  - chinese
+  - math
+  - english
+  - physics
+  - chemistry
+
+# 第二期扩展位（先不铺知识点树）
+phase2_subjects:
+  - morality   # 道德与法治
+  - history    # 历史
+  - pe         # 体育与健康
+
+# 参考项（八年级已考或不计入总分主循环）
+reference_only:
+  - geography  # 地理
+  - biology    # 生物学（笔试）
+  - experiment_ops  # 理化生实验操作等级
+
+learning_preferences:
+  language: zh-CN
+  session_minutes: 45
+  daily_main_subjects: 1
+  daily_review_subjects: 1
+  no_emoji: true
+
+mastery_scale:
+  - L0  # 未学
+  - L1  # 了解
+  - L2  # 理解
+  - L3  # 掌握
+  - L4  # 熟练

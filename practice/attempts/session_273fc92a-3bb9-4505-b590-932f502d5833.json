@@ -1,0 +1,36 @@
+{
+  "id": "273fc92a-3bb9-4505-b590-932f502d5833",
+  "paper_id": "2026-08-16-math-diagnose",
+  "mode": "paper",
+  "subject_id": "math",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-16T23:43:24",
+  "finished_at": "2026-08-16T23:43:24",
+  "total_questions": 11,
+  "correct_count": 1,
+  "attempt_count": 1,
+  "current_index": 0,
+  "latest_by_question": {
+    "2026-08-16-math-diagnose__q01": {
+      "id": "cc23fcb1-36f1-4517-a48f-ca261a88b288",
+      "question_id": "2026-08-16-math-diagnose__q01",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:43:24"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "cc23fcb1-36f1-4517-a48f-ca261a88b288",
+      "question_id": "2026-08-16-math-diagnose__q01",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-16T23:43:24"
+    }
+  ]
+}

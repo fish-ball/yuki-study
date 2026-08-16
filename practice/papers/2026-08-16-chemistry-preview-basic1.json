@@ -1,0 +1,362 @@
+{
+  "id": "2026-08-16-chemistry-preview-basic1",
+  "path": "assessments/2026-08-16-chemistry-preview-basic1.md",
+  "subject_id": "chemistry",
+  "theme": "preview-basic1",
+  "date": "2026-08-16",
+  "minutes": 25,
+  "target_level": "L1",
+  "status": "ready",
+  "note": "练习架构兼容版；原1–10题保留并修正解析字段，新增分子原子入门题（共15题）",
+  "questions": [
+    {
+      "id": "2026-08-16-chemistry-preview-basic1__q01",
+      "qtype": "judge",
+      "stem": "纸张被撕成两半，属于化学变化。",
+      "score": 2.0,
+      "sort_order": 1,
+      "explanation": "错。撕纸只改变形状/大小，没有新物质生成，属于物理变化。",
+      "answer_key": "错",
+      "answer_accept": [
+        "错"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.change"
+      ]
+    },
+    {
+      "id": "2026-08-16-chemistry-preview-basic1__q02",
+      "qtype": "judge",
+      "stem": "蜡烛燃烧时，石蜡变成二氧化碳和水等新物质，属于化学变化。",
+      "score": 2.0,
+      "sort_order": 2,
+      "explanation": "对。燃烧生成了新物质。",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.change"
+      ]
+    },
+    {
+      "id": "2026-08-16-chemistry-preview-basic1__q03",
+      "qtype": "judge",
+      "stem": "元素符号 O 表示氧元素，也表示一个氧原子。",
+      "score": 2.0,
+      "sort_order": 3,
+      "explanation": "对。元素符号既可表示一种元素，也可表示该元素的一个原子。",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.element"
+      ]
+    },
+    {
+      "id": "2026-08-16-chemistry-preview-basic1__q04",
+      "qtype": "judge",
+      "stem": "元素符号书写时，第一个字母大写，第二个字母小写，例如氯写作 Cl。",
+      "score": 2.0,
+      "sort_order": 4,
+      "explanation": "对。双字母元素符号必须「一大一小」。",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.element"
+      ]
+    },
+    {
+      "id": "2026-08-16-chemistry-preview-basic1__q05",
+      "qtype": "judge",
+      "stem": "分子是保持物质化学性质的最小粒子，原子是化学变化中的最小粒子。",
+      "score": 2.0,
+      "sort_order": 5,
+      "explanation": "对。分子保持物质化学性质；原子是化学变化中的最小粒子。",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.molecule"
+      ]
+    },
+    {
+      "id": "2026-08-16-chemistry-preview-basic1__q06",
+      "qtype": "choice",
+      "stem": "下列变化中，一定属于化学变化的是（　　）",
+      "score": 4.0,
+      "sort_order": 6,
+      "explanation": "C。铁生锈生成新物质（铁锈）；A、B、D 均无新物质生成。",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "冰融化成水",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "水沸腾变成水蒸气",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "铁生锈",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "玻璃打碎",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.change"
+      ]
+    },
+    {
+      "id": "2026-08-16-chemistry-preview-basic1__q07",
+      "qtype": "choice",
+      "stem": "下列元素符号书写正确的是（　　）",
+      "score": 4.0,
+      "sort_order": 7,
+      "explanation": "C。A 应为 Ca；B 应为 Zn；D 应为 Al。",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "CA（钙）",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "zn（锌）",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "Mg（镁）",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "AL（铝）",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.element"
+      ]
+    },
+    {
+      "id": "2026-08-16-chemistry-preview-basic1__q08",
+      "qtype": "choice",
+      "stem": "下列关于分子、原子的说法正确的是（　　）",
+      "score": 4.0,
+      "sort_order": 8,
+      "explanation": "C。化学变化中分子可分成原子，原子不能再分；A 错误（原子可大于分子，如汞原子与氢分子）；B 错误（原子由原子核和电子构成）；D 错误（同种原子构成的是单质分子，如 O₂）。",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "分子一定比原子大",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "原子不能再分成更小的粒子",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "在化学变化中分子可分，原子不可分",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "同种原子构成的分子一定是化合物分子",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.molecule"
+      ]
+    },
+    {
+      "id": "2026-08-16-chemistry-preview-basic1__q09",
+      "qtype": "choice",
+      "stem": "下列叙述正确的是（　　）",
+      "score": 4.0,
+      "sort_order": 9,
+      "explanation": "D。A 镁条燃烧有新物质；B 应为 Fe；C 结冰无新物质。",
+      "answer_key": "D",
+      "answer_accept": [
+        "D"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "镁条燃烧只是物理变化",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "元素符号 fe 表示铁元素",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "水结成冰有新物质生成",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "碳的元素符号是 C",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.change",
+        "chemistry.basic.element"
+      ]
+    },
+    {
+      "id": "2026-08-16-chemistry-preview-basic1__q10",
+      "qtype": "fill",
+      "stem": "化学变化的本质特征是：有 ______ 生成。",
+      "score": 4.0,
+      "sort_order": 10,
+      "explanation": "新物质。本质特征是有新物质生成。",
+      "answer_key": "新物质",
+      "answer_accept": [
+        "新物质"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.change"
+      ]
+    },
+    {
+      "id": "2026-08-16-chemistry-preview-basic1__q11",
+      "qtype": "fill",
+      "stem": "写出下列元素的元素符号：氢 ______；碳 ______；氮 ______；铁 ______；铜 ______。",
+      "score": 4.0,
+      "sort_order": 11,
+      "explanation": "H；C；N；Fe；Cu",
+      "answer_key": "H；C；N；Fe；Cu",
+      "answer_accept": [
+        "H",
+        "C",
+        "N",
+        "Fe",
+        "Cu"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.element"
+      ]
+    },
+    {
+      "id": "2026-08-16-chemistry-preview-basic1__q12",
+      "qtype": "fill",
+      "stem": "写出下列符号表示的元素名称：Na ______；S ______；P ______；K ______；He ______。",
+      "score": 4.0,
+      "sort_order": 12,
+      "explanation": "钠；硫；磷；钾；氦",
+      "answer_key": "钠；硫；磷；钾；氦",
+      "answer_accept": [
+        "钠",
+        "硫",
+        "磷",
+        "钾",
+        "氦"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.element"
+      ]
+    },
+    {
+      "id": "2026-08-16-chemistry-preview-basic1__q13",
+      "qtype": "fill",
+      "stem": "水分子用符号 ______ 表示；一个水分子由 ______ 个氢原子和 ______ 个氧原子构成。",
+      "score": 4.0,
+      "sort_order": 13,
+      "explanation": "H2O；2；1。也写作 $\\mathrm{H_2O}$。",
+      "answer_key": "H2O；2；1",
+      "answer_accept": [
+        "H2O",
+        "2",
+        "1"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.molecule"
+      ]
+    },
+    {
+      "id": "2026-08-16-chemistry-preview-basic1__q14",
+      "qtype": "fill",
+      "stem": "保持水的化学性质的最小粒子是 ______；在电解水的化学变化中，不能再分的粒子是 ______。",
+      "score": 4.0,
+      "sort_order": 14,
+      "explanation": "水分子；原子",
+      "answer_key": "水分子；原子",
+      "answer_accept": [
+        "水分子",
+        "原子"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.molecule"
+      ]
+    },
+    {
+      "id": "2026-08-16-chemistry-preview-basic1__q15",
+      "qtype": "short",
+      "stem": "举两个生活中的例子：一个物理变化，一个化学变化，并各用一句话说明判断依据。",
+      "score": 8.0,
+      "sort_order": 15,
+      "explanation": "评分要点：物理变化须强调「无新物质」；化学变化须强调「有新物质」。例子合理即可，如：水结冰（物理）/铁生锈或火柴燃烧（化学）。",
+      "answer_key": "",
+      "answer_accept": [],
+      "auto_gradable": false,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.change"
+      ]
+    }
+  ]
+}

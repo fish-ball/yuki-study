@@ -1,0 +1,281 @@
+subject: math
+version: 1
+nodes:
+  - id: math.number
+    name: 数与式
+    parent: null
+    children: [math.number.real, math.number.radical, math.number.poly, math.number.factor, math.number.fraction]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: math.number.real
+    name: 实数与运算
+    parent: math.number
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: math.number.radical
+    name: 二次根式
+    parent: math.number
+    children: []
+    exam_weight: high
+    prerequisites: [math.number.real]
+    status_default: unlearned
+  - id: math.number.poly
+    name: 整式运算
+    parent: math.number
+    children: []
+    exam_weight: high
+    prerequisites: [math.number.real]
+    status_default: unlearned
+  - id: math.number.factor
+    name: 因式分解
+    parent: math.number
+    children: []
+    exam_weight: high
+    prerequisites: [math.number.poly]
+    status_default: unlearned
+  - id: math.number.fraction
+    name: 分式
+    parent: math.number
+    children: []
+    exam_weight: high
+    prerequisites: [math.number.factor]
+    status_default: unlearned
+
+  - id: math.equation
+    name: 方程与不等式
+    parent: null
+    children: [math.equation.linear, math.equation.system, math.equation.quadratic, math.equation.frac_eq, math.equation.ineq]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: math.equation.linear
+    name: 一元一次方程与应用
+    parent: math.equation
+    children: []
+    exam_weight: mid
+    prerequisites: [math.number.poly]
+    status_default: unlearned
+  - id: math.equation.system
+    name: 二元一次方程组
+    parent: math.equation
+    children: []
+    exam_weight: high
+    prerequisites: [math.equation.linear]
+    status_default: unlearned
+  - id: math.equation.quadratic
+    name: 一元二次方程
+    parent: math.equation
+    children: []
+    exam_weight: high
+    prerequisites: [math.number.factor]
+    status_default: unlearned
+  - id: math.equation.frac_eq
+    name: 分式方程
+    parent: math.equation
+    children: []
+    exam_weight: mid
+    prerequisites: [math.number.fraction, math.equation.linear]
+    status_default: unlearned
+  - id: math.equation.ineq
+    name: 一元一次不等式（组）
+    parent: math.equation
+    children: []
+    exam_weight: high
+    prerequisites: [math.equation.linear]
+    status_default: unlearned
+
+  - id: math.function
+    name: 函数
+    parent: null
+    children: [math.function.concept, math.function.linear, math.function.inverse, math.function.quadratic, math.function.quadratic.formula, math.function.quadratic.graph, math.function.quadratic.apply]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: math.function.concept
+    name: 函数概念与图像初步
+    parent: math.function
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: math.function.linear
+    name: 一次函数
+    parent: math.function
+    children: []
+    exam_weight: high
+    prerequisites: [math.function.concept]
+    status_default: unlearned
+  - id: math.function.inverse
+    name: 反比例函数
+    parent: math.function
+    children: []
+    exam_weight: high
+    prerequisites: [math.function.concept]
+    status_default: unlearned
+  - id: math.function.quadratic
+    name: 二次函数总览
+    parent: math.function
+    children: []
+    exam_weight: high
+    prerequisites: [math.equation.quadratic]
+    status_default: unlearned
+  - id: math.function.quadratic.formula
+    name: 二次函数解析式
+    parent: math.function
+    children: []
+    exam_weight: high
+    prerequisites: [math.function.quadratic]
+    status_default: unlearned
+  - id: math.function.quadratic.graph
+    name: 二次函数图像与性质
+    parent: math.function
+    children: []
+    exam_weight: high
+    prerequisites: [math.function.quadratic.formula]
+    status_default: unlearned
+  - id: math.function.quadratic.apply
+    name: 二次函数实际应用
+    parent: math.function
+    children: []
+    exam_weight: high
+    prerequisites: [math.function.quadratic.graph]
+    status_default: unlearned
+
+  - id: math.geometry
+    name: 几何
+    parent: null
+    children: [math.geometry.triangle, math.geometry.congruent, math.geometry.similar, math.geometry.right, math.geometry.quad, math.geometry.circle, math.geometry.circle.angle, math.geometry.circle.tangent, math.geometry.coord, math.geometry.view]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: math.geometry.triangle
+    name: 三角形边角关系
+    parent: math.geometry
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: math.geometry.congruent
+    name: 全等三角形
+    parent: math.geometry
+    children: []
+    exam_weight: high
+    prerequisites: [math.geometry.triangle]
+    status_default: unlearned
+  - id: math.geometry.similar
+    name: 相似三角形
+    parent: math.geometry
+    children: []
+    exam_weight: high
+    prerequisites: [math.geometry.congruent]
+    status_default: unlearned
+  - id: math.geometry.right
+    name: 勾股定理与解直角三角形
+    parent: math.geometry
+    children: []
+    exam_weight: high
+    prerequisites: [math.geometry.triangle]
+    status_default: unlearned
+  - id: math.geometry.quad
+    name: 四边形（平行四边形等）
+    parent: math.geometry
+    children: []
+    exam_weight: high
+    prerequisites: [math.geometry.congruent]
+    status_default: unlearned
+  - id: math.geometry.circle
+    name: 圆的基本性质
+    parent: math.geometry
+    children: []
+    exam_weight: high
+    prerequisites: [math.geometry.triangle]
+    status_default: unlearned
+  - id: math.geometry.circle.angle
+    name: 圆周角与圆心角
+    parent: math.geometry
+    children: []
+    exam_weight: high
+    prerequisites: [math.geometry.circle]
+    status_default: unlearned
+  - id: math.geometry.circle.tangent
+    name: 切线与圆综合
+    parent: math.geometry
+    children: []
+    exam_weight: high
+    prerequisites: [math.geometry.circle.angle]
+    status_default: unlearned
+  - id: math.geometry.coord
+    name: 平面直角坐标系与几何综合
+    parent: math.geometry
+    children: []
+    exam_weight: mid
+    prerequisites: [math.function.linear]
+    status_default: unlearned
+  - id: math.geometry.view
+    name: 投影与三视图
+    parent: math.geometry
+    children: []
+    exam_weight: low
+    prerequisites: []
+    status_default: unlearned
+
+  - id: math.stats
+    name: 统计与概率
+    parent: null
+    children: [math.stats.data, math.stats.chart, math.stats.probability]
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: math.stats.data
+    name: 数据的分析（平均/中位/众数/方差）
+    parent: math.stats
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: math.stats.chart
+    name: 统计图表识读
+    parent: math.stats
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: math.stats.probability
+    name: 概率初步
+    parent: math.stats
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+
+  - id: math.integrated
+    name: 综合与压轴
+    parent: null
+    children: [math.integrated.motion, math.integrated.geometry_hard, math.integrated.function_hard]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: math.integrated.motion
+    name: 行程与工程类综合
+    parent: math.integrated
+    children: []
+    exam_weight: mid
+    prerequisites: [math.equation.system, math.function.linear]
+    status_default: unlearned
+  - id: math.integrated.geometry_hard
+    name: 几何压轴
+    parent: math.integrated
+    children: []
+    exam_weight: high
+    prerequisites: [math.geometry.similar, math.geometry.circle.tangent]
+    status_default: unlearned
+  - id: math.integrated.function_hard
+    name: 函数综合压轴
+    parent: math.integrated
+    children: []
+    exam_weight: high
+    prerequisites: [math.function.quadratic.apply]
+    status_default: unlearned

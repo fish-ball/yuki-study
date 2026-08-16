@@ -1,0 +1,61 @@
+updated_at: '2026-08-16'
+phase: 1
+subjects:
+  math:
+    L0: 38
+    L1: 0
+    L2: 1
+    L3: 0
+    L4: 0
+    total: 39
+  chinese:
+    L0: 35
+    L1: 0
+    L2: 0
+    L3: 0
+    L4: 0
+    total: 35
+  english:
+    L0: 34
+    L1: 0
+    L2: 0
+    L3: 0
+    L4: 0
+    total: 34
+  physics:
+    L0: 31
+    L1: 0
+    L2: 0
+    L3: 0
+    L4: 0
+    total: 31
+  chemistry:
+    L0: 37
+    L1: 3
+    L2: 0
+    L3: 0
+    L4: 0
+    total: 40
+weak_points:
+- chemistry.basic.element
+- chemistry.basic.change
+- chemistry.basic.molecule
+- math.equation
+- math.equation.ineq
+- math.equation.quadratic
+- math.equation.system
+- math.function
+- math.function.inverse
+- math.function.linear
+- math.function.quadratic
+- math.function.quadratic.apply
+- math.function.quadratic.formula
+- math.function.quadratic.graph
+- math.geometry
+- math.geometry.circle
+- math.geometry.circle.angle
+- math.geometry.circle.tangent
+- math.geometry.congruent
+- math.geometry.quad
+next_focus: chemistry
+notes: 由管理后台根据 SQLite 掌握度汇总生成。

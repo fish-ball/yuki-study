@@ -1,0 +1,35 @@
+updated_at: 2026-08-16
+items:
+  - id: 2026-08-16-chemistry-preview-basic1
+    path: assessments/2026-08-16-chemistry-preview-basic1.md
+    subject: chemistry
+    theme: preview-basic1
+    date: 2026-08-16
+    minutes: 25
+    target_level: L1
+    knowledge_ids:
+      - chemistry.basic.change
+      - chemistry.basic.element
+      - chemistry.basic.molecule
+    status: ready
+    note: 练习架构兼容版；原1–10题保留并修正解析字段，新增分子原子入门题（共15题）
+  - id: 2026-08-16-math-diagnose
+    path: assessments/2026-08-16-math-diagnose.md
+    subject: math
+    theme: diagnose
+    date: 2026-08-16
+    minutes: 25
+    target_level: L2
+    knowledge_ids:
+      - math.number.radical
+      - math.number.factor
+      - math.equation.quadratic
+      - math.equation.ineq
+      - math.function.linear
+      - math.function.quadratic.graph
+      - math.geometry.similar
+      - math.geometry.circle.angle
+      - math.stats.probability
+      - math.integrated.geometry_hard
+    status: ready
+    note: 练习架构兼容：多空分号分隔；简答以「评分要点」开头便于 short 题型识别

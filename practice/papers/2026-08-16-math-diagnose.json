@@ -1,0 +1,304 @@
+{
+  "id": "2026-08-16-math-diagnose",
+  "path": "assessments/2026-08-16-math-diagnose.md",
+  "subject_id": "math",
+  "theme": "diagnose",
+  "date": "2026-08-16",
+  "minutes": 25,
+  "target_level": "L2",
+  "status": "ready",
+  "note": "练习架构兼容：多空分号分隔；简答以「评分要点」开头便于 short 题型识别",
+  "questions": [
+    {
+      "id": "2026-08-16-math-diagnose__q01",
+      "qtype": "choice",
+      "stem": "化简 $\\sqrt{12}+\\sqrt{27}$ 的结果是（　　）",
+      "score": 4.0,
+      "sort_order": 1,
+      "explanation": "A。$\\sqrt{12}=2\\sqrt{3}$，$\\sqrt{27}=3\\sqrt{3}$，和为 $5\\sqrt{3}$。",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "$5\\sqrt{3}$",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "$6\\sqrt{3}$",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "$5\\sqrt{6}$",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "$\\sqrt{39}$",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.number.radical"
+      ]
+    },
+    {
+      "id": "2026-08-16-math-diagnose__q02",
+      "qtype": "choice",
+      "stem": "方程 $x^{2}-5x+6=0$ 的两根之和与两根之积分别是（　　）",
+      "score": 4.0,
+      "sort_order": 2,
+      "explanation": "A。韦达定理：和为 5，积为 6。",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "5 和 6",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "-5 和 6",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "5 和 -6",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "-5 和 -6",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.equation.quadratic"
+      ]
+    },
+    {
+      "id": "2026-08-16-math-diagnose__q03",
+      "qtype": "choice",
+      "stem": "直线 $y=2x-1$ 与 $y$ 轴交点坐标是（　　）",
+      "score": 4.0,
+      "sort_order": 3,
+      "explanation": "A。令 $x=0$，得 $y=-1$。",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "$(0,-1)$",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "$(-1,0)$",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "$(0,1)$",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "$(1,0)$",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.function.linear"
+      ]
+    },
+    {
+      "id": "2026-08-16-math-diagnose__q04",
+      "qtype": "choice",
+      "stem": "圆心角是圆周角的两倍，前提是它们（　　）",
+      "score": 4.0,
+      "sort_order": 4,
+      "explanation": "A。同弧（或等弧）所对的圆心角是圆周角的两倍。",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "所对的弧相同",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "所对的弦相等",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "都是直角",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "在同圆中任意选取",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.geometry.circle.angle"
+      ]
+    },
+    {
+      "id": "2026-08-16-math-diagnose__q05",
+      "qtype": "choice",
+      "stem": "抛一枚质地均匀的硬币一次，正面朝上的概率是（　　）",
+      "score": 4.0,
+      "sort_order": 5,
+      "explanation": "B。概率为 $\\dfrac{1}{2}$。",
+      "answer_key": "B",
+      "answer_accept": [
+        "B"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "0",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "$\\dfrac{1}{2}$",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "1",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "无法确定",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.stats.probability"
+      ]
+    },
+    {
+      "id": "2026-08-16-math-diagnose__q06",
+      "qtype": "fill",
+      "stem": "把 $x^{2}-5x+6$ 因式分解：______。",
+      "score": 4.0,
+      "sort_order": 6,
+      "explanation": "$(x-2)(x-3)$",
+      "answer_key": "$(x-2)(x-3)$",
+      "answer_accept": [
+        "$(x-2)(x-3)$"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.number.factor"
+      ]
+    },
+    {
+      "id": "2026-08-16-math-diagnose__q07",
+      "qtype": "fill",
+      "stem": "不等式 $2x-3>5$ 的解集是______。",
+      "score": 4.0,
+      "sort_order": 7,
+      "explanation": "$x>4$",
+      "answer_key": "$x>4$",
+      "answer_accept": [
+        "$x>4$"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.equation.ineq"
+      ]
+    },
+    {
+      "id": "2026-08-16-math-diagnose__q08",
+      "qtype": "fill",
+      "stem": "抛物线 $y=x^{2}-2x-3$ 的对称轴是直线______；顶点坐标是______。",
+      "score": 4.0,
+      "sort_order": 8,
+      "explanation": "$x=1$；$(1,-4)$",
+      "answer_key": "$x=1$；$(1,-4)$",
+      "answer_accept": [
+        "$x=1$",
+        "$(1,-4)$"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.function.quadratic.graph"
+      ]
+    },
+    {
+      "id": "2026-08-16-math-diagnose__q09",
+      "qtype": "fill",
+      "stem": "若 $\\triangle ABC\\sim\\triangle A'B'C'$，相似比为 $2:3$，且 $AB=4$，则 $A'B'=$______。",
+      "score": 4.0,
+      "sort_order": 9,
+      "explanation": "6",
+      "answer_key": "6",
+      "answer_accept": [
+        "6"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.similar"
+      ]
+    },
+    {
+      "id": "2026-08-16-math-diagnose__q10",
+      "qtype": "short",
+      "stem": "已知抛物线 $y=x^{2}+bx+c$ 经过点 $(1,0)$ 和 $(3,0)$。\n\n    （1）求 $b,c$ 的值；\n\n    （2）写出该抛物线与 $y$ 轴交点坐标，并指出开口方向。",
+      "score": 10.0,
+      "sort_order": 10,
+      "explanation": "评分要点：（1）由根为 1、3 得 $y=(x-1)(x-3)=x^{2}-4x+3$，故 $b=-4,c=3$；（2）与 $y$ 轴交于 $(0,3)$，开口向上。",
+      "answer_key": "",
+      "answer_accept": [],
+      "auto_gradable": false,
+      "options": [],
+      "knowledge_ids": [
+        "math.equation.quadratic",
+        "math.function.quadratic.graph"
+      ]
+    },
+    {
+      "id": "2026-08-16-math-diagnose__q11",
+      "qtype": "short",
+      "stem": "简要说明：证明两条线段成比例时，常用的相似模型有哪些？（至少写出两种，并各用一句话说明判定思路）",
+      "score": 10.0,
+      "sort_order": 11,
+      "explanation": "评分要点：示例——平行线分线段成比例 / AA 相似造成对应边成比例；或直角三角形射影定理相关比例；或「母子相似」等。言之成理即可。",
+      "answer_key": "",
+      "answer_accept": [],
+      "auto_gradable": false,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.similar",
+        "math.integrated.geometry_hard"
+      ]
+    }
+  ]
+}

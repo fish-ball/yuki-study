@@ -1,0 +1,224 @@
+subject: physics
+version: 1
+nodes:
+  - id: physics.mech
+    name: 力学
+    parent: null
+    children: [physics.mech.measure, physics.mech.motion, physics.mech.force, physics.mech.pressure, physics.mech.buoyancy, physics.mech.work, physics.mech.energy, physics.mech.simple_machine]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: physics.mech.measure
+    name: 测量与误差
+    parent: physics.mech
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: physics.mech.motion
+    name: 机械运动与速度
+    parent: physics.mech
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: physics.mech.force
+    name: 力与牛顿第一定律
+    parent: physics.mech
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: physics.mech.pressure
+    name: 压强
+    parent: physics.mech
+    children: []
+    exam_weight: high
+    prerequisites: [physics.mech.force]
+    status_default: unlearned
+  - id: physics.mech.buoyancy
+    name: 浮力
+    parent: physics.mech
+    children: []
+    exam_weight: high
+    prerequisites: [physics.mech.pressure]
+    status_default: unlearned
+  - id: physics.mech.work
+    name: 功与功率
+    parent: physics.mech
+    children: []
+    exam_weight: high
+    prerequisites: [physics.mech.force]
+    status_default: unlearned
+  - id: physics.mech.energy
+    name: 机械能及其转化
+    parent: physics.mech
+    children: []
+    exam_weight: high
+    prerequisites: [physics.mech.work]
+    status_default: unlearned
+  - id: physics.mech.simple_machine
+    name: 简单机械
+    parent: physics.mech
+    children: []
+    exam_weight: mid
+    prerequisites: [physics.mech.work]
+    status_default: unlearned
+
+  - id: physics.sound_light
+    name: 声与光
+    parent: null
+    children: [physics.sound_light.sound, physics.sound_light.light_reflect, physics.sound_light.refraction, physics.sound_light.lens]
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: physics.sound_light.sound
+    name: 声音的产生与传播
+    parent: physics.sound_light
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: physics.sound_light.light_reflect
+    name: 光的直线传播与反射
+    parent: physics.sound_light
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: physics.sound_light.refraction
+    name: 光的折射
+    parent: physics.sound_light
+    children: []
+    exam_weight: mid
+    prerequisites: [physics.sound_light.light_reflect]
+    status_default: unlearned
+  - id: physics.sound_light.lens
+    name: 透镜与眼睛
+    parent: physics.sound_light
+    children: []
+    exam_weight: high
+    prerequisites: [physics.sound_light.refraction]
+    status_default: unlearned
+
+  - id: physics.heat
+    name: 热学
+    parent: null
+    children: [physics.heat.temp, physics.heat.state, physics.heat.internal]
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: physics.heat.temp
+    name: 温度与物态变化
+    parent: physics.heat
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: physics.heat.state
+    name: 物态变化图像
+    parent: physics.heat
+    children: []
+    exam_weight: mid
+    prerequisites: [physics.heat.temp]
+    status_default: unlearned
+  - id: physics.heat.internal
+    name: 内能与热机
+    parent: physics.heat
+    children: []
+    exam_weight: mid
+    prerequisites: [physics.heat.temp]
+    status_default: unlearned
+
+  - id: physics.electric
+    name: 电学
+    parent: null
+    children: [physics.electric.charge, physics.electric.circuit, physics.electric.ohm, physics.electric.series_parallel, physics.electric.power, physics.electric.safe, physics.electric.magnetic]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: physics.electric.charge
+    name: 电荷与电路组成
+    parent: physics.electric
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: physics.electric.circuit
+    name: 电流电压电阻
+    parent: physics.electric
+    children: []
+    exam_weight: high
+    prerequisites: [physics.electric.charge]
+    status_default: unlearned
+  - id: physics.electric.ohm
+    name: 欧姆定律
+    parent: physics.electric
+    children: []
+    exam_weight: high
+    prerequisites: [physics.electric.circuit]
+    status_default: unlearned
+  - id: physics.electric.series_parallel
+    name: 串并联电路
+    parent: physics.electric
+    children: []
+    exam_weight: high
+    prerequisites: [physics.electric.ohm]
+    status_default: unlearned
+  - id: physics.electric.power
+    name: 电功与电功率
+    parent: physics.electric
+    children: []
+    exam_weight: high
+    prerequisites: [physics.electric.series_parallel]
+    status_default: unlearned
+  - id: physics.electric.safe
+    name: 家庭电路与安全用电
+    parent: physics.electric
+    children: []
+    exam_weight: mid
+    prerequisites: [physics.electric.power]
+    status_default: unlearned
+  - id: physics.electric.magnetic
+    name: 电与磁
+    parent: physics.electric
+    children: []
+    exam_weight: mid
+    prerequisites: [physics.electric.circuit]
+    status_default: unlearned
+
+  - id: physics.experiment
+    name: 实验与探究（笔试）
+    parent: null
+    children: [physics.experiment.design, physics.experiment.data, physics.experiment.error, physics.experiment.ops_note]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: physics.experiment.design
+    name: 实验设计与控制变量
+    parent: physics.experiment
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: physics.experiment.data
+    name: 数据处理与图像
+    parent: physics.experiment
+    children: []
+    exam_weight: high
+    prerequisites: [physics.experiment.design]
+    status_default: unlearned
+  - id: physics.experiment.error
+    name: 误差分析与结论
+    parent: physics.experiment
+    children: []
+    exam_weight: mid
+    prerequisites: [physics.experiment.data]
+    status_default: unlearned
+  - id: physics.experiment.ops_note
+    name: 实验操作等级（扩展占位）
+    parent: physics.experiment
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned

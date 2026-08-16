@@ -1,0 +1,158 @@
+subject: physics
+updated_at: null
+items:
+  - knowledge_id: physics.mech
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.mech.measure
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.mech.motion
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.mech.force
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.mech.pressure
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.mech.buoyancy
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.mech.work
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.mech.energy
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.mech.simple_machine
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.sound_light
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.sound_light.sound
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.sound_light.light_reflect
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.sound_light.refraction
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.sound_light.lens
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.heat
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.heat.temp
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.heat.state
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.heat.internal
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.electric
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.electric.charge
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.electric.circuit
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.electric.ohm
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.electric.series_parallel
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.electric.power
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.electric.safe
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.electric.magnetic
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.experiment
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.experiment.design
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.experiment.data
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.experiment.error
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""
+  - knowledge_id: physics.experiment.ops_note
+    level: L0
+    last_assessed: null
+    wrong_count: 0
+    notes: ""

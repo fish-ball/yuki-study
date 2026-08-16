@@ -1,0 +1,290 @@
+subject: chemistry
+version: 1
+nodes:
+  - id: chemistry.basic
+    name: 化学基本概念
+    parent: null
+    children: [chemistry.basic.change, chemistry.basic.element, chemistry.basic.molecule, chemistry.basic.valence, chemistry.basic.equation]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chemistry.basic.change
+    name: 物理变化与化学变化
+    parent: chemistry.basic
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: chemistry.basic.element
+    name: 元素与元素符号
+    parent: chemistry.basic
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chemistry.basic.molecule
+    name: 分子原子离子
+    parent: chemistry.basic
+    children: []
+    exam_weight: high
+    prerequisites: [chemistry.basic.element]
+    status_default: unlearned
+  - id: chemistry.basic.valence
+    name: 化合价与化学式
+    parent: chemistry.basic
+    children: []
+    exam_weight: high
+    prerequisites: [chemistry.basic.molecule]
+    status_default: unlearned
+  - id: chemistry.basic.equation
+    name: 化学方程式书写与配平
+    parent: chemistry.basic
+    children: []
+    exam_weight: high
+    prerequisites: [chemistry.basic.valence]
+    status_default: unlearned
+
+  - id: chemistry.air_water
+    name: 空气与水
+    parent: null
+    children: [chemistry.air_water.air, chemistry.air_water.oxygen, chemistry.air_water.water, chemistry.air_water.hydrogen]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chemistry.air_water.air
+    name: 空气成分
+    parent: chemistry.air_water
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: chemistry.air_water.oxygen
+    name: 氧气制取与性质
+    parent: chemistry.air_water
+    children: []
+    exam_weight: high
+    prerequisites: [chemistry.basic.equation]
+    status_default: unlearned
+  - id: chemistry.air_water.water
+    name: 水的组成与净化
+    parent: chemistry.air_water
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
+  - id: chemistry.air_water.hydrogen
+    name: 氢气与还原
+    parent: chemistry.air_water
+    children: []
+    exam_weight: mid
+    prerequisites: [chemistry.basic.equation]
+    status_default: unlearned
+
+  - id: chemistry.carbon
+    name: 碳和碳的氧化物
+    parent: null
+    children: [chemistry.carbon.allotrope, chemistry.carbon.co2, chemistry.carbon.co, chemistry.carbon.cycle]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chemistry.carbon.allotrope
+    name: 碳的单质
+    parent: chemistry.carbon
+    children: []
+    exam_weight: mid
+    prerequisites: [chemistry.basic.element]
+    status_default: unlearned
+  - id: chemistry.carbon.co2
+    name: 二氧化碳制取与性质
+    parent: chemistry.carbon
+    children: []
+    exam_weight: high
+    prerequisites: [chemistry.basic.equation]
+    status_default: unlearned
+  - id: chemistry.carbon.co
+    name: 一氧化碳
+    parent: chemistry.carbon
+    children: []
+    exam_weight: mid
+    prerequisites: [chemistry.carbon.co2]
+    status_default: unlearned
+  - id: chemistry.carbon.cycle
+    name: 碳循环与环保
+    parent: chemistry.carbon
+    children: []
+    exam_weight: mid
+    prerequisites: [chemistry.carbon.co2]
+    status_default: unlearned
+
+  - id: chemistry.metal
+    name: 金属
+    parent: null
+    children: [chemistry.metal.activity, chemistry.metal.smelting, chemistry.metal.alloy]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chemistry.metal.activity
+    name: 金属活动性顺序
+    parent: chemistry.metal
+    children: []
+    exam_weight: high
+    prerequisites: [chemistry.basic.equation]
+    status_default: unlearned
+  - id: chemistry.metal.smelting
+    name: 金属冶炼与防腐
+    parent: chemistry.metal
+    children: []
+    exam_weight: mid
+    prerequisites: [chemistry.metal.activity]
+    status_default: unlearned
+  - id: chemistry.metal.alloy
+    name: 合金与材料
+    parent: chemistry.metal
+    children: []
+    exam_weight: low
+    prerequisites: [chemistry.metal.activity]
+    status_default: unlearned
+
+  - id: chemistry.solution
+    name: 溶液
+    parent: null
+    children: [chemistry.solution.solubility, chemistry.solution.concentration, chemistry.solution.crystal]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chemistry.solution.solubility
+    name: 溶解性与溶解度
+    parent: chemistry.solution
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chemistry.solution.concentration
+    name: 溶质质量分数
+    parent: chemistry.solution
+    children: []
+    exam_weight: high
+    prerequisites: [chemistry.solution.solubility]
+    status_default: unlearned
+  - id: chemistry.solution.crystal
+    name: 结晶与溶液图像
+    parent: chemistry.solution
+    children: []
+    exam_weight: mid
+    prerequisites: [chemistry.solution.solubility]
+    status_default: unlearned
+
+  - id: chemistry.acid_base
+    name: 酸与碱
+    parent: null
+    children: [chemistry.acid_base.ion, chemistry.acid_base.acid, chemistry.acid_base.base, chemistry.acid_base.neutral, chemistry.acid_base.salt, chemistry.acid_base.fertilizer]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chemistry.acid_base.ion
+    name: 酸碱盐与电离初步
+    parent: chemistry.acid_base
+    children: []
+    exam_weight: high
+    prerequisites: [chemistry.basic.molecule]
+    status_default: unlearned
+  - id: chemistry.acid_base.acid
+    name: 常见酸的性质
+    parent: chemistry.acid_base
+    children: []
+    exam_weight: high
+    prerequisites: [chemistry.acid_base.ion]
+    status_default: unlearned
+  - id: chemistry.acid_base.base
+    name: 常见碱的性质
+    parent: chemistry.acid_base
+    children: []
+    exam_weight: high
+    prerequisites: [chemistry.acid_base.ion]
+    status_default: unlearned
+  - id: chemistry.acid_base.neutral
+    name: 中和反应与 pH
+    parent: chemistry.acid_base
+    children: []
+    exam_weight: high
+    prerequisites: [chemistry.acid_base.acid, chemistry.acid_base.base]
+    status_default: unlearned
+  - id: chemistry.acid_base.salt
+    name: 盐的性质与复分解
+    parent: chemistry.acid_base
+    children: []
+    exam_weight: high
+    prerequisites: [chemistry.acid_base.neutral]
+    status_default: unlearned
+  - id: chemistry.acid_base.fertilizer
+    name: 化学肥料
+    parent: chemistry.acid_base
+    children: []
+    exam_weight: low
+    prerequisites: [chemistry.acid_base.salt]
+    status_default: unlearned
+
+  - id: chemistry.calc
+    name: 化学计算
+    parent: null
+    children: [chemistry.calc.mass, chemistry.calc.equation, chemistry.calc.solution]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chemistry.calc.mass
+    name: 相对分子质量与组成计算
+    parent: chemistry.calc
+    children: []
+    exam_weight: high
+    prerequisites: [chemistry.basic.valence]
+    status_default: unlearned
+  - id: chemistry.calc.equation
+    name: 根据化学方程式计算
+    parent: chemistry.calc
+    children: []
+    exam_weight: high
+    prerequisites: [chemistry.basic.equation, chemistry.calc.mass]
+    status_default: unlearned
+  - id: chemistry.calc.solution
+    name: 溶液与反应综合计算
+    parent: chemistry.calc
+    children: []
+    exam_weight: high
+    prerequisites: [chemistry.calc.equation, chemistry.solution.concentration]
+    status_default: unlearned
+
+  - id: chemistry.experiment
+    name: 化学实验
+    parent: null
+    children: [chemistry.experiment.apparatus, chemistry.experiment.gas, chemistry.experiment.infer, chemistry.experiment.ops_note]
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chemistry.experiment.apparatus
+    name: 仪器与基本操作
+    parent: chemistry.experiment
+    children: []
+    exam_weight: high
+    prerequisites: []
+    status_default: unlearned
+  - id: chemistry.experiment.gas
+    name: 气体制取装置选择
+    parent: chemistry.experiment
+    children: []
+    exam_weight: high
+    prerequisites: [chemistry.air_water.oxygen, chemistry.carbon.co2]
+    status_default: unlearned
+  - id: chemistry.experiment.infer
+    name: 实验探究与物质推断
+    parent: chemistry.experiment
+    children: []
+    exam_weight: high
+    prerequisites: [chemistry.acid_base.salt, chemistry.metal.activity]
+    status_default: unlearned
+  - id: chemistry.experiment.ops_note
+    name: 实验操作等级（扩展占位）
+    parent: chemistry.experiment
+    children: []
+    exam_weight: mid
+    prerequisites: []
+    status_default: unlearned
