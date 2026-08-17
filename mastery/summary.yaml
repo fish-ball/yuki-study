@@ -1,10 +1,10 @@
-updated_at: '2026-08-16'
+updated_at: '2026-08-17'
 phase: 1
 subjects:
   math:
-    L0: 38
-    L1: 0
-    L2: 1
+    L0: 32
+    L1: 2
+    L2: 5
     L3: 0
     L4: 0
     total: 39
@@ -31,31 +31,31 @@ subjects:
     total: 31
   chemistry:
     L0: 37
-    L1: 3
-    L2: 0
+    L1: 0
+    L2: 1
     L3: 0
-    L4: 0
+    L4: 2
     total: 40
 weak_points:
+- math.equation.quadratic
+- chemistry.basic.molecule
 - chemistry.basic.element
 - chemistry.basic.change
-- chemistry.basic.molecule
+- math.geometry.similar
+- math.integrated.geometry_hard
+- math.function.quadratic.graph
+- math.geometry.circle.angle
+- chemistry.basic.valence
 - math.equation
-- math.equation.ineq
-- math.equation.quadratic
 - math.equation.system
 - math.function
 - math.function.inverse
-- math.function.linear
 - math.function.quadratic
 - math.function.quadratic.apply
 - math.function.quadratic.formula
-- math.function.quadratic.graph
 - math.geometry
 - math.geometry.circle
-- math.geometry.circle.angle
 - math.geometry.circle.tangent
 - math.geometry.congruent
-- math.geometry.quad
-next_focus: chemistry
+next_focus: math
 notes: 由管理后台根据 SQLite 掌握度汇总生成。

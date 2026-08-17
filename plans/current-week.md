@@ -8,15 +8,16 @@
 
 ## 每日安排
 
-| 日期 | 主攻（约45分钟） | 知识点 | 复习/巩固 |
-|------|------------------|--------|-----------|
+| 日期 | 主攻 | 知识点 | 复习/巩固 |
+|------|------|--------|-----------|
 | 日 08-16 | 化学：变化 + 元素符号 | `chemistry.basic.change` `chemistry.basic.element` | 本课小测交卷批改 |
-| 一 08-17 | 化学：分子、原子、离子 | `chemistry.basic.molecule` | 默写常见元素符号 |
+| 一 08-17 | 化学：分子、原子、离子 + 元素符号巩固 | `chemistry.basic.molecule` `chemistry.basic.element` | 默写常见元素符号 |
 | 二 08-18 | 化学：化合价与化学式 | `chemistry.basic.valence` | 复习分子原子区别 |
 | 三 08-19 | 化学：化学方程式入门 | `chemistry.basic.equation` | 化学式书写练习 |
 | 四 08-20 | 化学：空气与氧气预习 | `chemistry.air_water.air` `chemistry.air_water.oxygen` | 方程式配平巩固 |
 | 五 08-21 | 化学：水与氢气 | `chemistry.air_water.water` `chemistry.air_water.hydrogen` | 本周错题订正 |
-| 六 08-22 | 化学：基本概念周末验收 | `chemistry.basic.*` | 目标 L1→尝试冲 L2 小题 |
+| 六 08-22 | 化学：基本概念周末验收 | `chemistry.basic.change` `chemistry.basic.element` `chemistry.basic.equation` `chemistry.basic.molecule` `chemistry.basic.valence` | 目标 L1→尝试冲 L2 小题 |
+
 
 ## 周末验收
 

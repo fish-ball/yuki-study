@@ -1,0 +1,58 @@
+# 掌握度与练习/考核晋级策略（Harness 统一口径）
+# Agent 与管理台均按本文件执行。
+
+version: 1
+
+# 等级含义（与 student.yaml mastery_scale 一致）
+levels: [L0, L1, L2, L3, L4]
+
+# 练习：最高只能提升到此等级（含）。更高必须通过「考核」卷晋级。
+practice_max_level: L2
+
+# 练习内升级门槛（相对当前会话或累计最近练习）
+practice_level_up:
+  # 从 L0→L1、L1→L2 时，本场练习首次作答正确率需达到
+  pass_rate: 0.75
+  # 本场至少有效题数（绑定该 knowledge_id）
+  min_questions: 4
+
+# 考核：通过线与晋级
+assessment:
+  # 某知识点在本场考核中，绑定该点的题目正确率 ≥ 此值 → 该点「通过」
+  pass_rate: 0.80
+  # 通过后：掌握度可升到本卷 target_level（至多 +1 档，除非已连续达标）
+  max_step_up: 1
+  # 整卷结束后：自动生成更高一档、去重新卷（若尚未到 L4）
+  auto_refresh_next: true
+  # 下一卷目标等级：相对本卷 target_level +1（上限 L4）
+  next_level_step: 1
+
+# 免练：当前等级 >= practice_max_level 时，该知识点练习可跳过、不再刷新（改走考核）
+practice_exempt_when_above_max: true
+
+# 标题展示文案模板（前端/试卷 note 使用）
+labels:
+  practice_title: "练习 · 可升至 {practice_max}（当前 {current}→目标 {goal}）"
+  practice_exempt: "免练 · 已达 {current}（练习上限 {practice_max}，请走考核）"
+  assessment_title: "考核 · 冲 {target} · 通过线 {pass_pct}%"
+  assessment_next: "下一考核 · 冲 {target} · 去重提高难度"
+
+# 基础资料库（侧栏「基础」板块）
+# 仅原文查阅：不对基础库出练习/考核，不做易错分析。
+basics:
+  - id: basics.periodic_table
+    title: 元素周期表与九上常用物质
+    subject: chemistry
+    path: knowledge/basics/periodic-table.md
+  - id: basics.poems
+    title: 九下古诗词原文
+    subject: chinese
+    path: knowledge/basics/poems.md
+  - id: basics.wenyan
+    title: 九下文言文原文
+    subject: chinese
+    path: knowledge/basics/wenyan.md
+  - id: basics.english_vocab
+    title: 英语核心词汇
+    subject: english
+    path: knowledge/basics/english-vocab.md

@@ -1,0 +1,36 @@
+{
+  "id": "day_2026-08-21",
+  "week_id": "week_2026-08-16",
+  "plan_date": "2026-08-21",
+  "title": "五 08-21",
+  "focus_text": "化学：水与氢气",
+  "review_text": "本周错题订正",
+  "status": "pending",
+  "completed_at": null,
+  "base_item_count": 2,
+  "updated_at": "2026-08-17T22:32:00",
+  "items": [
+    {
+      "id": 96,
+      "day_plan_id": "day_2026-08-21",
+      "knowledge_id": "chemistry.air_water.water",
+      "role": "main",
+      "sort_order": 0,
+      "done": 0,
+      "done_at": null,
+      "name": "水的组成与净化",
+      "level": "L0"
+    },
+    {
+      "id": 97,
+      "day_plan_id": "day_2026-08-21",
+      "knowledge_id": "chemistry.air_water.hydrogen",
+      "role": "main",
+      "sort_order": 1,
+      "done": 0,
+      "done_at": null,
+      "name": "氢气与还原",
+      "level": "L0"
+    }
+  ]
+}

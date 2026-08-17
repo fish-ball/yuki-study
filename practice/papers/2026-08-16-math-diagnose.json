@@ -7,7 +7,8 @@
   "minutes": 25,
   "target_level": "L2",
   "status": "ready",
-  "note": "练习架构兼容：多空分号分隔；简答以「评分要点」开头便于 short 题型识别",
+  "note": "考核/摸底卷",
+  "paper_kind": "exam",
   "questions": [
     {
       "id": "2026-08-16-math-diagnose__q01",

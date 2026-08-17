@@ -1,0 +1,403 @@
+{
+  "id": "2026-08-17-math-exam-refresh-l3-182243",
+  "path": "assessments/2026-08-17-math-exam-refresh-l3-182243.md",
+  "subject_id": "math",
+  "theme": "exam-refresh-l3",
+  "date": "2026-08-17",
+  "minutes": 25,
+  "target_level": "L3",
+  "status": "ready",
+  "note": "考核 · 冲 L3 · 通过线 80%",
+  "questions": [
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182243__q01",
+      "qtype": "judge",
+      "stem": "「二次根式」属于中考相关考点，需要结合例题巩固。",
+      "score": 2.0,
+      "sort_order": 1,
+      "explanation": "对。（冲L3）",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.number.radical"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182243__q02",
+      "qtype": "fill",
+      "stem": "【L3】用一句话概括「二次根式」的核心（可写关键词）：______。",
+      "score": 4.0,
+      "sort_order": 2,
+      "explanation": "二次根式。关键词围绕「二次根式」的定义与判别。（冲L3）",
+      "answer_key": "二次根式",
+      "answer_accept": [
+        "二次根式"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.number.radical"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182243__q03",
+      "qtype": "choice",
+      "stem": "关于「二次根式」，正确的学习态度是（冲L3·选）（　　）",
+      "score": 4.0,
+      "sort_order": 3,
+      "explanation": "A。定义 + 练习 + 订正。（冲L3）",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "先抓定义与适用条件，再做变式题",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "只背名称，不做题",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "不会的题永远跳过",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "抄答案就算掌握",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.number.radical"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182243__q04",
+      "qtype": "fill",
+      "stem": "【L3】本课主攻知识点「二次根式」的 knowledge_id 是 ______。",
+      "score": 4.0,
+      "sort_order": 4,
+      "explanation": "math.number.radical。对应 id：math.number.radical。（冲L3）",
+      "answer_key": "math.number.radical",
+      "answer_accept": [
+        "math.number.radical"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.number.radical"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182243__q05",
+      "qtype": "judge",
+      "stem": "学习「二次根式」时，既要记住结论，也要能用自己的话解释含义。",
+      "score": 2.0,
+      "sort_order": 5,
+      "explanation": "对。理解才能应对变式。（冲L3）",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.number.radical"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182243__q06",
+      "qtype": "judge",
+      "stem": "「一元二次方程」属于中考相关考点，需要结合例题巩固。",
+      "score": 2.0,
+      "sort_order": 6,
+      "explanation": "对。（冲L3）",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.equation.quadratic"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182243__q07",
+      "qtype": "fill",
+      "stem": "【L3】用一句话概括「一元二次方程」的核心（可写关键词）：______。",
+      "score": 4.0,
+      "sort_order": 7,
+      "explanation": "一元二次方程。关键词围绕「一元二次方程」的定义与判别。（冲L3）",
+      "answer_key": "一元二次方程",
+      "answer_accept": [
+        "一元二次方程"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.equation.quadratic"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182243__q08",
+      "qtype": "choice",
+      "stem": "关于「一元二次方程」，正确的学习态度是（冲L3·选）（　　）",
+      "score": 4.0,
+      "sort_order": 8,
+      "explanation": "A。定义 + 练习 + 订正。（冲L3）",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "先抓定义与适用条件，再做变式题",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "只背名称，不做题",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "不会的题永远跳过",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "抄答案就算掌握",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.equation.quadratic"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182243__q09",
+      "qtype": "fill",
+      "stem": "【L3】本课主攻知识点「一元二次方程」的 knowledge_id 是 ______。",
+      "score": 4.0,
+      "sort_order": 9,
+      "explanation": "math.equation.quadratic。对应 id：math.equation.quadratic。（冲L3）",
+      "answer_key": "math.equation.quadratic",
+      "answer_accept": [
+        "math.equation.quadratic"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.equation.quadratic"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182243__q10",
+      "qtype": "judge",
+      "stem": "学习「一元二次方程」时，既要记住结论，也要能用自己的话解释含义。",
+      "score": 2.0,
+      "sort_order": 10,
+      "explanation": "对。理解才能应对变式。（冲L3）",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.equation.quadratic"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182243__q11",
+      "qtype": "judge",
+      "stem": "「一次函数」属于中考相关考点，需要结合例题巩固。",
+      "score": 2.0,
+      "sort_order": 11,
+      "explanation": "对。（冲L3）",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.function.linear"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182243__q12",
+      "qtype": "fill",
+      "stem": "【L3】用一句话概括「一次函数」的核心（可写关键词）：______。",
+      "score": 4.0,
+      "sort_order": 12,
+      "explanation": "一次函数。关键词围绕「一次函数」的定义与判别。（冲L3）",
+      "answer_key": "一次函数",
+      "answer_accept": [
+        "一次函数"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.function.linear"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182243__q13",
+      "qtype": "choice",
+      "stem": "关于「一次函数」，正确的学习态度是（冲L3·选）（　　）",
+      "score": 4.0,
+      "sort_order": 13,
+      "explanation": "A。定义 + 练习 + 订正。（冲L3）",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "先抓定义与适用条件，再做变式题",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "只背名称，不做题",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "不会的题永远跳过",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "抄答案就算掌握",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.function.linear"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182243__q14",
+      "qtype": "fill",
+      "stem": "【L3】本课主攻知识点「一次函数」的 knowledge_id 是 ______。",
+      "score": 4.0,
+      "sort_order": 14,
+      "explanation": "math.function.linear。对应 id：math.function.linear。（冲L3）",
+      "answer_key": "math.function.linear",
+      "answer_accept": [
+        "math.function.linear"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.function.linear"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182243__q15",
+      "qtype": "judge",
+      "stem": "学习「一次函数」时，既要记住结论，也要能用自己的话解释含义。",
+      "score": 2.0,
+      "sort_order": 15,
+      "explanation": "对。理解才能应对变式。（冲L3）",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.function.linear"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182243__q16",
+      "qtype": "judge",
+      "stem": "「圆周角与圆心角」属于中考相关考点，需要结合例题巩固。",
+      "score": 2.0,
+      "sort_order": 16,
+      "explanation": "对。（冲L3）",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.circle.angle"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182243__q17",
+      "qtype": "fill",
+      "stem": "【L3】用一句话概括「圆周角与圆心角」的核心（可写关键词）：______。",
+      "score": 4.0,
+      "sort_order": 17,
+      "explanation": "圆周角与圆心角。关键词围绕「圆周角与圆心角」的定义与判别。（冲L3）",
+      "answer_key": "圆周角与圆心角",
+      "answer_accept": [
+        "圆周角与圆心角"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.circle.angle"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182243__q18",
+      "qtype": "choice",
+      "stem": "关于「圆周角与圆心角」，正确的学习态度是（冲L3·选）（　　）",
+      "score": 4.0,
+      "sort_order": 18,
+      "explanation": "A。定义 + 练习 + 订正。（冲L3）",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "先抓定义与适用条件，再做变式题",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "只背名称，不做题",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "不会的题永远跳过",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "抄答案就算掌握",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.geometry.circle.angle"
+      ]
+    }
+  ]
+}

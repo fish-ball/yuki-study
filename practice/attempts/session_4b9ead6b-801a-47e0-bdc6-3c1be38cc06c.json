@@ -1,0 +1,117 @@
+{
+  "id": "4b9ead6b-801a-47e0-bdc6-3c1be38cc06c",
+  "paper_id": "drill-unknown-test-quad",
+  "mode": "paper",
+  "subject_id": "math",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-17T22:32:28",
+  "finished_at": "2026-08-17T22:34:01",
+  "total_questions": 5,
+  "correct_count": 2,
+  "attempt_count": 6,
+  "current_index": 4,
+  "latest_by_question": {
+    "drill-unknown-test-quad__183242_q01": {
+      "id": "0cd3b2d1-80fa-4d1f-80eb-bc1246b6e617",
+      "question_id": "drill-unknown-test-quad__183242_q01",
+      "user_answer": "【不会】",
+      "is_correct": 0,
+      "feedback": "已标记「不会」，按错误计入正确率。先看参考答案，结束练习后会进入专学巩固。 参考答案：对",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T22:32:37"
+    },
+    "drill-unknown-test-quad__183242_q02": {
+      "id": "59e82d3e-585e-4056-a0c0-4e8aab4ac67d",
+      "question_id": "drill-unknown-test-quad__183242_q02",
+      "user_answer": "【不会】",
+      "is_correct": 0,
+      "feedback": "已标记「不会」，按错误计入正确率。先看参考答案，结束练习后会进入专学巩固。 参考答案：b²-4ac",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T22:32:40"
+    },
+    "drill-unknown-test-quad__183242_q03": {
+      "id": "1b9b9ae6-769b-4e94-af9f-03cc2335c080",
+      "question_id": "drill-unknown-test-quad__183242_q03",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T22:32:48"
+    },
+    "drill-unknown-test-quad__183242_q04": {
+      "id": "78a6c4bd-9b97-4b40-9f8d-3eea08449e11",
+      "question_id": "drill-unknown-test-quad__183242_q04",
+      "user_answer": "-2；3",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 2,
+      "created_at": "2026-08-17T22:33:24"
+    },
+    "drill-unknown-test-quad__183242_q05": {
+      "id": "34d654aa-6917-4b51-b220-d68f8c8e3e38",
+      "question_id": "drill-unknown-test-quad__183242_q05",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T22:33:32"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "0cd3b2d1-80fa-4d1f-80eb-bc1246b6e617",
+      "question_id": "drill-unknown-test-quad__183242_q01",
+      "user_answer": "【不会】",
+      "is_correct": 0,
+      "feedback": "已标记「不会」，按错误计入正确率。先看参考答案，结束练习后会进入专学巩固。 参考答案：对",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T22:32:37"
+    },
+    {
+      "id": "59e82d3e-585e-4056-a0c0-4e8aab4ac67d",
+      "question_id": "drill-unknown-test-quad__183242_q02",
+      "user_answer": "【不会】",
+      "is_correct": 0,
+      "feedback": "已标记「不会」，按错误计入正确率。先看参考答案，结束练习后会进入专学巩固。 参考答案：b²-4ac",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T22:32:40"
+    },
+    {
+      "id": "1b9b9ae6-769b-4e94-af9f-03cc2335c080",
+      "question_id": "drill-unknown-test-quad__183242_q03",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T22:32:48"
+    },
+    {
+      "id": "eea72e4e-ed06-4fcf-9107-46595ae0f975",
+      "question_id": "drill-unknown-test-quad__183242_q04",
+      "user_answer": "-2；2",
+      "is_correct": 0,
+      "feedback": "第 2 空不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T22:33:17"
+    },
+    {
+      "id": "78a6c4bd-9b97-4b40-9f8d-3eea08449e11",
+      "question_id": "drill-unknown-test-quad__183242_q04",
+      "user_answer": "-2；3",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 2,
+      "created_at": "2026-08-17T22:33:24"
+    },
+    {
+      "id": "34d654aa-6917-4b51-b220-d68f8c8e3e38",
+      "question_id": "drill-unknown-test-quad__183242_q05",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T22:33:32"
+    }
+  ]
+}

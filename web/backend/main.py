@@ -13,10 +13,21 @@ from pydantic import BaseModel, Field
 
 from .db import get_conn, init_db
 from .knowledge_topo import build_lattice, build_ordered_tree, compute_topo_depths
+from .plan_service import (
+    bootstrap_plan,
+    complete_day_plan,
+    compute_mastery_score,
+    get_plan_bundle,
+    rebuild_days_from_week,
+    submit_plan_survey,
+    toggle_day_item,
+    update_day_plan_fields,
+)
 from .practice import (
     finish_session,
     get_session,
     get_session_question,
+    list_active_sessions,
     list_history,
     list_papers,
     list_sessions,
@@ -41,10 +52,30 @@ class MasteryUpdate(BaseModel):
 class PlanUpdate(BaseModel):
     content_md: str
     write_back_file: bool = True
+    rebuild_days: bool = True
+
+
+class DayItemToggle(BaseModel):
+    knowledge_id: str
+    done: bool | None = None
+
+
+class DayPlanUpdate(BaseModel):
+    title: str | None = None
+    focus_text: str | None = None
+    review_text: str | None = None
+
+
+class PlanSurveyBody(BaseModel):
+    day_plan_id: str
+    volume: str
+    increase_yes: bool | None = None
+    rescale_week: bool | None = None
 
 
 class StartSessionBody(BaseModel):
     paper_id: str
+    force_new: bool = False
 
 
 class SubmitAnswerBody(BaseModel):
@@ -53,6 +84,7 @@ class SubmitAnswerBody(BaseModel):
     user_answers: list[str] | None = None
     elapsed_ms: int | None = None
     update_mastery: bool = True
+    dont_know: bool = False
 
 
 @app.on_event("startup")
@@ -63,6 +95,12 @@ def _startup() -> None:
     conn.close()
     if count == 0:
         sync_from_files()
+    try:
+        from .unknown_followup import retire_meta_question_papers
+
+        retire_meta_question_papers()
+    except (OSError, RuntimeError, ValueError):
+        pass
 
 
 @app.get("/api/health")
@@ -72,7 +110,15 @@ def health() -> dict[str, str]:
 
 @app.post("/api/sync")
 def api_sync() -> dict[str, Any]:
-    return sync_from_files()
+    stats = sync_from_files()
+    # 同步后自动重建日计划并生成今日练习，避免刷新后空白
+    try:
+        bundle = bootstrap_plan()
+        stats["plan_days"] = len(bundle.get("days") or [])
+        stats["today"] = bundle.get("today")
+    except (OSError, RuntimeError, ValueError) as e:
+        stats["plan_bootstrap_error"] = str(e)
+    return stats
 
 
 @app.get("/api/overview")
@@ -127,6 +173,7 @@ def overview() -> dict[str, Any]:
     ).fetchone()
     profile_row = conn.execute("SELECT data_json FROM profile WHERE id = 1").fetchone()
     plan_row = conn.execute("SELECT content_md, updated_at FROM plans WHERE id = 1").fetchone()
+    mastery_score = compute_mastery_score(conn)
     conn.close()
 
     profile = json.loads(profile_row["data_json"]) if profile_row else {}
@@ -134,6 +181,7 @@ def overview() -> dict[str, Any]:
         "subjects": subjects,
         "levels": levels,
         "weak_points": weak,
+        "mastery_score": mastery_score,
         "counts": {
             "knowledge": knowledge,
             "assessments": assessments,
@@ -388,12 +436,13 @@ def get_assessment(assessment_id: str) -> dict[str, Any]:
 
 @app.get("/api/plan")
 def get_plan() -> dict[str, Any]:
-    conn = get_conn()
-    row = conn.execute("SELECT content_md, updated_at FROM plans WHERE id = 1").fetchone()
-    conn.close()
-    if not row:
-        return {"content_md": "", "updated_at": None}
-    return dict(row)
+    """自动就绪周/日计划与今日练习，返回进度与待填问卷。"""
+    return bootstrap_plan()
+
+
+@app.post("/api/plan/bootstrap")
+def api_bootstrap_plan() -> dict[str, Any]:
+    return bootstrap_plan()
 
 
 @app.put("/api/plan")
@@ -414,7 +463,61 @@ def update_plan(body: PlanUpdate) -> dict[str, Any]:
 
         path = ROOT / "plans" / "current-week.md"
         path.write_text(body.content_md, encoding="utf-8")
-    return {"content_md": body.content_md, "updated_at": now}
+    if body.rebuild_days:
+        return rebuild_days_from_week(body.content_md, force=True)
+    return bootstrap_plan()
+
+
+@app.post("/api/plan/rebuild-days")
+def api_rebuild_days(force: bool = True) -> dict[str, Any]:
+    return rebuild_days_from_week(force=force)
+
+
+@app.post("/api/plan/days/{day_plan_id}/toggle")
+def api_toggle_day_item(day_plan_id: str, body: DayItemToggle) -> dict[str, Any]:
+    try:
+        return toggle_day_item(day_plan_id, body.knowledge_id, body.done)
+    except ValueError as e:
+        raise HTTPException(400, str(e)) from e
+
+
+@app.patch("/api/plan/days/{day_plan_id}")
+def api_update_day_plan(day_plan_id: str, body: DayPlanUpdate) -> dict[str, Any]:
+    try:
+        return update_day_plan_fields(
+            day_plan_id,
+            title=body.title,
+            focus_text=body.focus_text,
+            review_text=body.review_text,
+        )
+    except ValueError as e:
+        raise HTTPException(400, str(e)) from e
+
+
+@app.post("/api/plan/days/{day_plan_id}/complete")
+def api_complete_day(day_plan_id: str) -> dict[str, Any]:
+    try:
+        return complete_day_plan(day_plan_id)
+    except ValueError as e:
+        raise HTTPException(400, str(e)) from e
+
+
+@app.post("/api/plan/survey")
+def api_plan_survey(body: PlanSurveyBody) -> dict[str, Any]:
+    try:
+        return submit_plan_survey(
+            body.day_plan_id,
+            body.volume,
+            body.increase_yes,
+            body.rescale_week,
+        )
+    except ValueError as e:
+        raise HTTPException(400, str(e)) from e
+
+
+@app.get("/api/mastery-score")
+def api_mastery_score() -> dict[str, Any]:
+    return compute_mastery_score()
 
 
 @app.get("/api/profile")
@@ -508,12 +611,84 @@ def api_practice_paper(paper_id: str) -> dict[str, Any]:
     return paper
 
 
+@app.get("/api/mastery-policy")
+def api_mastery_policy() -> dict[str, Any]:
+    from .mastery_policy import load_policy, practice_max_level, assessment_pass_rate
+
+    p = load_policy()
+    return {
+        "policy": p,
+        "practice_max_level": practice_max_level(p),
+        "assessment_pass_rate": assessment_pass_rate(p),
+        "practice_pass_rate": float((p.get("practice_level_up") or {}).get("pass_rate") or 0.75),
+    }
+
+
+@app.get("/api/basics")
+def api_basics() -> list[dict[str, Any]]:
+    from .mastery_policy import list_basics
+
+    return list_basics()
+
+
+@app.get("/api/basics/{item_id}")
+def api_basic_item(item_id: str) -> dict[str, Any]:
+    from .mastery_policy import list_basics
+
+    for it in list_basics():
+        if it.get("id") == item_id:
+            return it
+    raise HTTPException(404, "基础资料不存在")
+
+
 @app.post("/api/practice/sessions")
 def api_start_session(body: StartSessionBody) -> dict[str, Any]:
+    from .practice import get_paper
+    from .mastery_policy import is_practice_exempt, load_policy
+
     try:
-        return start_session(body.paper_id)
+        paper = get_paper(body.paper_id, include_answers=False)
+        if not paper:
+            raise ValueError("试卷不存在")
+        st = (paper.get("status") or "ready").lower()
+        if st in ("completed", "retired", "exempt", "archived"):
+            raise ValueError("该卷已完成或已取消，请到「做题记录」查看；列表中仅保留待练卷。")
+        if paper and (
+            str(body.paper_id).startswith("drill-") or "drill" in (paper.get("theme") or "")
+        ):
+            policy = load_policy()
+            conn = get_conn()
+            kids = [
+                r["knowledge_id"]
+                for r in conn.execute(
+                    """
+                    SELECT DISTINCT qk.knowledge_id
+                    FROM question_knowledge qk
+                    JOIN questions q ON q.id = qk.question_id
+                    WHERE q.paper_id = ?
+                    """,
+                    (body.paper_id,),
+                ).fetchall()
+            ]
+            levels = []
+            for kid in kids:
+                m = conn.execute(
+                    "SELECT level FROM mastery_items WHERE knowledge_id = ?", (kid,)
+                ).fetchone()
+                levels.append(m["level"] if m else "L0")
+            conn.close()
+            if kids and all(is_practice_exempt(lv, policy) for lv in levels):
+                raise ValueError(
+                    "该知识点已超过练习上限，请改做「考核」卷晋级。"
+                )
+        return start_session(body.paper_id, force_new=body.force_new)
     except ValueError as e:
         raise HTTPException(400, str(e)) from e
+
+
+@app.get("/api/practice/sessions/active")
+def api_active_sessions(limit: int = 20) -> list[dict[str, Any]]:
+    return list_active_sessions(limit)
 
 
 @app.get("/api/practice/sessions")
@@ -547,6 +722,7 @@ def api_submit(session_id: str, body: SubmitAnswerBody) -> dict[str, Any]:
             body.elapsed_ms,
             body.update_mastery,
             body.user_answers,
+            dont_know=body.dont_know,
         )
     except ValueError as e:
         raise HTTPException(400, str(e)) from e
@@ -578,6 +754,23 @@ def api_finish(session_id: str) -> dict[str, Any]:
 @app.get("/api/practice/history")
 def api_history(limit: int = 50) -> list[dict[str, Any]]:
     return list_history(limit)
+
+
+@app.get("/api/learn/unknown-followups")
+def api_list_unknown_followups(limit: int = 30) -> list[dict[str, Any]]:
+    from .unknown_followup import list_followups
+
+    return list_followups(limit)
+
+
+@app.get("/api/learn/unknown-followups/{pack_id}")
+def api_get_unknown_followup(pack_id: str) -> dict[str, Any]:
+    from .unknown_followup import get_followup
+
+    data = get_followup(pack_id)
+    if not data:
+        raise HTTPException(404, "不会专学包不存在")
+    return data
 
 
 # 静态前端

@@ -1,0 +1,117 @@
+{
+  "id": "e37b41c4-3bee-4f64-aa5c-6728235225c1",
+  "paper_id": "drill-unknown-2026-08-17-223335-01-math_equation_quadratic",
+  "mode": "paper",
+  "subject_id": "math",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-17T22:34:28",
+  "finished_at": "2026-08-17T22:35:20",
+  "total_questions": 5,
+  "correct_count": 3,
+  "attempt_count": 6,
+  "current_index": 4,
+  "latest_by_question": {
+    "drill-unknown-2026-08-17-223335-01-math_equation_quadratic__223420_q01": {
+      "id": "52c286ab-5f98-48a1-9e3e-38b2f9eb602e",
+      "question_id": "drill-unknown-2026-08-17-223335-01-math_equation_quadratic__223420_q01",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T22:34:33"
+    },
+    "drill-unknown-2026-08-17-223335-01-math_equation_quadratic__223420_q02": {
+      "id": "3de7dad9-0328-492c-8472-2cf2b3119872",
+      "question_id": "drill-unknown-2026-08-17-223335-01-math_equation_quadratic__223420_q02",
+      "user_answer": "2；3",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T22:34:47"
+    },
+    "drill-unknown-2026-08-17-223335-01-math_equation_quadratic__223420_q03": {
+      "id": "a5421f99-2b2d-45ec-b66e-d6aabd119d9e",
+      "question_id": "drill-unknown-2026-08-17-223335-01-math_equation_quadratic__223420_q03",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T22:34:52"
+    },
+    "drill-unknown-2026-08-17-223335-01-math_equation_quadratic__223420_q04": {
+      "id": "304af5b3-f245-4e21-9b7a-3b6eb2202f4d",
+      "question_id": "drill-unknown-2026-08-17-223335-01-math_equation_quadratic__223420_q04",
+      "user_answer": "【不会】",
+      "is_correct": 0,
+      "feedback": "已标记「不会」，按错误计入正确率。先看参考答案，结束练习后会进入专学巩固。 参考答案：b²-4ac",
+      "attempt_no": 2,
+      "created_at": "2026-08-17T22:35:03"
+    },
+    "drill-unknown-2026-08-17-223335-01-math_equation_quadratic__223420_q05": {
+      "id": "f05003e0-9796-43e8-8602-338b5d2f15d0",
+      "question_id": "drill-unknown-2026-08-17-223335-01-math_equation_quadratic__223420_q05",
+      "user_answer": "【不会】",
+      "is_correct": 0,
+      "feedback": "已标记「不会」，按错误计入正确率。先看参考答案，结束练习后会进入专学巩固。 参考答案：对",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T22:35:13"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "52c286ab-5f98-48a1-9e3e-38b2f9eb602e",
+      "question_id": "drill-unknown-2026-08-17-223335-01-math_equation_quadratic__223420_q01",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T22:34:33"
+    },
+    {
+      "id": "3de7dad9-0328-492c-8472-2cf2b3119872",
+      "question_id": "drill-unknown-2026-08-17-223335-01-math_equation_quadratic__223420_q02",
+      "user_answer": "2；3",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T22:34:47"
+    },
+    {
+      "id": "a5421f99-2b2d-45ec-b66e-d6aabd119d9e",
+      "question_id": "drill-unknown-2026-08-17-223335-01-math_equation_quadratic__223420_q03",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T22:34:52"
+    },
+    {
+      "id": "33f3c236-c17e-4474-85f8-58d3c0e67aa3",
+      "question_id": "drill-unknown-2026-08-17-223335-01-math_equation_quadratic__223420_q04",
+      "user_answer": "【不会】",
+      "is_correct": 0,
+      "feedback": "已标记「不会」，按错误计入正确率。先看参考答案，结束练习后会进入专学巩固。 参考答案：b²-4ac",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T22:34:55"
+    },
+    {
+      "id": "304af5b3-f245-4e21-9b7a-3b6eb2202f4d",
+      "question_id": "drill-unknown-2026-08-17-223335-01-math_equation_quadratic__223420_q04",
+      "user_answer": "【不会】",
+      "is_correct": 0,
+      "feedback": "已标记「不会」，按错误计入正确率。先看参考答案，结束练习后会进入专学巩固。 参考答案：b²-4ac",
+      "attempt_no": 2,
+      "created_at": "2026-08-17T22:35:03"
+    },
+    {
+      "id": "f05003e0-9796-43e8-8602-338b5d2f15d0",
+      "question_id": "drill-unknown-2026-08-17-223335-01-math_equation_quadratic__223420_q05",
+      "user_answer": "【不会】",
+      "is_correct": 0,
+      "feedback": "已标记「不会」，按错误计入正确率。先看参考答案，结束练习后会进入专学巩固。 参考答案：对",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T22:35:13"
+    }
+  ]
+}

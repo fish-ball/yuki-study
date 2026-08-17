@@ -1,12 +1,13 @@
 const titles = {
   overview: ["总览", "掌握度分布、点阵与薄弱点"],
-  practice: ["练习", "选卷作答，即时反馈（可汗风格）"],
+  practice: ["练习", "练习上限与考核晋级（见卷面标题）"],
+  basics: ["基础", "原文表格（周期表 / 九下诗文）"],
   history: ["做题记录", "永久保存的答题尝试与会话"],
-  knowledge: ["知识点", "拓扑点阵、熟练度与教程"],
-  learn: ["学习", "打开知识点教程讲义"],
+  knowledge: ["知识点", "点阵、教程与晋级说明"],
+  learn: ["学习", "教程讲义 · 关联修订"],
   mastery: ["掌握度", "筛选并编辑 L0–L4"],
   assessments: ["考核", "浏览摸底卷与练习卷"],
-  plan: ["周计划", "查看或编辑 plans/current-week.md"],
+  plan: ["学习计划", "周计划 · 日计划 · 进度与负荷问卷"],
   profile: ["档案", "学生信息与佛山 2027 考策"],
 };
 
@@ -22,7 +23,13 @@ const subjectNames = {
 };
 
 let editingKid = null;
-let cache = { overview: null, subjects: [], preferredKnowledgeSubject: null, pendingTutorial: null };
+let cache = {
+  overview: null,
+  subjects: [],
+  preferredKnowledgeSubject: null,
+  pendingTutorial: null,
+  openFollowupId: null,
+};
 
 async function api(path, options) {
   const res = await fetch(path, {
@@ -54,6 +61,7 @@ function switchView(name) {
   const loaders = {
     overview: renderOverview,
     practice: renderPractice,
+    basics: renderBasics,
     history: renderHistory,
     knowledge: renderKnowledge,
     learn: renderLearn,
@@ -65,19 +73,26 @@ function switchView(name) {
   loaders[name]();
 }
 
-function levelBar(bucket) {
-  const total = bucket.total || 1;
+function levelBar(bucket, opts = {}) {
+  const parts = ["L0", "L1", "L2", "L3", "L4"]
+    .map((lv) => {
+      const n = Number(bucket[lv]) || 0;
+      if (n <= 0) return "";
+      return `<span class="${lv.toLowerCase()}" style="flex:${n} 0 0" title="${lv} ${n}"></span>`;
+    })
+    .join("");
+  const showLegend = opts.showLegend !== false;
   return `
-    <div class="bars" title="L0-L4">
-      <span class="l0" style="width:${(100 * bucket.L0) / total}%"></span>
-      <span class="l1" style="width:${(100 * bucket.L1) / total}%"></span>
-      <span class="l2" style="width:${(100 * bucket.L2) / total}%"></span>
-      <span class="l3" style="width:${(100 * bucket.L3) / total}%"></span>
-      <span class="l4" style="width:${(100 * bucket.L4) / total}%"></span>
+    <div class="bars" role="img" aria-label="掌握度分布 L0-L4" title="掌握度分布 L0-L4">
+      ${parts || `<span class="l0" style="flex:1 0 0"></span>`}
     </div>
-    <p class="muted" style="margin:8px 0 0;font-size:0.8rem">
-      L0 ${bucket.L0} · L1 ${bucket.L1} · L2 ${bucket.L2} · L3 ${bucket.L3} · L4 ${bucket.L4}
-    </p>`;
+    ${
+      showLegend
+        ? `<p class="muted bars-legend">
+      L0 ${bucket.L0 || 0} · L1 ${bucket.L1 || 0} · L2 ${bucket.L2 || 0} · L3 ${bucket.L3 || 0} · L4 ${bucket.L4 || 0}
+    </p>`
+        : ""
+    }`;
 }
 
 function masteryStatsHtml(stats, opts = {}) {
@@ -178,8 +193,19 @@ async function renderOverview() {
     )
   );
 
+  const ms = data.mastery_score || {};
   $("view-overview").innerHTML = `
     <div class="grid">
+      <div class="card span-12 score-hero">
+        <p class="stat-label">掌握度赋分（L0=0 · L1=1 · L2=2 · L3=3 · L4=4；总分=全部熟练）</p>
+        <p class="stat-value score-hero-value">
+          ${ms.earned ?? 0}<span class="muted"> / ${ms.total ?? 0}</span>
+        </p>
+        <p class="muted" style="margin:6px 0 0">
+          已得分 / 总分 · 完成度 ${ms.percent ?? 0}% · 计入 ${ms.point_count ?? 0} 个知识点
+        </p>
+        <div class="score-hero-bar"><span style="width:${Math.min(100, ms.percent ?? 0)}%"></span></div>
+      </div>
       <div class="card span-3">
         <p class="stat-label">知识点</p>
         <p class="stat-value">${data.counts.knowledge}</p>
@@ -419,13 +445,71 @@ function renderTutorialPanel(target, data, options = {}) {
   if (back) back.onclick = () => switchView("knowledge");
 }
 
+function formatMdTables(html) {
+  // 将连续 Markdown 表格行转为对齐 HTML 表
+  const lines = String(html || "").split(/<br>/);
+  const out = [];
+  let i = 0;
+  const isTableLine = (line) => {
+    const t = line.trim();
+    return t.includes("|") && /^\|?.+\|/.test(t) && !/^<\/?(h\d|ul|li|div)/i.test(t);
+  };
+  const parseRow = (line) =>
+    line
+      .trim()
+      .replace(/^\|/, "")
+      .replace(/\|$/, "")
+      .split("|")
+      .map((c) => c.trim());
+  const isSep = (cells) => cells.length > 0 && cells.every((c) => /^:?-{3,}:?$/.test(c));
+
+  while (i < lines.length) {
+    if (!isTableLine(lines[i])) {
+      out.push(lines[i]);
+      i += 1;
+      continue;
+    }
+    const block = [];
+    while (i < lines.length && isTableLine(lines[i])) {
+      block.push(lines[i]);
+      i += 1;
+    }
+    if (block.length < 2) {
+      out.push(...block);
+      continue;
+    }
+    const head = parseRow(block[0]);
+    let start = 1;
+    if (block[1] && isSep(parseRow(block[1]))) start = 2;
+    const body = block.slice(start).map(parseRow).filter((c) => c.length && !isSep(c));
+    if (!body.length) {
+      out.push(...block);
+      continue;
+    }
+    const th = head.map((c) => `<th>${c}</th>`).join("");
+    const trs = body
+      .map((cells) => {
+        while (cells.length < head.length) cells.push("");
+        return `<tr>${cells
+          .slice(0, head.length)
+          .map((c) => `<td>${c}</td>`)
+          .join("")}</tr>`;
+      })
+      .join("");
+    out.push(
+      `<div class="basics-table-wrap"><table class="basics-table"><thead><tr>${th}</tr></thead><tbody>${trs}</tbody></table></div>`
+    );
+  }
+  return out.join("<br>");
+}
+
 function formatTutorialHtml(md) {
   let text = String(md || "");
   const parts = text.split(/\n##\s*自测参考\s*\n/);
   const main = parts[0];
   const answers = parts[1];
 
-  function renderChunk(chunk) {
+  function renderChunk(chunk, { tables = false } = {}) {
     let t = escapeHtml(chunk);
     t = t.replace(/^###\s+(.+)$/gm, "<h4>$1</h4>");
     t = t.replace(/^##\s+(.+)$/gm, "<h3>$1</h3>");
@@ -435,6 +519,7 @@ function formatTutorialHtml(md) {
     t = t.replace(/^\s*-\s+(.+)$/gm, "<li>$1</li>");
     t = t.replace(/(?:<li>.*?<\/li>\n?)+/gs, (block) => `<ul>${block}</ul>`);
     t = t.replace(/\n{2,}/g, "<br><br>").replace(/\n/g, "<br>");
+    if (tables) t = formatMdTables(t);
     return t;
   }
 
@@ -447,49 +532,266 @@ function formatTutorialHtml(md) {
   return html;
 }
 
-async function renderLearn() {
-  const root = $("view-learn");
-  const list = await api("/api/tutorials?subject=chemistry").catch(() => []);
+function formatBasicsHtml(md) {
+  // 基础库：只渲染原文与对齐表格，不拆自测区
+  let t = escapeHtml(String(md || ""));
+  t = t.replace(/^###\s+(.+)$/gm, "<h4>$1</h4>");
+  t = t.replace(/^##\s+(.+)$/gm, "<h3>$1</h3>");
+  t = t.replace(/^#\s+(.+)$/gm, "<h2>$1</h2>");
+  t = t.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  t = t.replace(/`([^`]+)`/g, '<code class="mono">$1</code>');
+  t = t.replace(/^\s*-\s+(.+)$/gm, "<li>$1</li>");
+  t = t.replace(/(?:<li>.*?<\/li>\n?)+/gs, (block) => `<ul>${block}</ul>`);
+  t = t.replace(/\n{2,}/g, "<br><br>").replace(/\n/g, "<br>");
+  return formatMdTables(t);
+}
+
+async function renderBasics() {
+  const root = $("view-basics");
+  const items = await api("/api/basics");
   root.innerHTML = `
     <div class="grid">
       <div class="card span-4">
-        <h3 style="margin-top:0">已有教程</h3>
-        <p class="muted">点左侧也可从「知识点」进入；缺失时会自动生成。</p>
-        <div class="paper-pick" id="learn-list">
-          ${
-            list.length
-              ? list
-                  .map(
-                    (t) => `<button type="button" class="paper-card" data-kid="${t.knowledge_id}">
-                    <strong>${escapeHtml(t.title || t.name)}</strong>
-                    <div class="muted">${subjectNames[t.subject_id] || t.subject_id} · ${t.target_level || ""}</div>
-                    <div class="mono muted" style="margin-top:6px">${t.knowledge_id}</div>
-                  </button>`
-                  )
-                  .join("")
-              : `<p class="muted">暂无教程。到知识点页点「学一学」自动生成。</p>`
-          }
+        <h3 style="margin-top:0">基础资料库</h3>
+        <p class="muted">只放原文表格：周期表 1–118 与九上常用物质化学式、九下古诗词、九下文言文、英语词表。无要点、无练习、无考核。</p>
+        <div class="paper-pick" id="basics-list">
+          ${items
+            .map(
+              (it) => `<button type="button" class="paper-card" data-id="${it.id}">
+              <strong>${escapeHtml(it.title || it.id)}</strong>
+              <div class="muted">${subjectNames[it.subject] || it.subject || ""} · 原文</div>
+            </button>`
+            )
+            .join("")}
         </div>
       </div>
-      <div class="card span-8" id="learn-stage">
+      <div class="card span-8" id="basics-stage">
         <div class="summary-box">
-          <p class="stat-label">选择教程开始学习</p>
-          <p class="muted">教程按知识点建模，保存在 knowledge/&lt;科目&gt;/tutorials/。</p>
+          <p class="stat-label">选择左侧资料查阅</p>
+          <p class="muted">表格分列对齐，方便对照记忆。内容仅为教材原文。</p>
         </div>
       </div>
     </div>`;
-  $("learn-list")?.querySelectorAll("[data-kid]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      $("learn-list").querySelectorAll(".paper-card").forEach((el) => el.classList.remove("active"));
+  $("basics-list").querySelectorAll("[data-id]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      $("basics-list").querySelectorAll(".paper-card").forEach((el) => el.classList.remove("active"));
       btn.classList.add("active");
-      openTutorial(btn.dataset.kid, { mountId: "learn-stage" });
+      const it = await api(`/api/basics/${encodeURIComponent(btn.dataset.id)}`);
+      $("basics-stage").innerHTML = `
+        <div class="tutorial-panel">
+          <h2 style="margin-top:0;font-family:var(--font-display)">${escapeHtml(it.title)}</h2>
+          <p class="muted">原文对照 · 无练习 / 无考核</p>
+          <div class="markdown-box tutorial-body basics-body">${formatBasicsHtml(it.content_md || "")}</div>
+        </div>`;
+      renderKatex($("basics-stage"));
     });
   });
+}
+
+async function renderLearn() {
+  const root = $("view-learn");
+  const [policyWrap, followups] = await Promise.all([
+    api("/api/mastery-policy").catch(() => null),
+    api("/api/learn/unknown-followups?limit=12").catch(() => []),
+  ]);
+  const pmax = policyWrap?.practice_max_level || "L2";
+  const apass = Math.round((policyWrap?.assessment_pass_rate || 0.8) * 100);
+  const ppass = Math.round((policyWrap?.practice_pass_rate || 0.75) * 100);
+  root.innerHTML = `
+    <div class="grid">
+      <div class="card span-12">
+        <div class="mastery-stats compact">
+          <p style="margin:0"><strong>学习 → 练习 → 考核</strong>：先学教程，再用练习冲到
+          <span class="level-pill">${pmax}</span>（通过线约 ${ppass}%）；
+          冲 L3/L4 必须走考核（通过线 <strong>${apass}%</strong>）。
+          做题点「不会」后，会按知识点分别生成专学页与巩固练习。</p>
+        </div>
+      </div>
+      <div class="card span-12" id="learn-unknown-wrap">
+        <h3 style="margin-top:0">不会专学</h3>
+        <p class="muted" style="margin-top:0">练习中标记「不会」的知识点专页（按错计分后生成）。</p>
+        <div class="paper-pick" id="learn-unknown-list"></div>
+      </div>
+      <div class="card span-4">
+        <h3 style="margin-top:0">知识点教程</h3>
+        <label>科目
+          <select id="learn-subject">
+            <option value="">全部</option>
+            ${subjectOptions("chemistry")}
+          </select>
+        </label>
+        <label style="margin-top:8px;display:block">筛选
+          <select id="learn-filter">
+            <option value="">全部路径</option>
+            <option value="practice">可练习晋级</option>
+            <option value="assess">需考核 / 已达上限</option>
+            <option value="exempt">免练</option>
+          </select>
+        </label>
+        <div class="paper-pick" id="learn-list" style="margin-top:10px"></div>
+        <p class="muted" style="font-size:0.8rem;margin-top:12px">没有教程？到「知识点」点「学一学」生成。</p>
+      </div>
+      <div class="card span-8" id="learn-stage">
+        <div class="summary-box">
+          <p class="stat-label">选择左侧教程或上方「不会专学」开始学习</p>
+          <p class="muted">学完后可做课后巩固；标题会标明可升到哪一档。</p>
+        </div>
+      </div>
+    </div>`;
+
+  function renderFollowupDetail(pack) {
+    const kid = pack.knowledge_id || (pack.knowledge_ids || [])[0] || "";
+    const tuts = pack.tutorials || [];
+    const consol = pack.consolidation_paper || {};
+    const kids = pack.knowledge_ids || (kid ? [kid] : []);
+    // 旧包若含多个知识点：提示拆开看，但仍只展示本包教程
+    const multiHint =
+      kids.length > 1
+        ? `<p class="muted">旧版合并包含多个知识点；请优先使用「每个知识点一份」的新专学。</p>`
+        : "";
+    $("learn-stage").innerHTML = `
+      <div class="tutorial-panel">
+        <h2 style="margin-top:0;font-family:var(--font-display)">${escapeHtml(
+          pack.title || "不会专学"
+        )}</h2>
+        <p class="muted">单知识点专学 · ${(pack.created_at || "").replace("T", " ")}</p>
+        <p class="mono muted">${escapeHtml(kid)}</p>
+        ${multiHint}
+        <h4 style="font-family:var(--font-display)">先学教程</h4>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+          ${tuts
+            .map(
+              (t) =>
+                `<button type="button" class="chip" data-open-tutorial="${escapeHtml(
+                  t.knowledge_id
+                )}">${escapeHtml(t.title || t.knowledge_id)}</button>`
+            )
+            .join("")}
+        </div>
+        <div id="learn-unknown-tutorial"></div>
+        <h4 style="font-family:var(--font-display)">本知识点课后巩固</h4>
+        <p class="muted">${escapeHtml(consol.label || "巩固卷")}</p>
+        ${
+          consol.id
+            ? `<button type="button" class="btn-primary" id="learn-do-consol">开始巩固（${
+                consol.question_count || "?"
+              } 题）</button>`
+            : `<p class="muted">暂无巩固卷</p>`
+        }
+      </div>`;
+    $("learn-stage").querySelectorAll("[data-open-tutorial]").forEach((btn) => {
+      btn.addEventListener("click", () =>
+        openTutorial(btn.dataset.openTutorial, { mountId: "learn-unknown-tutorial" })
+      );
+    });
+    const doBtn = $("learn-do-consol");
+    if (doBtn && consol.id) {
+      doBtn.onclick = () => {
+        switchView("practice");
+        setTimeout(() => startPractice(consol.id), 80);
+      };
+    }
+    if (tuts[0]?.knowledge_id) {
+      openTutorial(tuts[0].knowledge_id, { mountId: "learn-unknown-tutorial" });
+    } else if (kid) {
+      openTutorial(kid, { mountId: "learn-unknown-tutorial" });
+    }
+  }
+
+  const unkList = $("learn-unknown-list");
+  // 优先展示「单知识点」新包；多知识点旧包排后
+  const sortedFu = [...(followups || [])].sort((a, b) => {
+    const sa = (a.knowledge_ids || []).length === 1 || a.knowledge_id ? 0 : 1;
+    const sb = (b.knowledge_ids || []).length === 1 || b.knowledge_id ? 0 : 1;
+    return sa - sb;
+  });
+  if (!sortedFu.length) {
+    unkList.innerHTML = `<p class="muted">暂无。做题时点「不会」，结束练习后会按知识点分别出现在这里。</p>`;
+  } else {
+    unkList.innerHTML = sortedFu
+      .map((f) => {
+        const kid = f.knowledge_id || (f.knowledge_ids || [])[0] || "";
+        const multi = (f.knowledge_ids || []).length > 1;
+        return `<button type="button" class="paper-card" data-pack="${escapeHtml(f.id)}">
+          <strong>${escapeHtml(f.title || kid || f.id)}</strong>
+          <div class="muted">${multi ? "旧合并包 · " : "单知识点 · "}${escapeHtml(
+            kid
+          )} · ${f.consolidation_paper?.question_count || 0} 道巩固题</div>
+        </button>`;
+      })
+      .join("");
+    unkList.querySelectorAll("[data-pack]").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        unkList.querySelectorAll(".paper-card").forEach((el) => el.classList.remove("active"));
+        btn.classList.add("active");
+        const pack = await api(`/api/learn/unknown-followups/${encodeURIComponent(btn.dataset.pack)}`);
+        renderFollowupDetail(pack);
+      });
+    });
+  }
+
+  let cachedList = [];
+
+  async function refreshList() {
+    const subject = $("learn-subject").value;
+    const filter = $("learn-filter").value;
+    const url = subject ? `/api/tutorials?subject=${encodeURIComponent(subject)}` : "/api/tutorials";
+    cachedList = await api(url).catch(() => []);
+    const list = filter
+      ? cachedList.filter(
+          (t) =>
+            t.path_kind === filter ||
+            (filter === "assess" && (t.path_kind === "assess" || t.path_kind === "exempt"))
+        )
+      : cachedList;
+    $("learn-list").innerHTML = list.length
+      ? list
+          .map(
+            (t) => `<button type="button" class="paper-card ${t.exempt ? "exempt" : ""}" data-kid="${t.knowledge_id}">
+            <strong>${escapeHtml(t.title || t.name)}</strong>
+            <div class="muted">${subjectNames[t.subject_id] || t.subject_id} ·
+              掌握 <span class="level-pill">${t.mastery_level || "L0"}</span>
+              · 教程目标 ${t.target_level || "—"} · v${t.version || 1}</div>
+            <span class="learn-path-pill ${t.path_kind || ""}">${escapeHtml(t.path_hint || "")}</span>
+            <div class="mono muted" style="margin-top:6px">${t.knowledge_id}</div>
+          </button>`
+          )
+          .join("")
+      : `<p class="muted">暂无教程。到知识点页点「学一学」自动生成。</p>`;
+    $("learn-list").querySelectorAll("[data-kid]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        $("learn-list").querySelectorAll(".paper-card").forEach((el) => el.classList.remove("active"));
+        btn.classList.add("active");
+        openTutorial(btn.dataset.kid, { mountId: "learn-stage" });
+      });
+    });
+  }
+  $("learn-subject").onchange = refreshList;
+  $("learn-filter").onchange = refreshList;
+  await refreshList();
+
+  if (cache.openFollowupId) {
+    const id = cache.openFollowupId;
+    cache.openFollowupId = null;
+    const btn = unkList.querySelector(`[data-pack="${id}"]`);
+    if (btn) btn.click();
+    else {
+      try {
+        const pack = await api(`/api/learn/unknown-followups/${encodeURIComponent(id)}`);
+        renderFollowupDetail(pack);
+      } catch (_) {
+        /* ignore */
+      }
+    }
+  }
 }
 
 async function renderKnowledge() {
   const root = $("view-knowledge");
   const preferred = cache.preferredKnowledgeSubject || "chemistry";
+  const policyWrap = await api("/api/mastery-policy").catch(() => null);
+  const pmax = policyWrap?.practice_max_level || "L2";
+  const apass = Math.round((policyWrap?.assessment_pass_rate || 0.8) * 100);
   root.innerHTML = `
     <div class="toolbar">
       <label>科目
@@ -512,6 +814,7 @@ async function renderKnowledge() {
       </label>
       <button type="button" class="chip" id="kn-reload">刷新</button>
     </div>
+    <p class="muted" style="margin:0 0 12px">练习上限 ${pmax}；考核通过线 ${apass}%。列表「晋级」列显示该点应走练习还是考核。</p>
     <div class="grid">
       <div class="card span-12" id="kn-lattice-panel">
         <div id="kn-stats"></div>
@@ -564,19 +867,33 @@ async function renderKnowledge() {
       const list = await api(`/api/knowledge?${params}`);
       $("kn-table").innerHTML = `
         <table>
-          <thead><tr><th>名称</th><th>深度</th><th>等级</th><th>考频</th><th>教程</th><th></th></tr></thead>
+          <thead><tr><th>名称</th><th>深度</th><th>等级</th><th>晋级</th><th>考频</th><th>教程</th><th></th></tr></thead>
           <tbody>
             ${list
-              .map(
-                (k) => `<tr>
+              .map((k) => {
+                const lv = k.level || "L0";
+                let path = `练习可冲 ≤${pmax}`;
+                let pathCls = "practice";
+                const order = ["L0", "L1", "L2", "L3", "L4"];
+                const li = order.indexOf(lv);
+                const mi = order.indexOf(pmax);
+                if (li > mi) {
+                  path = "免练 · 走考核";
+                  pathCls = "exempt";
+                } else if (li === mi) {
+                  path = "已达练习上限 · 考核冲更高";
+                  pathCls = "assess";
+                }
+                return `<tr>
                 <td><div>${escapeHtml(k.name)}</div><div class="mono muted">${escapeHtml(k.id)}</div></td>
                 <td class="mono">${k.topo_depth ?? 0}</td>
-                <td><span class="level-pill">${k.level || "—"}</span></td>
+                <td><span class="level-pill">${lv}</span></td>
+                <td><span class="learn-path-pill ${pathCls}">${path}</span></td>
                 <td class="weight-${k.exam_weight}">${k.exam_weight}</td>
                 <td>${k.has_tutorial ? "有" : "无"}</td>
                 <td><button type="button" class="chip" data-open-tutorial="${escapeHtml(k.id)}">学一学</button></td>
-              </tr>`
-              )
+              </tr>`;
+              })
               .join("")}
           </tbody>
         </table>`;
@@ -680,6 +997,9 @@ function openEdit(item) {
 
 async function renderAssessments() {
   const root = $("view-assessments");
+  const policyWrap = await api("/api/mastery-policy").catch(() => null);
+  const apass = Math.round((policyWrap?.assessment_pass_rate || 0.8) * 100);
+  const pmax = policyWrap?.practice_max_level || "L2";
   root.innerHTML = `
     <div class="toolbar">
       <label>科目
@@ -690,6 +1010,7 @@ async function renderAssessments() {
       </label>
       <button type="button" class="chip" id="as-reload">刷新</button>
     </div>
+    <p class="muted" style="margin:0 0 12px">练习上限 ${pmax}；考核通过线 ${apass}%（按知识点统计首次作答正确率）。完成后自动刷新更高难度去重新卷；已达 L4 不再刷新。</p>
     <div class="grid">
       <div class="card span-5"><div id="as-list" class="assess-list"></div></div>
       <div class="card span-7"><h3 style="margin-top:0" id="as-title">选择一份考核</h3><div id="as-body" class="markdown-box muted">左侧点选后显示正文</div></div>
@@ -705,17 +1026,23 @@ async function renderAssessments() {
     }
     $("as-list").innerHTML = list
       .map(
-        (a) => `<div class="assess-item" data-id="${a.id}">
+        (a) => {
+          const isDrill = String(a.id || "").startsWith("drill-") || (a.theme || "").includes("drill");
+          const kindLabel = isDrill ? "练习" : "考核";
+          const passHint = isDrill ? "" : ` · 通过线 ${apass}%`;
+          const title = a.note || a.theme || a.id;
+          return `<div class="assess-item" data-id="${a.id}">
           <div>
-            <strong>${a.theme || a.id}</strong>
-            <div class="muted">${subjectNames[a.subject_id] || a.subject_id || "—"} · ${a.date || "无日期"} · ${a.status}</div>
+            <strong>${escapeHtml(title)}</strong>
+            <div class="muted">${subjectNames[a.subject_id] || a.subject_id || "—"} · ${kindLabel}${passHint} · ${a.date || "无日期"} · ${a.status}</div>
             <div class="mono muted" style="margin-top:6px">${(a.knowledge_ids || []).slice(0, 4).join(", ")}${(a.knowledge_ids || []).length > 4 ? "…" : ""}</div>
           </div>
           <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
             <span class="chip">${a.target_level || "—"}</span>
-            <button type="button" class="chip active" data-practice="${a.id}">去练习</button>
+            <button type="button" class="chip active" data-practice="${a.id}">去${kindLabel}</button>
           </div>
-        </div>`
+        </div>`;
+        }
       )
       .join("");
     $("as-list").querySelectorAll(".assess-item").forEach((el) => {
@@ -743,22 +1070,206 @@ async function renderAssessments() {
 
 async function renderPlan() {
   const data = await api("/api/plan");
-  $("view-plan").innerHTML = `
-    <div class="toolbar">
-      <button type="button" class="btn-primary" id="plan-save" style="width:auto">保存计划</button>
-      <span class="muted">更新于 ${data.updated_at || "—"}</span>
-    </div>
-    <div class="card">
-      <textarea class="plan-editor" id="plan-editor">${escapeHtml(data.content_md || "")}</textarea>
-    </div>`;
-  $("plan-save").onclick = async () => {
-    await api("/api/plan", {
-      method: "PUT",
-      body: JSON.stringify({ content_md: $("plan-editor").value, write_back_file: true }),
-    });
-    alert("周计划已保存并回写文件");
-    renderPlan();
+  const weekPct = data.week_progress?.percent ?? 0;
+  const days = data.days || [];
+  const todayId = data.today_plan?.id;
+  const week = data.week || {};
+  const statusLabel = {
+    pending: "未开始",
+    in_progress: "进行中",
+    completed: "已完成",
   };
+
+  $("view-plan").innerHTML = `
+    <div class="grid plan-board">
+      <div class="card span-12 plan-box">
+        <div class="plan-box-label">本周概览</div>
+        <div class="plan-fields">
+          <label class="plan-field">
+            <span>周标题</span>
+            <div class="plan-readonly">${escapeHtml(week.title || "本周学习计划")}</div>
+          </label>
+          <label class="plan-field">
+            <span>日期范围</span>
+            <div class="plan-readonly">${escapeHtml(
+              [week.start_date, week.end_date].filter(Boolean).join(" ~ ") || "—"
+            )}</div>
+          </label>
+          <label class="plan-field plan-field-wide">
+            <span>本周进度</span>
+            <div class="plan-readonly plan-readonly-progress">
+              <strong>${data.week_progress?.done ?? 0} / ${data.week_progress?.total ?? 0}</strong>
+              <span class="muted">知识点已完成 · ${weekPct}%</span>
+              <div class="plan-progress-bar thin"><span style="width:${weekPct}%"></span></div>
+            </div>
+          </label>
+        </div>
+        <p class="muted" style="margin:12px 0 0">计划由系统自动维护。你只需在练完后回答「过多 / 适中 / 过少」。</p>
+      </div>
+
+      <div class="card span-4 plan-box">
+        <div class="plan-box-label">本周日程</div>
+        <div class="day-box-list" id="plan-day-list">
+          ${
+            days.length
+              ? days
+                  .map((d) => {
+                    const p = d.progress || { done: 0, total: 0, percent: 0 };
+                    const active = d.id === todayId ? "active" : "";
+                    return `<button type="button" class="day-box ${active} status-${d.status}" data-focus-day="${d.id}">
+                      <div class="day-box-top">
+                        <strong>${escapeHtml(d.title || d.plan_date)}</strong>
+                        <span class="level-pill">${statusLabel[d.status] || d.status}</span>
+                      </div>
+                      <div class="muted">${escapeHtml(d.plan_date)}</div>
+                      <div class="day-box-meta">${p.done}/${p.total} 知识点</div>
+                      <div class="plan-progress-bar thin"><span style="width:${p.percent}%"></span></div>
+                    </button>`;
+                  })
+                  .join("")
+              : `<p class="muted">正在准备日计划…</p>`
+          }
+        </div>
+      </div>
+
+      <div class="card span-8 plan-box" id="plan-day-panel"></div>
+
+      <div class="card span-12 plan-box" id="plan-survey-wrap">
+        <div class="plan-box-label">负荷反馈</div>
+        <div id="plan-survey-box" class="survey-box survey-box-inline">
+          <p class="muted">完成今日全部练习后，这里会出现「过多 / 适中 / 过少」三选一。</p>
+        </div>
+      </div>
+    </div>`;
+
+  let focusId = todayId || (days[0] && days[0].id);
+  const surveyState = { day_plan_id: null, volume: null };
+
+  function renderDayPanel(dayId) {
+    const d = days.find((x) => x.id === dayId) || data.today_plan;
+    const panel = $("plan-day-panel");
+    if (!d) {
+      panel.innerHTML = `<div class="plan-box-label">日计划</div><p class="muted">没有可显示的日计划。</p>`;
+      return;
+    }
+    focusId = d.id;
+    document.querySelectorAll("[data-focus-day]").forEach((el) => {
+      el.classList.toggle("active", el.dataset.focusDay === d.id);
+    });
+    const p = d.progress || { done: 0, total: 0, percent: 0 };
+    const isToday = d.plan_date === data.today;
+    panel.innerHTML = `
+      <div class="plan-box-label">${isToday ? "今日计划" : "日计划详情"}</div>
+      <div class="plan-fields">
+        <label class="plan-field">
+          <span>日期</span>
+          <div class="plan-readonly">${escapeHtml(d.plan_date)}</div>
+        </label>
+        <label class="plan-field">
+          <span>状态</span>
+          <div class="plan-readonly">${statusLabel[d.status] || d.status} · ${p.done}/${p.total}（${p.percent}%）</div>
+        </label>
+        <label class="plan-field plan-field-wide">
+          <span>标题</span>
+          <div class="plan-readonly">${escapeHtml(d.title || "")}</div>
+        </label>
+        <label class="plan-field plan-field-wide">
+          <span>主攻内容</span>
+          <div class="plan-readonly">${escapeHtml(d.focus_text || "")}</div>
+        </label>
+        <label class="plan-field plan-field-wide">
+          <span>复习 / 巩固</span>
+          <div class="plan-readonly">${escapeHtml(d.review_text || "")}</div>
+        </label>
+      </div>
+      <div class="plan-box-label" style="margin-top:14px">知识点清单</div>
+      <div class="plan-item-boxes">
+        ${
+          (d.items || []).length
+            ? (d.items || [])
+                .map(
+                  (it) => `<div class="plan-item-box ${it.done ? "done" : ""}">
+                    <div class="plan-item-body">
+                      <strong>${escapeHtml(it.name || it.knowledge_id)}</strong>
+                      <div class="mono muted">${escapeHtml(it.knowledge_id)}</div>
+                      <div class="plan-item-tags">
+                        <span class="level-pill">${it.level || "L0"}</span>
+                        <span class="chip">${it.done ? "练习已完成" : "待练习"}</span>
+                      </div>
+                    </div>
+                  </div>`
+                )
+                .join("")
+            : `<p class="muted">这一天还没有知识点条目。</p>`
+        }
+      </div>
+      ${
+        isToday && d.status !== "completed"
+          ? `<p class="muted" style="margin-top:16px">请到「练习」页完成对应知识点套题；全部做完后回到这里回答负荷反馈。</p>`
+          : ""
+      }`;
+  }
+
+  function showSurvey(survey, ctx) {
+    const box = $("plan-survey-box");
+    if (!survey) {
+      box.innerHTML = `<p class="muted">暂无待填问卷。</p>`;
+      return;
+    }
+    box.innerHTML = `
+      <p class="survey-q">${escapeHtml(survey.question || "")}</p>
+      <div class="survey-options">
+        ${(survey.options || [])
+          .map(
+            (o) =>
+              `<button type="button" class="btn-ghost survey-opt" data-val="${escapeHtml(
+                String(o.value)
+              )}">${escapeHtml(o.label)}</button>`
+          )
+          .join("")}
+      </div>`;
+
+    box.querySelectorAll(".survey-opt").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const step = survey.step || ctx.step || "volume";
+        let payload = { day_plan_id: surveyState.day_plan_id || ctx.day_plan_id };
+        if (step === "volume") {
+          surveyState.volume = btn.dataset.val;
+          payload.volume = surveyState.volume;
+        } else if (step === "rescale_week") {
+          payload.volume = surveyState.volume || ctx.volume;
+          payload.rescale_week = btn.dataset.val === "yes" || btn.dataset.val === "true";
+        }
+        const res = await api("/api/plan/survey", {
+          method: "POST",
+          body: JSON.stringify(payload),
+        });
+        if (res.done) {
+          box.innerHTML = `<p><strong>${escapeHtml(res.message || "已保存")}</strong></p>`;
+          setTimeout(() => renderPlan(), 600);
+        } else {
+          showSurvey(
+            {
+              step: res.step,
+              question: res.question,
+              options: res.options,
+            },
+            res
+          );
+        }
+      });
+    });
+  }
+
+  document.querySelectorAll("[data-focus-day]").forEach((btn) => {
+    btn.addEventListener("click", () => renderDayPanel(btn.dataset.focusDay));
+  });
+  renderDayPanel(focusId);
+
+  if (data.pending_survey) {
+    surveyState.day_plan_id = data.pending_survey.day_plan_id;
+    showSurvey(data.pending_survey, data.pending_survey);
+  }
 }
 
 async function renderProfile() {
@@ -852,9 +1363,20 @@ let practiceState = {
 };
 
 async function renderPractice() {
-  const papers = await api("/api/practice/papers");
+  const [papers, policyWrap, actives] = await Promise.all([
+    api("/api/practice/papers"),
+    api("/api/mastery-policy").catch(() => null),
+    api("/api/practice/sessions/active").catch(() => []),
+  ]);
   practiceState.papers = papers;
   const root = $("view-practice");
+  const pmax = policyWrap?.practice_max_level || "L2";
+  const apass = Math.round((policyWrap?.assessment_pass_rate || 0.8) * 100);
+  const ppass = Math.round((policyWrap?.practice_pass_rate || 0.75) * 100);
+  const activeByPaper = {};
+  (actives || []).forEach((a) => {
+    if (a.paper_id) activeByPaper[a.paper_id] = a;
+  });
   root.innerHTML = `
     <div class="practice-layout">
       <div>
@@ -865,13 +1387,25 @@ async function renderPractice() {
               ${subjectOptions("")}
             </select>
           </label>
+          <label>类型
+            <select id="pr-kind">
+              <option value="">全部</option>
+              <option value="practice">练习</option>
+              <option value="assessment">考核</option>
+            </select>
+          </label>
         </div>
+        <p class="muted" style="font-size:0.85rem;margin:0 0 10px">
+          练习上限 <strong>${pmax}</strong>（通过线约 ${ppass}%）；
+          考核通过线 <strong>${apass}%</strong>。进度自动留档，刷新/退出后可继续。
+        </p>
+        <div id="pr-active-banner"></div>
         <div class="paper-pick" id="pr-papers"></div>
       </div>
       <div class="practice-stage" id="pr-stage">
         <div class="summary-box">
-          <p class="stat-label">选择左侧试卷开始练习</p>
-          <p class="muted">一题一题作答，提交后立即看对错与解析；填空可在题干空格处分别填写。记录永久保存在 SQLite 与 practice/attempts。</p>
+          <p class="stat-label">选择左侧试卷开始</p>
+          <p class="muted">卷面标题已标注可提升等级 / 通过线。答完后有晋级小结；已完成或免练卷会从列表消失，记录留在「做题记录」。</p>
           <p class="muted" id="pr-llm-hint" style="margin-top:8px"></p>
         </div>
       </div>
@@ -879,18 +1413,30 @@ async function renderPractice() {
 
   async function refreshPapers() {
     const subject = $("pr-subject").value;
+    const kind = $("pr-kind").value;
     const params = subject ? `?subject=${encodeURIComponent(subject)}` : "";
-    const list = await api(`/api/practice/papers${params}`);
+    let list = await api(`/api/practice/papers${params}`);
+    if (kind) list = list.filter((p) => p.paper_kind === kind);
     practiceState.papers = list;
     $("pr-papers").innerHTML = list.length
       ? list
-          .map(
-            (p) => `<button type="button" class="paper-card" data-id="${p.id}">
-            <strong>${p.theme || p.id}</strong>
-            <div class="muted">${subjectNames[p.subject_id] || p.subject_id || "—"} · ${p.date || ""} · ${p.question_count} 题</div>
+          .map((p) => {
+            const act = p.active_session || activeByPaper[p.id];
+            const prog = act
+              ? ` · 进行中 ${act.answered_count ?? 0}/${act.total_questions ?? p.question_count}`
+              : "";
+            return `<button type="button" class="paper-card ${p.exempt ? "exempt" : ""} ${
+              act ? "has-progress" : ""
+            }" data-id="${p.id}">
+            <strong>${escapeHtml(p.display_title || p.level_label || p.theme || p.id)}</strong>
+            <div class="muted">${subjectNames[p.subject_id] || p.subject_id || "—"} · ${
+              p.paper_kind === "practice" ? "练习" : "考核"
+            } · ${p.date || ""} · ${p.question_count} 题${
+              p.target_level ? ` · 目标 ${p.target_level}` : ""
+            }${p.exempt ? " · 免练" : ""}${prog}</div>
             <div class="mono muted" style="margin-top:6px">${p.id}</div>
-          </button>`
-          )
+          </button>`;
+          })
           .join("")
       : `<p class="muted">暂无试卷。请先同步考核 Markdown。</p>`;
     $("pr-papers").querySelectorAll(".paper-card").forEach((btn) => {
@@ -899,6 +1445,7 @@ async function renderPractice() {
   }
 
   $("pr-subject").onchange = refreshPapers;
+  $("pr-kind").onchange = refreshPapers;
   await refreshPapers();
   try {
     const st = await api("/api/practice/llm-status");
@@ -911,26 +1458,137 @@ async function renderPractice() {
   } catch (_) {
     /* ignore */
   }
+
+  await restoreActivePractice(actives || []);
 }
 
-async function startPractice(paperId) {
-  const session = await api("/api/practice/sessions", {
-    method: "POST",
-    body: JSON.stringify({ paper_id: paperId }),
+async function restoreActivePractice(actives) {
+  // 若本页已有进行中会话挂载，不重复打断
+  if (practiceState.sessionId && !practiceState.finished && $("pr-check")) {
+    savePracticeProgress();
+    return;
+  }
+  let target = null;
+  const local = loadPracticeProgressLocal();
+  const list = actives && actives.length ? actives : await api("/api/practice/sessions/active").catch(() => []);
+  if (local?.sessionId) {
+    target = (list || []).find((a) => a.session_id === local.sessionId) || null;
+  }
+  if (!target && list?.length) {
+    target = list[0];
+  }
+  const banner = $("pr-active-banner");
+  if (!target) {
+    clearPracticeProgressLocal();
+    if (banner) banner.innerHTML = "";
+    return;
+  }
+  if (banner) {
+    banner.innerHTML = `
+      <div class="active-progress-banner">
+        <span>未完成：已作答 <strong>${target.answered_count || 0}/${
+          target.total_questions
+        }</strong>，可继续第 ${(target.resume_index || 0) + 1} 题</span>
+        <button type="button" class="chip active" id="pr-continue-btn">继续练习</button>
+      </div>`;
+    $("pr-continue-btn").onclick = () => startPractice(target.paper_id);
+  }
+  // 自动恢复到做题区（刷新后直接接着做）
+  applySessionToState(target);
+  document.querySelectorAll(".paper-card").forEach((el) => {
+    el.classList.toggle("active", el.dataset.id === target.paper_id);
   });
+  await showPracticeQuestion(practiceState.index);
+}
+
+const PRACTICE_ACTIVE_KEY = "yuki_practice_active_v1";
+
+function savePracticeProgress() {
+  if (!practiceState.sessionId || practiceState.finished) {
+    try {
+      localStorage.removeItem(PRACTICE_ACTIVE_KEY);
+    } catch (_) {
+      /* ignore */
+    }
+    return;
+  }
+  const payload = {
+    sessionId: practiceState.sessionId,
+    paperId: practiceState.paperId,
+    index: practiceState.index,
+    total: practiceState.total,
+    questionIds: practiceState.questionIds,
+    results: practiceState.results,
+    savedAt: Date.now(),
+  };
+  try {
+    localStorage.setItem(PRACTICE_ACTIVE_KEY, JSON.stringify(payload));
+  } catch (_) {
+    /* ignore */
+  }
+}
+
+function loadPracticeProgressLocal() {
+  try {
+    const raw = localStorage.getItem(PRACTICE_ACTIVE_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch (_) {
+    return null;
+  }
+}
+
+function clearPracticeProgressLocal() {
+  try {
+    localStorage.removeItem(PRACTICE_ACTIVE_KEY);
+  } catch (_) {
+    /* ignore */
+  }
+}
+
+function applySessionToState(session) {
   practiceState.sessionId = session.session_id;
-  practiceState.paperId = paperId;
-  practiceState.index = 0;
+  practiceState.paperId = session.paper_id;
   practiceState.total = session.total_questions;
-  practiceState.questionIds = session.questions.map((q) => q.id);
-  practiceState.results = {};
+  practiceState.questionIds = (session.questions || []).map((q) => q.id);
+  practiceState.results = session.results || {};
   practiceState.startedAt = Date.now();
   practiceState.finished = false;
   practiceState.summary = null;
+  const idx =
+    session.resume_index != null
+      ? session.resume_index
+      : session.current_index != null
+        ? session.current_index
+        : 0;
+  practiceState.index = Math.max(0, Math.min(idx, Math.max(0, practiceState.total - 1)));
+  savePracticeProgress();
+}
+
+async function startPractice(paperId, options = {}) {
+  const forceNew = !!options.forceNew;
+  const session = await api("/api/practice/sessions", {
+    method: "POST",
+    body: JSON.stringify({ paper_id: paperId, force_new: forceNew }),
+  });
+  applySessionToState(session);
   document.querySelectorAll(".paper-card").forEach((el) => {
     el.classList.toggle("active", el.dataset.id === paperId);
   });
-  await showPracticeQuestion(0);
+  await showPracticeQuestion(practiceState.index);
+  if (session.resumed) {
+    const stage = $("pr-stage");
+    if (stage && !$("pr-resume-banner")) {
+      const tip = document.createElement("p");
+      tip.className = "muted";
+      tip.id = "pr-resume-banner";
+      tip.style.cssText = "margin:0 0 10px;font-size:0.9rem";
+      tip.textContent = `已恢复进度：已作答 ${session.answered_count || 0}/${
+        session.total_questions
+      } 题，从第 ${practiceState.index + 1} 题继续。`;
+      stage.insertBefore(tip, stage.firstChild);
+    }
+  }
 }
 
 async function showPracticeQuestion(index) {
@@ -941,6 +1599,7 @@ async function showPracticeQuestion(index) {
   practiceState.index = data.index;
   practiceState.total = data.total;
   practiceState.startedAt = Date.now();
+  savePracticeProgress();
   const q = data.question;
   const stage = $("pr-stage");
   const dots = Array.from({ length: data.total }, (_, i) => {
@@ -1004,6 +1663,7 @@ async function showPracticeQuestion(index) {
     <div id="pr-feedback"></div>
     <div class="practice-actions">
       <button type="button" class="btn-primary" id="pr-check">检查答案</button>
+      <button type="button" class="btn-ghost btn-dont-know" id="pr-dont-know">不会</button>
       <button type="button" class="btn-ghost" id="pr-next" disabled>下一题</button>
       <button type="button" class="btn-ghost" id="pr-finish">结束并查看总结</button>
     </div>`;
@@ -1036,43 +1696,48 @@ async function showPracticeQuestion(index) {
     });
   });
 
-  $("pr-check").onclick = async () => {
+  async function submitCurrent(dontKnow) {
     let payload = {
       question_id: q.id,
       elapsed_ms: Date.now() - practiceState.startedAt,
       update_mastery: true,
+      dont_know: !!dontKnow,
     };
-    if (q.qtype === "fill") {
-      const inputs = [...stage.querySelectorAll(".blank-input")];
-      const answers = inputs.map((el) => el.value.trim());
-      if (!answers.length) {
-        const legacy = $("pr-fill");
-        if (legacy && legacy.value.trim()) {
-          payload.user_answer = legacy.value.trim();
+    if (!dontKnow) {
+      if (q.qtype === "fill") {
+        const inputs = [...stage.querySelectorAll(".blank-input")];
+        const answers = inputs.map((el) => el.value.trim());
+        if (!answers.length) {
+          const legacy = $("pr-fill");
+          if (legacy && legacy.value.trim()) {
+            payload.user_answer = legacy.value.trim();
+          } else {
+            $("pr-feedback").innerHTML = `<div class="feedback-panel pending">请先作答。</div>`;
+            return;
+          }
+        } else if (answers.some((a) => !a)) {
+          $("pr-feedback").innerHTML = `<div class="feedback-panel pending">请填完所有空（共 ${answers.length} 空）。</div>`;
+          return;
         } else {
+          payload.user_answers = answers;
+          payload.user_answer = answers.join("；");
+        }
+      } else {
+        const fill = $("pr-fill");
+        const answer = fill ? fill.value : selected;
+        if (!answer || !String(answer).trim()) {
           $("pr-feedback").innerHTML = `<div class="feedback-panel pending">请先作答。</div>`;
           return;
         }
-      } else if (answers.some((a) => !a)) {
-        $("pr-feedback").innerHTML = `<div class="feedback-panel pending">请填完所有空（共 ${answers.length} 空）。</div>`;
-        return;
-      } else {
-        payload.user_answers = answers;
-        payload.user_answer = answers.join("；");
+        payload.user_answer = String(answer);
       }
-    } else {
-      const fill = $("pr-fill");
-      const answer = fill ? fill.value : selected;
-      if (!answer || !String(answer).trim()) {
-        $("pr-feedback").innerHTML = `<div class="feedback-panel pending">请先作答。</div>`;
-        return;
-      }
-      payload.user_answer = String(answer);
     }
 
     $("pr-check").disabled = true;
+    const dkBtn = $("pr-dont-know");
+    if (dkBtn) dkBtn.disabled = true;
     $("pr-feedback").innerHTML = `<div class="feedback-panel pending">${
-      q.qtype === "short" ? "大模型批改中…" : "判分中…"
+      dontKnow ? "已标记不会…" : q.qtype === "short" ? "大模型批改中…" : "判分中…"
     }</div>`;
 
     let res;
@@ -1083,21 +1748,29 @@ async function showPracticeQuestion(index) {
       });
     } catch (err) {
       $("pr-check").disabled = false;
+      if (dkBtn) dkBtn.disabled = false;
       $("pr-feedback").innerHTML = `<div class="feedback-panel bad">${escapeHtml(
         err.message || "提交失败"
       )}</div>`;
       return;
     }
     $("pr-check").disabled = false;
+    if (dkBtn) dkBtn.disabled = false;
 
     let cls = "pending";
     if (res.is_correct === true) cls = "ok";
     if (res.is_correct === false) cls = "bad";
     practiceState.results[q.id] =
       res.is_correct === true ? "ok" : res.is_correct === false ? "bad" : "pending";
+    savePracticeProgress();
     $("pr-feedback").innerHTML = `
       <div class="feedback-panel ${cls}">
         <strong>${escapeHtml(res.feedback || "")}</strong>
+        ${
+          res.dont_know
+            ? `<div class="muted" style="margin-top:6px;font-size:0.85rem">已按错误计入正确率</div>`
+            : ""
+        }
         ${
           res.llm_graded ? `<div class="muted" style="margin-top:6px;font-size:0.85rem">已由大模型批改</div>` : ""
         }
@@ -1108,7 +1781,7 @@ async function showPracticeQuestion(index) {
               )} ${(res.tutorial_revise_hint.knowledge_ids || [])
                 .map(
                   (k) =>
-                    `<button type="button" class="chip mono" data-open-tutorial="${k}">修订 ${k}</button>`
+                    `<button type="button" class="chip mono" data-open-tutorial="${k}">学 ${k}</button>`
                 )
                 .join(" ")}</div>`
             : ""
@@ -1140,7 +1813,10 @@ async function showPracticeQuestion(index) {
       if (i === practiceState.index) btn.classList.add("current");
       if (practiceState.results[qid]) btn.classList.add(practiceState.results[qid]);
     });
-  };
+  }
+
+  $("pr-check").onclick = () => submitCurrent(false);
+  $("pr-dont-know").onclick = () => submitCurrent(true);
 
   $("pr-next").onclick = () => {
     if (practiceState.index + 1 >= practiceState.total) {
@@ -1159,20 +1835,139 @@ async function finishPractice() {
   });
   practiceState.finished = true;
   practiceState.summary = summary;
+  clearPracticeProgressLocal();
   const ok = summary.correct_count || 0;
   const total = summary.total_questions || practiceState.total;
+  const prog = summary.progression || {};
+  const items = prog.items || prog.per_knowledge || [];
+  const next = prog.next_paper;
+  const isAssess = prog.kind === "assessment";
+  const reasonMap = {
+    pass: "达标晋级",
+    below_pass: "未达通过线",
+    too_few: "题量不足",
+    at_cap: "已达练习上限",
+    exempt: "免练（请走考核）",
+  };
+  const itemHtml = items.length
+    ? `<ul style="text-align:left;max-width:560px;margin:12px auto">
+        ${items
+          .map((it) => {
+            const rate =
+              it.rate != null ? ` · 正确率 ${Math.round(Number(it.rate) * 100)}%` : "";
+            if (it.changed) {
+              return `<li><code>${escapeHtml(it.knowledge_id)}</code>：${escapeHtml(
+                it.from
+              )} → <strong>${escapeHtml(it.to)}</strong>${rate}</li>`;
+            }
+            if (it.passed === false) {
+              return `<li><code>${escapeHtml(it.knowledge_id)}</code>：未通过（需 ≥ ${Math.round(
+                (it.need || 0.8) * 100
+              )}%）${rate}</li>`;
+            }
+            if (it.passed === true && !it.changed) {
+              return `<li><code>${escapeHtml(it.knowledge_id)}</code>：通过，等级未变（${escapeHtml(
+                it.from || it.to || ""
+              )}）${rate}</li>`;
+            }
+            return `<li><code>${escapeHtml(it.knowledge_id)}</code>：${escapeHtml(
+              reasonMap[it.reason] || it.reason || "未晋级"
+            )}${rate}</li>`;
+          })
+          .join("")}
+      </ul>`
+    : `<p class="muted">本场暂无按知识点晋级明细。</p>`;
+  const nextHtml = next
+    ? `<p class="muted" style="margin-top:12px">已刷新下一考核：<strong>${escapeHtml(
+        next.label || next.id
+      )}</strong>（${escapeHtml(next.target_level || "")} · ${
+        next.question_count || "?"
+      } 题）</p>
+       <button type="button" class="btn-primary" id="pr-next-paper">去做新考核</button>`
+    : "";
+  const retiredN = prog.retired_practice_count || 0;
+  const listNote = summary.removed_from_list
+    ? `<p class="muted" style="margin-top:8px">本卷已从练习列表移除，记录已写入「做题记录」。</p>`
+    : summary.fully_done === false
+      ? `<p class="muted" style="margin-top:8px">尚未答完全部题目，本卷仍留在练习列表。</p>`
+      : "";
+  const retiredNote =
+    retiredN > 0
+      ? `<p class="muted">因考核通过/超练习上限，已取消 ${retiredN} 份练习卷（不再出现在列表）。</p>`
+      : "";
+  const packs = summary.unknown_followups || (summary.unknown_followup ? [summary.unknown_followup] : []);
+  const unknownKids = summary.unknown_knowledge_ids || [];
+  let unknownHtml = "";
+  if (packs.length) {
+    const cards = packs
+      .map((pack) => {
+        const kid = pack.knowledge_id || (pack.knowledge_ids || [])[0] || "";
+        const title = pack.title || kid;
+        const consol = pack.consolidation_paper || {};
+        return `<div class="unknown-kid-card">
+          <strong>${escapeHtml(title)}</strong>
+          <div class="muted mono" style="margin:4px 0">${escapeHtml(kid)}</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
+            <button type="button" class="chip" data-open-tutorial="${escapeHtml(kid)}">学本知识点</button>
+            ${
+              consol.id
+                ? `<button type="button" class="chip active" data-consol="${escapeHtml(
+                    consol.id
+                  )}">${escapeHtml(consol.label || "课后巩固")}</button>`
+                : ""
+            }
+            <button type="button" class="chip" data-pack="${escapeHtml(pack.id)}">打开专学页</button>
+          </div>
+        </div>`;
+      })
+      .join("");
+    unknownHtml = `
+      <div class="unknown-followup-box">
+        <h4 style="margin:16px 0 6px;font-family:var(--font-display)">不会专学（按知识点分开）</h4>
+        <p class="muted">本场标记「不会」共 ${unknownKids.length || packs.length} 个知识点，请逐个学习并做对应巩固。</p>
+        ${cards}
+      </div>`;
+  } else if (unknownKids.length) {
+    unknownHtml = `<p class="muted">有不会标记，但专学包生成失败，请到「学习」页查看。</p>`;
+  }
   $("pr-stage").innerHTML = `
     <div class="summary-box">
-      <p class="stat-label">本场练习完成</p>
+      <p class="stat-label">${isAssess ? "本场考核完成" : "本场练习完成"}</p>
       <p class="stat-value">${ok}<span class="muted" style="font-size:1.2rem"> / ${total}</span></p>
-      <p class="muted">首次答对计入正确数；全部尝试已写入做题记录。</p>
+      <p class="muted">练习上限 ${summary.practice_max_level || "L2"}（通过线约 ${Math.round(
+        (summary.practice_pass_rate || 0.75) * 100
+      )}%）；考核通过线 ${Math.round((summary.assessment_pass_rate || 0.8) * 100)}%</p>
+      <h4 style="margin:16px 0 6px;font-family:var(--font-display)">晋级小结</h4>
+      ${itemHtml}
+      ${listNote}
+      ${retiredNote}
+      ${unknownHtml}
+      ${nextHtml}
       <div class="practice-actions" style="justify-content:center;margin-top:20px">
-        <button type="button" class="btn-primary" id="pr-again">再练一次</button>
-        <button type="button" class="btn-ghost" id="pr-to-history">查看记录</button>
+        <button type="button" class="btn-primary" id="pr-to-list">返回练习列表</button>
+        <button type="button" class="btn-ghost" id="pr-to-history">查看做题记录</button>
       </div>
     </div>`;
-  $("pr-again").onclick = () => startPractice(practiceState.paperId);
+  $("pr-to-list").onclick = () => {
+    switchView("practice");
+  };
   $("pr-to-history").onclick = () => switchView("history");
+  const np = $("pr-next-paper");
+  if (np && next?.id) {
+    np.onclick = () => startPractice(next.id);
+  }
+  $("pr-stage").querySelectorAll("[data-open-tutorial]").forEach((btn) => {
+    btn.addEventListener("click", () => openTutorial(btn.dataset.openTutorial));
+  });
+  $("pr-stage").querySelectorAll("[data-consol]").forEach((btn) => {
+    btn.addEventListener("click", () => startPractice(btn.dataset.consol));
+  });
+  $("pr-stage").querySelectorAll("[data-pack]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      cache.openFollowupId = btn.dataset.pack;
+      switchView("learn");
+    });
+  });
 }
 
 async function renderHistory() {
@@ -1193,9 +1988,11 @@ async function renderHistory() {
                     .map(
                       (s) => `<tr>
                       <td>${(s.started_at || "").replace("T", " ")}</td>
-                      <td>${s.theme || s.paper_id || "—"}</td>
+                      <td>${escapeHtml(s.kind_label || "")} · ${escapeHtml(
+                        s.theme || s.paper_id || "—"
+                      )}</td>
                       <td>${s.correct_count}/${s.total_questions}</td>
-                      <td>${s.status}</td>
+                      <td>${s.status === "completed" ? "已完成" : s.status || "—"}</td>
                     </tr>`
                     )
                     .join("")

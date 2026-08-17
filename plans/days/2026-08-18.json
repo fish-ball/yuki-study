@@ -1,0 +1,25 @@
+{
+  "id": "day_2026-08-18",
+  "week_id": "week_2026-08-16",
+  "plan_date": "2026-08-18",
+  "title": "二 08-18",
+  "focus_text": "化学：化合价与化学式",
+  "review_text": "复习分子原子区别",
+  "status": "pending",
+  "completed_at": null,
+  "base_item_count": 1,
+  "updated_at": "2026-08-17T22:32:00",
+  "items": [
+    {
+      "id": 92,
+      "day_plan_id": "day_2026-08-18",
+      "knowledge_id": "chemistry.basic.valence",
+      "role": "main",
+      "sort_order": 0,
+      "done": 0,
+      "done_at": null,
+      "name": "化合价与化学式",
+      "level": "L0"
+    }
+  ]
+}

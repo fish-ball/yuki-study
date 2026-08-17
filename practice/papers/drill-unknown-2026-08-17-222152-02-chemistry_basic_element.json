@@ -1,0 +1,70 @@
+{
+  "id": "drill-unknown-2026-08-17-222152-02-chemistry_basic_element",
+  "path": "practice/papers/drill-unknown-2026-08-17-222152-02-chemistry_basic_element.json",
+  "subject_id": "chemistry",
+  "theme": "不会巩固 · 元素与元素符号",
+  "date": "2026-08-17",
+  "minutes": 20,
+  "target_level": "L2",
+  "status": "ready",
+  "note": "单知识点巩固；来源会话 5bae428d-a992-414f-9222-9d42a8260f30；chemistry.basic.element",
+  "questions": [
+    {
+      "id": "drill-unknown-2026-08-17-222152-02-chemistry_basic_element__222239_q01",
+      "qtype": "fill",
+      "stem": "元素符号书写规则：一个字母时 ______ 写；两个字母时第一个字母 ______，第二个字母 ______。",
+      "score": 4.0,
+      "sort_order": 1,
+      "explanation": "大写；大写；小写。",
+      "answer_key": "大写；大写；小写",
+      "answer_accept": [
+        "大写",
+        "大写",
+        "小写"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.element"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-222152-02-chemistry_basic_element__222239_q02",
+      "qtype": "choice",
+      "stem": "下列说法正确的是（　　）",
+      "score": 4.0,
+      "sort_order": 2,
+      "explanation": "C。A 应为 Fe；B 错（也可表示一个氦原子）；D 应为 Cl。",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "元素符号 fe 可以表示铁元素",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "元素符号 He 只表示氦元素，不表示原子",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "碳的元素符号是 C",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "氯的正确写法是 CL",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.element"
+      ]
+    }
+  ]
+}

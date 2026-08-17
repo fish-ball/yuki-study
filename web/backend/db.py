@@ -14,6 +14,7 @@ def get_conn() -> sqlite3.Connection:
     PRACTICE_DIR.mkdir(parents=True, exist_ok=True)
     (PRACTICE_DIR / "papers").mkdir(parents=True, exist_ok=True)
     (PRACTICE_DIR / "attempts").mkdir(parents=True, exist_ok=True)
+    (PRACTICE_DIR / "followups").mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(DB_PATH, check_same_thread=False)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")

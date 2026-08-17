@@ -43,3 +43,7 @@ Desktop.ini
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+
+# 本地调试临时 JSON
+web/_*.json
+

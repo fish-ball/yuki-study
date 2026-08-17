@@ -1,0 +1,298 @@
+{
+  "id": "ed96f5ac-94fe-441c-b939-149cbaa7082d",
+  "paper_id": "2026-08-17-chemistry-exam-basic-L2",
+  "mode": "exam",
+  "subject_id": "chemistry",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-17T16:54:06",
+  "finished_at": "2026-08-17T17:13:56",
+  "total_questions": 10,
+  "correct_count": 5,
+  "attempt_count": 11,
+  "current_index": 9,
+  "latest_by_question": {
+    "2026-08-17-chemistry-exam-basic-L2__q01": {
+      "id": "a705f4eb-b1ff-4045-a473-f9bfab1f6b6b",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q01",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:54:10"
+    },
+    "2026-08-17-chemistry-exam-basic-L2__q02": {
+      "id": "d7c96aa9-096d-40f7-8b07-7cd668e85d61",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q02",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:54:16"
+    },
+    "2026-08-17-chemistry-exam-basic-L2__q03": {
+      "id": "999a68cb-d780-4d1f-bd2f-c9e9ce9aea83",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q03",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:54:26"
+    },
+    "2026-08-17-chemistry-exam-basic-L2__q04": {
+      "id": "bb866363-3455-4929-8155-f56bc789975a",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q04",
+      "user_answer": "D",
+      "is_correct": 0,
+      "feedback": "不正确。正确答案是 C。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:55:36"
+    },
+    "2026-08-17-chemistry-exam-basic-L2__q05": {
+      "id": "d99ab725-2e6e-42d8-8ed5-9dbd0257cd0d",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q05",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:55:53"
+    },
+    "2026-08-17-chemistry-exam-basic-L2__q06": {
+      "id": "bb870c0d-e03e-4854-a31c-236dde75a488",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q06",
+      "user_answer": "Ca；Zn；Al",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:56:06"
+    },
+    "2026-08-17-chemistry-exam-basic-L2__q07": {
+      "id": "b0f89402-93bb-4317-8001-2a30142abfd9",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q07",
+      "user_answer": "2；1；水原子",
+      "is_correct": 0,
+      "feedback": "第 3 空不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:56:45"
+    },
+    "2026-08-17-chemistry-exam-basic-L2__q08": {
+      "id": "57c63787-d15b-4413-b7c4-2079a130f9c8",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q08",
+      "user_answer": "NaN；CO2",
+      "is_correct": 0,
+      "feedback": "第 1 空不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T17:12:49"
+    },
+    "2026-08-17-chemistry-exam-basic-L2__q09": {
+      "id": "f2329e66-7276-44bc-8743-fd1bc102bbbf",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q09",
+      "user_answer": "新物质",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 2,
+      "created_at": "2026-08-17T17:13:12"
+    },
+    "2026-08-17-chemistry-exam-basic-L2__q10": {
+      "id": "0a5759a6-b182-452c-928b-5fbb7887e44c",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q10",
+      "user_answer": "错，因为石蜡融化并无产生新物质",
+      "is_correct": null,
+      "feedback": "大模型批改失败：<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T17:13:39"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "a705f4eb-b1ff-4045-a473-f9bfab1f6b6b",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q01",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:54:10"
+    },
+    {
+      "id": "d7c96aa9-096d-40f7-8b07-7cd668e85d61",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q02",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:54:16"
+    },
+    {
+      "id": "999a68cb-d780-4d1f-bd2f-c9e9ce9aea83",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q03",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:54:26"
+    },
+    {
+      "id": "bb866363-3455-4929-8155-f56bc789975a",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q04",
+      "user_answer": "D",
+      "is_correct": 0,
+      "feedback": "不正确。正确答案是 C。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:55:36"
+    },
+    {
+      "id": "d99ab725-2e6e-42d8-8ed5-9dbd0257cd0d",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q05",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:55:53"
+    },
+    {
+      "id": "bb870c0d-e03e-4854-a31c-236dde75a488",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q06",
+      "user_answer": "Ca；Zn；Al",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:56:06"
+    },
+    {
+      "id": "b0f89402-93bb-4317-8001-2a30142abfd9",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q07",
+      "user_answer": "2；1；水原子",
+      "is_correct": 0,
+      "feedback": "第 3 空不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:56:45"
+    },
+    {
+      "id": "57c63787-d15b-4413-b7c4-2079a130f9c8",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q08",
+      "user_answer": "NaN；CO2",
+      "is_correct": 0,
+      "feedback": "第 1 空不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T17:12:49"
+    },
+    {
+      "id": "fcb1e196-6033-4f3d-902a-1492d36272af",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q09",
+      "user_answer": "新物质",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T17:13:11"
+    },
+    {
+      "id": "f2329e66-7276-44bc-8743-fd1bc102bbbf",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q09",
+      "user_answer": "新物质",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 2,
+      "created_at": "2026-08-17T17:13:12"
+    },
+    {
+      "id": "0a5759a6-b182-452c-928b-5fbb7887e44c",
+      "question_id": "2026-08-17-chemistry-exam-basic-L2__q10",
+      "user_answer": "错，因为石蜡融化并无产生新物质",
+      "is_correct": null,
+      "feedback": "大模型批改失败：<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T17:13:39"
+    }
+  ],
+  "mastery_report": {
+    "paper_kind": "exam",
+    "target_level": "L2",
+    "points": [
+      {
+        "knowledge_id": "chemistry.basic.change",
+        "name": "物理变化与化学变化",
+        "subject_id": "chemistry",
+        "from_level": "L1",
+        "to_level": "L2",
+        "from_score": 1,
+        "to_score": 2,
+        "delta": 1,
+        "changed": true,
+        "accuracy": 1.0,
+        "correct": 3,
+        "total": 4,
+        "action": "promote",
+        "target_level": "L2"
+      },
+      {
+        "knowledge_id": "chemistry.basic.element",
+        "name": "元素与元素符号",
+        "subject_id": "chemistry",
+        "from_level": "L1",
+        "to_level": "L1",
+        "from_score": 1,
+        "to_score": 1,
+        "delta": 0,
+        "changed": false,
+        "accuracy": 0.5,
+        "correct": 1,
+        "total": 2,
+        "action": "borderline",
+        "target_level": "L2"
+      },
+      {
+        "knowledge_id": "chemistry.basic.molecule",
+        "name": "分子原子离子",
+        "subject_id": "chemistry",
+        "from_level": "L1",
+        "to_level": "L1",
+        "from_score": 1,
+        "to_score": 1,
+        "delta": 0,
+        "changed": false,
+        "accuracy": 0.667,
+        "correct": 2,
+        "total": 4,
+        "action": "borderline",
+        "target_level": "L2"
+      },
+      {
+        "knowledge_id": "chemistry.basic.valence",
+        "name": "化合价与化学式",
+        "subject_id": "chemistry",
+        "from_level": "L0",
+        "to_level": "L0",
+        "from_score": 0,
+        "to_score": 0,
+        "delta": 0,
+        "changed": false,
+        "accuracy": 0.0,
+        "correct": 0,
+        "total": 2,
+        "action": "struggle",
+        "target_level": "L2"
+      }
+    ],
+    "promoted": [
+      {
+        "knowledge_id": "chemistry.basic.change",
+        "name": "物理变化与化学变化",
+        "subject_id": "chemistry",
+        "from_level": "L1",
+        "to_level": "L2",
+        "from_score": 1,
+        "to_score": 2,
+        "delta": 1,
+        "changed": true,
+        "accuracy": 1.0,
+        "correct": 3,
+        "total": 4,
+        "action": "promote",
+        "target_level": "L2"
+      }
+    ],
+    "score_delta": 1,
+    "max_level_score": 4,
+    "message": "本场考核赋分 +1（L0=0…L4=4）。"
+  }
+}

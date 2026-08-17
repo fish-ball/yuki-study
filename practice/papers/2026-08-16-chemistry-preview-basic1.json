@@ -7,7 +7,8 @@
   "minutes": 25,
   "target_level": "L1",
   "status": "ready",
-  "note": "练习架构兼容版；原1–10题保留并修正解析字段，新增分子原子入门题（共15题）",
+  "note": "练习卷·巩固用，不结算晋级",
+  "paper_kind": "practice",
   "questions": [
     {
       "id": "2026-08-16-chemistry-preview-basic1__q01",

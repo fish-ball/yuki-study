@@ -1,0 +1,117 @@
+{
+  "id": "25c2fdf8-75b8-49bd-8eab-b7a27b0fc077",
+  "paper_id": "drill-2026-08-17-chemistry_basic_element",
+  "mode": "paper",
+  "subject_id": "chemistry",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-17T16:39:28",
+  "finished_at": "2026-08-17T16:40:40",
+  "total_questions": 5,
+  "correct_count": 5,
+  "attempt_count": 6,
+  "current_index": 4,
+  "latest_by_question": {
+    "drill-2026-08-17-chemistry_basic_element__111223_q01": {
+      "id": "cd98e649-4dc2-4926-90d5-47cb03678eaf",
+      "question_id": "drill-2026-08-17-chemistry_basic_element__111223_q01",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:39:31"
+    },
+    "drill-2026-08-17-chemistry_basic_element__111223_q02": {
+      "id": "8549aad8-14a7-4f06-8c40-128366c6093c",
+      "question_id": "drill-2026-08-17-chemistry_basic_element__111223_q02",
+      "user_answer": "错",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:39:34"
+    },
+    "drill-2026-08-17-chemistry_basic_element__111223_q03": {
+      "id": "2edf3b92-9245-4051-8118-d0c38b201576",
+      "question_id": "drill-2026-08-17-chemistry_basic_element__111223_q03",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:39:38"
+    },
+    "drill-2026-08-17-chemistry_basic_element__111223_q04": {
+      "id": "eb143631-fc57-4476-bc77-bd64ea654fac",
+      "question_id": "drill-2026-08-17-chemistry_basic_element__111223_q04",
+      "user_answer": "H；O；C；N",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 2,
+      "created_at": "2026-08-17T16:40:00"
+    },
+    "drill-2026-08-17-chemistry_basic_element__111223_q05": {
+      "id": "8b2a10f7-c6c3-412a-a643-94cc2ca03412",
+      "question_id": "drill-2026-08-17-chemistry_basic_element__111223_q05",
+      "user_answer": "Na；Mg；Al；Fe；Cu",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:40:39"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "cd98e649-4dc2-4926-90d5-47cb03678eaf",
+      "question_id": "drill-2026-08-17-chemistry_basic_element__111223_q01",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:39:31"
+    },
+    {
+      "id": "8549aad8-14a7-4f06-8c40-128366c6093c",
+      "question_id": "drill-2026-08-17-chemistry_basic_element__111223_q02",
+      "user_answer": "错",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:39:34"
+    },
+    {
+      "id": "2edf3b92-9245-4051-8118-d0c38b201576",
+      "question_id": "drill-2026-08-17-chemistry_basic_element__111223_q03",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:39:38"
+    },
+    {
+      "id": "b188c2d9-ffc2-42c9-b58d-4776d6722e5c",
+      "question_id": "drill-2026-08-17-chemistry_basic_element__111223_q04",
+      "user_answer": "H；O；C；N",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:39:59"
+    },
+    {
+      "id": "eb143631-fc57-4476-bc77-bd64ea654fac",
+      "question_id": "drill-2026-08-17-chemistry_basic_element__111223_q04",
+      "user_answer": "H；O；C；N",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 2,
+      "created_at": "2026-08-17T16:40:00"
+    },
+    {
+      "id": "8b2a10f7-c6c3-412a-a643-94cc2ca03412",
+      "question_id": "drill-2026-08-17-chemistry_basic_element__111223_q05",
+      "user_answer": "Na；Mg；Al；Fe；Cu",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T16:40:39"
+    }
+  ]
+}

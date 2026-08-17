@@ -1,0 +1,32 @@
+{
+  "id": "unknown-2026-08-17-222242-01-chemistry_basic_change",
+  "created_at": "2026-08-17T22:23:06",
+  "session_id": "5bae428d-a992-414f-9222-9d42a8260f30",
+  "source_paper_id": "2026-08-17-chemistry-exam-refresh-l4-181342",
+  "subject_id": "chemistry",
+  "knowledge_id": "chemistry.basic.change",
+  "knowledge_ids": [
+    "chemistry.basic.change"
+  ],
+  "tutorials": [
+    {
+      "knowledge_id": "chemistry.basic.change",
+      "title": "物理变化与化学变化",
+      "subject_id": "chemistry",
+      "path": "knowledge/chemistry/tutorials/chemistry.basic.change.md",
+      "has_tutorial": true
+    }
+  ],
+  "consolidation_paper": {
+    "id": "drill-unknown-2026-08-17-222242-01-chemistry_basic_change",
+    "theme": "不会巩固 · 物理变化与化学变化",
+    "question_count": 5,
+    "knowledge_ids": [
+      "chemistry.basic.change"
+    ],
+    "knowledge_id": "chemistry.basic.change",
+    "label": "巩固 · 物理变化与化学变化 · 5 题"
+  },
+  "title": "不会专学 · 物理变化与化学变化",
+  "status": "open"
+}

@@ -1,0 +1,458 @@
+{
+  "id": "drill-unknown-2026-08-17-182236",
+  "path": "practice/papers/drill-unknown-2026-08-17-182236.json",
+  "subject_id": "math",
+  "theme": "不会专学 · 课后巩固",
+  "date": "2026-08-17",
+  "minutes": 20,
+  "target_level": "L2",
+  "status": "ready",
+  "note": "由「不会」标记生成；来源会话 52cb320f-89c5-4ee0-8b1b-aee2a11d2d98",
+  "questions": [
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q01",
+      "qtype": "fill",
+      "stem": "【巩固】用一句话概括「一元二次方程」的核心（可写关键词）：______。",
+      "score": 4.0,
+      "sort_order": 1,
+      "explanation": "关键词围绕「一元二次方程」的定义与判别。",
+      "answer_key": "一元二次方程",
+      "answer_accept": [
+        "一元二次方程"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.equation.quadratic"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q02",
+      "qtype": "choice",
+      "stem": "【巩固】关于「一元二次方程」，正确的学习态度是（　　）",
+      "score": 4.0,
+      "sort_order": 2,
+      "explanation": "A。定义 + 练习 + 订正。",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "先抓定义与适用条件，再做变式题",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "只背名称，不做题",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "不会的题永远跳过",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "抄答案就算掌握",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.equation.quadratic"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q03",
+      "qtype": "fill",
+      "stem": "【巩固】本课主攻知识点「一元二次方程」的 knowledge_id 是 ______。",
+      "score": 2.0,
+      "sort_order": 3,
+      "explanation": "对应 id：math.equation.quadratic。",
+      "answer_key": "math.equation.quadratic",
+      "answer_accept": [
+        "math.equation.quadratic"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.equation.quadratic"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q04",
+      "qtype": "fill",
+      "stem": "【巩固】本课主攻知识点「一元二次方程」的 knowledge_id 是 ______。",
+      "score": 2.0,
+      "sort_order": 4,
+      "explanation": "对应 id：math.equation.quadratic。",
+      "answer_key": "math.equation.quadratic",
+      "answer_accept": [
+        "math.equation.quadratic"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.equation.quadratic"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q05",
+      "qtype": "fill",
+      "stem": "【巩固】用一句话概括「圆周角与圆心角」的核心（可写关键词）：______。",
+      "score": 4.0,
+      "sort_order": 5,
+      "explanation": "关键词围绕「圆周角与圆心角」的定义与判别。",
+      "answer_key": "圆周角与圆心角",
+      "answer_accept": [
+        "圆周角与圆心角"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.circle.angle"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q06",
+      "qtype": "choice",
+      "stem": "【巩固】关于「圆周角与圆心角」，正确的学习态度是（　　）",
+      "score": 4.0,
+      "sort_order": 6,
+      "explanation": "A。定义 + 练习 + 订正。",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "先抓定义与适用条件，再做变式题",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "只背名称，不做题",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "不会的题永远跳过",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "抄答案就算掌握",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.geometry.circle.angle"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q07",
+      "qtype": "fill",
+      "stem": "【巩固】本课主攻知识点「圆周角与圆心角」的 knowledge_id 是 ______。",
+      "score": 2.0,
+      "sort_order": 7,
+      "explanation": "对应 id：math.geometry.circle.angle。",
+      "answer_key": "math.geometry.circle.angle",
+      "answer_accept": [
+        "math.geometry.circle.angle"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.circle.angle"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q08",
+      "qtype": "fill",
+      "stem": "【巩固】本课主攻知识点「圆周角与圆心角」的 knowledge_id 是 ______。",
+      "score": 2.0,
+      "sort_order": 8,
+      "explanation": "对应 id：math.geometry.circle.angle。",
+      "answer_key": "math.geometry.circle.angle",
+      "answer_accept": [
+        "math.geometry.circle.angle"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.circle.angle"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q09",
+      "qtype": "fill",
+      "stem": "【巩固】用一句话概括「二次函数图像与性质」的核心（可写关键词）：______。",
+      "score": 4.0,
+      "sort_order": 9,
+      "explanation": "关键词围绕「二次函数图像与性质」的定义与判别。",
+      "answer_key": "二次函数图像与性质",
+      "answer_accept": [
+        "二次函数图像与性质"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.function.quadratic.graph"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q10",
+      "qtype": "choice",
+      "stem": "【巩固】关于「二次函数图像与性质」，正确的学习态度是（　　）",
+      "score": 4.0,
+      "sort_order": 10,
+      "explanation": "A。定义 + 练习 + 订正。",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "先抓定义与适用条件，再做变式题",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "只背名称，不做题",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "不会的题永远跳过",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "抄答案就算掌握",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.function.quadratic.graph"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q11",
+      "qtype": "fill",
+      "stem": "【巩固】本课主攻知识点「二次函数图像与性质」的 knowledge_id 是 ______。",
+      "score": 2.0,
+      "sort_order": 11,
+      "explanation": "对应 id：math.function.quadratic.graph。",
+      "answer_key": "math.function.quadratic.graph",
+      "answer_accept": [
+        "math.function.quadratic.graph"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.function.quadratic.graph"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q12",
+      "qtype": "fill",
+      "stem": "【巩固】本课主攻知识点「二次函数图像与性质」的 knowledge_id 是 ______。",
+      "score": 2.0,
+      "sort_order": 12,
+      "explanation": "对应 id：math.function.quadratic.graph。",
+      "answer_key": "math.function.quadratic.graph",
+      "answer_accept": [
+        "math.function.quadratic.graph"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.function.quadratic.graph"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q13",
+      "qtype": "fill",
+      "stem": "【巩固】用一句话概括「相似三角形」的核心（可写关键词）：______。",
+      "score": 4.0,
+      "sort_order": 13,
+      "explanation": "关键词围绕「相似三角形」的定义与判别。",
+      "answer_key": "相似三角形",
+      "answer_accept": [
+        "相似三角形"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.similar"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q14",
+      "qtype": "choice",
+      "stem": "【巩固】关于「相似三角形」，正确的学习态度是（　　）",
+      "score": 4.0,
+      "sort_order": 14,
+      "explanation": "A。定义 + 练习 + 订正。",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "先抓定义与适用条件，再做变式题",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "只背名称，不做题",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "不会的题永远跳过",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "抄答案就算掌握",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.geometry.similar"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q15",
+      "qtype": "fill",
+      "stem": "【巩固】本课主攻知识点「相似三角形」的 knowledge_id 是 ______。",
+      "score": 2.0,
+      "sort_order": 15,
+      "explanation": "对应 id：math.geometry.similar。",
+      "answer_key": "math.geometry.similar",
+      "answer_accept": [
+        "math.geometry.similar"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.similar"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q16",
+      "qtype": "fill",
+      "stem": "【巩固】本课主攻知识点「相似三角形」的 knowledge_id 是 ______。",
+      "score": 2.0,
+      "sort_order": 16,
+      "explanation": "对应 id：math.geometry.similar。",
+      "answer_key": "math.geometry.similar",
+      "answer_accept": [
+        "math.geometry.similar"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.similar"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q17",
+      "qtype": "fill",
+      "stem": "【巩固】用一句话概括「几何压轴」的核心（可写关键词）：______。",
+      "score": 4.0,
+      "sort_order": 17,
+      "explanation": "关键词围绕「几何压轴」的定义与判别。",
+      "answer_key": "几何压轴",
+      "answer_accept": [
+        "几何压轴"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.integrated.geometry_hard"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q18",
+      "qtype": "choice",
+      "stem": "【巩固】关于「几何压轴」，正确的学习态度是（　　）",
+      "score": 4.0,
+      "sort_order": 18,
+      "explanation": "A。定义 + 练习 + 订正。",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "先抓定义与适用条件，再做变式题",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "只背名称，不做题",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "不会的题永远跳过",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "抄答案就算掌握",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.integrated.geometry_hard"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q19",
+      "qtype": "fill",
+      "stem": "【巩固】本课主攻知识点「几何压轴」的 knowledge_id 是 ______。",
+      "score": 2.0,
+      "sort_order": 19,
+      "explanation": "对应 id：math.integrated.geometry_hard。",
+      "answer_key": "math.integrated.geometry_hard",
+      "answer_accept": [
+        "math.integrated.geometry_hard"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.integrated.geometry_hard"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-182236__182633_q20",
+      "qtype": "fill",
+      "stem": "【巩固】本课主攻知识点「几何压轴」的 knowledge_id 是 ______。",
+      "score": 2.0,
+      "sort_order": 20,
+      "explanation": "对应 id：math.integrated.geometry_hard。",
+      "answer_key": "math.integrated.geometry_hard",
+      "answer_accept": [
+        "math.integrated.geometry_hard"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.integrated.geometry_hard"
+      ]
+    }
+  ]
+}

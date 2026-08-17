@@ -1,0 +1,123 @@
+{
+  "id": "drill-2026-08-17-chemistry_basic_molecule",
+  "path": "practice/papers/drill-2026-08-17-chemistry_basic_molecule.json",
+  "subject_id": "chemistry",
+  "theme": "日计划练习 · 分子原子离子",
+  "date": "2026-08-17",
+  "minutes": 15,
+  "target_level": "L2",
+  "status": "ready",
+  "note": "知识点 chemistry.basic.molecule（2026-08-17）",
+  "questions": [
+    {
+      "id": "drill-2026-08-17-chemistry_basic_molecule__111223_q01",
+      "qtype": "judge",
+      "stem": "分子是保持物质化学性质的最小粒子。",
+      "score": 2.0,
+      "sort_order": 1,
+      "explanation": "对。同种分子化学性质相同。",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.molecule"
+      ]
+    },
+    {
+      "id": "drill-2026-08-17-chemistry_basic_molecule__111223_q02",
+      "qtype": "judge",
+      "stem": "在化学变化中，原子可以再分成更小的粒子。",
+      "score": 2.0,
+      "sort_order": 2,
+      "explanation": "错。化学变化中分子可分、原子不可分。",
+      "answer_key": "错",
+      "answer_accept": [
+        "错"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.molecule"
+      ]
+    },
+    {
+      "id": "drill-2026-08-17-chemistry_basic_molecule__111223_q03",
+      "qtype": "choice",
+      "stem": "下列关于分子、原子的说法正确的是（　　）",
+      "score": 4.0,
+      "sort_order": 3,
+      "explanation": "C。A 错（如汞原子可大于氢分子）；B 错（原子由原子核和电子构成）；D 错（同种原子构成单质分子，如 O₂）。",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "分子一定比原子大",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "原子在任何情况下都不能再分",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "化学变化中分子可分，原子不可分",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "同种原子构成的分子一定是化合物分子",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.molecule"
+      ]
+    },
+    {
+      "id": "drill-2026-08-17-chemistry_basic_molecule__111223_q04",
+      "qtype": "fill",
+      "stem": "水分子用符号 ______ 表示；一个水分子由 ______ 个氢原子和 ______ 个氧原子构成。",
+      "score": 4.0,
+      "sort_order": 4,
+      "explanation": "H2O（或 H₂O）；2；1。",
+      "answer_key": "H2O；2；1",
+      "answer_accept": [
+        "H2O",
+        "H₂O",
+        "2",
+        "1"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.molecule"
+      ]
+    },
+    {
+      "id": "drill-2026-08-17-chemistry_basic_molecule__111223_q05",
+      "qtype": "fill",
+      "stem": "保持水的化学性质的最小粒子是 ______；电解水时不能再分的粒子是 ______。",
+      "score": 4.0,
+      "sort_order": 5,
+      "explanation": "水分子；原子。",
+      "answer_key": "水分子；原子",
+      "answer_accept": [
+        "水分子",
+        "原子"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.molecule"
+      ]
+    }
+  ]
+}

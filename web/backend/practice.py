@@ -13,13 +13,22 @@ from .sync import export_mastery_to_yaml, refresh_summary_yaml
 
 
 def list_papers(subject: str | None = None) -> list[dict[str, Any]]:
+    from .day_drills import session_covers_paper
+    from .mastery_policy import (
+        format_assessment_label,
+        format_practice_label,
+        is_practice_exempt,
+        load_policy,
+        practice_max_level,
+    )
+
     conn = get_conn()
     sql = """
         SELECT a.id, a.subject_id, a.theme, a.date, a.minutes, a.target_level, a.status, a.note,
                COUNT(q.id) AS question_count
         FROM assessments a
         LEFT JOIN questions q ON q.paper_id = a.id
-        WHERE 1=1
+        WHERE COALESCE(a.status, 'ready') NOT IN ('completed', 'retired', 'exempt', 'archived')
     """
     params: list[Any] = []
     if subject:
@@ -27,8 +36,187 @@ def list_papers(subject: str | None = None) -> list[dict[str, Any]]:
         params.append(subject)
     sql += " GROUP BY a.id ORDER BY a.date DESC, a.id DESC"
     rows = [dict(r) for r in conn.execute(sql, params).fetchall()]
+    policy = load_policy()
+    pmax = practice_max_level(policy)
+    visible: list[dict[str, Any]] = []
+    for r in rows:
+        kids = [
+            x["knowledge_id"]
+            for x in conn.execute(
+                "SELECT knowledge_id FROM assessment_knowledge WHERE assessment_id = ?",
+                (r["id"],),
+            ).fetchall()
+        ]
+        if not kids:
+            kids = [
+                x["knowledge_id"]
+                for x in conn.execute(
+                    """
+                    SELECT DISTINCT qk.knowledge_id
+                    FROM question_knowledge qk
+                    JOIN questions q ON q.id = qk.question_id
+                    WHERE q.paper_id = ?
+                    """,
+                    (r["id"],),
+                ).fetchall()
+            ]
+        r["knowledge_ids"] = kids
+        is_drill = str(r["id"]).startswith("drill-") or "drill" in (r.get("theme") or "")
+        r["paper_kind"] = "practice" if is_drill else "assessment"
+
+        # 已完整完成过的卷：从待练列表隐藏（记录仍在会话历史）
+        if _paper_fully_completed(conn, r["id"], session_covers_paper):
+            _set_paper_status(conn, r["id"], "completed")
+            continue
+
+        levels = []
+        for kid in kids:
+            m = conn.execute(
+                "SELECT level FROM mastery_items WHERE knowledge_id = ?", (kid,)
+            ).fetchone()
+            levels.append(m["level"] if m else "L0")
+        cur = (
+            min(
+                levels,
+                key=lambda lv: ["L0", "L1", "L2", "L3", "L4"].index(
+                    lv if lv in ["L0", "L1", "L2", "L3", "L4"] else 0
+                ),
+            )
+            if levels
+            else "L0"
+        )
+        if is_drill:
+            info = format_practice_label(current_level=cur, policy=policy)
+            r["level_label"] = info["title"]
+            r["practice_max_level"] = pmax
+            r["goal_level"] = info["goal_level"]
+            r["exempt"] = info["exempt"]
+            r["display_title"] = info["title"]
+            # 因考核晋级超过练习上限：免练并从列表消失
+            if kids and all(
+                is_practice_exempt(
+                    (
+                        conn.execute(
+                            "SELECT level FROM mastery_items WHERE knowledge_id = ?", (k,)
+                        ).fetchone()
+                        or {"level": "L0"}
+                    )["level"],
+                    policy,
+                )
+                for k in kids
+            ):
+                _set_paper_status(conn, r["id"], "retired")
+                continue
+        else:
+            tgt = r.get("target_level") or "L2"
+            r["level_label"] = format_assessment_label(target_level=tgt, policy=policy)
+            r["display_title"] = f"{r.get('theme') or r['id']} · {r['level_label']}"
+            r["exempt"] = False
+            r["pass_rate_need"] = float((policy.get("assessment") or {}).get("pass_rate") or 0.8)
+        # 未完成会话进度（刷新后续练）
+        active = conn.execute(
+            """
+            SELECT id, current_index, total_questions, correct_count, started_at
+            FROM practice_sessions
+            WHERE paper_id = ? AND status = 'in_progress'
+            ORDER BY started_at DESC
+            LIMIT 1
+            """,
+            (r["id"],),
+        ).fetchone()
+        if active:
+            answered = conn.execute(
+                """
+                SELECT COUNT(DISTINCT question_id) AS c
+                FROM attempt_records
+                WHERE session_id = ?
+                """,
+                (active["id"],),
+            ).fetchone()["c"]
+            r["active_session"] = {
+                "session_id": active["id"],
+                "current_index": active["current_index"],
+                "answered_count": answered,
+                "total_questions": active["total_questions"],
+                "correct_count": active["correct_count"],
+                "started_at": active["started_at"],
+            }
+        else:
+            r["active_session"] = None
+        visible.append(r)
+    conn.commit()
     conn.close()
-    return rows
+    return visible
+
+
+def _paper_fully_completed(conn, paper_id: str, session_covers_paper) -> bool:
+    row = conn.execute("SELECT status FROM assessments WHERE id = ?", (paper_id,)).fetchone()
+    if row and (row["status"] or "") in ("completed", "retired", "exempt"):
+        return True
+    sessions = conn.execute(
+        """
+        SELECT id FROM practice_sessions
+        WHERE paper_id = ? AND status = 'completed'
+        ORDER BY finished_at DESC
+        """,
+        (paper_id,),
+    ).fetchall()
+    for s in sessions:
+        if session_covers_paper(conn, s["id"], paper_id):
+            return True
+    return False
+
+
+def _set_paper_status(conn, paper_id: str, status: str) -> None:
+    conn.execute(
+        "UPDATE assessments SET status = ? WHERE id = ?",
+        (status, paper_id),
+    )
+
+
+def retire_exempt_practice_papers(knowledge_ids: list[str] | None = None) -> int:
+    """掌握度已达/超过练习上限后，将对应练习卷标为 retired（列表不再展示）。"""
+    from .mastery_policy import is_practice_exempt, load_policy
+
+    policy = load_policy()
+    conn = get_conn()
+    sql = """
+        SELECT a.id, a.theme
+        FROM assessments a
+        WHERE (a.id LIKE 'drill-%' OR IFNULL(a.theme,'') LIKE '%drill%')
+          AND COALESCE(a.status, 'ready') NOT IN ('completed', 'retired', 'exempt')
+    """
+    papers = [dict(r) for r in conn.execute(sql).fetchall()]
+    retired = 0
+    for p in papers:
+        kids = [
+            x["knowledge_id"]
+            for x in conn.execute(
+                """
+                SELECT DISTINCT qk.knowledge_id
+                FROM question_knowledge qk
+                JOIN questions q ON q.id = qk.question_id
+                WHERE q.paper_id = ?
+                """,
+                (p["id"],),
+            ).fetchall()
+        ]
+        if not kids:
+            continue
+        if knowledge_ids and not set(kids) & set(knowledge_ids):
+            continue
+        levels = []
+        for kid in kids:
+            m = conn.execute(
+                "SELECT level FROM mastery_items WHERE knowledge_id = ?", (kid,)
+            ).fetchone()
+            levels.append(m["level"] if m else "L0")
+        if levels and all(is_practice_exempt(lv, policy) for lv in levels):
+            _set_paper_status(conn, p["id"], "retired")
+            retired += 1
+    conn.commit()
+    conn.close()
+    return retired
 
 
 def get_paper(paper_id: str, include_answers: bool = False) -> dict[str, Any] | None:
@@ -81,12 +269,17 @@ def _question_public(conn, q, include_answers: bool = False) -> dict[str, Any]:
     return item
 
 
-def start_session(paper_id: str) -> dict[str, Any]:
+def start_session(paper_id: str, force_new: bool = False) -> dict[str, Any]:
     paper = get_paper(paper_id, include_answers=False)
     if not paper:
         raise ValueError("试卷不存在")
     if not paper["questions"]:
         raise ValueError("该卷尚无结构化题目，请先点「从仓库同步」")
+
+    if not force_new:
+        existing = find_active_session(paper_id)
+        if existing:
+            return existing
 
     sid = str(uuid.uuid4())
     now = datetime.now().isoformat(timespec="seconds")
@@ -108,11 +301,105 @@ def start_session(paper_id: str) -> dict[str, Any]:
         "subject_id": paper.get("subject_id"),
         "total_questions": len(paper["questions"]),
         "started_at": now,
+        "current_index": 0,
+        "resume_index": 0,
+        "resumed": False,
+        "answered_count": 0,
+        "results": {},
         "questions": [
             {"id": q["id"], "sort_order": q["sort_order"], "qtype": q["qtype"]}
             for q in paper["questions"]
         ],
     }
+
+
+def find_active_session(paper_id: str) -> dict[str, Any] | None:
+    """同一试卷未完成会话：用于刷新/退出后续练。"""
+    conn = get_conn()
+    row = conn.execute(
+        """
+        SELECT id FROM practice_sessions
+        WHERE paper_id = ? AND status = 'in_progress'
+        ORDER BY started_at DESC
+        LIMIT 1
+        """,
+        (paper_id,),
+    ).fetchone()
+    conn.close()
+    if not row:
+        return None
+    return build_resume_payload(row["id"])
+
+
+def build_resume_payload(session_id: str) -> dict[str, Any] | None:
+    data = get_session(session_id)
+    if not data or data.get("status") != "in_progress":
+        return None
+    paper_id = data["paper_id"]
+    paper = get_paper(paper_id, include_answers=False)
+    if not paper or not paper.get("questions"):
+        return None
+    questions = paper["questions"]
+    qids = [q["id"] for q in questions]
+    latest = data.get("latest_by_question") or {}
+    results: dict[str, str] = {}
+    for qid, att in latest.items():
+        if att.get("is_correct") == 1:
+            results[qid] = "ok"
+        elif att.get("is_correct") == 0:
+            results[qid] = "bad"
+        else:
+            results[qid] = "pending"
+    # 续练定位：优先未作答的第一题，否则用 current_index
+    resume_index = 0
+    for i, qid in enumerate(qids):
+        if qid not in results:
+            resume_index = i
+            break
+    else:
+        resume_index = min(int(data.get("current_index") or 0), max(0, len(qids) - 1))
+
+    return {
+        "session_id": session_id,
+        "paper_id": paper_id,
+        "theme": paper.get("theme") or data.get("theme"),
+        "subject_id": paper.get("subject_id") or data.get("subject_id"),
+        "total_questions": len(qids),
+        "started_at": data.get("started_at"),
+        "current_index": int(data.get("current_index") or 0),
+        "resume_index": resume_index,
+        "resumed": True,
+        "answered_count": len(results),
+        "correct_count": int(data.get("correct_count") or 0),
+        "results": results,
+        "questions": [
+            {"id": q["id"], "sort_order": q["sort_order"], "qtype": q["qtype"]}
+            for q in questions
+        ],
+    }
+
+
+def list_active_sessions(limit: int = 20) -> list[dict[str, Any]]:
+    conn = get_conn()
+    rows = conn.execute(
+        """
+        SELECT p.id, p.paper_id, p.subject_id, p.started_at, p.current_index,
+               p.total_questions, p.correct_count, p.attempt_count, a.theme
+        FROM practice_sessions p
+        LEFT JOIN assessments a ON a.id = p.paper_id
+        WHERE p.status = 'in_progress'
+        ORDER BY p.started_at DESC
+        LIMIT ?
+        """,
+        (limit,),
+    ).fetchall()
+    conn.close()
+    out: list[dict[str, Any]] = []
+    for r in rows:
+        payload = build_resume_payload(r["id"])
+        if payload:
+            out.append(payload)
+    return out
 
 
 def get_session(session_id: str) -> dict[str, Any] | None:
@@ -190,7 +477,10 @@ def submit_answer(
     elapsed_ms: int | None = None,
     update_mastery: bool = True,
     user_answers: list[str] | None = None,
+    dont_know: bool = False,
 ) -> dict[str, Any]:
+    from .unknown_followup import DONT_KNOW_ANSWER
+
     conn = get_conn()
     s = conn.execute(
         "SELECT * FROM practice_sessions WHERE id = ?", (session_id,)
@@ -204,23 +494,10 @@ def submit_answer(
         raise ValueError("题目不存在")
 
     # 多空：优先使用数组，落库仍存为分号串便于历史兼容
-    if user_answers is not None:
+    if user_answers is not None and not dont_know:
         parts = [str(x).strip() for x in user_answers if str(x).strip()]
         user_answer = "；".join(parts)
     user_answer = (user_answer or "").strip()
-    if not user_answer:
-        conn.close()
-        raise ValueError("答案不能为空")
-
-    accept = json.loads(q["answer_accept"] or "[]")
-    blanks = count_blanks(q["stem"]) if q["qtype"] == "fill" else 0
-    is_correct, feedback = grade_answer(
-        q["qtype"],
-        q["answer_key"],
-        accept,
-        user_answer,
-        blank_count=blanks or len(accept) or None,
-    )
 
     kids = [
         r["knowledge_id"]
@@ -230,15 +507,35 @@ def submit_answer(
         ).fetchall()
     ]
 
-    if q["qtype"] == "short" and is_correct is None:
-        is_correct, feedback = grade_short_with_llm(
-            stem=q["stem"],
-            explanation=q["explanation"] or "",
-            answer_key=q["answer_key"] or "",
-            user_answer=user_answer,
-            subject_id=q["subject_id"],
-            knowledge_ids=kids,
+    if dont_know:
+        user_answer = DONT_KNOW_ANSWER
+        is_correct = False
+        key = (q["answer_key"] or "").strip()
+        feedback = "已标记「不会」，按错误计入正确率。先看参考答案，结束练习后会进入专学巩固。"
+        if key:
+            feedback += f" 参考答案：{key}"
+    else:
+        if not user_answer:
+            conn.close()
+            raise ValueError("答案不能为空")
+        accept = json.loads(q["answer_accept"] or "[]")
+        blanks = count_blanks(q["stem"]) if q["qtype"] == "fill" else 0
+        is_correct, feedback = grade_answer(
+            q["qtype"],
+            q["answer_key"],
+            accept,
+            user_answer,
+            blank_count=blanks or len(accept) or None,
         )
+        if q["qtype"] == "short" and is_correct is None:
+            is_correct, feedback = grade_short_with_llm(
+                stem=q["stem"],
+                explanation=q["explanation"] or "",
+                answer_key=q["answer_key"] or "",
+                user_answer=user_answer,
+                subject_id=q["subject_id"],
+                knowledge_ids=kids,
+            )
 
     prev = conn.execute(
         """
@@ -281,16 +578,17 @@ def submit_answer(
 
     subject_id = q["subject_id"]
     if update_mastery and is_correct is False and kids:
+        note = "练习标记不会" if dont_know else "练习答错"
         for kid in kids:
             conn.execute(
                 """
                 UPDATE mastery_items
                 SET wrong_count = wrong_count + 1,
                     last_assessed = ?,
-                    notes = CASE WHEN notes = '' OR notes IS NULL THEN '练习答错' ELSE notes END
+                    notes = CASE WHEN notes = '' OR notes IS NULL THEN ? ELSE notes END
                 WHERE knowledge_id = ?
                 """,
-                (now[:10], kid),
+                (now[:10], note, kid),
             )
     if update_mastery and is_correct is True and kids:
         for kid in kids:
@@ -334,12 +632,15 @@ def submit_answer(
         "explanation": q["explanation"],
         "answer_key": q["answer_key"],
         "knowledge_ids": kids,
-        "llm_graded": q["qtype"] == "short" and is_correct is not None,
+        "llm_graded": q["qtype"] == "short" and is_correct is not None and not dont_know,
+        "dont_know": dont_know,
     }
     if is_correct is False and kids:
         result["tutorial_revise_hint"] = {
             "knowledge_ids": kids,
-            "message": "可将本题错因整合进对应教程的「易错点」（打开教程 → 补充修订）。",
+            "message": "可将本题错因整合进对应教程的「易错点」（打开教程 → 补充修订）。"
+            if not dont_know
+            else "本题已标记「不会」。结束练习后将生成专学页与课后巩固。",
         }
     conn.close()
 
@@ -350,6 +651,11 @@ def submit_answer(
     return result
 
 def finish_session(session_id: str) -> dict[str, Any]:
+    from .assessment_progress import finalize_assessment_session, session_kid_stats
+    from .day_drills import mark_drill_completed_by_paper, session_covers_paper
+    from .mastery_policy import apply_practice_level_ups, load_policy, practice_max_level
+    from .sync import export_mastery_to_yaml, refresh_summary_yaml
+
     conn = get_conn()
     now = datetime.now().isoformat(timespec="seconds")
     conn.execute(
@@ -362,12 +668,109 @@ def finish_session(session_id: str) -> dict[str, Any]:
     )
     conn.commit()
     s = get_session(session_id)
-    # 写会话汇总文件
+    # 写会话汇总文件（练习记录留档）
     if s:
         out = PRACTICE_DIR / "attempts" / f"session_{session_id}.json"
         out.write_text(json.dumps(s, ensure_ascii=False, indent=2), encoding="utf-8")
     conn.close()
-    return s or {}
+
+    result = dict(s or {})
+    paper_id = result.get("paper_id")
+    policy = load_policy()
+    result["practice_max_level"] = practice_max_level(policy)
+    result["assessment_pass_rate"] = float((policy.get("assessment") or {}).get("pass_rate") or 0.8)
+    result["practice_pass_rate"] = float((policy.get("practice_level_up") or {}).get("pass_rate") or 0.75)
+
+    if not paper_id:
+        return result
+
+    is_drill = str(paper_id).startswith("drill-") or "drill" in str(result.get("theme") or "")
+    stats = session_kid_stats(session_id)
+
+    # 是否答完全卷
+    conn = get_conn()
+    fully_done = session_covers_paper(conn, session_id, paper_id)
+    conn.close()
+    result["fully_done"] = fully_done
+    result["removed_from_list"] = False
+
+    if is_drill:
+        ups = apply_practice_level_ups(stats, policy)
+        changed_subjects: set[str] = set()
+        for u in ups:
+            if not u.get("changed"):
+                continue
+            conn = get_conn()
+            conn.execute(
+                """
+                UPDATE mastery_items
+                SET level = ?, last_assessed = ?,
+                    notes = CASE WHEN notes IS NULL OR notes = '' THEN '练习达标晋级' ELSE notes END
+                WHERE knowledge_id = ?
+                """,
+                (u["to"], now[:10], u["knowledge_id"]),
+            )
+            conn.commit()
+            conn.close()
+            if u.get("subject_id"):
+                changed_subjects.add(u["subject_id"])
+        for sid in changed_subjects:
+            export_mastery_to_yaml(sid)
+        if changed_subjects:
+            refresh_summary_yaml()
+        drill_mark = mark_drill_completed_by_paper(paper_id, session_id)
+        if fully_done:
+            conn = get_conn()
+            _set_paper_status(conn, paper_id, "completed")
+            conn.commit()
+            conn.close()
+            result["removed_from_list"] = True
+        result["progression"] = {
+            "kind": "practice",
+            "items": ups,
+            "drill": drill_mark,
+        }
+        # 若练习后仍有点达到上限，清理可免练卷
+        retire_exempt_practice_papers(list(stats.keys()))
+    else:
+        prog = finalize_assessment_session(session_id, paper_id)
+        if fully_done:
+            conn = get_conn()
+            _set_paper_status(conn, paper_id, "completed")
+            conn.commit()
+            conn.close()
+            result["removed_from_list"] = True
+        kids_for_retire = list(stats.keys())
+        if not kids_for_retire:
+            kids_for_retire = [
+                x.get("knowledge_id")
+                for x in (prog.get("per_knowledge") or [])
+                if x.get("knowledge_id")
+            ]
+        retired_n = retire_exempt_practice_papers(kids_for_retire or None)
+        prog["retired_practice_count"] = retired_n
+        result["progression"] = {"kind": "assessment", **prog}
+
+    # 「不会」专学：按知识点拆分教程 + 巩固卷
+    from .unknown_followup import build_unknown_followup, collect_dont_know_kids, retire_meta_question_papers
+
+    retire_meta_question_papers()
+    unknown_kids = collect_dont_know_kids(session_id)
+    result["unknown_knowledge_ids"] = unknown_kids
+    result["unknown_followup"] = None
+    result["unknown_followups"] = []
+    if unknown_kids:
+        bundled = build_unknown_followup(
+            session_id,
+            paper_id=paper_id,
+            subject_id=result.get("subject_id"),
+        )
+        if bundled:
+            packs = bundled.get("packs") or [bundled]
+            result["unknown_followups"] = packs
+            result["unknown_followup"] = packs[0] if packs else None
+
+    return result
 
 
 def list_history(limit: int = 50) -> list[dict[str, Any]]:
@@ -393,7 +796,7 @@ def list_sessions(limit: int = 30) -> list[dict[str, Any]]:
     conn = get_conn()
     rows = conn.execute(
         """
-        SELECT p.*, a.theme
+        SELECT p.*, a.theme, a.target_level, a.note, a.status AS paper_status
         FROM practice_sessions p
         LEFT JOIN assessments a ON a.id = p.paper_id
         ORDER BY p.started_at DESC
@@ -402,7 +805,15 @@ def list_sessions(limit: int = 30) -> list[dict[str, Any]]:
         (limit,),
     ).fetchall()
     conn.close()
-    return [dict(r) for r in rows]
+    out = []
+    for r in rows:
+        item = dict(r)
+        pid = item.get("paper_id") or ""
+        is_drill = str(pid).startswith("drill-") or "drill" in str(item.get("theme") or "")
+        item["paper_kind"] = "practice" if is_drill else "assessment"
+        item["kind_label"] = "练习" if is_drill else "考核"
+        out.append(item)
+    return out
 
 
 def _append_attempt_file(record: dict[str, Any]) -> None:

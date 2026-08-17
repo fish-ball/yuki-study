@@ -1,0 +1,36 @@
+{
+  "id": "day_2026-08-20",
+  "week_id": "week_2026-08-16",
+  "plan_date": "2026-08-20",
+  "title": "四 08-20",
+  "focus_text": "化学：空气与氧气预习",
+  "review_text": "方程式配平巩固",
+  "status": "pending",
+  "completed_at": null,
+  "base_item_count": 2,
+  "updated_at": "2026-08-17T22:32:00",
+  "items": [
+    {
+      "id": 94,
+      "day_plan_id": "day_2026-08-20",
+      "knowledge_id": "chemistry.air_water.air",
+      "role": "main",
+      "sort_order": 0,
+      "done": 0,
+      "done_at": null,
+      "name": "空气成分",
+      "level": "L0"
+    },
+    {
+      "id": 95,
+      "day_plan_id": "day_2026-08-20",
+      "knowledge_id": "chemistry.air_water.oxygen",
+      "role": "main",
+      "sort_order": 1,
+      "done": 0,
+      "done_at": null,
+      "name": "氧气制取与性质",
+      "level": "L0"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 subject: math
-updated_at: '2026-08-16'
+updated_at: '2026-08-17'
 items:
 - knowledge_id: math.equation
   level: L0
@@ -12,20 +12,20 @@ items:
   wrong_count: 0
   notes: ''
 - knowledge_id: math.equation.ineq
-  level: L0
-  last_assessed: null
+  level: L2
+  last_assessed: '2026-08-17'
   wrong_count: 0
-  notes: ''
+  notes: 考核通过晋级
 - knowledge_id: math.equation.linear
   level: L0
   last_assessed: null
   wrong_count: 0
   notes: ''
 - knowledge_id: math.equation.quadratic
-  level: L0
-  last_assessed: null
-  wrong_count: 0
-  notes: ''
+  level: L1
+  last_assessed: '2026-08-17'
+  wrong_count: 12
+  notes: 练习标记不会
 - knowledge_id: math.equation.system
   level: L0
   last_assessed: null
@@ -47,10 +47,10 @@ items:
   wrong_count: 0
   notes: ''
 - knowledge_id: math.function.linear
-  level: L0
-  last_assessed: null
+  level: L2
+  last_assessed: '2026-08-17'
   wrong_count: 0
-  notes: ''
+  notes: 考核通过晋级
 - knowledge_id: math.function.quadratic
   level: L0
   last_assessed: null
@@ -68,9 +68,9 @@ items:
   notes: ''
 - knowledge_id: math.function.quadratic.graph
   level: L0
-  last_assessed: null
-  wrong_count: 0
-  notes: ''
+  last_assessed: '2026-08-17'
+  wrong_count: 2
+  notes: 练习标记不会
 - knowledge_id: math.geometry
   level: L0
   last_assessed: null
@@ -83,9 +83,9 @@ items:
   notes: ''
 - knowledge_id: math.geometry.circle.angle
   level: L0
-  last_assessed: null
-  wrong_count: 0
-  notes: ''
+  last_assessed: '2026-08-17'
+  wrong_count: 1
+  notes: 练习标记不会
 - knowledge_id: math.geometry.circle.tangent
   level: L0
   last_assessed: null
@@ -112,10 +112,10 @@ items:
   wrong_count: 0
   notes: ''
 - knowledge_id: math.geometry.similar
-  level: L0
-  last_assessed: null
-  wrong_count: 0
-  notes: ''
+  level: L1
+  last_assessed: '2026-08-17'
+  wrong_count: 3
+  notes: 练习标记不会
 - knowledge_id: math.geometry.triangle
   level: L0
   last_assessed: null
@@ -138,9 +138,9 @@ items:
   notes: ''
 - knowledge_id: math.integrated.geometry_hard
   level: L0
-  last_assessed: null
-  wrong_count: 0
-  notes: ''
+  last_assessed: '2026-08-17'
+  wrong_count: 3
+  notes: 练习标记不会
 - knowledge_id: math.integrated.motion
   level: L0
   last_assessed: null
@@ -152,10 +152,10 @@ items:
   wrong_count: 0
   notes: ''
 - knowledge_id: math.number.factor
-  level: L0
-  last_assessed: null
+  level: L2
+  last_assessed: '2026-08-17'
   wrong_count: 0
-  notes: ''
+  notes: 考核通过晋级
 - knowledge_id: math.number.fraction
   level: L0
   last_assessed: null
@@ -192,7 +192,7 @@ items:
   wrong_count: 0
   notes: ''
 - knowledge_id: math.stats.probability
-  level: L0
-  last_assessed: null
+  level: L2
+  last_assessed: '2026-08-17'
   wrong_count: 0
-  notes: ''
+  notes: 考核通过晋级

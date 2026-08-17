@@ -1,0 +1,314 @@
+{
+  "id": "2026-08-17-math-exam-refresh-l3-182240",
+  "path": "assessments/2026-08-17-math-exam-refresh-l3-182240.md",
+  "subject_id": "math",
+  "theme": "exam-refresh-l3",
+  "date": "2026-08-17",
+  "minutes": 25,
+  "target_level": "L3",
+  "status": "ready",
+  "note": "考核 · 冲 L3 · 通过线 80%",
+  "questions": [
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182240__q01",
+      "qtype": "fill",
+      "stem": "【L3】用一句话概括「二次函数图像与性质」的核心（可写关键词）：______。",
+      "score": 4.0,
+      "sort_order": 1,
+      "explanation": "二次函数图像与性质。关键词围绕「二次函数图像与性质」的定义与判别。（冲L3）",
+      "answer_key": "二次函数图像与性质",
+      "answer_accept": [
+        "二次函数图像与性质"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.function.quadratic.graph"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182240__q02",
+      "qtype": "choice",
+      "stem": "关于「二次函数图像与性质」，正确的学习态度是（冲L3·选）（　　）",
+      "score": 4.0,
+      "sort_order": 2,
+      "explanation": "A。定义 + 练习 + 订正。（冲L3）",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "先抓定义与适用条件，再做变式题",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "只背名称，不做题",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "不会的题永远跳过",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "抄答案就算掌握",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.function.quadratic.graph"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182240__q03",
+      "qtype": "fill",
+      "stem": "【L3】本课主攻知识点「二次函数图像与性质」的 knowledge_id 是 ______。",
+      "score": 4.0,
+      "sort_order": 3,
+      "explanation": "math.function.quadratic.graph。对应 id：math.function.quadratic.graph。（冲L3）",
+      "answer_key": "math.function.quadratic.graph",
+      "answer_accept": [
+        "math.function.quadratic.graph"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.function.quadratic.graph"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182240__q04",
+      "qtype": "judge",
+      "stem": "学习「二次函数图像与性质」时，既要记住结论，也要能用自己的话解释含义。",
+      "score": 2.0,
+      "sort_order": 4,
+      "explanation": "对。理解才能应对变式。（冲L3）",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.function.quadratic.graph"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182240__q05",
+      "qtype": "judge",
+      "stem": "「相似三角形」属于中考相关考点，需要结合例题巩固。",
+      "score": 2.0,
+      "sort_order": 5,
+      "explanation": "对。（冲L3）",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.similar"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182240__q06",
+      "qtype": "fill",
+      "stem": "【L3】用一句话概括「相似三角形」的核心（可写关键词）：______。",
+      "score": 4.0,
+      "sort_order": 6,
+      "explanation": "相似三角形。关键词围绕「相似三角形」的定义与判别。（冲L3）",
+      "answer_key": "相似三角形",
+      "answer_accept": [
+        "相似三角形"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.similar"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182240__q07",
+      "qtype": "choice",
+      "stem": "关于「相似三角形」，正确的学习态度是（冲L3·选）（　　）",
+      "score": 4.0,
+      "sort_order": 7,
+      "explanation": "A。定义 + 练习 + 订正。（冲L3）",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "先抓定义与适用条件，再做变式题",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "只背名称，不做题",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "不会的题永远跳过",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "抄答案就算掌握",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.geometry.similar"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182240__q08",
+      "qtype": "fill",
+      "stem": "【L3】本课主攻知识点「相似三角形」的 knowledge_id 是 ______。",
+      "score": 4.0,
+      "sort_order": 8,
+      "explanation": "math.geometry.similar。对应 id：math.geometry.similar。（冲L3）",
+      "answer_key": "math.geometry.similar",
+      "answer_accept": [
+        "math.geometry.similar"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.similar"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182240__q09",
+      "qtype": "judge",
+      "stem": "学习「相似三角形」时，既要记住结论，也要能用自己的话解释含义。",
+      "score": 2.0,
+      "sort_order": 9,
+      "explanation": "对。理解才能应对变式。（冲L3）",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.similar"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182240__q10",
+      "qtype": "judge",
+      "stem": "「几何压轴」属于中考相关考点，需要结合例题巩固。",
+      "score": 2.0,
+      "sort_order": 10,
+      "explanation": "对。（冲L3）",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.integrated.geometry_hard"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182240__q11",
+      "qtype": "fill",
+      "stem": "【L3】用一句话概括「几何压轴」的核心（可写关键词）：______。",
+      "score": 4.0,
+      "sort_order": 11,
+      "explanation": "几何压轴。关键词围绕「几何压轴」的定义与判别。（冲L3）",
+      "answer_key": "几何压轴",
+      "answer_accept": [
+        "几何压轴"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.integrated.geometry_hard"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182240__q12",
+      "qtype": "choice",
+      "stem": "关于「几何压轴」，正确的学习态度是（冲L3·选）（　　）",
+      "score": 4.0,
+      "sort_order": 12,
+      "explanation": "A。定义 + 练习 + 订正。（冲L3）",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "先抓定义与适用条件，再做变式题",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "只背名称，不做题",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "不会的题永远跳过",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "抄答案就算掌握",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.integrated.geometry_hard"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182240__q13",
+      "qtype": "fill",
+      "stem": "【L3】本课主攻知识点「几何压轴」的 knowledge_id 是 ______。",
+      "score": 4.0,
+      "sort_order": 13,
+      "explanation": "math.integrated.geometry_hard。对应 id：math.integrated.geometry_hard。（冲L3）",
+      "answer_key": "math.integrated.geometry_hard",
+      "answer_accept": [
+        "math.integrated.geometry_hard"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.integrated.geometry_hard"
+      ]
+    },
+    {
+      "id": "2026-08-17-math-exam-refresh-l3-182240__q14",
+      "qtype": "judge",
+      "stem": "学习「几何压轴」时，既要记住结论，也要能用自己的话解释含义。",
+      "score": 2.0,
+      "sort_order": 14,
+      "explanation": "对。理解才能应对变式。（冲L3）",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.integrated.geometry_hard"
+      ]
+    }
+  ]
+}

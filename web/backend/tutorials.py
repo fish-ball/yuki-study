@@ -207,14 +207,23 @@ def get_tutorial(knowledge_id: str) -> dict[str, Any] | None:
 
 
 def list_tutorials(subject_id: str | None = None) -> list[dict[str, Any]]:
+    from .mastery_policy import (
+        format_practice_label,
+        is_practice_exempt,
+        load_policy,
+        practice_max_level,
+    )
+
     conn = get_conn()
     if subject_id:
         rows = conn.execute(
             """
             SELECT t.knowledge_id, t.subject_id, t.title, t.target_level, t.source,
-                   t.updated_at, t.path, k.name, k.exam_weight
+                   t.updated_at, t.path, t.version, k.name, k.exam_weight,
+                   m.level AS mastery_level
             FROM tutorials t
             JOIN knowledge_nodes k ON k.id = t.knowledge_id
+            LEFT JOIN mastery_items m ON m.knowledge_id = t.knowledge_id
             WHERE t.subject_id = ?
             ORDER BY t.knowledge_id
             """,
@@ -224,14 +233,37 @@ def list_tutorials(subject_id: str | None = None) -> list[dict[str, Any]]:
         rows = conn.execute(
             """
             SELECT t.knowledge_id, t.subject_id, t.title, t.target_level, t.source,
-                   t.updated_at, t.path, k.name, k.exam_weight
+                   t.updated_at, t.path, t.version, k.name, k.exam_weight,
+                   m.level AS mastery_level
             FROM tutorials t
             JOIN knowledge_nodes k ON k.id = t.knowledge_id
+            LEFT JOIN mastery_items m ON m.knowledge_id = t.knowledge_id
             ORDER BY t.subject_id, t.knowledge_id
             """
         ).fetchall()
     conn.close()
-    return [dict(r) for r in rows]
+    policy = load_policy()
+    pmax = practice_max_level(policy)
+    out: list[dict[str, Any]] = []
+    for r in rows:
+        item = dict(r)
+        cur = item.get("mastery_level") or "L0"
+        item["mastery_level"] = cur
+        label = format_practice_label(current_level=cur, policy=policy)
+        item["exempt"] = label["exempt"]
+        item["practice_max_level"] = pmax
+        item["goal_level"] = label["goal_level"]
+        if is_practice_exempt(cur, policy):
+            item["path_hint"] = "免练 · 请走考核冲更高档"
+            item["path_kind"] = "exempt"
+        elif cur == pmax:
+            item["path_hint"] = f"已达练习上限 {pmax} · 下一档靠考核"
+            item["path_kind"] = "assess"
+        else:
+            item["path_hint"] = f"练习可升至 {label['goal_level']}（上限 {pmax}）"
+            item["path_kind"] = "practice"
+        out.append(item)
+    return out
 
 
 def ensure_tutorial(

@@ -1,0 +1,25 @@
+{
+  "id": "day_2026-08-19",
+  "week_id": "week_2026-08-16",
+  "plan_date": "2026-08-19",
+  "title": "三 08-19",
+  "focus_text": "化学：化学方程式入门",
+  "review_text": "化学式书写练习",
+  "status": "pending",
+  "completed_at": null,
+  "base_item_count": 1,
+  "updated_at": "2026-08-17T22:32:00",
+  "items": [
+    {
+      "id": 93,
+      "day_plan_id": "day_2026-08-19",
+      "knowledge_id": "chemistry.basic.equation",
+      "role": "main",
+      "sort_order": 0,
+      "done": 0,
+      "done_at": null,
+      "name": "化学方程式书写与配平",
+      "level": "L0"
+    }
+  ]
+}

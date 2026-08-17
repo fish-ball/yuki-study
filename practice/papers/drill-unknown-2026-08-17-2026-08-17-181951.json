@@ -1,0 +1,144 @@
+{
+  "id": "drill-unknown-2026-08-17-2026-08-17-181951",
+  "path": "practice/papers/drill-unknown-2026-08-17-2026-08-17-181951.json",
+  "subject_id": "chemistry",
+  "theme": "不会专学 · 课后巩固",
+  "date": "2026-08-17",
+  "minutes": 20,
+  "target_level": "L2",
+  "status": "ready",
+  "note": "由「不会」标记生成；来源会话 71ce3738-c8b9-4e8a-8a8b-39fd63a1c050",
+  "questions": [
+    {
+      "id": "drill-unknown-2026-08-17-2026-08-17-181951__182011_q01",
+      "qtype": "choice",
+      "stem": "【巩固】下列变化属于物理变化的是（　　）",
+      "score": 4.0,
+      "sort_order": 1,
+      "explanation": "C。溶解一般看作物理变化（初中口径）；其余有新物质。",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "铁生锈",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "蜡烛燃烧",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "食盐溶于水",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "纸张燃烧",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.change"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-2026-08-17-181951__182011_q02",
+      "qtype": "fill",
+      "stem": "【巩固】物理变化与化学变化的根本区别是有没有 ______ 生成。",
+      "score": 4.0,
+      "sort_order": 2,
+      "explanation": "新物质。",
+      "answer_key": "新物质",
+      "answer_accept": [
+        "新物质"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.change"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-2026-08-17-181951__182011_q03",
+      "qtype": "choice",
+      "stem": "【巩固】下列属于化学变化的是（　　）",
+      "score": 4.0,
+      "sort_order": 3,
+      "explanation": "C。镁条燃烧生成氧化镁等新物质；其余无新物质。",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "水结成冰",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "酒精挥发",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "镁条燃烧",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "玻璃破碎",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.change"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-2026-08-17-181951__182011_q04",
+      "qtype": "choice",
+      "stem": "【巩固】下列属于化学变化的是（　　）",
+      "score": 4.0,
+      "sort_order": 4,
+      "explanation": "C。镁条燃烧生成氧化镁等新物质；其余无新物质。",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "水结成冰",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "酒精挥发",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "镁条燃烧",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "玻璃破碎",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.change"
+      ]
+    }
+  ]
+}

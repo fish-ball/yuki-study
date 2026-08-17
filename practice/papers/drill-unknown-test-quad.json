@@ -1,0 +1,122 @@
+{
+  "id": "drill-unknown-test-quad",
+  "path": "practice/papers/drill-unknown-test-quad.json",
+  "subject_id": "math",
+  "theme": "不会巩固 · 一元二次方程",
+  "date": "2026-08-17",
+  "minutes": 20,
+  "target_level": "L2",
+  "status": "ready",
+  "note": "单知识点巩固；来源会话 test；math.equation.quadratic",
+  "questions": [
+    {
+      "id": "drill-unknown-test-quad__183242_q01",
+      "qtype": "judge",
+      "stem": "若 Δ<0，则一元二次方程没有实数根。",
+      "score": 2.0,
+      "sort_order": 1,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.equation.quadratic"
+      ]
+    },
+    {
+      "id": "drill-unknown-test-quad__183242_q02",
+      "qtype": "fill",
+      "stem": "用求根公式时，判别式 Δ = ______。",
+      "score": 2.0,
+      "sort_order": 2,
+      "explanation": "b²-4ac",
+      "answer_key": "b²-4ac",
+      "answer_accept": [
+        "b^2-4ac",
+        "b²-4ac",
+        "b2-4ac"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.equation.quadratic"
+      ]
+    },
+    {
+      "id": "drill-unknown-test-quad__183242_q03",
+      "qtype": "choice",
+      "stem": "方程 x²=4 的解是（　　）",
+      "score": 4.0,
+      "sort_order": 3,
+      "explanation": "C。x=2 或 x=-2。",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "x=2",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "x=-2",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "x=±2",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "无实数解",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.equation.quadratic"
+      ]
+    },
+    {
+      "id": "drill-unknown-test-quad__183242_q04",
+      "qtype": "fill",
+      "stem": "方程 x²-5x+6=0 的两根是 ______ 和 ______（从小到大）。",
+      "score": 4.0,
+      "sort_order": 4,
+      "explanation": "2；3",
+      "answer_key": "2；3",
+      "answer_accept": [
+        "2",
+        "3"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.equation.quadratic"
+      ]
+    },
+    {
+      "id": "drill-unknown-test-quad__183242_q05",
+      "qtype": "judge",
+      "stem": "一元二次方程的一般形式可写成 ax²+bx+c=0（a≠0）。",
+      "score": 2.0,
+      "sort_order": 5,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.equation.quadratic"
+      ]
+    }
+  ]
+}

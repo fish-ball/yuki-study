@@ -132,11 +132,21 @@ body {
 }
 .stat-label { margin: 0; color: var(--muted); font-size: 0.9rem; }
 
-.bars { display: flex; gap: 4px; height: 10px; margin-top: 12px; border-radius: 999px; overflow: hidden; background: #ece7dc; }
-.bars span { display: block; height: 100%; }
-.l0 { background: #c4bdb0; }
-.l1 { background: #8aa4b8; }
-.l2 { background: #5b8f7a; }
+.bars {
+  display: flex;
+  gap: 2px;
+  height: 14px;
+  margin-top: 8px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #e4dfd4;
+  border: 1px solid rgba(47, 42, 36, 0.08);
+}
+.bars span { display: block; height: 100%; min-width: 0; }
+.bars-legend { margin: 8px 0 0; font-size: 0.8rem; }
+.l0 { background: #a89f90; }
+.l1 { background: #6f93ab; }
+.l2 { background: #4a7f6b; }
 .l3 { background: #0f6e56; }
 .l4 { background: #0b4f3d; }
 
@@ -374,6 +384,150 @@ textarea.plan-editor {
 .dialog-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 8px; }
 .dialog-actions .btn-primary { width: auto; }
 
+.score-hero {
+  background:
+    linear-gradient(135deg, rgba(15, 110, 86, 0.1), rgba(255, 253, 248, 0.9)),
+    var(--panel);
+}
+.score-hero-value { font-size: 2.8rem; margin: 8px 0 0; }
+.score-hero-bar, .plan-progress-bar {
+  margin-top: 14px;
+  height: 12px;
+  border-radius: 999px;
+  background: #ece7dc;
+  overflow: hidden;
+}
+.score-hero-bar span, .plan-progress-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #5b8f7a, var(--accent));
+}
+.plan-progress-bar.thin { height: 8px; margin-top: 8px; }
+
+.plan-box-label {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+  color: var(--ink);
+}
+.plan-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.plan-field {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.plan-field-wide { grid-column: 1 / -1; }
+.plan-readonly, .plan-input, .plan-textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ink);
+  padding: 12px 14px;
+  font: inherit;
+  line-height: 1.5;
+}
+.plan-readonly {
+  min-height: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  background: #faf8f3;
+}
+.plan-readonly-progress { min-height: auto; }
+
+.day-box-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 62vh;
+  overflow: auto;
+}
+.day-box {
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font: inherit;
+  cursor: pointer;
+  display: grid;
+  gap: 6px;
+}
+.day-box:hover { border-color: var(--accent); }
+.day-box.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: 0 0 0 3px rgba(15, 110, 86, 0.1);
+}
+.day-box.status-completed { background: #f3faf6; }
+.day-box-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}
+.day-box-meta { font-size: 0.85rem; color: var(--muted); }
+
+.plan-item-boxes {
+  display: grid;
+  gap: 10px;
+}
+.plan-item-box {
+  display: grid;
+  gap: 12px;
+  align-items: start;
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+}
+.plan-item-box.done {
+  background: var(--accent-soft);
+  border-color: transparent;
+}
+.plan-item-body { display: grid; gap: 4px; }
+.plan-item-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+
+.survey-box {
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+}
+.survey-box-inline {
+  margin-top: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+.survey-q {
+  margin: 0 0 10px;
+  font-size: 1.02rem;
+  color: var(--ink);
+}
+.survey-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.survey-options .btn-ghost { width: auto; }
+
+@media (max-width: 960px) {
+  .plan-fields { grid-template-columns: 1fr; }
+}
+
 /* 可汗风格练习 */
 .practice-layout {
   display: grid;
@@ -596,6 +750,108 @@ button.linkish:hover strong { color: var(--accent); text-decoration: underline; 
 .tutorial-answers summary {
   cursor: pointer;
   font-weight: 600;
+}
+
+.basics-body {
+  white-space: normal;
+  max-height: none;
+}
+.basics-body h2:first-child { margin-top: 0; }
+.basics-table-wrap {
+  overflow-x: auto;
+  margin: 0.75em 0 1.1em;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+.basics-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+  table-layout: fixed;
+}
+.basics-table th,
+.basics-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: middle;
+  word-break: break-word;
+  line-height: 1.45;
+}
+.basics-table th {
+  background: #f4f0e8;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.basics-table tbody tr:nth-child(even) td {
+  background: #faf8f4;
+}
+.basics-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.basics-table th:first-child,
+.basics-table td:first-child {
+  width: 4.5em;
+  text-align: center;
+  white-space: nowrap;
+}
+.basics-table td:last-child {
+  text-align: left;
+}
+
+.paper-card.has-progress {
+  border-color: var(--accent);
+}
+.active-progress-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  background: var(--accent-soft);
+  font-size: 0.9rem;
+}
+
+  border-color: var(--warn);
+  color: var(--warn);
+}
+.btn-dont-know:hover {
+  background: var(--warn-soft);
+}
+.unknown-kid-card {
+  margin: 10px 0;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+
+  opacity: 0.72;
+  border-style: dashed;
+}
+.paper-card.exempt strong {
+  color: var(--warn);
+}
+.learn-path-pill {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.learn-path-pill.assess {
+  background: var(--warn-soft);
+  color: var(--warn);
+}
+.learn-path-pill.exempt {
+  background: #eee;
+  color: var(--muted);
 }
 
 @media (max-width: 960px) {

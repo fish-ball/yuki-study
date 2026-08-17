@@ -1,0 +1,126 @@
+{
+  "id": "drill-unknown-2026-08-17-222241-02-chemistry_basic_element",
+  "path": "practice/papers/drill-unknown-2026-08-17-222241-02-chemistry_basic_element.json",
+  "subject_id": "chemistry",
+  "theme": "不会巩固 · 元素与元素符号",
+  "date": "2026-08-17",
+  "minutes": 20,
+  "target_level": "L2",
+  "status": "ready",
+  "note": "单知识点巩固；来源会话 5bae428d-a992-414f-9222-9d42a8260f30；chemistry.basic.element",
+  "questions": [
+    {
+      "id": "drill-unknown-2026-08-17-222241-02-chemistry_basic_element__222330_q01",
+      "qtype": "judge",
+      "stem": "元素符号 O 既可以表示氧元素，也可以表示一个氧原子。",
+      "score": 2.0,
+      "sort_order": 1,
+      "explanation": "对。元素符号有双重含义。",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.element"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-222241-02-chemistry_basic_element__222330_q02",
+      "qtype": "judge",
+      "stem": "双字母元素符号书写时，两个字母都要大写，例如氯写作 CL。",
+      "score": 2.0,
+      "sort_order": 2,
+      "explanation": "错。必须「首字母大写、第二个字母小写」，氯写作 Cl。",
+      "answer_key": "错",
+      "answer_accept": [
+        "错"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.element"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-222241-02-chemistry_basic_element__222330_q03",
+      "qtype": "choice",
+      "stem": "下列元素符号书写正确的是（　　）",
+      "score": 4.0,
+      "sort_order": 3,
+      "explanation": "C。A 应为 Ca；B 应为 Zn；D 应为 Al。",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "CA（钙）",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "zn（锌）",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "Mg（镁）",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "AL（铝）",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.element"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-222241-02-chemistry_basic_element__222330_q04",
+      "qtype": "fill",
+      "stem": "写出下列元素的元素符号：氢 ______；氧 ______；碳 ______；氮 ______。",
+      "score": 4.0,
+      "sort_order": 4,
+      "explanation": "H；O；C；N。",
+      "answer_key": "H；O；C；N",
+      "answer_accept": [
+        "H",
+        "O",
+        "C",
+        "N"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.element"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-17-222241-02-chemistry_basic_element__222330_q05",
+      "qtype": "fill",
+      "stem": "写出下列元素的元素符号：钠 ______；镁 ______；铝 ______；铁 ______；铜 ______。",
+      "score": 4.0,
+      "sort_order": 5,
+      "explanation": "Na；Mg；Al；Fe；Cu。注意双字母「一大一小」。",
+      "answer_key": "Na；Mg；Al；Fe；Cu",
+      "answer_accept": [
+        "Na",
+        "Mg",
+        "Al",
+        "Fe",
+        "Cu"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.element"
+      ]
+    }
+  ]
+}

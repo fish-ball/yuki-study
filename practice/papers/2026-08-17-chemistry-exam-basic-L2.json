@@ -1,0 +1,292 @@
+{
+  "id": "2026-08-17-chemistry-exam-basic-L2",
+  "path": "assessments/2026-08-17-chemistry-exam-basic-L2.md",
+  "subject_id": "chemistry",
+  "theme": "exam-basic-L2",
+  "date": "2026-08-17",
+  "minutes": 30,
+  "target_level": "L2",
+  "status": "ready",
+  "note": "考核卷·冲L2；题目与预习练习卷不重复；交卷按正确率晋级",
+  "paper_kind": "exam",
+  "questions": [
+    {
+      "id": "2026-08-17-chemistry-exam-basic-L2__q01",
+      "qtype": "choice",
+      "stem": "下列过程中，一定发生化学变化的是（　　）",
+      "score": 4.0,
+      "sort_order": 1,
+      "explanation": "C。电解水生成新物质氢气和氧气；A、B、D 均为物理变化或分离过程无新物质生成。",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "干冰升华降温",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "分离液态空气得到氧气",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "电解水得到氢气和氧气",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "过滤除去水中泥沙",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.change"
+      ]
+    },
+    {
+      "id": "2026-08-17-chemistry-exam-basic-L2__q02",
+      "qtype": "choice",
+      "stem": "关于元素符号「Cu」的说法正确的是（　　）",
+      "score": 4.0,
+      "sort_order": 2,
+      "explanation": "C。元素符号可表示元素，也可表示一个原子。",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "只能表示铜元素",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "只能表示一个铜原子",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "可表示铜元素，也可表示一个铜原子",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "表示两个铜原子",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.element"
+      ]
+    },
+    {
+      "id": "2026-08-17-chemistry-exam-basic-L2__q03",
+      "qtype": "choice",
+      "stem": "保持二氧化碳化学性质的微粒是（　　）",
+      "score": 4.0,
+      "sort_order": 3,
+      "explanation": "C。分子是保持物质化学性质的最小粒子。",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "碳原子",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "氧原子",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "二氧化碳分子",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "碳原子与氧原子",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.molecule"
+      ]
+    },
+    {
+      "id": "2026-08-17-chemistry-exam-basic-L2__q04",
+      "qtype": "choice",
+      "stem": "氧化镁中镁元素化合价为 +2、氧为 -2，其化学式为（　　）",
+      "score": 4.0,
+      "sort_order": 4,
+      "explanation": "C。交叉约简后化合价代数和为 0：$MgO$。",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "$MgO_2$",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "$Mg_2O$",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "$MgO$",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "$Mg_2O_2$",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.valence"
+      ]
+    },
+    {
+      "id": "2026-08-17-chemistry-exam-basic-L2__q05",
+      "qtype": "choice",
+      "stem": "下列叙述正确的是（　　）",
+      "score": 4.0,
+      "sort_order": 5,
+      "explanation": "C。化学变化中分子可分、原子不可分；A 结冰分子种类不变；B 原子种类不变；D 同种原子构成单质分子。",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "水结冰时分子种类改变",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "化学变化中原子种类一定改变",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "分子在化学变化中可分成原子",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "同种原子构成的分子一定是化合物分子",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.change",
+        "chemistry.basic.molecule"
+      ]
+    },
+    {
+      "id": "2026-08-17-chemistry-exam-basic-L2__q06",
+      "qtype": "fill",
+      "stem": "改正下列错误写法：钙写成 CA → ______；锌写成 zn → ______；铝写成 AL → ______。",
+      "score": 4.0,
+      "sort_order": 6,
+      "explanation": "Ca；Zn；Al",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.element"
+      ]
+    },
+    {
+      "id": "2026-08-17-chemistry-exam-basic-L2__q07",
+      "qtype": "fill",
+      "stem": "一个水分子含 ______ 个氢原子和 ______ 个氧原子；电解水时，不能再分的粒子是 ______。",
+      "score": 4.0,
+      "sort_order": 7,
+      "explanation": "2；1；原子",
+      "answer_key": "2；1；原子",
+      "answer_accept": [
+        "2",
+        "1",
+        "原子"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.molecule"
+      ]
+    },
+    {
+      "id": "2026-08-17-chemistry-exam-basic-L2__q08",
+      "qtype": "fill",
+      "stem": "写出氯化钠、二氧化碳的化学式：______；______。",
+      "score": 4.0,
+      "sort_order": 8,
+      "explanation": "NaCl；CO2",
+      "answer_key": "NaCl；CO2",
+      "answer_accept": [
+        "NaCl",
+        "CO2"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.valence"
+      ]
+    },
+    {
+      "id": "2026-08-17-chemistry-exam-basic-L2__q09",
+      "qtype": "fill",
+      "stem": "判断变化类型的本质依据是：是否有 ______ 生成。",
+      "score": 4.0,
+      "sort_order": 9,
+      "explanation": "新物质",
+      "answer_key": "新物质",
+      "answer_accept": [
+        "新物质"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.change"
+      ]
+    },
+    {
+      "id": "2026-08-17-chemistry-exam-basic-L2__q10",
+      "qtype": "short",
+      "stem": "小明说：「蜡烛燃烧时，石蜡熔化是化学变化，因为变热了。」请指出他的两处错误，并给出正确判断与依据。",
+      "score": 8.0,
+      "sort_order": 10,
+      "explanation": "评分要点：①「熔化」是物理变化（无新物质），不能因变热判化学变化；②燃烧才是化学变化（有新物质）。答出两处错误与正确依据即给分。",
+      "answer_key": "",
+      "answer_accept": [],
+      "auto_gradable": false,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.change",
+        "chemistry.basic.molecule"
+      ]
+    }
+  ]
+}

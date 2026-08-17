@@ -1,0 +1,276 @@
+{
+  "id": "2026-08-17-chemistry-exam-refresh-l3-173022",
+  "path": "assessments/2026-08-17-chemistry-exam-refresh-l3-173022.md",
+  "subject_id": "chemistry",
+  "theme": "exam-refresh-l3",
+  "date": "2026-08-17",
+  "minutes": 25,
+  "target_level": "L3",
+  "status": "ready",
+  "note": "考核 · 冲 L3 · 通过线 80%",
+  "questions": [
+    {
+      "id": "2026-08-17-chemistry-exam-refresh-l3-173022__q01",
+      "qtype": "choice",
+      "stem": "下列变化属于物理变化的是（冲L3·选）（　　）",
+      "score": 4.0,
+      "sort_order": 1,
+      "explanation": "C。溶解一般看作物理变化（初中口径）；其余有新物质。（冲L3）",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "铁生锈",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "蜡烛燃烧",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "食盐溶于水",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "纸张燃烧",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.change"
+      ]
+    },
+    {
+      "id": "2026-08-17-chemistry-exam-refresh-l3-173022__q02",
+      "qtype": "fill",
+      "stem": "【L3】物理变化与化学变化的根本区别是有没有 ______ 生成。",
+      "score": 4.0,
+      "sort_order": 2,
+      "explanation": "新物质。（冲L3）",
+      "answer_key": "新物质",
+      "answer_accept": [
+        "新物质"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.change"
+      ]
+    },
+    {
+      "id": "2026-08-17-chemistry-exam-refresh-l3-173022__q03",
+      "qtype": "judge",
+      "stem": "发光发热的变化一定是化学变化。",
+      "score": 2.0,
+      "sort_order": 3,
+      "explanation": "错。电灯发光发热是物理变化；判断关键仍是「有无新物质」。（冲L3）",
+      "answer_key": "错",
+      "answer_accept": [
+        "错"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.change"
+      ]
+    },
+    {
+      "id": "2026-08-17-chemistry-exam-refresh-l3-173022__q04",
+      "qtype": "choice",
+      "stem": "下列属于化学变化的是（冲L3·选）（　　）",
+      "score": 4.0,
+      "sort_order": 4,
+      "explanation": "C。镁条燃烧生成氧化镁等新物质；其余无新物质。（冲L3）",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "水结成冰",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "酒精挥发",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "镁条燃烧",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "玻璃破碎",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.change"
+      ]
+    },
+    {
+      "id": "2026-08-17-chemistry-exam-refresh-l3-173022__q05",
+      "qtype": "judge",
+      "stem": "有新物质生成的变化一定是化学变化。",
+      "score": 2.0,
+      "sort_order": 5,
+      "explanation": "对。化学变化的本质特征是生成新物质。（冲L3）",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.change"
+      ]
+    },
+    {
+      "id": "2026-08-17-chemistry-exam-refresh-l3-173022__q06",
+      "qtype": "fill",
+      "stem": "【L3】元素符号书写规则：一个字母时 ______ 写；两个字母时第一个字母 ______，第二个字母 ______。",
+      "score": 4.0,
+      "sort_order": 6,
+      "explanation": "大写；大写；小写。（冲L3）",
+      "answer_key": "大写；大写；小写",
+      "answer_accept": [
+        "大写",
+        "大写",
+        "小写"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.element"
+      ]
+    },
+    {
+      "id": "2026-08-17-chemistry-exam-refresh-l3-173022__q07",
+      "qtype": "choice",
+      "stem": "下列说法正确的是（冲L3·选）（　　）",
+      "score": 4.0,
+      "sort_order": 7,
+      "explanation": "C。A 应为 Fe；B 错（也可表示一个氦原子）；D 应为 Cl。（冲L3）",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "元素符号 fe 可以表示铁元素",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "元素符号 He 只表示氦元素，不表示原子",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "碳的元素符号是 C",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "氯的正确写法是 CL",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.element"
+      ]
+    },
+    {
+      "id": "2026-08-17-chemistry-exam-refresh-l3-173022__q08",
+      "qtype": "fill",
+      "stem": "【L3】写出下列元素的元素符号：钠 ______；镁 ______；铝 ______；铁 ______；铜 ______。",
+      "score": 4.0,
+      "sort_order": 8,
+      "explanation": "Na；Mg；Al；Fe；Cu。注意双字母「一大一小」。（冲L3）",
+      "answer_key": "Na；Mg；Al；Fe；Cu",
+      "answer_accept": [
+        "Na",
+        "Mg",
+        "Al",
+        "Fe",
+        "Cu"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.element"
+      ]
+    },
+    {
+      "id": "2026-08-17-chemistry-exam-refresh-l3-173022__q09",
+      "qtype": "fill",
+      "stem": "【L3】写出下列元素的元素符号：氢 ______；氧 ______；碳 ______；氮 ______。",
+      "score": 4.0,
+      "sort_order": 9,
+      "explanation": "H；O；C；N。（冲L3）",
+      "answer_key": "H；O；C；N",
+      "answer_accept": [
+        "H",
+        "O",
+        "C",
+        "N"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.element"
+      ]
+    },
+    {
+      "id": "2026-08-17-chemistry-exam-refresh-l3-173022__q10",
+      "qtype": "choice",
+      "stem": "下列元素符号书写正确的是（冲L3·选）（　　）",
+      "score": 4.0,
+      "sort_order": 10,
+      "explanation": "C。A 应为 Ca；B 应为 Zn；D 应为 Al。（冲L3）",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "CA（钙）",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "zn（锌）",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "Mg（镁）",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "AL（铝）",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.element"
+      ]
+    }
+  ]
+}

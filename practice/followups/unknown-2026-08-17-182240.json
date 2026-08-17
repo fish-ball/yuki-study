@@ -1,0 +1,66 @@
+{
+  "id": "unknown-2026-08-17-182240",
+  "created_at": "2026-08-17T18:26:21",
+  "session_id": "52cb320f-89c5-4ee0-8b1b-aee2a11d2d98",
+  "source_paper_id": "2026-08-16-math-diagnose",
+  "subject_id": "math",
+  "knowledge_ids": [
+    "math.equation.quadratic",
+    "math.geometry.circle.angle",
+    "math.function.quadratic.graph",
+    "math.geometry.similar",
+    "math.integrated.geometry_hard"
+  ],
+  "tutorials": [
+    {
+      "knowledge_id": "math.equation.quadratic",
+      "title": "一元二次方程",
+      "subject_id": "math",
+      "path": "knowledge/math/tutorials/math.equation.quadratic.md",
+      "has_tutorial": true
+    },
+    {
+      "knowledge_id": "math.geometry.circle.angle",
+      "title": "圆周角与圆心角",
+      "subject_id": "math",
+      "path": "knowledge/math/tutorials/math.geometry.circle.angle.md",
+      "has_tutorial": true
+    },
+    {
+      "knowledge_id": "math.function.quadratic.graph",
+      "title": "二次函数图像与性质",
+      "subject_id": "math",
+      "path": "knowledge/math/tutorials/math.function.quadratic.graph.md",
+      "has_tutorial": true
+    },
+    {
+      "knowledge_id": "math.geometry.similar",
+      "title": "相似三角形",
+      "subject_id": "math",
+      "path": "knowledge/math/tutorials/math.geometry.similar.md",
+      "has_tutorial": true
+    },
+    {
+      "knowledge_id": "math.integrated.geometry_hard",
+      "title": "几何压轴",
+      "subject_id": "math",
+      "path": "knowledge/math/tutorials/math.integrated.geometry_hard.md",
+      "has_tutorial": true
+    }
+  ],
+  "consolidation_paper": {
+    "id": "drill-unknown-2026-08-17-182240",
+    "theme": "不会专学 · 课后巩固",
+    "question_count": 20,
+    "knowledge_ids": [
+      "math.equation.quadratic",
+      "math.geometry.circle.angle",
+      "math.function.quadratic.graph",
+      "math.geometry.similar",
+      "math.integrated.geometry_hard"
+    ],
+    "label": "课后巩固 · 5 点 · 20 题"
+  },
+  "title": "不会专学 · 2026-08-17（5 个知识点）",
+  "status": "open"
+}

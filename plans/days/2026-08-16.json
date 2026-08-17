@@ -1,0 +1,36 @@
+{
+  "id": "day_2026-08-16",
+  "week_id": "week_2026-08-16",
+  "plan_date": "2026-08-16",
+  "title": "日 08-16",
+  "focus_text": "化学：变化 + 元素符号",
+  "review_text": "本课小测交卷批改",
+  "status": "pending",
+  "completed_at": null,
+  "base_item_count": 2,
+  "updated_at": "2026-08-17T22:32:00",
+  "items": [
+    {
+      "id": 89,
+      "day_plan_id": "day_2026-08-16",
+      "knowledge_id": "chemistry.basic.change",
+      "role": "main",
+      "sort_order": 0,
+      "done": 0,
+      "done_at": null,
+      "name": "物理变化与化学变化",
+      "level": "L4"
+    },
+    {
+      "id": 90,
+      "day_plan_id": "day_2026-08-16",
+      "knowledge_id": "chemistry.basic.element",
+      "role": "main",
+      "sort_order": 1,
+      "done": 0,
+      "done_at": null,
+      "name": "元素与元素符号",
+      "level": "L4"
+    }
+  ]
+}

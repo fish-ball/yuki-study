@@ -1,0 +1,69 @@
+{
+  "id": "day_2026-08-22",
+  "week_id": "week_2026-08-16",
+  "plan_date": "2026-08-22",
+  "title": "六 08-22",
+  "focus_text": "化学：基本概念周末验收",
+  "review_text": "目标 L1→尝试冲 L2 小题",
+  "status": "pending",
+  "completed_at": null,
+  "base_item_count": 5,
+  "updated_at": "2026-08-17T22:32:00",
+  "items": [
+    {
+      "id": 98,
+      "day_plan_id": "day_2026-08-22",
+      "knowledge_id": "chemistry.basic.change",
+      "role": "main",
+      "sort_order": 0,
+      "done": 0,
+      "done_at": null,
+      "name": "物理变化与化学变化",
+      "level": "L4"
+    },
+    {
+      "id": 99,
+      "day_plan_id": "day_2026-08-22",
+      "knowledge_id": "chemistry.basic.element",
+      "role": "main",
+      "sort_order": 1,
+      "done": 0,
+      "done_at": null,
+      "name": "元素与元素符号",
+      "level": "L4"
+    },
+    {
+      "id": 100,
+      "day_plan_id": "day_2026-08-22",
+      "knowledge_id": "chemistry.basic.equation",
+      "role": "main",
+      "sort_order": 2,
+      "done": 0,
+      "done_at": null,
+      "name": "化学方程式书写与配平",
+      "level": "L0"
+    },
+    {
+      "id": 101,
+      "day_plan_id": "day_2026-08-22",
+      "knowledge_id": "chemistry.basic.molecule",
+      "role": "main",
+      "sort_order": 3,
+      "done": 0,
+      "done_at": null,
+      "name": "分子原子离子",
+      "level": "L2"
+    },
+    {
+      "id": 102,
+      "day_plan_id": "day_2026-08-22",
+      "knowledge_id": "chemistry.basic.valence",
+      "role": "main",
+      "sort_order": 4,
+      "done": 0,
+      "done_at": null,
+      "name": "化合价与化学式",
+      "level": "L0"
+    }
+  ]
+}
