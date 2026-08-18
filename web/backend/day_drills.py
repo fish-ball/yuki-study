@@ -43,9 +43,9 @@ def ensure_day_drills(
     """为指定日计划的每个知识点生成/补齐练习卷（含题目）。
 
     force_refresh=True 时：清空旧题并按题库重出（含已完成卷，便于「刷新题目」）。
-    已达练习上限（含）的知识点：不新建、不刷新，并自动标完成以免卡住日计划。
+    已达练习上限但未到 L4：不新建练习，改走考核；到顶则记完成。
     """
-    from .mastery_policy import is_practice_exempt, load_policy
+    from .mastery_policy import is_assessment_at_cap, is_practice_exempt, load_policy
     from .practice import _set_paper_status
 
     plan_date = plan_date or date.today().isoformat()
@@ -95,34 +95,39 @@ def ensure_day_drills(
             "SELECT * FROM day_drills WHERE id = ?", (drill_id,)
         ).fetchone()
 
-        # 已达练习最高档：不刷新、不新建；有旧卷则标完成并下架
-        if at_cap:
+        # 已达练习最高档但未到 L4：不刷练习，留给考核；到顶则记完成
+        if is_assessment_at_cap(cur_lv):
             skipped += 1
+            conn.execute(
+                """
+                UPDATE day_plan_items
+                SET done = 1, done_at = COALESCE(done_at, ?)
+                WHERE day_plan_id = ? AND knowledge_id = ?
+                """,
+                (now, day["id"], kid),
+            )
             if existing:
-                if existing["status"] != "completed" or force_refresh:
-                    conn.execute(
-                        """
-                        UPDATE day_drills
-                        SET status = 'completed', completed_at = COALESCE(completed_at, ?),
-                            updated_at = ?
-                        WHERE id = ?
-                        """,
-                        (now, now, drill_id),
-                    )
                 conn.execute(
                     """
-                    UPDATE day_plan_items
-                    SET done = 1, done_at = COALESCE(done_at, ?)
-                    WHERE day_plan_id = ? AND knowledge_id = ?
+                    UPDATE day_drills
+                    SET status = 'completed', completed_at = COALESCE(completed_at, ?),
+                        updated_at = ?
+                    WHERE id = ?
                     """,
-                    (now, day["id"], kid),
+                    (now, now, drill_id),
                 )
                 try:
                     _set_paper_status(conn, existing["paper_id"] or paper_id, "retired")
                 except (KeyError, TypeError, ValueError):
                     pass
-                row = conn.execute("SELECT * FROM day_drills WHERE id = ?", (drill_id,)).fetchone()
-                drills.append(dict(row))
+            continue
+        if at_cap:
+            skipped += 1
+            if existing:
+                try:
+                    _set_paper_status(conn, existing["paper_id"] or paper_id, "retired")
+                except (KeyError, TypeError, ValueError):
+                    pass
             continue
 
         # 已完成且未强制刷新：保留
@@ -332,7 +337,7 @@ def reopen_incomplete_drills(plan_date: str | None = None) -> dict[str, Any]:
 
     已达练习上限的知识点：保持完成（免练），不撤回。
     """
-    from .mastery_policy import is_practice_exempt, load_policy
+    from .mastery_policy import is_assessment_at_cap, is_practice_exempt, load_policy
 
     plan_date = plan_date or date.today().isoformat()
     conn = get_conn()
@@ -352,8 +357,19 @@ def reopen_incomplete_drills(plan_date: str | None = None) -> dict[str, Any]:
             (row["knowledge_id"],),
         ).fetchone()
         cur_lv = m["level"] if m else "L0"
-        # 已达练习上限：免练，不撤回
+        # 已到 L4：保持完成
+        if is_assessment_at_cap(cur_lv):
+            continue
+        # 免练但未真正考核：日计划条目不算完成
         if is_practice_exempt(cur_lv, policy):
+            conn.execute(
+                """
+                UPDATE day_plan_items
+                SET done = 0, done_at = NULL
+                WHERE day_plan_id = ? AND knowledge_id = ? AND done = 1
+                """,
+                (row["day_plan_id"], row["knowledge_id"]),
+            )
             continue
         if session_covers_paper(conn, row["last_session_id"], row["paper_id"]):
             continue
@@ -1031,8 +1047,20 @@ def _q(
 
 def _bank_radical() -> list[dict[str, Any]]:
     return [
-        _q("judge", "二次根式被开方数必须是非负数。", "对", explanation="对。在实数范围内，被开方数 ≥ 0。"),
-        _q("fill", "化简：√16 = ______。", "4", accept=["4"], explanation="√16=4。", score=2),
+        _q(
+            "judge",
+            "二次根式被开方数必须是非负数。",
+            "对",
+            explanation="【考点】二次根式的定义。\n【思路】二次根式 √a 要求 a≥0，否则在实数范围内无意义。所以这句话正确。\n【易错】不要和三次根式搞混：∛a 的被开方数可以是负数。",
+        ),
+        _q(
+            "fill",
+            "化简：√16 = ______。",
+            "4",
+            accept=["4"],
+            explanation="【考点】完全平方式的化简。\n【思路】16=4²，且 4>0，所以 √16=4。\n【易错】不要写成 ±4。二次根式 √ 表示非负算术平方根，只取 4。",
+            score=2,
+        ),
         _q(
             "choice",
             "下列各式中是二次根式的是（　　）",
@@ -1044,18 +1072,41 @@ def _bank_radical() -> list[dict[str, Any]]:
                 {"label": "D", "content": "√a（a 可为任意实数）"},
             ],
             accept=["B"],
-            explanation="B。√9 被开方数为非负；A 在实数内无意义；C 是三次根式；D 当 a<0 不是二次根式。",
+            explanation="【考点】二次根式：形如 √a 且 a≥0。\n【思路】B 的 √9 被开方数 9≥0，是二次根式。A 被开方数为负，实数内无意义；C 是三次根式；D 中 a 可为负数，不保证是二次根式。\n【易错】看见根号就当成二次根式；三次根式、被开方数为负都不算。",
             score=4,
         ),
-        _q("fill", "√(a²) = ______（a≥0）。", "a", accept=["a"], explanation="a≥0 时 √(a²)=a。"),
-        _q("judge", "√2 + √8 = √10。", "错", explanation="错。√8=2√2，故 √2+√8=3√2，不等于 √10。"),
+        _q(
+            "fill",
+            "√(a²) = ______（a≥0）。",
+            "a",
+            accept=["a"],
+            explanation="【考点】√(a²)=|a|。\n【思路】题目已限定 a≥0，所以 |a|=a，故 √(a²)=a。\n【易错】忘记绝对值：a 为负时应取 -a，本题因 a≥0 才直接等于 a。",
+        ),
+        _q(
+            "judge",
+            "√2 + √8 = √10。",
+            "错",
+            explanation="【考点】二次根式加减要先化成同类根式。\n【思路】√8=√(4×2)=2√2，所以 √2+√8=√2+2√2=3√2，不等于 √10。根式一般不能直接把被开方数相加。\n【易错】误用 √a+√b=√(a+b)。只有在特殊情况下才可能相等，这里不相等。",
+        ),
     ]
 
 
 def _bank_quadratic_eq() -> list[dict[str, Any]]:
     return [
-        _q("judge", "一元二次方程的一般形式可写成 ax²+bx+c=0（a≠0）。", "对"),
-        _q("fill", "方程 x²-5x+6=0 的两根是 ______ 和 ______（从小到大）。", "2；3", accept=["2", "3"], score=4),
+        _q(
+            "judge",
+            "一元二次方程的一般形式可写成 ax²+bx+c=0（a≠0）。",
+            "对",
+            explanation="【考点】一元二次方程的一般式。\n【思路】只含一个未知数，未知数最高次数是 2，所以二次项系数 a 必须不为 0。b、c 可以为 0。\n【易错】漏写 a≠0。若 a=0 就变成一次方程或恒等式，不再是一元二次方程。",
+        ),
+        _q(
+            "fill",
+            "方程 x²-5x+6=0 的两根是 ______ 和 ______（从小到大）。",
+            "2；3",
+            accept=["2", "3"],
+            score=4,
+            explanation="【考点】因式分解法解一元二次方程。\n【思路】x²-5x+6=(x-2)(x-3)=0，所以 x-2=0 或 x-3=0，两根为 2 和 3。也可用求根公式：Δ=25-24=1，x=(5±1)/2。\n【易错】只写出一个根，或没按从小到大填写。",
+        ),
         _q(
             "choice",
             "方程 x²=4 的解是（　　）",
@@ -1067,18 +1118,41 @@ def _bank_quadratic_eq() -> list[dict[str, Any]]:
                 {"label": "D", "content": "无实数解"},
             ],
             accept=["C"],
-            explanation="C。x=2 或 x=-2。",
+            explanation="【考点】两边开平方或移项因式分解。\n【思路】x²-4=0，(x-2)(x+2)=0，得 x=2 或 x=-2，即 x=±2。A、B 都只写了一半；D 错，Δ=16>0 有两个实根。\n【易错】开平方漏掉负根，只写 x=2。",
             score=4,
         ),
-        _q("fill", "用求根公式时，判别式 Δ = ______。", "b²-4ac", accept=["b^2-4ac", "b²-4ac", "b2-4ac"]),
-        _q("judge", "若 Δ<0，则一元二次方程没有实数根。", "对"),
+        _q(
+            "fill",
+            "用求根公式时，判别式 Δ = ______。",
+            "b²-4ac",
+            accept=["b^2-4ac", "b²-4ac", "b2-4ac"],
+            explanation="【考点】求根公式与判别式。\n【思路】一般式 ax²+bx+c=0（a≠0），Δ=b²-4ac。Δ>0 两不等实根，Δ=0 两相等实根，Δ<0 无实根。\n【易错】写成 4ac-b²，或漏掉平方。",
+        ),
+        _q(
+            "judge",
+            "若 Δ<0，则一元二次方程没有实数根。",
+            "对",
+            explanation="【考点】判别式与根的情况。\n【思路】实数范围内，Δ<0 时求根公式里根号下为负，没有实数根。\n【易错】和「没有根」混淆：在复数里可以有根，初中说「没有实数根」即可。",
+        ),
     ]
 
 
 def _bank_linear_fn() -> list[dict[str, Any]]:
     return [
-        _q("judge", "一次函数的一般式可写成 y=kx+b（k≠0）。", "对"),
-        _q("fill", "直线 y=2x+1 的斜率是 ______，纵截距是 ______。", "2；1", accept=["2", "1"], score=4),
+        _q(
+            "judge",
+            "一次函数的一般式可写成 y=kx+b（k≠0）。",
+            "对",
+            explanation="【考点】一次函数的解析式。\n【思路】自变量次数为 1，所以 k 不能为 0。k 是斜率，b 是纵截距。\n【易错】漏写 k≠0。k=0 时 y=b 是常函数，不是一次函数。",
+        ),
+        _q(
+            "fill",
+            "直线 y=2x+1 的斜率是 ______，纵截距是 ______。",
+            "2；1",
+            accept=["2", "1"],
+            score=4,
+            explanation="【考点】y=kx+b 中 k、b 的意义。\n【思路】与 y=2x+1 对照：k=2（斜率），b=1（与 y 轴交于 (0,1)）。\n【易错】把斜率和截距写反；纵截距是 1 不是 (0,1) 这个点（填空要填数）。",
+        ),
         _q(
             "choice",
             "函数 y=-3x+2 的图像经过（　　）",
@@ -1090,11 +1164,22 @@ def _bank_linear_fn() -> list[dict[str, Any]]:
                 {"label": "D", "content": "只过原点"},
             ],
             accept=["A"],
-            explanation="A。k=-3<0，b=2>0，经过一、二、四象限。",
+            explanation="【考点】一次函数 y=kx+b 的图象位置。\n【思路】k=-3<0，直线从左上到右下；b=2>0，与 y 轴正半轴相交。因此经过第一、二、四象限，不过第三象限，也不过原点。B 是正比例函数 k>0 的情形；C 是过原点且 k<0；D 要求 b=0。\n【易错】看见 k<0 就选第二、四象限，那是 b=0 的正比例函数。",
             score=4,
         ),
-        _q("fill", "若一次函数过原点，则 b = ______。", "0", accept=["0"]),
-        _q("judge", "正比例函数是一次函数的特例（b=0）。", "对"),
+        _q(
+            "fill",
+            "若一次函数过原点，则 b = ______。",
+            "0",
+            accept=["0"],
+            explanation="【考点】一次函数过原点的条件。\n【思路】点 (0,0) 代入 y=kx+b，得 b=0。这时就是正比例函数 y=kx（k≠0）。\n【易错】写成 k=0。k=0 不是一次函数。",
+        ),
+        _q(
+            "judge",
+            "正比例函数是一次函数的特例（b=0）。",
+            "对",
+            explanation="【考点】正比例函数与一次函数的关系。\n【思路】正比例函数 y=kx（k≠0）就是一次函数 y=kx+b 中 b=0 的情况。一次函数范围更大。\n【易错】说成「一次函数都是正比例函数」——反了，只有过原点的才是。",
+        ),
     ]
 
 
@@ -1123,8 +1208,19 @@ def _bank_quad_graph() -> list[dict[str, Any]]:
 
 def _bank_circle_angle() -> list[dict[str, Any]]:
     return [
-        _q("judge", "同弧所对的圆周角等于圆心角的一半。", "对"),
-        _q("fill", "若圆心角是 80°，则它所对的圆周角是 ______°。", "40", accept=["40", "40°"]),
+        _q(
+            "judge",
+            "同弧所对的圆周角等于圆心角的一半。",
+            "对",
+            explanation="【考点】圆周角定理。\n【思路】一条弧所对的圆心角是圆周角的 2 倍，所以圆周角 = 圆心角 / 2。必须是同一条弧。\n【易错】把「同弧」看成「等弧」时也可以，但不同弧不能直接用这个倍数关系。",
+        ),
+        _q(
+            "fill",
+            "若圆心角是 80°，则它所对的圆周角是 ______°。",
+            "40",
+            accept=["40", "40°"],
+            explanation="【考点】同弧：圆周角是圆心角的一半。\n【思路】圆周角 = 80° ÷ 2 = 40°。\n【易错】误乘 2 写成 160°，那是「已知圆周角求圆心角」。",
+        ),
         _q(
             "choice",
             "直径所对的圆周角是（　　）",
@@ -1136,11 +1232,22 @@ def _bank_circle_angle() -> list[dict[str, Any]]:
                 {"label": "D", "content": "平角"},
             ],
             accept=["B"],
-            explanation="B。直径所对圆周角是直角。",
+            explanation="【考点】推论：直径所对的圆周角是直角。\n【思路】直径所对圆心角是 180°（平角），圆周角是它的一半，等于 90°。A、C 是劣弧或优弧所对的情况；D 是直径所对圆心角，不是圆周角。\n【易错】记成「直径所对圆周角是平角」。平角是圆心角。",
             score=4,
         ),
-        _q("judge", "同圆中，相等的圆周角所对的弧相等。", "对"),
-        _q("fill", "半圆（或直径）所对圆周角等于 ______°。", "90", accept=["90", "90°"]),
+        _q(
+            "judge",
+            "同圆中，相等的圆周角所对的弧相等。",
+            "对",
+            explanation="【考点】圆周角定理的推论：在同圆或等圆中，相等的圆周角所对的弧相等。\n【思路】圆周角相等 → 所对圆心角相等 → 所对弧相等。\n【易错】漏掉「同圆或等圆」这个前提。",
+        ),
+        _q(
+            "fill",
+            "半圆（或直径）所对圆周角等于 ______°。",
+            "90",
+            accept=["90", "90°"],
+            explanation="【考点】半圆（直径）所对圆周角是直角。\n【思路】半圆对应圆心角 180°，圆周角取其一半，得 90°。\n【易错】填 180。那是半圆所对的圆心角。",
+        ),
     ]
 
 
@@ -1239,7 +1346,13 @@ def _bank_ineq() -> list[dict[str, Any]]:
 def _bank_geometry_hard() -> list[dict[str, Any]]:
     return [
         _q("judge", "几何压轴常综合相似、圆、三角函数或坐标法。", "对"),
-        _q("fill", "直角三角形中，若两直角边为 3、4，则斜边是 ______。", "5", accept=["5"]),
+        _q(
+            "fill",
+            "直角三角形中，若两直角边为 3、4，则斜边是 ______。",
+            "5",
+            accept=["5"],
+            explanation="【考点】勾股定理。\n【思路】3²+4²=9+16=25=5²，斜边是 5。\n【易错】直角边一变就要重算，不能一律写 5。",
+        ),
         _q(
             "choice",
             "解决综合几何题较稳妥的第一步通常是（　　）",

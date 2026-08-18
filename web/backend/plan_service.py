@@ -309,11 +309,17 @@ def rebuild_days_from_week(content_md: str | None = None, force: bool = False) -
                 now,
             ),
         )
-        # 若 force 或该日尚无条目，重建条目；否则补齐周计划中新增知识点
+        # 若 force / 尚无条目 / 未开始的未来日：按周计划重写知识点（可多个）
         existing = conn.execute(
             "SELECT COUNT(*) AS c FROM day_plan_items WHERE day_plan_id = ?", (did,)
         ).fetchone()["c"]
-        if force or existing == 0:
+        today_s = date.today().isoformat()
+        replace_items = (
+            force
+            or existing == 0
+            or (status == "pending" and day["plan_date"] > today_s and kids)
+        )
+        if replace_items:
             conn.execute("DELETE FROM day_plan_items WHERE day_plan_id = ?", (did,))
             for i, kid in enumerate(kids):
                 was_done = 1 if kid in old_done.get(day["plan_date"], set()) else 0
@@ -438,6 +444,26 @@ def get_plan_bundle(conn=None) -> dict[str, Any]:
         ]
         total = len(items)
         done = sum(1 for x in items if x["done"])
+        from .mastery_policy import (
+            allow_skip_practice,
+            is_assessment_at_cap,
+            is_practice_exempt,
+            load_policy,
+        )
+
+        policy = load_policy()
+        skip_ok = allow_skip_practice(policy)
+        for it in items:
+            lv = it.get("level") or "L0"
+            if it.get("done"):
+                it["path"] = "done"
+            elif is_assessment_at_cap(lv):
+                it["path"] = "cap"
+            elif is_practice_exempt(lv, policy):
+                it["path"] = "assess"
+            else:
+                it["path"] = "practice"
+            it["allow_skip"] = bool(skip_ok and not is_assessment_at_cap(lv) and not it.get("done"))
         days.append(
             {
                 **dict(d),
@@ -489,10 +515,7 @@ def get_plan_bundle(conn=None) -> dict[str, Any]:
 
 
 def _build_pending_survey(conn, today_plan: dict[str, Any]) -> dict[str, Any] | None:
-    """今日知识点练习全部真正完成后，才弹出负荷问卷。"""
-    from .day_drills import ensure_drill_tables
-
-    ensure_drill_tables(conn)
+    """今日知识点任务全部完成后，才弹出负荷问卷（练习或考核均可）。"""
     day_id = today_plan["id"]
     plan_date = today_plan["plan_date"]
     item_n = conn.execute(
@@ -500,14 +523,6 @@ def _build_pending_survey(conn, today_plan: dict[str, Any]) -> dict[str, Any] | 
         (day_id,),
     ).fetchone()["c"]
     if item_n <= 0:
-        return None
-    drill_rows = conn.execute(
-        "SELECT status FROM day_drills WHERE day_plan_id = ?",
-        (day_id,),
-    ).fetchall()
-    if len(drill_rows) < item_n:
-        return None
-    if any(r["status"] != "completed" for r in drill_rows):
         return None
     done_items = conn.execute(
         "SELECT COUNT(*) AS c FROM day_plan_items WHERE day_plan_id = ? AND done = 1",
@@ -519,7 +534,7 @@ def _build_pending_survey(conn, today_plan: dict[str, Any]) -> dict[str, Any] | 
         "day_plan_id": day_id,
         "plan_date": plan_date,
         "step": "volume",
-        "question": "今日练习已全部完成。今天的内容量如何？",
+        "question": "今日学习任务已全部完成。今天的内容量如何？（过少会多安排知识点，而不是加练习套数）",
         "options": [
             {"value": "too_much", "label": "过多"},
             {"value": "ok", "label": "适中"},
@@ -570,6 +585,12 @@ def bootstrap_plan(plan_date: str | None = None) -> dict[str, Any]:
         ensure_day_drills(plan_date)
     except ValueError:
         pass
+    try:
+        from .assessment_progress import ensure_day_assessments
+
+        ensure_day_assessments(plan_date)
+    except (OSError, RuntimeError, ValueError):
+        pass
 
     return get_plan_bundle()
 
@@ -601,6 +622,47 @@ def toggle_day_item(day_plan_id: str, knowledge_id: str, done: bool | None = Non
     _export_day_json(conn, day_plan_id)
     conn.close()
     return get_plan_bundle()
+
+
+def mark_day_items_done_for_kids(knowledge_ids: list[str], plan_date: str | None = None) -> int:
+    """考核或跳过练习完成后，把当日对应知识点标为已完成。"""
+    if not knowledge_ids:
+        return 0
+    plan_date = plan_date or date.today().isoformat()
+    conn = get_conn()
+    ensure_plan_tables(conn)
+    day = conn.execute("SELECT id FROM day_plans WHERE plan_date = ?", (plan_date,)).fetchone()
+    if not day:
+        conn.close()
+        return 0
+    now = datetime.now().isoformat(timespec="seconds")
+    n = 0
+    for kid in knowledge_ids:
+        cur = conn.execute(
+            """
+            UPDATE day_plan_items
+            SET done = 1, done_at = COALESCE(done_at, ?)
+            WHERE day_plan_id = ? AND knowledge_id = ?
+            """,
+            (now, day["id"], kid),
+        )
+        n += int(cur.rowcount or 0)
+    if n:
+        conn.execute(
+            """
+            UPDATE day_plans
+            SET status = CASE WHEN status = 'completed' THEN status ELSE 'in_progress' END,
+                updated_at = ?
+            WHERE id = ?
+            """,
+            (now, day["id"]),
+        )
+        conn.commit()
+        _export_day_json(conn, day["id"])
+    else:
+        conn.commit()
+    conn.close()
+    return n
 
 
 def update_day_plan_fields(
@@ -846,7 +908,7 @@ def submit_plan_survey(
     msg = "问卷已保存，今日内容已按你的反馈调整"
     if want_rescale:
         msg += "，并已同步本周其余日子"
-    msg += "。请继续完成「练习」中的待练题目。"
+    msg += "。请继续完成新增知识点（学教程或考核），不是再刷同一套练习。"
     return {
         "done": True,
         "message": msg,
@@ -870,9 +932,10 @@ def _decrease_day_by_two_fifths(conn, day_plan_id: str) -> int:
         ).fetchall()
     ]
     n = len(items)
-    if n <= 1:
+    min_keep = 2
+    if n <= min_keep:
         return 0
-    remove_n = min(n - 1, max(1, int(math.ceil(n * 2 / 5))))
+    remove_n = min(n - min_keep, max(1, int(math.ceil(n * 2 / 5))))
     to_remove = items[:remove_n]
     for it in to_remove:
         conn.execute("DELETE FROM day_plan_items WHERE id = ?", (it["id"],))
@@ -922,7 +985,7 @@ def _increase_day_by_two_fifths(conn, day_plan_id: str) -> int:
         (day_plan_id,),
     ).fetchall()
     n = len(items)
-    add_n = max(1, int(math.ceil(n * 2 / 5))) if n else 2
+    add_n = max(2, int(math.ceil(n * 2 / 5))) if n else 2
     existing = {r["knowledge_id"] for r in items}
     day = conn.execute("SELECT * FROM day_plans WHERE id = ?", (day_plan_id,)).fetchone()
 
@@ -949,9 +1012,10 @@ def _increase_day_by_two_fifths(conn, day_plan_id: str) -> int:
             SELECT m.knowledge_id
             FROM mastery_items m
             JOIN knowledge_nodes k ON k.id = m.knowledge_id
-            WHERE m.level IN ('L0', 'L1') AND k.exam_weight = 'high'
+            WHERE m.level IN ('L0', 'L1', 'L2', 'L3') AND k.exam_weight = 'high'
               AND k.parent_id IS NOT NULL
-            ORDER BY m.wrong_count DESC, k.id
+            ORDER BY CASE m.level WHEN 'L3' THEN 0 WHEN 'L2' THEN 1 WHEN 'L1' THEN 2 ELSE 3 END,
+                     m.wrong_count DESC, k.id
             LIMIT 50
             """
         ).fetchall():

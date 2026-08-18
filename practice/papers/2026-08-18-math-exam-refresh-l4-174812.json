@@ -1,0 +1,85 @@
+{
+  "id": "2026-08-18-math-exam-refresh-l4-174812",
+  "path": "assessments/2026-08-18-math-exam-refresh-l4-174812.md",
+  "subject_id": "math",
+  "theme": "exam-refresh-l4",
+  "date": "2026-08-18",
+  "minutes": 25,
+  "target_level": "L4",
+  "status": "ready",
+  "note": "考核 · 冲 L4 · 通过线 80%",
+  "questions": [
+    {
+      "id": "2026-08-18-math-exam-refresh-l4-174812__q01",
+      "qtype": "choice",
+      "stem": "判定两三角形相似，下列可用的是（易错）（　　）",
+      "score": 4.0,
+      "sort_order": 1,
+      "explanation": "A。AA 可判定相似",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "两角对应相等",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "三边对应相等（全等）才能相似",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "一角相等即可",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "面积相等必相似",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.geometry.similar"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l4-174812__q02",
+      "qtype": "fill",
+      "stem": "若两个三角形相似比为 2:2，则面积比为 ______。",
+      "score": 4.0,
+      "sort_order": 2,
+      "explanation": "4:9",
+      "answer_key": "4:9",
+      "answer_accept": [
+        "4:9"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.similar"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l4-174812__q03",
+      "qtype": "fill",
+      "stem": "若两个三角形相似比为 2:1，则面积比为 ______。",
+      "score": 4.0,
+      "sort_order": 3,
+      "explanation": "4:9",
+      "answer_key": "4:9",
+      "answer_accept": [
+        "4:9"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.similar"
+      ]
+    }
+  ]
+}

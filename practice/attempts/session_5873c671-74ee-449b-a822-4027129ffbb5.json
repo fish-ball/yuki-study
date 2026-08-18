@@ -1,0 +1,72 @@
+{
+  "id": "5873c671-74ee-449b-a822-4027129ffbb5",
+  "paper_id": "2026-08-18-math-exam-refresh-l4-174812",
+  "mode": "paper",
+  "subject_id": "math",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-18T17:48:15",
+  "finished_at": "2026-08-18T17:48:48",
+  "total_questions": 3,
+  "correct_count": 1,
+  "attempt_count": 3,
+  "current_index": 2,
+  "latest_by_question": {
+    "2026-08-18-math-exam-refresh-l4-174812__q01": {
+      "id": "a67ec9d9-26e5-42d1-9d81-44f48af3084b",
+      "question_id": "2026-08-18-math-exam-refresh-l4-174812__q01",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:48:22"
+    },
+    "2026-08-18-math-exam-refresh-l4-174812__q02": {
+      "id": "6a1e903c-d7ee-4a4d-a4d2-ac1e625ac38b",
+      "question_id": "2026-08-18-math-exam-refresh-l4-174812__q02",
+      "user_answer": "1:1",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:48:35"
+    },
+    "2026-08-18-math-exam-refresh-l4-174812__q03": {
+      "id": "839fc92e-72d3-4d3b-96d7-e2e36b879edc",
+      "question_id": "2026-08-18-math-exam-refresh-l4-174812__q03",
+      "user_answer": "4:1",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:48:46"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "a67ec9d9-26e5-42d1-9d81-44f48af3084b",
+      "question_id": "2026-08-18-math-exam-refresh-l4-174812__q01",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:48:22"
+    },
+    {
+      "id": "6a1e903c-d7ee-4a4d-a4d2-ac1e625ac38b",
+      "question_id": "2026-08-18-math-exam-refresh-l4-174812__q02",
+      "user_answer": "1:1",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:48:35"
+    },
+    {
+      "id": "839fc92e-72d3-4d3b-96d7-e2e36b879edc",
+      "question_id": "2026-08-18-math-exam-refresh-l4-174812__q03",
+      "user_answer": "4:1",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:48:46"
+    }
+  ]
+}

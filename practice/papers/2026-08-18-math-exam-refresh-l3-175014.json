@@ -1,0 +1,140 @@
+{
+  "id": "2026-08-18-math-exam-refresh-l3-175014",
+  "path": "assessments/2026-08-18-math-exam-refresh-l3-175014.md",
+  "subject_id": "math",
+  "theme": "exam-refresh-l3",
+  "date": "2026-08-18",
+  "minutes": 25,
+  "target_level": "L3",
+  "status": "completed",
+  "note": "考核 · 冲 L3 · 通过线 80%",
+  "questions": [
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-175014__q01",
+      "qtype": "fill",
+      "stem": "计算（变式）：等腰直角三角形锐角是 ______°。",
+      "score": 4.0,
+      "sort_order": 1,
+      "explanation": "45",
+      "answer_key": "45",
+      "answer_accept": [
+        "45"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.integrated.geometry_hard"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-175014__q02",
+      "qtype": "judge",
+      "stem": "下列说法是否正确（易错）：作辅助线要有目的（构造相似、直角、等腰等）。",
+      "score": 2.0,
+      "sort_order": 2,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.integrated.geometry_hard"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-175014__q03",
+      "qtype": "choice",
+      "stem": "解决综合几何题较稳妥的第一步通常是（　　）",
+      "score": 4.0,
+      "sort_order": 3,
+      "explanation": "C。A。先梳理条件再选方法",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "直接猜答案",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "放弃辅助线",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "标已知、找等量与相似/全等关系",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "只看最后一问",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.integrated.geometry_hard"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-175014__q04",
+      "qtype": "fill",
+      "stem": "直角三角形中，若两直角边为 5、5，则斜边是 ______。",
+      "score": 4.0,
+      "sort_order": 4,
+      "explanation": "【考点】勾股定理。\n【思路】5²+5²=50，化简得 5√2。\n【易错】不要硬写成 5；能化简的根式要化简。",
+      "answer_key": "5√2",
+      "answer_accept": [
+        "5√2",
+        "5sqrt2",
+        "5*√2",
+        "√50",
+        "sqrt50"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.integrated.geometry_hard"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-175014__q05",
+      "qtype": "judge",
+      "stem": "判断（变式）：几何压轴常综合相似、圆、三角函数或坐标法。",
+      "score": 2.0,
+      "sort_order": 5,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.integrated.geometry_hard"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-175014__q06",
+      "qtype": "judge",
+      "stem": "下列说法是否正确（易错）：几何压轴常综合相似、圆、三角函数或坐标法。",
+      "score": 2.0,
+      "sort_order": 6,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.integrated.geometry_hard"
+      ]
+    }
+  ]
+}

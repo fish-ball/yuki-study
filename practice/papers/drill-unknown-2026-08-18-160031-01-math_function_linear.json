@@ -1,0 +1,120 @@
+{
+  "id": "drill-unknown-2026-08-18-160031-01-math_function_linear",
+  "path": "practice/papers/drill-unknown-2026-08-18-160031-01-math_function_linear.json",
+  "subject_id": "math",
+  "theme": "不会巩固 · 一次函数",
+  "date": "2026-08-18",
+  "minutes": 20,
+  "target_level": "L2",
+  "status": "ready",
+  "note": "单知识点巩固；来源会话 6c887f9d-a60b-408b-89b9-37bd35697025；math.function.linear",
+  "questions": [
+    {
+      "id": "drill-unknown-2026-08-18-160031-01-math_function_linear__160128_q01",
+      "qtype": "judge",
+      "stem": "一次函数的一般式可写成 y=kx+b（k≠0）。",
+      "score": 2.0,
+      "sort_order": 1,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.function.linear"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-18-160031-01-math_function_linear__160128_q02",
+      "qtype": "fill",
+      "stem": "直线 y=2x+1 的斜率是 ______，纵截距是 ______。",
+      "score": 4.0,
+      "sort_order": 2,
+      "explanation": "2；1",
+      "answer_key": "2；1",
+      "answer_accept": [
+        "2",
+        "1"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.function.linear"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-18-160031-01-math_function_linear__160128_q03",
+      "qtype": "choice",
+      "stem": "函数 y=-3x+2 的图像经过（　　）",
+      "score": 4.0,
+      "sort_order": 3,
+      "explanation": "A。k=-3<0，b=2>0，经过一、二、四象限。",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "第一、二、四象限",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "第一、三象限",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "第二、四象限",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "只过原点",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.function.linear"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-18-160031-01-math_function_linear__160128_q04",
+      "qtype": "fill",
+      "stem": "若一次函数过原点，则 b = ______。",
+      "score": 2.0,
+      "sort_order": 4,
+      "explanation": "0",
+      "answer_key": "0",
+      "answer_accept": [
+        "0"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.function.linear"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-18-160031-01-math_function_linear__160128_q05",
+      "qtype": "judge",
+      "stem": "正比例函数是一次函数的特例（b=0）。",
+      "score": 2.0,
+      "sort_order": 5,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.function.linear"
+      ]
+    }
+  ]
+}

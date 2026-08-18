@@ -1,0 +1,117 @@
+{
+  "id": "6ac29a16-dabb-4211-9be3-b3eb051de124",
+  "paper_id": "drill-2026-08-18-chemistry_air_water_air",
+  "mode": "paper",
+  "subject_id": "chemistry",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-18T17:50:45",
+  "finished_at": "2026-08-18T17:51:10",
+  "total_questions": 5,
+  "correct_count": 5,
+  "attempt_count": 6,
+  "current_index": 4,
+  "latest_by_question": {
+    "drill-2026-08-18-chemistry_air_water_air__175012_q01": {
+      "id": "acf0a85a-76a7-4b2c-be7d-694adbb4dc6f",
+      "question_id": "drill-2026-08-18-chemistry_air_water_air__175012_q01",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:50:48"
+    },
+    "drill-2026-08-18-chemistry_air_water_air__175012_q02": {
+      "id": "f69bd38d-02be-48ad-ae30-3c99e3e5aca9",
+      "question_id": "drill-2026-08-18-chemistry_air_water_air__175012_q02",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:50:51"
+    },
+    "drill-2026-08-18-chemistry_air_water_air__175012_q03": {
+      "id": "101d9c20-2b32-4d02-87fa-8a0e49325dc0",
+      "question_id": "drill-2026-08-18-chemistry_air_water_air__175012_q03",
+      "user_answer": "氮气",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 2,
+      "created_at": "2026-08-18T17:50:57"
+    },
+    "drill-2026-08-18-chemistry_air_water_air__175012_q04": {
+      "id": "d7787ab0-4347-4857-b4b3-e312d4700fab",
+      "question_id": "drill-2026-08-18-chemistry_air_water_air__175012_q04",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:51:02"
+    },
+    "drill-2026-08-18-chemistry_air_water_air__175012_q05": {
+      "id": "f539fc97-6216-4708-bb6b-efbcf3c8dfd0",
+      "question_id": "drill-2026-08-18-chemistry_air_water_air__175012_q05",
+      "user_answer": "H2O",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:51:08"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "acf0a85a-76a7-4b2c-be7d-694adbb4dc6f",
+      "question_id": "drill-2026-08-18-chemistry_air_water_air__175012_q01",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:50:48"
+    },
+    {
+      "id": "f69bd38d-02be-48ad-ae30-3c99e3e5aca9",
+      "question_id": "drill-2026-08-18-chemistry_air_water_air__175012_q02",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:50:51"
+    },
+    {
+      "id": "8e8e1cd1-3112-44c7-9aea-354ea80e6e7d",
+      "question_id": "drill-2026-08-18-chemistry_air_water_air__175012_q03",
+      "user_answer": "氮气",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:50:56"
+    },
+    {
+      "id": "101d9c20-2b32-4d02-87fa-8a0e49325dc0",
+      "question_id": "drill-2026-08-18-chemistry_air_water_air__175012_q03",
+      "user_answer": "氮气",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 2,
+      "created_at": "2026-08-18T17:50:57"
+    },
+    {
+      "id": "d7787ab0-4347-4857-b4b3-e312d4700fab",
+      "question_id": "drill-2026-08-18-chemistry_air_water_air__175012_q04",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:51:02"
+    },
+    {
+      "id": "f539fc97-6216-4708-bb6b-efbcf3c8dfd0",
+      "question_id": "drill-2026-08-18-chemistry_air_water_air__175012_q05",
+      "user_answer": "H2O",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:51:08"
+    }
+  ]
+}

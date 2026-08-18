@@ -1,0 +1,378 @@
+{
+  "id": "6c887f9d-a60b-408b-89b9-37bd35697025",
+  "paper_id": "2026-08-18-math-exam-refresh-l3-114429",
+  "mode": "paper",
+  "subject_id": "math",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-18T15:55:54",
+  "finished_at": "2026-08-18T16:01:12",
+  "total_questions": 18,
+  "correct_count": 14,
+  "attempt_count": 22,
+  "current_index": 17,
+  "latest_by_question": {
+    "2026-08-18-math-exam-refresh-l3-114429__q01": {
+      "id": "fd259872-e7b5-4203-8093-3261276aaa52",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q01",
+      "user_answer": "错",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:55:59"
+    },
+    "2026-08-18-math-exam-refresh-l3-114429__q02": {
+      "id": "57f2c588-8e8d-4eda-ba63-2a91f1e797e6",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q02",
+      "user_answer": "a或-a",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:56:24"
+    },
+    "2026-08-18-math-exam-refresh-l3-114429__q03": {
+      "id": "af527fca-503d-44e0-af2f-8a9d8f5e56dc",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q03",
+      "user_answer": "B",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:58:09"
+    },
+    "2026-08-18-math-exam-refresh-l3-114429__q04": {
+      "id": "a1309dea-d61d-47f1-b459-fe69ad0bd021",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q04",
+      "user_answer": "4或-4",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:58:21"
+    },
+    "2026-08-18-math-exam-refresh-l3-114429__q05": {
+      "id": "9675651b-9312-4550-b56d-e01b5497011c",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q05",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:58:34"
+    },
+    "2026-08-18-math-exam-refresh-l3-114429__q06": {
+      "id": "059447c7-bffd-4854-98ed-c1ef91ba9e5a",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q06",
+      "user_answer": "b^2-4ac",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 2,
+      "created_at": "2026-08-18T15:58:47"
+    },
+    "2026-08-18-math-exam-refresh-l3-114429__q07": {
+      "id": "2875444d-c059-4e9b-a4be-0f3ab6f342ad",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q07",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:58:56"
+    },
+    "2026-08-18-math-exam-refresh-l3-114429__q08": {
+      "id": "cc25d672-4e97-4792-9c58-fb4e8474a67b",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q08",
+      "user_answer": "2；3",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:59:02"
+    },
+    "2026-08-18-math-exam-refresh-l3-114429__q09": {
+      "id": "4a722fc7-900f-461d-8b8f-bb599eaef80b",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q09",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:59:13"
+    },
+    "2026-08-18-math-exam-refresh-l3-114429__q10": {
+      "id": "61de69d3-f4e3-48fa-9e06-9805310b2d35",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q10",
+      "user_answer": "0",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:59:19"
+    },
+    "2026-08-18-math-exam-refresh-l3-114429__q11": {
+      "id": "d518e8cf-eb3c-417f-96d7-3309737ff643",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q11",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 3,
+      "created_at": "2026-08-18T15:59:41"
+    },
+    "2026-08-18-math-exam-refresh-l3-114429__q12": {
+      "id": "576d1e4a-de62-44c3-9c5d-33bc980c3db5",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q12",
+      "user_answer": "【不会】",
+      "is_correct": 0,
+      "feedback": "已标记「不会」，按错误计入正确率。先看参考答案，结束练习后会进入专学巩固。 参考答案：2；1",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:59:45"
+    },
+    "2026-08-18-math-exam-refresh-l3-114429__q13": {
+      "id": "e74f29c9-af8d-41ff-88d6-96a2b9f138a4",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q13",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:59:48"
+    },
+    "2026-08-18-math-exam-refresh-l3-114429__q14": {
+      "id": "c0e8ed85-9869-4fe1-b748-84cbefb6588d",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q14",
+      "user_answer": "180",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:59:59"
+    },
+    "2026-08-18-math-exam-refresh-l3-114429__q15": {
+      "id": "c67fe7ef-f356-4dcc-8793-8338d5c78bc8",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q15",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:00:08"
+    },
+    "2026-08-18-math-exam-refresh-l3-114429__q16": {
+      "id": "258dd0e8-2049-40e4-b4f5-5b1e94085f64",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q16",
+      "user_answer": "B",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:00:15"
+    },
+    "2026-08-18-math-exam-refresh-l3-114429__q17": {
+      "id": "7e5ba7fc-1249-4622-8544-0d59a02efb4f",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q17",
+      "user_answer": "40",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 2,
+      "created_at": "2026-08-18T16:00:24"
+    },
+    "2026-08-18-math-exam-refresh-l3-114429__q18": {
+      "id": "8eb22b49-5118-49d5-8659-470e051f7e7f",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q18",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:00:30"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "fd259872-e7b5-4203-8093-3261276aaa52",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q01",
+      "user_answer": "错",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:55:59"
+    },
+    {
+      "id": "57f2c588-8e8d-4eda-ba63-2a91f1e797e6",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q02",
+      "user_answer": "a或-a",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:56:24"
+    },
+    {
+      "id": "af527fca-503d-44e0-af2f-8a9d8f5e56dc",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q03",
+      "user_answer": "B",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:58:09"
+    },
+    {
+      "id": "a1309dea-d61d-47f1-b459-fe69ad0bd021",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q04",
+      "user_answer": "4或-4",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:58:21"
+    },
+    {
+      "id": "9675651b-9312-4550-b56d-e01b5497011c",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q05",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:58:34"
+    },
+    {
+      "id": "bfc3784e-0805-436e-bb7d-5e5cf9579073",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q06",
+      "user_answer": "b^2-4ac",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:58:46"
+    },
+    {
+      "id": "059447c7-bffd-4854-98ed-c1ef91ba9e5a",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q06",
+      "user_answer": "b^2-4ac",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 2,
+      "created_at": "2026-08-18T15:58:47"
+    },
+    {
+      "id": "2875444d-c059-4e9b-a4be-0f3ab6f342ad",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q07",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:58:56"
+    },
+    {
+      "id": "cc25d672-4e97-4792-9c58-fb4e8474a67b",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q08",
+      "user_answer": "2；3",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:59:02"
+    },
+    {
+      "id": "4a722fc7-900f-461d-8b8f-bb599eaef80b",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q09",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:59:13"
+    },
+    {
+      "id": "61de69d3-f4e3-48fa-9e06-9805310b2d35",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q10",
+      "user_answer": "0",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:59:19"
+    },
+    {
+      "id": "64601644-3ad9-4f17-9da7-036a87c034d4",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q11",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:59:40"
+    },
+    {
+      "id": "2506e8b5-82dc-48e6-bc8f-f78dcb806224",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q11",
+      "user_answer": "【不会】",
+      "is_correct": 0,
+      "feedback": "已标记「不会」，按错误计入正确率。先看参考答案，结束练习后会进入专学巩固。 参考答案：A",
+      "attempt_no": 2,
+      "created_at": "2026-08-18T15:59:40"
+    },
+    {
+      "id": "d518e8cf-eb3c-417f-96d7-3309737ff643",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q11",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 3,
+      "created_at": "2026-08-18T15:59:41"
+    },
+    {
+      "id": "576d1e4a-de62-44c3-9c5d-33bc980c3db5",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q12",
+      "user_answer": "【不会】",
+      "is_correct": 0,
+      "feedback": "已标记「不会」，按错误计入正确率。先看参考答案，结束练习后会进入专学巩固。 参考答案：2；1",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:59:45"
+    },
+    {
+      "id": "e74f29c9-af8d-41ff-88d6-96a2b9f138a4",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q13",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:59:48"
+    },
+    {
+      "id": "c0e8ed85-9869-4fe1-b748-84cbefb6588d",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q14",
+      "user_answer": "180",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:59:59"
+    },
+    {
+      "id": "c67fe7ef-f356-4dcc-8793-8338d5c78bc8",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q15",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:00:08"
+    },
+    {
+      "id": "258dd0e8-2049-40e4-b4f5-5b1e94085f64",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q16",
+      "user_answer": "B",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:00:15"
+    },
+    {
+      "id": "35c72487-c34d-4db1-8f9a-e96e95e9d6e2",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q17",
+      "user_answer": "40",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:00:23"
+    },
+    {
+      "id": "7e5ba7fc-1249-4622-8544-0d59a02efb4f",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q17",
+      "user_answer": "40",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 2,
+      "created_at": "2026-08-18T16:00:24"
+    },
+    {
+      "id": "8eb22b49-5118-49d5-8659-470e051f7e7f",
+      "question_id": "2026-08-18-math-exam-refresh-l3-114429__q18",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:00:30"
+    }
+  ]
+}

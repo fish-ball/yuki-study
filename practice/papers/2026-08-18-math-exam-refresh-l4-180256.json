@@ -1,0 +1,32 @@
+{
+  "id": "2026-08-18-math-exam-refresh-l4-180256",
+  "path": "assessments/2026-08-18-math-exam-refresh-l4-180256.md",
+  "subject_id": "math",
+  "theme": "exam-refresh-l4",
+  "date": "2026-08-18",
+  "minutes": 25,
+  "target_level": "L4",
+  "status": "ready",
+  "note": "考核 · 冲 L4 · 通过线 80%",
+  "questions": [
+    {
+      "id": "2026-08-18-math-exam-refresh-l4-180256__q01",
+      "qtype": "fill",
+      "stem": "直角三角形中，若两直角边为 5、6，则斜边是 ______。",
+      "score": 4.0,
+      "sort_order": 1,
+      "explanation": "【考点】勾股定理。\n【思路】5²+6²=61，化简得 √61。\n【易错】不要硬写成 5；能化简的根式要化简。",
+      "answer_key": "√61",
+      "answer_accept": [
+        "√61",
+        "sqrt61",
+        "\\sqrt{61}"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.integrated.geometry_hard"
+      ]
+    }
+  ]
+}

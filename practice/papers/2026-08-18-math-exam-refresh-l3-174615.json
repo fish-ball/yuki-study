@@ -1,0 +1,136 @@
+{
+  "id": "2026-08-18-math-exam-refresh-l3-174615",
+  "path": "assessments/2026-08-18-math-exam-refresh-l3-174615.md",
+  "subject_id": "math",
+  "theme": "exam-refresh-l3",
+  "date": "2026-08-18",
+  "minutes": 25,
+  "target_level": "L3",
+  "status": "ready",
+  "note": "考核 · 冲 L3 · 通过线 80%",
+  "questions": [
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-174615__q01",
+      "qtype": "fill",
+      "stem": "计算（变式）：相似比为 k 时，对应高的比是 ______。",
+      "score": 4.0,
+      "sort_order": 1,
+      "explanation": "k",
+      "answer_key": "k",
+      "answer_accept": [
+        "k"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.similar"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-174615__q02",
+      "qtype": "judge",
+      "stem": "下列说法是否正确（易错）：全等三角形一定相似，相似比是 1。",
+      "score": 2.0,
+      "sort_order": 2,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.similar"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-174615__q03",
+      "qtype": "choice",
+      "stem": "判定两三角形相似，下列可用的是（　　）",
+      "score": 4.0,
+      "sort_order": 3,
+      "explanation": "A。AA 可判定相似",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "两角对应相等",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "一角相等即可",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "面积相等必相似",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "三边对应相等（全等）才能相似",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.geometry.similar"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-174615__q04",
+      "qtype": "fill",
+      "stem": "若两个三角形相似比为 2:4，则面积比为 ______。",
+      "score": 4.0,
+      "sort_order": 4,
+      "explanation": "4:9",
+      "answer_key": "4:9",
+      "answer_accept": [
+        "4:9"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.similar"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-174615__q05",
+      "qtype": "judge",
+      "stem": "判断（变式）：相似三角形对应角相等，对应边成比例。",
+      "score": 2.0,
+      "sort_order": 5,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.similar"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-174615__q06",
+      "qtype": "judge",
+      "stem": "下列说法是否正确（易错）：相似三角形对应角相等，对应边成比例。",
+      "score": 2.0,
+      "sort_order": 6,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.similar"
+      ]
+    }
+  ]
+}

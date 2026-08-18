@@ -6,8 +6,8 @@
   "date": "2026-08-17",
   "minutes": 25,
   "target_level": "L3",
-  "status": "ready",
-  "note": "考核 · 冲 L3 · 通过线 80%",
+  "status": "retired",
+  "note": "考核 · 冲 L3 · 通过线 80%；元题目已下架",
   "questions": [
     {
       "id": "2026-08-17-math-exam-refresh-l3-182239__q01",
@@ -15,7 +15,7 @@
       "stem": "【L3】本课主攻知识点「圆周角与圆心角」的 knowledge_id 是 ______。",
       "score": 4.0,
       "sort_order": 1,
-      "explanation": "math.geometry.circle.angle。对应 id：math.geometry.circle.angle。（冲L3）",
+      "explanation": "math.geometry.circle.angle。对应 id：math.geometry.circle.angle",
       "answer_key": "math.geometry.circle.angle",
       "answer_accept": [
         "math.geometry.circle.angle"
@@ -32,7 +32,7 @@
       "stem": "学习「圆周角与圆心角」时，既要记住结论，也要能用自己的话解释含义。",
       "score": 2.0,
       "sort_order": 2,
-      "explanation": "对。理解才能应对变式。（冲L3）",
+      "explanation": "对。理解才能应对变式",
       "answer_key": "对",
       "answer_accept": [
         "对"
@@ -49,7 +49,7 @@
       "stem": "「概率初步」属于中考相关考点，需要结合例题巩固。",
       "score": 2.0,
       "sort_order": 3,
-      "explanation": "对。（冲L3）",
+      "explanation": "对",
       "answer_key": "对",
       "answer_accept": [
         "对"
@@ -66,7 +66,7 @@
       "stem": "【L3】用一句话概括「概率初步」的核心（可写关键词）：______。",
       "score": 4.0,
       "sort_order": 4,
-      "explanation": "概率初步。关键词围绕「概率初步」的定义与判别。（冲L3）",
+      "explanation": "概率初步。关键词围绕「概率初步」的定义与判别",
       "answer_key": "概率初步",
       "answer_accept": [
         "概率初步"
@@ -83,7 +83,7 @@
       "stem": "关于「概率初步」，正确的学习态度是（冲L3·选）（　　）",
       "score": 4.0,
       "sort_order": 5,
-      "explanation": "A。定义 + 练习 + 订正。（冲L3）",
+      "explanation": "A。定义 + 练习 + 订正",
       "answer_key": "A",
       "answer_accept": [
         "A"
@@ -121,7 +121,7 @@
       "stem": "【L3】本课主攻知识点「概率初步」的 knowledge_id 是 ______。",
       "score": 4.0,
       "sort_order": 6,
-      "explanation": "math.stats.probability。对应 id：math.stats.probability。（冲L3）",
+      "explanation": "math.stats.probability。对应 id：math.stats.probability",
       "answer_key": "math.stats.probability",
       "answer_accept": [
         "math.stats.probability"
@@ -138,7 +138,7 @@
       "stem": "学习「概率初步」时，既要记住结论，也要能用自己的话解释含义。",
       "score": 2.0,
       "sort_order": 7,
-      "explanation": "对。理解才能应对变式。（冲L3）",
+      "explanation": "对。理解才能应对变式",
       "answer_key": "对",
       "answer_accept": [
         "对"
@@ -155,7 +155,7 @@
       "stem": "「因式分解」属于中考相关考点，需要结合例题巩固。",
       "score": 2.0,
       "sort_order": 8,
-      "explanation": "对。（冲L3）",
+      "explanation": "对",
       "answer_key": "对",
       "answer_accept": [
         "对"
@@ -172,7 +172,7 @@
       "stem": "【L3】用一句话概括「因式分解」的核心（可写关键词）：______。",
       "score": 4.0,
       "sort_order": 9,
-      "explanation": "因式分解。关键词围绕「因式分解」的定义与判别。（冲L3）",
+      "explanation": "因式分解。关键词围绕「因式分解」的定义与判别",
       "answer_key": "因式分解",
       "answer_accept": [
         "因式分解"
@@ -189,7 +189,7 @@
       "stem": "关于「因式分解」，正确的学习态度是（冲L3·选）（　　）",
       "score": 4.0,
       "sort_order": 10,
-      "explanation": "A。定义 + 练习 + 订正。（冲L3）",
+      "explanation": "A。定义 + 练习 + 订正",
       "answer_key": "A",
       "answer_accept": [
         "A"
@@ -227,7 +227,7 @@
       "stem": "【L3】本课主攻知识点「因式分解」的 knowledge_id 是 ______。",
       "score": 4.0,
       "sort_order": 11,
-      "explanation": "math.number.factor。对应 id：math.number.factor。（冲L3）",
+      "explanation": "math.number.factor。对应 id：math.number.factor",
       "answer_key": "math.number.factor",
       "answer_accept": [
         "math.number.factor"
@@ -244,7 +244,7 @@
       "stem": "学习「因式分解」时，既要记住结论，也要能用自己的话解释含义。",
       "score": 2.0,
       "sort_order": 12,
-      "explanation": "对。理解才能应对变式。（冲L3）",
+      "explanation": "对。理解才能应对变式",
       "answer_key": "对",
       "answer_accept": [
         "对"
@@ -261,7 +261,7 @@
       "stem": "「一元一次不等式（组）」属于中考相关考点，需要结合例题巩固。",
       "score": 2.0,
       "sort_order": 13,
-      "explanation": "对。（冲L3）",
+      "explanation": "对",
       "answer_key": "对",
       "answer_accept": [
         "对"
@@ -278,7 +278,7 @@
       "stem": "【L3】用一句话概括「一元一次不等式（组）」的核心（可写关键词）：______。",
       "score": 4.0,
       "sort_order": 14,
-      "explanation": "一元一次不等式（组）。关键词围绕「一元一次不等式（组）」的定义与判别。（冲L3）",
+      "explanation": "一元一次不等式（组）。关键词围绕「一元一次不等式（组）」的定义与判别",
       "answer_key": "一元一次不等式（组）",
       "answer_accept": [
         "一元一次不等式（组）"
@@ -295,7 +295,7 @@
       "stem": "关于「一元一次不等式（组）」，正确的学习态度是（冲L3·选）（　　）",
       "score": 4.0,
       "sort_order": 15,
-      "explanation": "A。定义 + 练习 + 订正。（冲L3）",
+      "explanation": "A。定义 + 练习 + 订正",
       "answer_key": "A",
       "answer_accept": [
         "A"
@@ -333,7 +333,7 @@
       "stem": "【L3】本课主攻知识点「一元一次不等式（组）」的 knowledge_id 是 ______。",
       "score": 4.0,
       "sort_order": 16,
-      "explanation": "math.equation.ineq。对应 id：math.equation.ineq。（冲L3）",
+      "explanation": "math.equation.ineq。对应 id：math.equation.ineq",
       "answer_key": "math.equation.ineq",
       "answer_accept": [
         "math.equation.ineq"
@@ -350,7 +350,7 @@
       "stem": "学习「一元一次不等式（组）」时，既要记住结论，也要能用自己的话解释含义。",
       "score": 2.0,
       "sort_order": 17,
-      "explanation": "对。理解才能应对变式。（冲L3）",
+      "explanation": "对。理解才能应对变式",
       "answer_key": "对",
       "answer_accept": [
         "对"
@@ -367,7 +367,7 @@
       "stem": "「二次函数图像与性质」属于中考相关考点，需要结合例题巩固。",
       "score": 2.0,
       "sort_order": 18,
-      "explanation": "对。（冲L3）",
+      "explanation": "对",
       "answer_key": "对",
       "answer_accept": [
         "对"

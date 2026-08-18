@@ -3,13 +3,14 @@ knowledge_id: chemistry.basic.element
 subject: chemistry
 title: 元素与元素符号
 target_level: L1
-version: 5
+version: 6
 source: llm
-updated_at: 2026-08-17
+updated_at: 2026-08-18
 related_ids: 
   - chemistry.basic.change
   - chemistry.basic.molecule
   - chemistry.basic.valence
+  - chemistry.carbon.allotrope
 revision_note: "patch；学生在练习中标记「不会」；订正学生错因"
 ---
 
@@ -70,10 +71,11 @@ A. 表示铁元素  B. 表示一个铁原子  C. 表示铁单质  D. 表示一�
 
 ## 关联知识点
 
-- `chemistry.basic.change`（物理变化与化学变化）：有没有生成新物质：没有 → 物理变化；有 → 化学变化。抓本质（看分子变不变），别被表面现象带偏。
+- `chemistry.basic.change`（物理变化与化学变化）：有没有生成新物质：没有 → 物理变化；有 → 化学变化。
 - `chemistry.basic.molecule`（分子原子离子）：分子保持物质化学性质；化学变化中分子可分、原子不可分。
 - `chemistry.basic.valence`（化合价与化学式）：写化学式：正价在左、负价在右，交叉约简作下标，化合价代数和为 0。
-- `chemistry.basic.atom`（原子结构）：元素种类由质子数决定。原子得失电子会形成离子，但质子数不变，因此元素种类不变。这是理解化学式书写和化学反应实质的基石。
+- `chemistry.carbon.allotrope`（碳的单质）：碳单质物理性质迥异，根本原因是碳原子排列方式不同；化学性质相似，因为组成元素均为碳。
+
 
 ## 自测提示
 

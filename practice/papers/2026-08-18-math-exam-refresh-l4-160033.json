@@ -1,0 +1,30 @@
+{
+  "id": "2026-08-18-math-exam-refresh-l4-160033",
+  "path": "assessments/2026-08-18-math-exam-refresh-l4-160033.md",
+  "subject_id": "math",
+  "theme": "exam-refresh-l4",
+  "date": "2026-08-18",
+  "minutes": 25,
+  "target_level": "L4",
+  "status": "ready",
+  "note": "考核 · 冲 L4 · 通过线 80%",
+  "questions": [
+    {
+      "id": "2026-08-18-math-exam-refresh-l4-160033__q01",
+      "qtype": "fill",
+      "stem": "【L4】若圆心角是 80°，则它所对的圆周角是 ______°。",
+      "score": 4.0,
+      "sort_order": 1,
+      "explanation": "40",
+      "answer_key": "40",
+      "answer_accept": [
+        "40"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.circle.angle"
+      ]
+    }
+  ]
+}

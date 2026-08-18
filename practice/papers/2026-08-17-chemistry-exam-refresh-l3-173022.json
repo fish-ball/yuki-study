@@ -6,7 +6,7 @@
   "date": "2026-08-17",
   "minutes": 25,
   "target_level": "L3",
-  "status": "ready",
+  "status": "completed",
   "note": "考核 · 冲 L3 · 通过线 80%",
   "questions": [
     {
@@ -15,7 +15,7 @@
       "stem": "下列变化属于物理变化的是（冲L3·选）（　　）",
       "score": 4.0,
       "sort_order": 1,
-      "explanation": "C。溶解一般看作物理变化（初中口径）；其余有新物质。（冲L3）",
+      "explanation": "C。溶解一般看作物理变化（初中口径）；其余有新物质",
       "answer_key": "C",
       "answer_accept": [
         "C"
@@ -53,7 +53,7 @@
       "stem": "【L3】物理变化与化学变化的根本区别是有没有 ______ 生成。",
       "score": 4.0,
       "sort_order": 2,
-      "explanation": "新物质。（冲L3）",
+      "explanation": "新物质",
       "answer_key": "新物质",
       "answer_accept": [
         "新物质"
@@ -70,7 +70,7 @@
       "stem": "发光发热的变化一定是化学变化。",
       "score": 2.0,
       "sort_order": 3,
-      "explanation": "错。电灯发光发热是物理变化；判断关键仍是「有无新物质」。（冲L3）",
+      "explanation": "错。电灯发光发热是物理变化；判断关键仍是「有无新物质」",
       "answer_key": "错",
       "answer_accept": [
         "错"
@@ -87,7 +87,7 @@
       "stem": "下列属于化学变化的是（冲L3·选）（　　）",
       "score": 4.0,
       "sort_order": 4,
-      "explanation": "C。镁条燃烧生成氧化镁等新物质；其余无新物质。（冲L3）",
+      "explanation": "C。镁条燃烧生成氧化镁等新物质；其余无新物质",
       "answer_key": "C",
       "answer_accept": [
         "C"
@@ -125,7 +125,7 @@
       "stem": "有新物质生成的变化一定是化学变化。",
       "score": 2.0,
       "sort_order": 5,
-      "explanation": "对。化学变化的本质特征是生成新物质。（冲L3）",
+      "explanation": "对。化学变化的本质特征是生成新物质",
       "answer_key": "对",
       "answer_accept": [
         "对"
@@ -142,7 +142,7 @@
       "stem": "【L3】元素符号书写规则：一个字母时 ______ 写；两个字母时第一个字母 ______，第二个字母 ______。",
       "score": 4.0,
       "sort_order": 6,
-      "explanation": "大写；大写；小写。（冲L3）",
+      "explanation": "大写；大写；小写",
       "answer_key": "大写；大写；小写",
       "answer_accept": [
         "大写",
@@ -161,7 +161,7 @@
       "stem": "下列说法正确的是（冲L3·选）（　　）",
       "score": 4.0,
       "sort_order": 7,
-      "explanation": "C。A 应为 Fe；B 错（也可表示一个氦原子）；D 应为 Cl。（冲L3）",
+      "explanation": "C。A 应为 Fe；B 错（也可表示一个氦原子）；D 应为 Cl",
       "answer_key": "C",
       "answer_accept": [
         "C"
@@ -199,7 +199,7 @@
       "stem": "【L3】写出下列元素的元素符号：钠 ______；镁 ______；铝 ______；铁 ______；铜 ______。",
       "score": 4.0,
       "sort_order": 8,
-      "explanation": "Na；Mg；Al；Fe；Cu。注意双字母「一大一小」。（冲L3）",
+      "explanation": "Na；Mg；Al；Fe；Cu。注意双字母「一大一小」",
       "answer_key": "Na；Mg；Al；Fe；Cu",
       "answer_accept": [
         "Na",
@@ -220,7 +220,7 @@
       "stem": "【L3】写出下列元素的元素符号：氢 ______；氧 ______；碳 ______；氮 ______。",
       "score": 4.0,
       "sort_order": 9,
-      "explanation": "H；O；C；N。（冲L3）",
+      "explanation": "H；O；C；N",
       "answer_key": "H；O；C；N",
       "answer_accept": [
         "H",
@@ -240,7 +240,7 @@
       "stem": "下列元素符号书写正确的是（冲L3·选）（　　）",
       "score": 4.0,
       "sort_order": 10,
-      "explanation": "C。A 应为 Ca；B 应为 Zn；D 应为 Al。（冲L3）",
+      "explanation": "C。A 应为 Ca；B 应为 Zn；D 应为 Al",
       "answer_key": "C",
       "answer_accept": [
         "C"

@@ -26,9 +26,30 @@ assessment:
   auto_refresh_next: true
   # 下一卷目标等级：相对本卷 target_level +1（上限 L4）
   next_level_step: 1
+  # 允许跳过练习，直接用考核晋级（仍按 max_step_up 一档一档升）
+  allow_skip_practice: true
+  # 冲更高档时题目必须变形、加难，禁止原题加「冲L3」标签充数
+  vary_on_upgrade: true
 
 # 免练：当前等级 >= practice_max_level 时，该知识点练习可跳过、不再刷新（改走考核）
 practice_exempt_when_above_max: true
+
+# 日计划：加强度=多学几个知识点（教程/考核），而不是多刷同一点的练习套题
+plan:
+  daily_knowledge_min: 2
+  daily_knowledge_max: 4
+  intensity_add_knowledge: true
+
+# 不会专学：仅当本场该知识点未达合格线，且掌握度为 L0 时开启
+unknown_followup:
+  trigger_only_when_l0: true
+  require_below_pass: true
+  # 巩固卷通过线；通过后从不会专学列表移除，并可将 L0 升到 L1
+  consolidation_pass_rate: 0.75
+  consolidation_min_questions: 3
+  remove_on_pass: true
+  allow_level_up: true
+  level_up_cap: L1
 
 # 标题展示文案模板（前端/试卷 note 使用）
 labels:

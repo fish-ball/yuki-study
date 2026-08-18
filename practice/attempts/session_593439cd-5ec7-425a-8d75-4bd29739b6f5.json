@@ -1,0 +1,234 @@
+{
+  "id": "593439cd-5ec7-425a-8d75-4bd29739b6f5",
+  "paper_id": "2026-08-16-math-diagnose",
+  "mode": "paper",
+  "subject_id": "math",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-17T18:13:47",
+  "finished_at": "2026-08-18T11:44:29",
+  "total_questions": 11,
+  "correct_count": 8,
+  "attempt_count": 13,
+  "current_index": 10,
+  "latest_by_question": {
+    "2026-08-16-math-diagnose__q01": {
+      "id": "41a6a824-2591-4597-adc0-3a888956b14f",
+      "question_id": "2026-08-16-math-diagnose__q01",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T18:13:50"
+    },
+    "2026-08-16-math-diagnose__q02": {
+      "id": "c33b146d-9c69-44a7-aa97-cb689a3d9ad9",
+      "question_id": "2026-08-16-math-diagnose__q02",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 2,
+      "created_at": "2026-08-18T11:28:47"
+    },
+    "2026-08-16-math-diagnose__q03": {
+      "id": "3f4b93ed-c7d3-48ef-a714-660a25ef3643",
+      "question_id": "2026-08-16-math-diagnose__q03",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T11:28:56"
+    },
+    "2026-08-16-math-diagnose__q04": {
+      "id": "85e4854b-50d8-41f2-bded-e607ca36aff8",
+      "question_id": "2026-08-16-math-diagnose__q04",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T11:30:44"
+    },
+    "2026-08-16-math-diagnose__q05": {
+      "id": "76506887-656c-4b75-b2a7-cc90d76cf711",
+      "question_id": "2026-08-16-math-diagnose__q05",
+      "user_answer": "B",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T11:30:47"
+    },
+    "2026-08-16-math-diagnose__q06": {
+      "id": "e38fa238-95d1-4156-855f-e12cc1b39990",
+      "question_id": "2026-08-16-math-diagnose__q06",
+      "user_answer": "(x-2)(x-3)",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T11:31:04"
+    },
+    "2026-08-16-math-diagnose__q07": {
+      "id": "0fef704f-96d1-43d1-a883-251588af5389",
+      "question_id": "2026-08-16-math-diagnose__q07",
+      "user_answer": "x>4",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T11:31:12"
+    },
+    "2026-08-16-math-diagnose__q08": {
+      "id": "208ae335-1692-4ec2-ba0c-146738b0caeb",
+      "question_id": "2026-08-16-math-diagnose__q08",
+      "user_answer": "x=1；(1,-4)",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T11:34:39"
+    },
+    "2026-08-16-math-diagnose__q09": {
+      "id": "de8bbf23-4763-446a-822c-156e5106e190",
+      "question_id": "2026-08-16-math-diagnose__q09",
+      "user_answer": "6",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T11:35:01"
+    },
+    "2026-08-16-math-diagnose__q10": {
+      "id": "949b3577-05ee-40f2-a49b-22e28109646e",
+      "question_id": "2026-08-16-math-diagnose__q10",
+      "user_answer": "b=-4,c不会求\n交点坐标不会求，开口朝上",
+      "is_correct": 0,
+      "feedback": "第（1）问中c的值错误，正确应为3；第（2）问交点坐标未求出，正确为(0,3)。请掌握待定系数法或韦达定理求解参数。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T11:41:29"
+    },
+    "2026-08-16-math-diagnose__q11": {
+      "id": "1fdfc4ce-f795-4952-86a5-9a27b644b99d",
+      "question_id": "2026-08-16-math-diagnose__q11",
+      "user_answer": "A字型（一个共角加两组平行线内错角相等）、八字形（平行线两组内错角相等加一组对顶角相等）",
+      "is_correct": 1,
+      "feedback": "作答正确。你准确列举了A字型与八字型两种常见相似模型，并清晰说明了基于平行线性质（内错角相等）的判定思路，符合题目要求。",
+      "attempt_no": 2,
+      "created_at": "2026-08-18T11:44:25"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "41a6a824-2591-4597-adc0-3a888956b14f",
+      "question_id": "2026-08-16-math-diagnose__q01",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-17T18:13:50"
+    },
+    {
+      "id": "6e665fc7-eda0-4c26-981e-45212d19ba91",
+      "question_id": "2026-08-16-math-diagnose__q02",
+      "user_answer": "B",
+      "is_correct": 0,
+      "feedback": "不正确。正确答案是 A。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T11:28:31"
+    },
+    {
+      "id": "c33b146d-9c69-44a7-aa97-cb689a3d9ad9",
+      "question_id": "2026-08-16-math-diagnose__q02",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 2,
+      "created_at": "2026-08-18T11:28:47"
+    },
+    {
+      "id": "3f4b93ed-c7d3-48ef-a714-660a25ef3643",
+      "question_id": "2026-08-16-math-diagnose__q03",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T11:28:56"
+    },
+    {
+      "id": "85e4854b-50d8-41f2-bded-e607ca36aff8",
+      "question_id": "2026-08-16-math-diagnose__q04",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T11:30:44"
+    },
+    {
+      "id": "76506887-656c-4b75-b2a7-cc90d76cf711",
+      "question_id": "2026-08-16-math-diagnose__q05",
+      "user_answer": "B",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T11:30:47"
+    },
+    {
+      "id": "e38fa238-95d1-4156-855f-e12cc1b39990",
+      "question_id": "2026-08-16-math-diagnose__q06",
+      "user_answer": "(x-2)(x-3)",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T11:31:04"
+    },
+    {
+      "id": "0fef704f-96d1-43d1-a883-251588af5389",
+      "question_id": "2026-08-16-math-diagnose__q07",
+      "user_answer": "x>4",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T11:31:12"
+    },
+    {
+      "id": "208ae335-1692-4ec2-ba0c-146738b0caeb",
+      "question_id": "2026-08-16-math-diagnose__q08",
+      "user_answer": "x=1；(1,-4)",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T11:34:39"
+    },
+    {
+      "id": "de8bbf23-4763-446a-822c-156e5106e190",
+      "question_id": "2026-08-16-math-diagnose__q09",
+      "user_answer": "6",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T11:35:01"
+    },
+    {
+      "id": "949b3577-05ee-40f2-a49b-22e28109646e",
+      "question_id": "2026-08-16-math-diagnose__q10",
+      "user_answer": "b=-4,c不会求\n交点坐标不会求，开口朝上",
+      "is_correct": 0,
+      "feedback": "第（1）问中c的值错误，正确应为3；第（2）问交点坐标未求出，正确为(0,3)。请掌握待定系数法或韦达定理求解参数。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T11:41:29"
+    },
+    {
+      "id": "eebfcc72-dd5c-400c-86ee-e0abb844fea7",
+      "question_id": "2026-08-16-math-diagnose__q11",
+      "user_answer": "A字型、八字形、母子型",
+      "is_correct": 0,
+      "feedback": "作答仅列出了模型名称，未按要求用一句话说明判定思路。请补充每种模型的判定依据（如平行线分线段成比例或两角对应相等）。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T11:42:56"
+    },
+    {
+      "id": "1fdfc4ce-f795-4952-86a5-9a27b644b99d",
+      "question_id": "2026-08-16-math-diagnose__q11",
+      "user_answer": "A字型（一个共角加两组平行线内错角相等）、八字形（平行线两组内错角相等加一组对顶角相等）",
+      "is_correct": 1,
+      "feedback": "作答正确。你准确列举了A字型与八字型两种常见相似模型，并清晰说明了基于平行线性质（内错角相等）的判定思路，符合题目要求。",
+      "attempt_no": 2,
+      "created_at": "2026-08-18T11:44:25"
+    }
+  ]
+}

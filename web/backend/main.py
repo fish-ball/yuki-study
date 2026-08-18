@@ -36,7 +36,7 @@ from .practice import (
 )
 from .sync import export_mastery_to_yaml, refresh_summary_yaml, sync_from_files
 
-STATIC_DIR = Path(__file__).resolve().parents[1] / "frontend"
+STATIC_DIR = Path(__file__).resolve().parents[1] / "frontend" / "dist"
 
 app = FastAPI(title="中考辅导 Harness 管理台", version="1.0.0")
 
@@ -73,6 +73,16 @@ class PlanSurveyBody(BaseModel):
     rescale_week: bool | None = None
 
 
+class SkipPracticeBody(BaseModel):
+    knowledge_ids: list[str] = Field(default_factory=list)
+    day_plan_id: str | None = None
+
+
+class StartCalcBody(BaseModel):
+    topic_id: str
+    count: int = 8
+
+
 class StartSessionBody(BaseModel):
     paper_id: str
     force_new: bool = False
@@ -87,6 +97,10 @@ class SubmitAnswerBody(BaseModel):
     dont_know: bool = False
 
 
+class ReportErrorBody(BaseModel):
+    question_id: str
+
+
 @app.on_event("startup")
 def _startup() -> None:
     conn = get_conn()
@@ -97,8 +111,10 @@ def _startup() -> None:
         sync_from_files()
     try:
         from .unknown_followup import retire_meta_question_papers
+        from .assessment_progress import repair_computed_fill_answers
 
         retire_meta_question_papers()
+        repair_computed_fill_answers()
     except (OSError, RuntimeError, ValueError):
         pass
 
@@ -415,6 +431,19 @@ def list_assessments(subject: str | None = None) -> list[dict[str, Any]]:
     return rows
 
 
+@app.post("/api/assessments/skip-practice")
+def api_skip_practice(body: SkipPracticeBody) -> dict[str, Any]:
+    from .assessment_progress import skip_practice_to_assessment
+
+    try:
+        return skip_practice_to_assessment(
+            body.knowledge_ids or [],
+            day_plan_id=body.day_plan_id,
+        )
+    except ValueError as e:
+        raise HTTPException(400, str(e)) from e
+
+
 @app.get("/api/assessments/{assessment_id}")
 def get_assessment(assessment_id: str) -> dict[str, Any]:
     conn = get_conn()
@@ -544,10 +573,13 @@ class ReviseTutorialBody(BaseModel):
 
 
 @app.get("/api/tutorials")
-def api_list_tutorials(subject: str | None = None) -> list[dict[str, Any]]:
+def api_list_tutorials(
+    subject: str | None = None,
+    hide_capped: bool = False,
+) -> list[dict[str, Any]]:
     from .tutorials import list_tutorials
 
-    return list_tutorials(subject)
+    return list_tutorials(subject, hide_capped=hide_capped)
 
 
 @app.get("/api/tutorials/{knowledge_id}")
@@ -613,7 +645,7 @@ def api_practice_paper(paper_id: str) -> dict[str, Any]:
 
 @app.get("/api/mastery-policy")
 def api_mastery_policy() -> dict[str, Any]:
-    from .mastery_policy import load_policy, practice_max_level, assessment_pass_rate
+    from .mastery_policy import load_policy, practice_max_level, assessment_pass_rate, consolidation_pass_rate
 
     p = load_policy()
     return {
@@ -621,6 +653,8 @@ def api_mastery_policy() -> dict[str, Any]:
         "practice_max_level": practice_max_level(p),
         "assessment_pass_rate": assessment_pass_rate(p),
         "practice_pass_rate": float((p.get("practice_level_up") or {}).get("pass_rate") or 0.75),
+        "consolidation_pass_rate": consolidation_pass_rate(p),
+        "allow_skip_practice": bool((p.get("assessment") or {}).get("allow_skip_practice", True)),
     }
 
 
@@ -643,18 +677,33 @@ def api_basic_item(item_id: str) -> dict[str, Any]:
 
 @app.post("/api/practice/sessions")
 def api_start_session(body: StartSessionBody) -> dict[str, Any]:
-    from .practice import get_paper
+    from .practice import get_paper, is_calc_drill_paper, is_unknown_consolidation_paper
     from .mastery_policy import is_practice_exempt, load_policy
 
     try:
         paper = get_paper(body.paper_id, include_answers=False)
         if not paper:
             raise ValueError("试卷不存在")
+        consol = is_unknown_consolidation_paper(paper.get("id"), paper.get("theme"))
+        calc = is_calc_drill_paper(paper.get("id"), paper.get("theme"))
+        special = consol or calc
         st = (paper.get("status") or "ready").lower()
-        if st in ("completed", "retired", "exempt", "archived"):
+        # 不会巩固 / 计算专题：即使已达练习上限、或曾被误标退役，仍允许开卷
+        if special and st == "retired":
+            conn = get_conn()
+            conn.execute(
+                "UPDATE assessments SET status = 'ready' WHERE id = ?",
+                (body.paper_id,),
+            )
+            conn.commit()
+            conn.close()
+            st = "ready"
+        if not special and st in ("completed", "retired", "exempt", "archived"):
             raise ValueError("该卷已完成或已取消，请到「做题记录」查看；列表中仅保留待练卷。")
-        if paper and (
-            str(body.paper_id).startswith("drill-") or "drill" in (paper.get("theme") or "")
+        if (
+            not special
+            and paper
+            and (str(body.paper_id).startswith("drill-") or "drill" in (paper.get("theme") or ""))
         ):
             policy = load_policy()
             conn = get_conn()
@@ -728,6 +777,16 @@ def api_submit(session_id: str, body: SubmitAnswerBody) -> dict[str, Any]:
         raise HTTPException(400, str(e)) from e
 
 
+@app.post("/api/practice/sessions/{session_id}/report-error")
+def api_report_error(session_id: str, body: ReportErrorBody) -> dict[str, Any]:
+    from .calc_drill import report_answer_error
+
+    try:
+        return report_answer_error(session_id, body.question_id)
+    except ValueError as e:
+        raise HTTPException(400, str(e)) from e
+
+
 @app.get("/api/practice/llm-status")
 def api_llm_status() -> dict[str, Any]:
     from .llm_grade import llm_configured, load_llm_config
@@ -756,6 +815,30 @@ def api_history(limit: int = 50) -> list[dict[str, Any]]:
     return list_history(limit)
 
 
+@app.get("/api/calc-drills")
+def api_list_calc_drills() -> list[dict[str, Any]]:
+    from .calc_drill import list_calc_topics
+
+    return list_calc_topics()
+
+
+@app.post("/api/calc-drills/start")
+def api_start_calc_drill(body: StartCalcBody) -> dict[str, Any]:
+    from .calc_drill import start_calc_drill
+
+    try:
+        return start_calc_drill(body.topic_id, body.count)
+    except ValueError as e:
+        raise HTTPException(400, str(e)) from e
+
+
+@app.get("/api/achievements")
+def api_achievements() -> dict[str, Any]:
+    from .achievements import list_achievements
+
+    return list_achievements()
+
+
 @app.get("/api/learn/unknown-followups")
 def api_list_unknown_followups(limit: int = 30) -> list[dict[str, Any]]:
     from .unknown_followup import list_followups
@@ -773,10 +856,26 @@ def api_get_unknown_followup(pack_id: str) -> dict[str, Any]:
     return data
 
 
-# 静态前端
+# 静态前端（history 路由：刷新 /practice 等路径仍返回 index.html）
 if STATIC_DIR.exists():
-    app.mount("/assets", StaticFiles(directory=STATIC_DIR / "assets"), name="assets")
-
-    @app.get("/")
     def index_page() -> FileResponse:
         return FileResponse(STATIC_DIR / "index.html")
+
+    app.add_api_route("/", index_page, methods=["GET"], include_in_schema=False)
+    for _page in (
+        "practice",
+        "basics",
+        "learn",
+        "history",
+        "knowledge",
+        "mastery",
+        "assessments",
+        "plan",
+        "profile",
+        "calc",
+    ):
+        app.add_api_route(f"/{_page}", index_page, methods=["GET"], include_in_schema=False)
+
+    assets_dir = STATIC_DIR / "assets"
+    if assets_dir.exists():
+        app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")

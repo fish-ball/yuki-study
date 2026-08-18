@@ -1,0 +1,35 @@
+{
+  "id": "unknown-math_function_linear",
+  "created_at": "2026-08-18T16:04:14",
+  "session_id": "be512652-06d8-4e87-940f-0e486261eba7",
+  "source_paper_id": "2026-08-18-math-exam-refresh-l4-160113",
+  "subject_id": "math",
+  "knowledge_id": "math.function.linear",
+  "knowledge_ids": [
+    "math.function.linear"
+  ],
+  "tutorials": [
+    {
+      "knowledge_id": "math.function.linear",
+      "title": "一次函数",
+      "subject_id": "math",
+      "path": "knowledge/math/tutorials/math.function.linear.md",
+      "has_tutorial": true
+    }
+  ],
+  "consolidation_paper": {
+    "id": "drill-unknown-2026-08-18-160345-01-math_function_linear",
+    "theme": "不会巩固 · 一次函数",
+    "question_count": 5,
+    "knowledge_ids": [
+      "math.function.linear"
+    ],
+    "knowledge_id": "math.function.linear",
+    "label": "巩固 · 一次函数 · 5 题"
+  },
+  "title": "不会专学 · 一次函数",
+  "status": "open",
+  "source_questions": [],
+  "source_sessions": [],
+  "updated_at": "2026-08-18T18:10:09"
+}

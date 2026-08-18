@@ -1,0 +1,122 @@
+{
+  "id": "drill-2026-08-18-chemistry_acid_base_neutral",
+  "path": "practice/papers/drill-2026-08-18-chemistry_acid_base_neutral.json",
+  "subject_id": "chemistry",
+  "theme": "日计划练习 · 中和反应与 pH",
+  "date": "2026-08-18",
+  "minutes": 15,
+  "target_level": "L2",
+  "status": "ready",
+  "note": "知识点 chemistry.acid_base.neutral（2026-08-18）",
+  "questions": [
+    {
+      "id": "drill-2026-08-18-chemistry_acid_base_neutral__210033_q01",
+      "qtype": "judge",
+      "stem": "「中和反应与 pH」相关概念要以教材定义为准。",
+      "score": 2.0,
+      "sort_order": 1,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.acid_base.neutral"
+      ]
+    },
+    {
+      "id": "drill-2026-08-18-chemistry_acid_base_neutral__210033_q02",
+      "qtype": "choice",
+      "stem": "关于「中和反应与 pH」，正确的是（　　）",
+      "score": 4.0,
+      "sort_order": 2,
+      "explanation": "A。",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "先辨清概念，再联系实验或实例",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "概念可以随便替换",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "化学式与元素符号完全一样",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "不用区分物理变化和化学变化",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.acid_base.neutral"
+      ]
+    },
+    {
+      "id": "drill-2026-08-18-chemistry_acid_base_neutral__210033_q03",
+      "qtype": "fill",
+      "stem": "空气中含量最多的气体是 ______。",
+      "score": 2.0,
+      "sort_order": 3,
+      "explanation": "氮气",
+      "answer_key": "氮气",
+      "answer_accept": [
+        "氮气",
+        "N2",
+        "N₂"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.acid_base.neutral"
+      ]
+    },
+    {
+      "id": "drill-2026-08-18-chemistry_acid_base_neutral__210033_q04",
+      "qtype": "judge",
+      "stem": "化学变化的本质是有新物质生成。",
+      "score": 2.0,
+      "sort_order": 4,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.acid_base.neutral"
+      ]
+    },
+    {
+      "id": "drill-2026-08-18-chemistry_acid_base_neutral__210033_q05",
+      "qtype": "fill",
+      "stem": "水的化学式是 ______。",
+      "score": 2.0,
+      "sort_order": 5,
+      "explanation": "H2O",
+      "answer_key": "H2O",
+      "answer_accept": [
+        "H2O",
+        "H₂O"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.acid_base.neutral"
+      ]
+    }
+  ]
+}

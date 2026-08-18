@@ -36,6 +36,9 @@ learning_preferences:
   session_minutes: 45
   daily_main_subjects: 1
   daily_review_subjects: 1
+  # 每日主攻知识点数量：可多个，用教程/考核加强度，不靠堆练习套数
+  daily_knowledge_points: 3
+  allow_skip_practice: true
   no_emoji: true
 
 mastery_scale:

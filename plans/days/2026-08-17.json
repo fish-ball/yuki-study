@@ -8,29 +8,106 @@
   "status": "in_progress",
   "completed_at": null,
   "base_item_count": 1,
-  "updated_at": "2026-08-17T22:32:00",
+  "updated_at": "2026-08-18T22:01:56",
   "items": [
     {
-      "id": 91,
+      "id": 313,
       "day_plan_id": "day_2026-08-17",
-      "knowledge_id": "chemistry.basic.molecule",
+      "knowledge_id": "chemistry.acid_base",
       "role": "main",
       "sort_order": 0,
-      "done": 1,
-      "done_at": "2026-08-17T11:17:11",
-      "name": "分子原子离子",
-      "level": "L2"
+      "done": 0,
+      "done_at": null,
+      "name": "酸与碱",
+      "level": "L0"
     },
     {
-      "id": 103,
+      "id": 314,
       "day_plan_id": "day_2026-08-17",
-      "knowledge_id": "chemistry.basic.element",
+      "knowledge_id": "chemistry.acid_base.acid",
       "role": "main",
       "sort_order": 1,
-      "done": 1,
-      "done_at": "2026-08-17T16:40:40",
-      "name": "元素与元素符号",
-      "level": "L4"
+      "done": 0,
+      "done_at": null,
+      "name": "常见酸的性质",
+      "level": "L0"
+    },
+    {
+      "id": 315,
+      "day_plan_id": "day_2026-08-17",
+      "knowledge_id": "chemistry.acid_base.base",
+      "role": "main",
+      "sort_order": 2,
+      "done": 0,
+      "done_at": null,
+      "name": "常见碱的性质",
+      "level": "L0"
+    },
+    {
+      "id": 316,
+      "day_plan_id": "day_2026-08-17",
+      "knowledge_id": "chemistry.acid_base.salt",
+      "role": "main",
+      "sort_order": 3,
+      "done": 0,
+      "done_at": null,
+      "name": "盐的性质与复分解",
+      "level": "L0"
+    },
+    {
+      "id": 317,
+      "day_plan_id": "day_2026-08-17",
+      "knowledge_id": "chemistry.air_water",
+      "role": "main",
+      "sort_order": 4,
+      "done": 0,
+      "done_at": null,
+      "name": "空气与水",
+      "level": "L0"
+    },
+    {
+      "id": 318,
+      "day_plan_id": "day_2026-08-17",
+      "knowledge_id": "chemistry.basic",
+      "role": "main",
+      "sort_order": 5,
+      "done": 0,
+      "done_at": null,
+      "name": "化学基本概念",
+      "level": "L0"
+    },
+    {
+      "id": 319,
+      "day_plan_id": "day_2026-08-17",
+      "knowledge_id": "chemistry.calc",
+      "role": "main",
+      "sort_order": 6,
+      "done": 0,
+      "done_at": null,
+      "name": "化学计算",
+      "level": "L0"
+    },
+    {
+      "id": 320,
+      "day_plan_id": "day_2026-08-17",
+      "knowledge_id": "chemistry.calc.equation",
+      "role": "main",
+      "sort_order": 7,
+      "done": 0,
+      "done_at": null,
+      "name": "根据化学方程式计算",
+      "level": "L0"
+    },
+    {
+      "id": 321,
+      "day_plan_id": "day_2026-08-17",
+      "knowledge_id": "chemistry.calc.mass",
+      "role": "main",
+      "sort_order": 8,
+      "done": 0,
+      "done_at": null,
+      "name": "相对分子质量与组成计算",
+      "level": "L0"
     }
   ]
 }

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import re
+import math
 from typing import Any
 
 
@@ -53,9 +54,15 @@ def parse_assessment_markdown(paper_id: str, content: str, meta: dict | None = N
 
         qtype = _infer_qtype(stem, options, answers.get(num))
         ans = answers.get(num) or {}
-        answer_key = ans.get("key", "")
-        explanation = ans.get("explanation", "")
-        accept = ans.get("accept") or ([] if not answer_key else [answer_key])
+        answer_key = _strip_answer_meta(str(ans.get("key", "") or ""))
+        explanation = _strip_answer_meta(str(ans.get("explanation", "") or ""))
+        accept = [
+            _strip_answer_meta(str(x))
+            for x in (ans.get("accept") or ([] if not answer_key else [answer_key]))
+            if str(x).strip()
+        ]
+        if not accept and answer_key:
+            accept = [answer_key]
 
         auto = 1
         if qtype == "short":
@@ -126,6 +133,23 @@ def _strip_knowledge_tail(text: str) -> str:
     return re.sub(r"（[a-z]+\.[a-z0-9_.]+）\s*$", "", text.strip()).strip()
 
 
+_ANSWER_META_TAIL = re.compile(
+    r"(?:（冲L[0-4][^）]*）|（L[0-4]）|【L[0-4]】|\(冲L[0-4][^)]*\)|\(L[0-4]\))\s*$",
+    re.IGNORECASE,
+)
+
+
+def _strip_answer_meta(text: str) -> str:
+    """去掉考核卷答案末尾的「（冲L3）」等标注，只保留真正可判的答案。"""
+    s = _strip_knowledge_tail(text or "")
+    prev = None
+    while prev != s:
+        prev = s
+        s = _ANSWER_META_TAIL.sub("", s).strip()
+        s = re.sub(r"[。、，,\s]+$", "", s)
+    return s
+
+
 def _infer_qtype(stem: str, options: list, ans: dict | None) -> str:
     explanation = str((ans or {}).get("explanation", "") or "")
     # 简答优先：参考答案以「评分要点/示例」开头
@@ -179,42 +203,51 @@ def _parse_answers(section: str) -> dict[int, dict[str, Any]]:
         text = m.group(2).strip()
         key = ""
         accept: list[str] = []
-        explanation = text
+        text_core = _strip_answer_meta(text)
+        key_src = text_core
+        explanation = text_core
+        exp_m = re.search(r"(?:^|\n)\s*解析[:：]\s*", text_core)
+        if exp_m:
+            key_src = text_core[: exp_m.start()].strip()
+            explanation = text_core[exp_m.end() :].strip()
+        else:
+            parts = re.split(r"解析[:：]\s*", text_core, maxsplit=1)
+            if len(parts) == 2:
+                key_src = parts[0].strip()
+                explanation = parts[1].strip()
 
-        # 选择题：开头字母
-        cm = re.match(r"^([A-D])[.。、．]?\s*(.*)$", text, re.S)
+        # 选择题：开头字母（先去掉末尾「冲L3」标注再取字母）
+        cm = re.match(r"^([A-D])[.。、．]?\s*(.*)$", key_src, re.S)
         if cm:
             key = cm.group(1)
-            explanation = text
             accept = [key]
         else:
             # 判断题
-            jm = re.match(r"^(对|错)[.。]?\s*(.*)$", text, re.S)
+            jm = re.match(r"^(对|错)[.。]?\s*(.*)$", key_src, re.S)
             if jm:
                 key = jm.group(1)
                 accept = [key]
-                explanation = text
             else:
                 # 填空：取第一句到句号/换行前；多空用分号拆（句中顿号不拆，避免「钠、镁」误切）
-                first = re.split(r"[。\n]", text, maxsplit=1)[0].strip()
-                first = _strip_knowledge_tail(first)
+                first = re.split(r"[。\n]", key_src, maxsplit=1)[0].strip()
+                first = _strip_answer_meta(first)
                 # 去掉「评分要点」类整段作为 short
                 if first.startswith("评分") or first.startswith("示例"):
                     key = ""
                     accept = []
-                    explanation = text
                 else:
                     # 多空：优先按中文/英文分号拆
                     if re.search(r"[；;]", first):
                         parts = re.split(r"[；;]", first)
                     else:
                         parts = [first]
-                    accept = [_strip_knowledge_tail(p.strip()) for p in parts if p.strip()]
+                    accept = [_strip_answer_meta(p.strip()) for p in parts if p.strip()]
                     if not accept and first:
                         accept = [first]
                     key = "；".join(accept) if accept else first
-                    explanation = text
 
+        if not explanation:
+            explanation = text_core
         result[num] = {"key": key, "accept": accept, "explanation": explanation}
     return result
 
@@ -238,14 +271,22 @@ def grade_answer(
         return None, "简答题待大模型批改。"
 
     if qtype == "choice":
-        ok = ua.upper() == (answer_key or "").upper()
-        return ok, "回答正确。" if ok else f"不正确。正确答案是 {answer_key}。"
+        key = _strip_answer_meta(answer_key or "")
+        um = re.match(r"^\s*([A-D])\b", ua, re.I)
+        km = re.match(r"^\s*([A-D])\b", key, re.I)
+        if um and km:
+            ok = um.group(1).upper() == km.group(1).upper()
+        else:
+            ok = ua.upper() == key.upper()
+        show = km.group(1).upper() if km else key
+        return ok, "回答正确。" if ok else f"不正确。正确答案是 {show}。"
 
     if qtype == "judge":
         norm = _norm_judge(ua)
-        key = _norm_judge(answer_key)
+        key = _norm_judge(_strip_answer_meta(answer_key))
         ok = norm == key and norm in ("对", "错")
-        return ok, "回答正确。" if ok else f"不正确。正确答案是 {answer_key}。"
+        show = key if key in ("对", "错") else _strip_answer_meta(answer_key)
+        return ok, "回答正确。" if ok else f"不正确。正确答案是 {show}。"
 
     if qtype == "fill":
         return _grade_fill(answer_key, answer_accept, ua, blank_count=blank_count)
@@ -335,6 +376,9 @@ def _fill_equals(user_raw: str, accept_raw: str) -> bool:
     fu, fa = _norm_formula(u), _norm_formula(a)
     if fa and fu == fa:
         return True
+    # 分数：1/2 与 frac{1}{2}
+    if _norm_frac_slash(u) and _norm_frac_slash(u) == _norm_frac_slash(a):
+        return True
     # 用户多写了「是/为」等
     for prefix in ("是", "为", "等于", "="):
         if u.startswith(prefix) and _fill_equals(u[len(prefix) :], a):
@@ -358,23 +402,51 @@ _FULLWIDTH = str.maketrans(
 
 
 def _norm_fill(s: str) -> str:
-    s = (s or "").strip()
+    s = _strip_answer_meta(s or "")
     s = s.translate(_SUB).translate(_FULLWIDTH)
     s = s.replace(" ", "").replace("\u3000", "").replace("＄", "$")
+    s = s.replace("×", "*").replace("÷", "/").replace("·", "*")
+    s = s.replace("π", "pi")
+    s = s.replace("√", "sqrt")
+    s = re.sub(r"sqrt\{(\d+)\}", r"sqrt\1", s)
+    s = re.sub(r"sqrt\((\d+)\)", r"sqrt\1", s)
+    s = re.sub(r"(\d)\*sqrt", r"\1sqrt", s)
     s = s.replace("（", "(").replace("）", ")")
     s = s.replace("【", "[").replace("】", "]")
     s = s.replace("「", "").replace("」", "").replace("『", "").replace("』", "")
     s = s.replace("，", ",").replace("；", ";").replace("。", "")
     s = s.replace("＿", "_").replace("–", "-").replace("—", "-")
-    # 去掉外层 $ 或 $$ 
+    s = s.replace("＜", "<").replace("＞", ">").replace("≦", "<=").replace("≧", ">=")
+    s = s.replace("≤", "<=").replace("≥", ">=")
+    # 去掉外层 $ 或 $$
     s = re.sub(r"^\$+|\$+$", "", s)
-    # 去掉 \\mathrm{...} 一类简单包装的外壳痕迹
+    # 分数与正体
+    s = re.sub(r"\\dfrac\{([^}]*)\}\{([^}]*)\}", r"\1/\2", s)
+    s = re.sub(r"\\frac\{([^}]*)\}\{([^}]*)\}", r"\1/\2", s)
     s = re.sub(r"\\mathrm\{([^}]*)\}", r"\1", s)
     s = s.replace("\\", "")
     # 下标写法 H_2O -> H2O
     s = re.sub(r"_\{([^}]*)\}", r"\1", s)
     s = re.sub(r"_(\d+)", r"\1", s)
+    # 上标 (x+1)^2 与 (x+1)² 对齐
+    s = re.sub(r"\^(\d+)", r"\1", s)
+    # 再剥一次标注（全角括号已转半角）
+    s = re.sub(r"\(冲l[0-4][^)]*\)$", "", s, flags=re.I)
+    s = re.sub(r"\(l[0-4]\)$", "", s, flags=re.I)
     return s.lower()
+
+
+def _norm_frac_slash(s: str) -> str:
+    m = re.fullmatch(r"(-?\d+)/(-?\d+)", s or "")
+    if not m:
+        m = re.fullmatch(r"frac\{(-?\d+)\}\{(-?\d+)\}", s or "")
+    if not m:
+        return ""
+    a, b = int(m.group(1)), int(m.group(2))
+    if b == 0:
+        return ""
+    g = math.gcd(a, b)
+    return f"{a // g}/{b // g}"
 
 
 def _norm_formula(s: str) -> str:

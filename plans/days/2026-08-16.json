@@ -8,10 +8,10 @@
   "status": "pending",
   "completed_at": null,
   "base_item_count": 2,
-  "updated_at": "2026-08-17T22:32:00",
+  "updated_at": "2026-08-18T22:01:56",
   "items": [
     {
-      "id": 89,
+      "id": 304,
       "day_plan_id": "day_2026-08-16",
       "knowledge_id": "chemistry.basic.change",
       "role": "main",
@@ -22,7 +22,7 @@
       "level": "L4"
     },
     {
-      "id": 90,
+      "id": 305,
       "day_plan_id": "day_2026-08-16",
       "knowledge_id": "chemistry.basic.element",
       "role": "main",
@@ -30,6 +30,83 @@
       "done": 0,
       "done_at": null,
       "name": "元素与元素符号",
+      "level": "L4"
+    },
+    {
+      "id": 306,
+      "day_plan_id": "day_2026-08-16",
+      "knowledge_id": "chemistry.air_water.oxygen",
+      "role": "main",
+      "sort_order": 2,
+      "done": 0,
+      "done_at": null,
+      "name": "氧气制取与性质",
+      "level": "L0"
+    },
+    {
+      "id": 307,
+      "day_plan_id": "day_2026-08-16",
+      "knowledge_id": "math.equation.ineq",
+      "role": "main",
+      "sort_order": 3,
+      "done": 0,
+      "done_at": null,
+      "name": "一元一次不等式（组）",
+      "level": "L4"
+    },
+    {
+      "id": 308,
+      "day_plan_id": "day_2026-08-16",
+      "knowledge_id": "chemistry.air_water.water",
+      "role": "main",
+      "sort_order": 4,
+      "done": 0,
+      "done_at": null,
+      "name": "水的组成与净化",
+      "level": "L0"
+    },
+    {
+      "id": 309,
+      "day_plan_id": "day_2026-08-16",
+      "knowledge_id": "chemistry.air_water.hydrogen",
+      "role": "main",
+      "sort_order": 5,
+      "done": 0,
+      "done_at": null,
+      "name": "氢气与还原",
+      "level": "L0"
+    },
+    {
+      "id": 310,
+      "day_plan_id": "day_2026-08-16",
+      "knowledge_id": "math.number.factor",
+      "role": "main",
+      "sort_order": 6,
+      "done": 0,
+      "done_at": null,
+      "name": "因式分解",
+      "level": "L4"
+    },
+    {
+      "id": 311,
+      "day_plan_id": "day_2026-08-16",
+      "knowledge_id": "math.function.quadratic.graph",
+      "role": "main",
+      "sort_order": 7,
+      "done": 0,
+      "done_at": null,
+      "name": "二次函数图像与性质",
+      "level": "L3"
+    },
+    {
+      "id": 312,
+      "day_plan_id": "day_2026-08-16",
+      "knowledge_id": "math.stats.probability",
+      "role": "main",
+      "sort_order": 8,
+      "done": 0,
+      "done_at": null,
+      "name": "概率初步",
       "level": "L4"
     }
   ]

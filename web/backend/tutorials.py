@@ -206,9 +206,10 @@ def get_tutorial(knowledge_id: str) -> dict[str, Any] | None:
     return data
 
 
-def list_tutorials(subject_id: str | None = None) -> list[dict[str, Any]]:
+def list_tutorials(subject_id: str | None = None, *, hide_capped: bool = False) -> list[dict[str, Any]]:
     from .mastery_policy import (
         format_practice_label,
+        is_assessment_at_cap,
         is_practice_exempt,
         load_policy,
         practice_max_level,
@@ -249,6 +250,8 @@ def list_tutorials(subject_id: str | None = None) -> list[dict[str, Any]]:
         item = dict(r)
         cur = item.get("mastery_level") or "L0"
         item["mastery_level"] = cur
+        if hide_capped and is_assessment_at_cap(cur):
+            continue
         label = format_practice_label(current_level=cur, policy=policy)
         item["exempt"] = label["exempt"]
         item["practice_max_level"] = pmax

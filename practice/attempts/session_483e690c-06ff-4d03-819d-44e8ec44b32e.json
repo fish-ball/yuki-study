@@ -1,0 +1,108 @@
+{
+  "id": "483e690c-06ff-4d03-819d-44e8ec44b32e",
+  "paper_id": "drill-2026-08-17-chemistry_basic_molecule__archived_20260817111223",
+  "mode": "paper",
+  "subject_id": "chemistry",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-17T18:08:05",
+  "finished_at": "2026-08-18T16:10:08",
+  "total_questions": 5,
+  "correct_count": 5,
+  "attempt_count": 5,
+  "current_index": 4,
+  "latest_by_question": {
+    "drill-2026-08-17-chemistry_basic_molecule__q01": {
+      "id": "eb1aa38b-2033-4ae0-a980-4706ba0240c1",
+      "question_id": "drill-2026-08-17-chemistry_basic_molecule__q01",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:09:37"
+    },
+    "drill-2026-08-17-chemistry_basic_molecule__q02": {
+      "id": "560e4554-3fa1-4fcc-92cc-068c0460dd89",
+      "question_id": "drill-2026-08-17-chemistry_basic_molecule__q02",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:09:42"
+    },
+    "drill-2026-08-17-chemistry_basic_molecule__q03": {
+      "id": "3958b3f8-aa9c-4b92-b45a-129bd588a321",
+      "question_id": "drill-2026-08-17-chemistry_basic_molecule__q03",
+      "user_answer": "H2O；2；1",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:09:53"
+    },
+    "drill-2026-08-17-chemistry_basic_molecule__q04": {
+      "id": "084f62eb-eea4-4c2b-821b-4c2f1fed82e3",
+      "question_id": "drill-2026-08-17-chemistry_basic_molecule__q04",
+      "user_answer": "水分子；原子",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:10:03"
+    },
+    "drill-2026-08-17-chemistry_basic_molecule__q05": {
+      "id": "49b50a5d-522e-472b-96e8-638d6570c7f0",
+      "question_id": "drill-2026-08-17-chemistry_basic_molecule__q05",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:10:07"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "eb1aa38b-2033-4ae0-a980-4706ba0240c1",
+      "question_id": "drill-2026-08-17-chemistry_basic_molecule__q01",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:09:37"
+    },
+    {
+      "id": "560e4554-3fa1-4fcc-92cc-068c0460dd89",
+      "question_id": "drill-2026-08-17-chemistry_basic_molecule__q02",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:09:42"
+    },
+    {
+      "id": "3958b3f8-aa9c-4b92-b45a-129bd588a321",
+      "question_id": "drill-2026-08-17-chemistry_basic_molecule__q03",
+      "user_answer": "H2O；2；1",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:09:53"
+    },
+    {
+      "id": "084f62eb-eea4-4c2b-821b-4c2f1fed82e3",
+      "question_id": "drill-2026-08-17-chemistry_basic_molecule__q04",
+      "user_answer": "水分子；原子",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:10:03"
+    },
+    {
+      "id": "49b50a5d-522e-472b-96e8-638d6570c7f0",
+      "question_id": "drill-2026-08-17-chemistry_basic_molecule__q05",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:10:07"
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "id": "931f9dd2-475d-445f-849b-95c946bbf0ef",
+  "paper_id": "2026-08-17-chemistry-exam-refresh-l4-222151",
+  "mode": "paper",
+  "subject_id": "chemistry",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-18T15:53:54",
+  "finished_at": "2026-08-18T15:55:25",
+  "total_questions": 11,
+  "correct_count": 10,
+  "attempt_count": 13,
+  "current_index": 10,
+  "latest_by_question": {
+    "2026-08-17-chemistry-exam-refresh-l4-222151__q01": {
+      "id": "c43cc9d7-0a8e-4723-8467-58daaea5f84a",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q01",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:54:03"
+    },
+    "2026-08-17-chemistry-exam-refresh-l4-222151__q02": {
+      "id": "7d5c0780-97bf-4e17-bc01-4f5fcc4cc941",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q02",
+      "user_answer": "新物质",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:54:11"
+    },
+    "2026-08-17-chemistry-exam-refresh-l4-222151__q03": {
+      "id": "f8a66876-6c1a-4288-ac55-f486adb7a470",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q03",
+      "user_answer": "错",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:54:17"
+    },
+    "2026-08-17-chemistry-exam-refresh-l4-222151__q04": {
+      "id": "a182995a-92a0-4949-962e-13442285ca38",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q04",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:54:21"
+    },
+    "2026-08-17-chemistry-exam-refresh-l4-222151__q05": {
+      "id": "a2a4d201-e3aa-4bfa-b0f1-9225c36352e8",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q05",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:54:24"
+    },
+    "2026-08-17-chemistry-exam-refresh-l4-222151__q06": {
+      "id": "04b726de-32d5-42b2-a11d-43685e6c9928",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q06",
+      "user_answer": "大写；大写；小写",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:54:35"
+    },
+    "2026-08-17-chemistry-exam-refresh-l4-222151__q07": {
+      "id": "f2cc0c9f-659a-4188-b407-8e981c4c6b22",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q07",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:54:43"
+    },
+    "2026-08-17-chemistry-exam-refresh-l4-222151__q08": {
+      "id": "efdf808b-4f24-41c2-bae6-bdb88948d838",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q08",
+      "user_answer": "Na；Mg；Al；Fe；Cu",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 2,
+      "created_at": "2026-08-18T15:55:07"
+    },
+    "2026-08-17-chemistry-exam-refresh-l4-222151__q09": {
+      "id": "c8864304-4af9-48d7-b430-fa25b20e43be",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q09",
+      "user_answer": "H；O；C；N",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 2,
+      "created_at": "2026-08-18T15:55:18"
+    },
+    "2026-08-17-chemistry-exam-refresh-l4-222151__q10": {
+      "id": "d83a84c3-e579-49ff-a5d7-aea05af6677f",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q10",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:55:22"
+    },
+    "2026-08-17-chemistry-exam-refresh-l4-222151__q11": {
+      "id": "a47cf5ad-6e66-4059-95f0-3addde74098a",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q11",
+      "user_answer": "对",
+      "is_correct": 0,
+      "feedback": "不正确。正确答案是 错。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:55:25"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "c43cc9d7-0a8e-4723-8467-58daaea5f84a",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q01",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:54:03"
+    },
+    {
+      "id": "7d5c0780-97bf-4e17-bc01-4f5fcc4cc941",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q02",
+      "user_answer": "新物质",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:54:11"
+    },
+    {
+      "id": "f8a66876-6c1a-4288-ac55-f486adb7a470",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q03",
+      "user_answer": "错",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:54:17"
+    },
+    {
+      "id": "a182995a-92a0-4949-962e-13442285ca38",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q04",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:54:21"
+    },
+    {
+      "id": "a2a4d201-e3aa-4bfa-b0f1-9225c36352e8",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q05",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:54:24"
+    },
+    {
+      "id": "04b726de-32d5-42b2-a11d-43685e6c9928",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q06",
+      "user_answer": "大写；大写；小写",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:54:35"
+    },
+    {
+      "id": "f2cc0c9f-659a-4188-b407-8e981c4c6b22",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q07",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:54:43"
+    },
+    {
+      "id": "73c74283-4cc6-4a35-9fb7-4b0269402b41",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q08",
+      "user_answer": "Na；Mg；Al；Fe；Cu",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:55:05"
+    },
+    {
+      "id": "efdf808b-4f24-41c2-bae6-bdb88948d838",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q08",
+      "user_answer": "Na；Mg；Al；Fe；Cu",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 2,
+      "created_at": "2026-08-18T15:55:07"
+    },
+    {
+      "id": "c56f6b46-eed1-47ef-abbc-a3cc95f405d1",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q09",
+      "user_answer": "H；O；C；N",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:55:17"
+    },
+    {
+      "id": "c8864304-4af9-48d7-b430-fa25b20e43be",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q09",
+      "user_answer": "H；O；C；N",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 2,
+      "created_at": "2026-08-18T15:55:18"
+    },
+    {
+      "id": "d83a84c3-e579-49ff-a5d7-aea05af6677f",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q10",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:55:22"
+    },
+    {
+      "id": "a47cf5ad-6e66-4059-95f0-3addde74098a",
+      "question_id": "2026-08-17-chemistry-exam-refresh-l4-222151__q11",
+      "user_answer": "对",
+      "is_correct": 0,
+      "feedback": "不正确。正确答案是 错。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:55:25"
+    }
+  ]
+}

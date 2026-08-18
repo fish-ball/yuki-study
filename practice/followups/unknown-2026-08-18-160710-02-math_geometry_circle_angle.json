@@ -1,0 +1,32 @@
+{
+  "id": "unknown-2026-08-18-160710-02-math_geometry_circle_angle",
+  "created_at": "2026-08-18T16:08:09",
+  "session_id": "a03c6877-e27f-471b-9089-c21c98a5544f",
+  "source_paper_id": "drill-unknown-2026-08-17-182243",
+  "subject_id": "math",
+  "knowledge_id": "math.geometry.circle.angle",
+  "knowledge_ids": [
+    "math.geometry.circle.angle"
+  ],
+  "tutorials": [
+    {
+      "knowledge_id": "math.geometry.circle.angle",
+      "title": "圆周角与圆心角",
+      "subject_id": "math",
+      "path": "knowledge/math/tutorials/math.geometry.circle.angle.md",
+      "has_tutorial": true
+    }
+  ],
+  "consolidation_paper": {
+    "id": "drill-unknown-2026-08-18-160710-02-math_geometry_circle_angle",
+    "theme": "不会巩固 · 圆周角与圆心角",
+    "question_count": 3,
+    "knowledge_ids": [
+      "math.geometry.circle.angle"
+    ],
+    "knowledge_id": "math.geometry.circle.angle",
+    "label": "巩固 · 圆周角与圆心角 · 3 题"
+  },
+  "title": "不会专学 · 圆周角与圆心角",
+  "status": "open"
+}

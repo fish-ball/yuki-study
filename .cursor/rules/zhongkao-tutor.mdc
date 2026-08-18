@@ -22,6 +22,7 @@ alwaysApply: true
 - `.cursor/skills/generate-assessment/SKILL.md`
 - `.cursor/skills/grade-and-update/SKILL.md`
 - `.cursor/skills/weekly-plan/SKILL.md`
+- `.cursor/skills/daily-summary/SKILL.md`（斜杠命令 `/daily-summary`）
 
 ## 硬规则
 

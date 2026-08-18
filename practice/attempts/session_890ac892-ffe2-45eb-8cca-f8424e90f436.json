@@ -1,0 +1,108 @@
+{
+  "id": "890ac892-ffe2-45eb-8cca-f8424e90f436",
+  "paper_id": "2026-08-18-chemistry-exam-refresh-l4-175419",
+  "mode": "paper",
+  "subject_id": "chemistry",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-18T17:54:21",
+  "finished_at": "2026-08-18T17:54:44",
+  "total_questions": 5,
+  "correct_count": 4,
+  "attempt_count": 5,
+  "current_index": 4,
+  "latest_by_question": {
+    "2026-08-18-chemistry-exam-refresh-l4-175419__q01": {
+      "id": "4ed4b248-5c2a-4be7-8daa-b92d06e874f5",
+      "question_id": "2026-08-18-chemistry-exam-refresh-l4-175419__q01",
+      "user_answer": "H2O",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:54:27"
+    },
+    "2026-08-18-chemistry-exam-refresh-l4-175419__q02": {
+      "id": "5bc713b7-cb45-47aa-b145-32b2f0d0cfab",
+      "question_id": "2026-08-18-chemistry-exam-refresh-l4-175419__q02",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:54:30"
+    },
+    "2026-08-18-chemistry-exam-refresh-l4-175419__q03": {
+      "id": "4cb62afd-2d2e-4c58-b35c-2e987982d986",
+      "question_id": "2026-08-18-chemistry-exam-refresh-l4-175419__q03",
+      "user_answer": "氮气",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:54:34"
+    },
+    "2026-08-18-chemistry-exam-refresh-l4-175419__q04": {
+      "id": "849b692f-b378-4b3d-a988-a107340b1844",
+      "question_id": "2026-08-18-chemistry-exam-refresh-l4-175419__q04",
+      "user_answer": "B",
+      "is_correct": 0,
+      "feedback": "不正确。正确答案是 D。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:54:38"
+    },
+    "2026-08-18-chemistry-exam-refresh-l4-175419__q05": {
+      "id": "cd32f029-3936-43c4-b76a-c148bf3e7470",
+      "question_id": "2026-08-18-chemistry-exam-refresh-l4-175419__q05",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:54:43"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "4ed4b248-5c2a-4be7-8daa-b92d06e874f5",
+      "question_id": "2026-08-18-chemistry-exam-refresh-l4-175419__q01",
+      "user_answer": "H2O",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:54:27"
+    },
+    {
+      "id": "5bc713b7-cb45-47aa-b145-32b2f0d0cfab",
+      "question_id": "2026-08-18-chemistry-exam-refresh-l4-175419__q02",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:54:30"
+    },
+    {
+      "id": "4cb62afd-2d2e-4c58-b35c-2e987982d986",
+      "question_id": "2026-08-18-chemistry-exam-refresh-l4-175419__q03",
+      "user_answer": "氮气",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:54:34"
+    },
+    {
+      "id": "849b692f-b378-4b3d-a988-a107340b1844",
+      "question_id": "2026-08-18-chemistry-exam-refresh-l4-175419__q04",
+      "user_answer": "B",
+      "is_correct": 0,
+      "feedback": "不正确。正确答案是 D。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:54:38"
+    },
+    {
+      "id": "cd32f029-3936-43c4-b76a-c148bf3e7470",
+      "question_id": "2026-08-18-chemistry-exam-refresh-l4-175419__q05",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:54:43"
+    }
+  ]
+}

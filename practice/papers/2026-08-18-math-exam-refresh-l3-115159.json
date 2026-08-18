@@ -1,0 +1,403 @@
+{
+  "id": "2026-08-18-math-exam-refresh-l3-115159",
+  "path": "assessments/2026-08-18-math-exam-refresh-l3-115159.md",
+  "subject_id": "math",
+  "theme": "exam-refresh-l3",
+  "date": "2026-08-18",
+  "minutes": 25,
+  "target_level": "L3",
+  "status": "ready",
+  "note": "考核 · 冲 L3 · 通过线 80%",
+  "questions": [
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-115159__q01",
+      "qtype": "fill",
+      "stem": "【L3】掷骰子一次，点数为偶数的概率是 ______。",
+      "score": 4.0,
+      "sort_order": 1,
+      "explanation": "1/2",
+      "answer_key": "1/2",
+      "answer_accept": [
+        "1/2"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.stats.probability"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-115159__q02",
+      "qtype": "judge",
+      "stem": "概率越大，事件越容易发生。",
+      "score": 2.0,
+      "sort_order": 2,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.stats.probability"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-115159__q03",
+      "qtype": "choice",
+      "stem": "一个袋中有 3 红 2 白共 5 球，随机摸一球是红球的概率是（冲L3·选）（　　）",
+      "score": 4.0,
+      "sort_order": 3,
+      "explanation": "C。3/5",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "2/5",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "1/2",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "3/5",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "3/2",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.stats.probability"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-115159__q04",
+      "qtype": "fill",
+      "stem": "【L3】掷一枚均匀硬币，正面朝上的概率是 ______。",
+      "score": 4.0,
+      "sort_order": 4,
+      "explanation": "1/2",
+      "answer_key": "1/2",
+      "answer_accept": [
+        "1/2"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.stats.probability"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-115159__q05",
+      "qtype": "judge",
+      "stem": "必然事件的概率是 1，不可能事件的概率是 0。",
+      "score": 2.0,
+      "sort_order": 5,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.stats.probability"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-115159__q06",
+      "qtype": "judge",
+      "stem": "多项式乘积展开是因式分解的逆运算。",
+      "score": 2.0,
+      "sort_order": 6,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.number.factor"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-115159__q07",
+      "qtype": "fill",
+      "stem": "【L3】x²+2x+1 = ______。",
+      "score": 4.0,
+      "sort_order": 7,
+      "explanation": "(x+1)²",
+      "answer_key": "(x+1)²",
+      "answer_accept": [
+        "(x+1)²"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.number.factor"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-115159__q08",
+      "qtype": "choice",
+      "stem": "x²-9 因式分解结果是（冲L3·选）（　　）",
+      "score": 4.0,
+      "sort_order": 8,
+      "explanation": "A。平方差公式",
+      "answer_key": "A",
+      "answer_accept": [
+        "A"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "(x+3)(x-3)",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "(x-3)²",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "(x+9)(x-1)",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "x(x-9)",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.number.factor"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-115159__q09",
+      "qtype": "fill",
+      "stem": "【L3】提公因式：2x+4 = ______。",
+      "score": 4.0,
+      "sort_order": 9,
+      "explanation": "2(x+2)",
+      "answer_key": "2(x+2)",
+      "answer_accept": [
+        "2(x+2)"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.number.factor"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-115159__q10",
+      "qtype": "judge",
+      "stem": "因式分解是把一个多项式化为几个整式乘积的形式。",
+      "score": 2.0,
+      "sort_order": 10,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.number.factor"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-115159__q11",
+      "qtype": "judge",
+      "stem": "不等式的解集在数轴上通常用阴影或空心/实心点表示。",
+      "score": 2.0,
+      "sort_order": 11,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.equation.ineq"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-115159__q12",
+      "qtype": "fill",
+      "stem": "【L3】不等式组 x>1 且 x<3 的解集可写成 ______。",
+      "score": 4.0,
+      "sort_order": 12,
+      "explanation": "1<x<3",
+      "answer_key": "1<x<3",
+      "answer_accept": [
+        "1<x<3"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.equation.ineq"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-115159__q13",
+      "qtype": "choice",
+      "stem": "不等式 x+1≤0 的解集是（冲L3·选）（　　）",
+      "score": 4.0,
+      "sort_order": 13,
+      "explanation": "B。x≤-1",
+      "answer_key": "B",
+      "answer_accept": [
+        "B"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "x≥-1",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "x≤-1",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "x>1",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "x<-1",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.equation.ineq"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-115159__q14",
+      "qtype": "fill",
+      "stem": "【L3】解不等式 2x>6，得 x ______ 3（填 > 或 <）。",
+      "score": 4.0,
+      "sort_order": 14,
+      "explanation": ">",
+      "answer_key": ">",
+      "answer_accept": [
+        ">"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.equation.ineq"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-115159__q15",
+      "qtype": "judge",
+      "stem": "解不等式两边同乘负数时，不等号方向要改变。",
+      "score": 2.0,
+      "sort_order": 15,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.equation.ineq"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-115159__q16",
+      "qtype": "judge",
+      "stem": "抛物线 y=(x-1)²+2 的顶点是 (1,2)。",
+      "score": 2.0,
+      "sort_order": 16,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.function.quadratic.graph"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-115159__q17",
+      "qtype": "fill",
+      "stem": "【L3】若 a>0，抛物线开口 ______。",
+      "score": 4.0,
+      "sort_order": 17,
+      "explanation": "向上",
+      "answer_key": "向上",
+      "answer_accept": [
+        "向上"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.function.quadratic.graph"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l3-115159__q18",
+      "qtype": "choice",
+      "stem": "抛物线 y=-2x²+1 的顶点坐标是（冲L3·选）（　　）",
+      "score": 4.0,
+      "sort_order": 18,
+      "explanation": "B。对称轴 x=0，顶点 (0,1)",
+      "answer_key": "B",
+      "answer_accept": [
+        "B"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "(0,0)",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "(0,1)",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "(1,0)",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "(1,-2)",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.function.quadratic.graph"
+      ]
+    }
+  ]
+}

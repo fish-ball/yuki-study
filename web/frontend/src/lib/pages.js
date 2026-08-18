@@ -1,14 +1,18 @@
+import { uiState } from "./ui-state.js";
+import { getRouter } from "./router-bridge.js";
+
 const titles = {
   overview: ["总览", "掌握度分布、点阵与薄弱点"],
-  practice: ["练习", "练习上限与考核晋级（见卷面标题）"],
+  practice: ["练习", "基础练习，最高升到 L2"],
   basics: ["基础", "原文表格（周期表 / 九下诗文）"],
   history: ["做题记录", "永久保存的答题尝试与会话"],
   knowledge: ["知识点", "点阵、教程与晋级说明"],
   learn: ["学习", "教程讲义 · 关联修订"],
   mastery: ["掌握度", "筛选并编辑 L0–L4"],
-  assessments: ["考核", "浏览摸底卷与练习卷"],
+  assessments: ["考核", "更高一档练习，提升熟练度（冲 L3/L4）"],
   plan: ["学习计划", "周计划 · 日计划 · 进度与负荷问卷"],
   profile: ["档案", "学生信息与佛山 2027 考策"],
+  calc: ["计算专题", "同一题型换数据反复练，提高计算准确率"],
 };
 
 const subjectNames = {
@@ -29,7 +33,68 @@ let cache = {
   preferredKnowledgeSubject: null,
   pendingTutorial: null,
   openFollowupId: null,
+  pendingPracticePaperId: null,
+  bootError: null,
 };
+
+const navItems = [
+  { name: "overview", path: "/", label: "总览" },
+  { name: "practice", path: "/practice", label: "练习" },
+  { name: "calc", path: "/calc", label: "计算" },
+  { name: "basics", path: "/basics", label: "基础" },
+  { name: "learn", path: "/learn", label: "学习" },
+  { name: "history", path: "/history", label: "做题记录" },
+  { name: "knowledge", path: "/knowledge", label: "知识点" },
+  { name: "mastery", path: "/mastery", label: "掌握度" },
+  { name: "assessments", path: "/assessments", label: "考核" },
+  { name: "plan", path: "/plan", label: "学习计划" },
+  { name: "profile", path: "/profile", label: "档案" },
+];
+
+const viewLoaders = {
+  overview: () => renderOverview(),
+  practice: () => renderPractice(),
+  calc: () => renderCalc(),
+  basics: () => renderBasics(),
+  history: () => renderHistory(),
+  knowledge: () => renderKnowledge(),
+  learn: () => renderLearn(),
+  mastery: () => renderMastery(),
+  assessments: () => renderAssessments(),
+  plan: () => renderPlan(),
+  profile: () => renderProfile(),
+};
+
+function queryStr(key) {
+  const raw = getRouter()?.currentRoute?.value?.query?.[key];
+  if (Array.isArray(raw)) return raw[0] || "";
+  return typeof raw === "string" ? raw : "";
+}
+
+function setSyncStatus(text) {
+  uiState.syncStatus = text || "";
+}
+
+function switchView(name, query) {
+  const router = getRouter();
+  const dest = { name };
+  if (query && Object.keys(query).length) dest.query = query;
+  if (!router) {
+    const fn = viewLoaders[name];
+    return Promise.resolve(fn && fn());
+  }
+  const cur = router.currentRoute.value;
+  if (cur.name === name) {
+    if (query) {
+      return router
+        .replace(dest)
+        .then(() => viewLoaders[name]?.())
+        .catch(() => viewLoaders[name]?.());
+    }
+    return Promise.resolve(viewLoaders[name]?.());
+  }
+  return router.push(dest).catch(() => {});
+}
 
 async function api(path, options) {
   const res = await fetch(path, {
@@ -38,39 +103,29 @@ async function api(path, options) {
   });
   if (!res.ok) {
     const text = await res.text();
-    throw new Error(text || res.statusText);
+    throw new Error(apiErrorMessage(text) || res.statusText);
   }
   if (res.status === 204) return null;
   return res.json();
 }
 
-function $(id) {
-  return document.getElementById(id);
+function apiErrorMessage(raw) {
+  const text = String(raw || "").trim();
+  if (!text) return "";
+  try {
+    const obj = JSON.parse(text);
+    if (typeof obj?.detail === "string") return obj.detail;
+    if (Array.isArray(obj?.detail)) {
+      return obj.detail.map((x) => x.msg || JSON.stringify(x)).join("；");
+    }
+  } catch (_) {
+    /* 非 JSON 则原样返回 */
+  }
+  return text;
 }
 
-function switchView(name) {
-  document.querySelectorAll(".nav-item").forEach((btn) => {
-    btn.classList.toggle("active", btn.dataset.view === name);
-  });
-  document.querySelectorAll(".view").forEach((el) => {
-    el.classList.toggle("active", el.id === `view-${name}`);
-  });
-  const [title, desc] = titles[name];
-  $("view-title").textContent = title;
-  $("view-desc").textContent = desc;
-  const loaders = {
-    overview: renderOverview,
-    practice: renderPractice,
-    basics: renderBasics,
-    history: renderHistory,
-    knowledge: renderKnowledge,
-    learn: renderLearn,
-    mastery: renderMastery,
-    assessments: renderAssessments,
-    plan: renderPlan,
-    profile: renderProfile,
-  };
-  loaders[name]();
+function $(id) {
+  return document.getElementById(id);
 }
 
 function levelBar(bucket, opts = {}) {
@@ -263,14 +318,14 @@ async function renderOverview() {
         }
       </div>
     </div>`;
-  $("sync-status").textContent = data.last_sync ? `已同步 ${data.last_sync}` : "";
+  setSyncStatus(data.last_sync ? `已同步 ${data.last_sync}` : "");
 
   $("view-overview").querySelectorAll("[data-goto-knowledge]").forEach((el) => {
     el.addEventListener("click", (e) => {
       e.stopPropagation();
       const sid = el.dataset.gotoKnowledge;
       cache.preferredKnowledgeSubject = sid;
-      switchView("knowledge");
+      switchView("knowledge", { subject: sid });
     });
   });
   $("view-overview").querySelectorAll(".lattice-dot").forEach((btn) => {
@@ -280,9 +335,12 @@ async function renderOverview() {
         btn.closest("[data-goto-knowledge]")?.dataset.gotoKnowledge ||
         cache.preferredKnowledgeSubject;
       if (sid) cache.preferredKnowledgeSubject = sid;
-      switchView("knowledge");
-      // 知识点页加载后会再绑教程；此处先记下待打开
-      cache.pendingTutorial = btn.dataset.openTutorial;
+      const kid = btn.dataset.openTutorial;
+      cache.pendingTutorial = kid;
+      const query = {};
+      if (sid) query.subject = sid;
+      if (kid) query.kid = kid;
+      switchView("knowledge", query);
     });
   });
 }
@@ -330,11 +388,11 @@ function renderTreeNodes(nodes) {
 
 async function openTutorial(knowledgeId, options = {}) {
   const force = !!options.force;
-  const stage = options.mountId ? $(options.mountId) : null;
-  const target = stage || $("view-learn");
   if (!options.mountId) {
-    switchView("learn");
+    await switchView("learn", knowledgeId ? { kid: knowledgeId } : undefined);
   }
+  const target = options.mountId ? $(options.mountId) : $("view-learn");
+  if (!target) return;
   target.innerHTML = `<div class="summary-box"><p class="muted">正在加载教程…</p></div>`;
   let data;
   try {
@@ -442,7 +500,13 @@ function renderTutorialPanel(target, data, options = {}) {
     };
   }
   const back = $("tu-to-kn");
-  if (back) back.onclick = () => switchView("knowledge");
+  if (back) {
+    back.onclick = () => {
+      const q = {};
+      if (cache.preferredKnowledgeSubject) q.subject = cache.preferredKnowledgeSubject;
+      switchView("knowledge", q);
+    };
+  }
 }
 
 function formatMdTables(html) {
@@ -597,19 +661,21 @@ async function renderLearn() {
   const pmax = policyWrap?.practice_max_level || "L2";
   const apass = Math.round((policyWrap?.assessment_pass_rate || 0.8) * 100);
   const ppass = Math.round((policyWrap?.practice_pass_rate || 0.75) * 100);
+  const cpass = Math.round((policyWrap?.consolidation_pass_rate || 0.75) * 100);
   root.innerHTML = `
     <div class="grid">
       <div class="card span-12">
         <div class="mastery-stats compact">
-          <p style="margin:0"><strong>学习 → 练习 → 考核</strong>：先学教程，再用练习冲到
-          <span class="level-pill">${pmax}</span>（通过线约 ${ppass}%）；
-          冲 L3/L4 必须走考核（通过线 <strong>${apass}%</strong>）。
-          做题点「不会」后，会按知识点分别生成专学页与巩固练习。</p>
+          <p style="margin:0"><strong>学习 →（可跳过练习）→ 考核</strong>：先学教程；练习最高到
+          <span class="level-pill">${pmax}</span>（通过线约 ${ppass}%）。
+          也可以跳过练习，直接考核进阶（每次升一档）。
+          冲 L3/L4 走考核（通过线 <strong>${apass}%</strong>），题目会变形加难。
+          已达 L4 的点不出现在本页列表，可到「知识点」打开学习。</p>
         </div>
       </div>
       <div class="card span-12" id="learn-unknown-wrap">
         <h3 style="margin-top:0">不会专学</h3>
-        <p class="muted" style="margin-top:0">练习中标记「不会」的知识点专页（按错计分后生成）。</p>
+        <p class="muted" style="margin-top:0">仅当某知识点本场未达合格线、且掌握度为 L0 时出现。同一知识点的错题会合并。巩固通过线 <strong>${cpass}%</strong>，通过后从本列表移除，并可升到 L1。</p>
         <div class="paper-pick" id="learn-unknown-list"></div>
       </div>
       <div class="card span-4">
@@ -629,7 +695,7 @@ async function renderLearn() {
           </select>
         </label>
         <div class="paper-pick" id="learn-list" style="margin-top:10px"></div>
-        <p class="muted" style="font-size:0.8rem;margin-top:12px">没有教程？到「知识点」点「学一学」生成。</p>
+        <p class="muted" style="font-size:0.8rem;margin-top:12px">没有教程？到「知识点」点「学一学」生成。已达 L4 的点请到知识点页打开。</p>
       </div>
       <div class="card span-8" id="learn-stage">
         <div class="summary-box">
@@ -643,21 +709,23 @@ async function renderLearn() {
     const kid = pack.knowledge_id || (pack.knowledge_ids || [])[0] || "";
     const tuts = pack.tutorials || [];
     const consol = pack.consolidation_paper || {};
-    const kids = pack.knowledge_ids || (kid ? [kid] : []);
-    // 旧包若含多个知识点：提示拆开看，但仍只展示本包教程
-    const multiHint =
-      kids.length > 1
-        ? `<p class="muted">旧版合并包含多个知识点；请优先使用「每个知识点一份」的新专学。</p>`
-        : "";
+    const lesson = pack.focus_lesson || {};
+    const passPct = pack.pass_pct || consol.pass_pct || cpass;
+    const qn = (pack.source_questions || []).length;
     $("learn-stage").innerHTML = `
       <div class="tutorial-panel">
         <h2 style="margin-top:0;font-family:var(--font-display)">${escapeHtml(
           pack.title || "不会专学"
         )}</h2>
-        <p class="muted">单知识点专学 · ${(pack.created_at || "").replace("T", " ")}</p>
-        <p class="mono muted">${escapeHtml(kid)}</p>
-        ${multiHint}
-        <h4 style="font-family:var(--font-display)">先学教程</h4>
+        <p class="muted">针对本场未达合格线的 L0 知识点 · ${(pack.updated_at || pack.created_at || "").replace("T", " ")}</p>
+        <p class="mono muted">${escapeHtml(kid)}${qn ? ` · 已合并 ${qn} 道错题/不会题` : ""}</p>
+        <h4 style="font-family:var(--font-display)">针对性讲解（题型与变式）</h4>
+        <div class="markdown-box tutorial-body" id="learn-focus-lesson">${
+          lesson.body_md
+            ? formatTutorialHtml(lesson.body_md)
+            : `<p class="muted">正在准备针对你不会的题的讲解。</p>`
+        }</div>
+        <h4 style="font-family:var(--font-display)">完整教程（可对照）</h4>
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px">
           ${tuts
             .map(
@@ -669,16 +737,17 @@ async function renderLearn() {
             .join("")}
         </div>
         <div id="learn-unknown-tutorial"></div>
-        <h4 style="font-family:var(--font-display)">本知识点课后巩固</h4>
-        <p class="muted">${escapeHtml(consol.label || "巩固卷")}</p>
+        <h4 style="font-family:var(--font-display)">课后巩固</h4>
+        <p class="muted">${escapeHtml(consol.label || "巩固卷")} · 通过线 <strong>${passPct}%</strong>，通过后本条会从不会专学列表移除。</p>
         ${
           consol.id
             ? `<button type="button" class="btn-primary" id="learn-do-consol">开始巩固（${
                 consol.question_count || "?"
-              } 题）</button>`
+              } 题 · 通过线 ${passPct}%）</button>`
             : `<p class="muted">暂无巩固卷</p>`
         }
       </div>`;
+    renderKatex($("learn-stage"));
     $("learn-stage").querySelectorAll("[data-open-tutorial]").forEach((btn) => {
       btn.addEventListener("click", () =>
         openTutorial(btn.dataset.openTutorial, { mountId: "learn-unknown-tutorial" })
@@ -687,14 +756,9 @@ async function renderLearn() {
     const doBtn = $("learn-do-consol");
     if (doBtn && consol.id) {
       doBtn.onclick = () => {
+        cache.pendingPracticePaperId = consol.id;
         switchView("practice");
-        setTimeout(() => startPractice(consol.id), 80);
       };
-    }
-    if (tuts[0]?.knowledge_id) {
-      openTutorial(tuts[0].knowledge_id, { mountId: "learn-unknown-tutorial" });
-    } else if (kid) {
-      openTutorial(kid, { mountId: "learn-unknown-tutorial" });
     }
   }
 
@@ -706,17 +770,18 @@ async function renderLearn() {
     return sa - sb;
   });
   if (!sortedFu.length) {
-    unkList.innerHTML = `<p class="muted">暂无。做题时点「不会」，结束练习后会按知识点分别出现在这里。</p>`;
+    unkList.innerHTML = `<p class="muted">暂无。练习/考核中某知识点未达合格线且为 L0 时，会合并出现在这里。</p>`;
   } else {
     unkList.innerHTML = sortedFu
       .map((f) => {
         const kid = f.knowledge_id || (f.knowledge_ids || [])[0] || "";
-        const multi = (f.knowledge_ids || []).length > 1;
+        const nq = (f.source_questions || []).length;
+        const pct = f.pass_pct || cpass;
         return `<button type="button" class="paper-card" data-pack="${escapeHtml(f.id)}">
           <strong>${escapeHtml(f.title || kid || f.id)}</strong>
-          <div class="muted">${multi ? "旧合并包 · " : "单知识点 · "}${escapeHtml(
-            kid
-          )} · ${f.consolidation_paper?.question_count || 0} 道巩固题</div>
+          <div class="muted">L0 专学 · ${escapeHtml(kid)} · ${
+            f.consolidation_paper?.question_count || 0
+          } 道巩固题 · 通过线 ${pct}%${nq ? ` · 已合并 ${nq} 题` : ""}</div>
         </button>`;
       })
       .join("");
@@ -735,7 +800,9 @@ async function renderLearn() {
   async function refreshList() {
     const subject = $("learn-subject").value;
     const filter = $("learn-filter").value;
-    const url = subject ? `/api/tutorials?subject=${encodeURIComponent(subject)}` : "/api/tutorials";
+    const url = subject
+      ? `/api/tutorials?hide_capped=1&subject=${encodeURIComponent(subject)}`
+      : "/api/tutorials?hide_capped=1";
     cachedList = await api(url).catch(() => []);
     const list = filter
       ? cachedList.filter(
@@ -770,8 +837,8 @@ async function renderLearn() {
   $("learn-filter").onchange = refreshList;
   await refreshList();
 
-  if (cache.openFollowupId) {
-    const id = cache.openFollowupId;
+  if (cache.openFollowupId || queryStr("pack")) {
+    const id = cache.openFollowupId || queryStr("pack");
     cache.openFollowupId = null;
     const btn = unkList.querySelector(`[data-pack="${id}"]`);
     if (btn) btn.click();
@@ -783,12 +850,20 @@ async function renderLearn() {
         /* ignore */
       }
     }
+  } else if (queryStr("kid")) {
+    const kid = queryStr("kid");
+    const listEl = $("learn-list");
+    const btn = listEl
+      ? [...listEl.querySelectorAll("[data-kid]")].find((el) => el.dataset.kid === kid)
+      : null;
+    if (btn) btn.classList.add("active");
+    openTutorial(kid, { mountId: "learn-stage" });
   }
 }
 
 async function renderKnowledge() {
   const root = $("view-knowledge");
-  const preferred = cache.preferredKnowledgeSubject || "chemistry";
+  const preferred = queryStr("subject") || cache.preferredKnowledgeSubject || "chemistry";
   const policyWrap = await api("/api/mastery-policy").catch(() => null);
   const pmax = policyWrap?.practice_max_level || "L2";
   const apass = Math.round((policyWrap?.assessment_pass_rate || 0.8) * 100);
@@ -900,8 +975,8 @@ async function renderKnowledge() {
       bindOpeners($("kn-table"));
     }
 
-    if (cache.pendingTutorial) {
-      const kid = cache.pendingTutorial;
+    if (cache.pendingTutorial || queryStr("kid")) {
+      const kid = cache.pendingTutorial || queryStr("kid");
       cache.pendingTutorial = null;
       openTutorial(kid, { mountId: "kn-tutorial" });
     }
@@ -913,7 +988,15 @@ async function renderKnowledge() {
       await load();
     });
   });
-  $("kn-subject").onchange = load;
+  $("kn-subject").onchange = () => {
+    const subject = $("kn-subject").value;
+    cache.preferredKnowledgeSubject = subject;
+    const router = getRouter();
+    if (router && router.currentRoute.value.name === "knowledge") {
+      router.replace({ name: "knowledge", query: { subject } }).catch(() => {});
+    }
+    load();
+  };
   $("kn-weight").onchange = load;
   $("kn-reload").onclick = load;
   $("kn-q").onkeydown = (e) => {
@@ -997,75 +1080,111 @@ function openEdit(item) {
 
 async function renderAssessments() {
   const root = $("view-assessments");
-  const policyWrap = await api("/api/mastery-policy").catch(() => null);
+  if (root) {
+    root.innerHTML = `<div class="card"><p class="muted">正在加载考核…</p></div>`;
+  }
+  const [allPapers, policyWrap, actives] = await Promise.all([
+    api("/api/practice/papers"),
+    api("/api/mastery-policy").catch(() => null),
+    api("/api/practice/sessions/active").catch(() => []),
+  ]);
+  const papers = (allPapers || []).filter((p) => p.paper_kind === "assessment");
+  practiceState.papers = papers;
+  practiceState.surface = "assessment";
   const apass = Math.round((policyWrap?.assessment_pass_rate || 0.8) * 100);
   const pmax = policyWrap?.practice_max_level || "L2";
+  const assessActives = (actives || []).filter((a) => !isPracticePaperId(a.paper_id, a.theme));
+  const activeByPaper = {};
+  assessActives.forEach((a) => {
+    if (a.paper_id) activeByPaper[a.paper_id] = a;
+  });
   root.innerHTML = `
-    <div class="toolbar">
-      <label>科目
-        <select id="as-subject">
-          <option value="">全部</option>
-          ${subjectOptions("")}
-        </select>
-      </label>
-      <button type="button" class="chip" id="as-reload">刷新</button>
-    </div>
-    <p class="muted" style="margin:0 0 12px">练习上限 ${pmax}；考核通过线 ${apass}%（按知识点统计首次作答正确率）。完成后自动刷新更高难度去重新卷；已达 L4 不再刷新。</p>
-    <div class="grid">
-      <div class="card span-5"><div id="as-list" class="assess-list"></div></div>
-      <div class="card span-7"><h3 style="margin-top:0" id="as-title">选择一份考核</h3><div id="as-body" class="markdown-box muted">左侧点选后显示正文</div></div>
+    <div class="practice-layout">
+      <div>
+        <div class="toolbar" style="margin-bottom:10px">
+          <label>科目
+            <select id="as-subject">
+              <option value="">全部</option>
+              ${subjectOptions("")}
+            </select>
+          </label>
+        </div>
+        <p class="muted" style="font-size:0.85rem;margin:0 0 10px">
+          考核用于冲更高档：通过线 <strong>${apass}%</strong>。升档题目会变形加难。
+          已完成的卷不出现在列表；到 L4 不再出卷。允许跳过练习直接开考核。
+        </p>
+        <div id="as-active-banner"></div>
+        <div class="paper-pick" id="as-papers"></div>
+      </div>
+      <div class="practice-stage" id="as-stage">
+        <div class="summary-box">
+          <p class="stat-label">选择左侧考核卷开始</p>
+          <p class="muted">考核负责 L3/L4 熟练度。基础练习请到「练习」页。</p>
+        </div>
+      </div>
     </div>`;
 
-  async function load() {
-    const params = new URLSearchParams();
-    if ($("as-subject").value) params.set("subject", $("as-subject").value);
-    const list = await api(`/api/assessments?${params}`);
-    if (!list.length) {
-      $("as-list").innerHTML = `<p class="muted">暂无考核。可用对话生成后点「从仓库同步」。</p>`;
-      return;
-    }
-    $("as-list").innerHTML = list
-      .map(
-        (a) => {
-          const isDrill = String(a.id || "").startsWith("drill-") || (a.theme || "").includes("drill");
-          const kindLabel = isDrill ? "练习" : "考核";
-          const passHint = isDrill ? "" : ` · 通过线 ${apass}%`;
-          const title = a.note || a.theme || a.id;
-          return `<div class="assess-item" data-id="${a.id}">
-          <div>
-            <strong>${escapeHtml(title)}</strong>
-            <div class="muted">${subjectNames[a.subject_id] || a.subject_id || "—"} · ${kindLabel}${passHint} · ${a.date || "无日期"} · ${a.status}</div>
-            <div class="mono muted" style="margin-top:6px">${(a.knowledge_ids || []).slice(0, 4).join(", ")}${(a.knowledge_ids || []).length > 4 ? "…" : ""}</div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
-            <span class="chip">${a.target_level || "—"}</span>
-            <button type="button" class="chip active" data-practice="${a.id}">去${kindLabel}</button>
-          </div>
-        </div>`;
-        }
-      )
-      .join("");
-    $("as-list").querySelectorAll(".assess-item").forEach((el) => {
-      el.addEventListener("click", async (ev) => {
-        if (ev.target.closest("[data-practice]")) return;
-        const detail = await api(`/api/assessments/${encodeURIComponent(el.dataset.id)}`);
-        $("as-title").textContent = detail.theme || detail.id;
-        $("as-body").classList.remove("muted");
-        $("as-body").textContent = detail.content_md || "";
-      });
-    });
-    $("as-list").querySelectorAll("[data-practice]").forEach((btn) => {
-      btn.addEventListener("click", (ev) => {
-        ev.stopPropagation();
-        switchView("practice");
-        setTimeout(() => startPractice(btn.dataset.practice), 50);
-      });
+  async function refreshPapers() {
+    const subject = $("as-subject").value;
+    const params = subject ? `?subject=${encodeURIComponent(subject)}` : "";
+    let list = await api(`/api/practice/papers${params}`);
+    list = (list || []).filter((p) => p.paper_kind === "assessment");
+    practiceState.papers = list;
+    $("as-papers").innerHTML = list.length
+      ? list
+          .map((p) => {
+            const act = p.active_session || activeByPaper[p.id];
+            const prog = act
+              ? ` · 进行中 ${act.answered_count ?? 0}/${act.total_questions ?? p.question_count}`
+              : "";
+            return `<button type="button" class="paper-card ${
+              act ? "has-progress" : ""
+            }" data-id="${p.id}">
+            <strong>${escapeHtml(p.display_title || p.level_label || p.theme || p.id)}</strong>
+            <div class="muted">${subjectNames[p.subject_id] || p.subject_id || "—"} · 考核 · ${
+              p.date || ""
+            } · ${p.question_count} 题${
+              p.target_level ? ` · 冲 ${p.target_level}` : ""
+            } · 通过线 ${apass}%${prog}</div>
+            <div class="mono muted" style="margin-top:6px">${p.id}</div>
+          </button>`;
+          })
+          .join("")
+      : `<p class="muted">暂无待做考核。已完成的卷已从列表移除；到 L4 的点不再出卷，下一批按知识清单自动出现。</p>`;
+    $("as-papers").querySelectorAll(".paper-card").forEach((btn) => {
+      btn.addEventListener("click", () => startPractice(btn.dataset.id));
     });
   }
 
-  $("as-subject").onchange = load;
-  $("as-reload").onclick = load;
-  await load();
+  $("as-subject").onchange = refreshPapers;
+  await refreshPapers();
+  await restoreActivePractice(assessActives, "assessment");
+  if (cache.pendingPracticePaperId) {
+    const paperId = cache.pendingPracticePaperId;
+    cache.pendingPracticePaperId = null;
+    if (!isPracticePaperId(paperId)) {
+      await startPractice(paperId);
+    } else {
+      cache.pendingPracticePaperId = paperId;
+      switchView("practice");
+    }
+  }
+}
+
+async function skipToAssessment(knowledgeIds, dayPlanId) {
+  const res = await api("/api/assessments/skip-practice", {
+    method: "POST",
+    body: JSON.stringify({
+      knowledge_ids: knowledgeIds || [],
+      day_plan_id: dayPlanId || null,
+    }),
+  });
+  const paper = res.paper || (res.papers && res.papers[0]);
+  if (!paper || !paper.id) {
+    throw new Error("未生成考核卷");
+  }
+  cache.pendingPracticePaperId = paper.id;
+  switchView("assessments");
 }
 
 async function renderPlan() {
@@ -1194,8 +1313,41 @@ async function renderPlan() {
                       <div class="mono muted">${escapeHtml(it.knowledge_id)}</div>
                       <div class="plan-item-tags">
                         <span class="level-pill">${it.level || "L0"}</span>
-                        <span class="chip">${it.done ? "练习已完成" : "待练习"}</span>
+                        <span class="chip">${
+                          it.done
+                            ? "已完成"
+                            : it.path === "assess"
+                              ? "待考核"
+                              : it.path === "cap"
+                                ? "已到顶"
+                                : "待学习"
+                        }</span>
                       </div>
+                      ${
+                        it.done
+                          ? ""
+                          : `<div class="plan-item-actions">
+                        <button type="button" class="chip" data-open-tutorial="${escapeHtml(
+                          it.knowledge_id
+                        )}">学教程</button>
+                        ${
+                          it.path === "assess" || it.path === "cap"
+                            ? `<button type="button" class="chip" data-goto-assess="${escapeHtml(
+                                it.knowledge_id
+                              )}">去考核</button>`
+                            : `<button type="button" class="chip" data-goto-practice="${escapeHtml(
+                                it.knowledge_id
+                              )}">去练习</button>`
+                        }
+                        ${
+                          it.allow_skip
+                            ? `<button type="button" class="chip" data-skip-assess="${escapeHtml(
+                                it.knowledge_id
+                              )}">跳过练习·考核</button>`
+                            : ""
+                        }
+                      </div>`
+                      }
                     </div>
                   </div>`
                 )
@@ -1205,9 +1357,26 @@ async function renderPlan() {
       </div>
       ${
         isToday && d.status !== "completed"
-          ? `<p class="muted" style="margin-top:16px">请到「练习」页完成对应知识点套题；全部做完后回到这里回答负荷反馈。</p>`
+          ? `<p class="muted" style="margin-top:16px">今日可同时推进多个知识点：先学教程，练习可跳过，直接考核进阶。全部完成后回来填负荷反馈。</p>
+          <p style="margin-top:10px"><button type="button" class="btn-primary" id="plan-skip-all">今日未完成项：跳过练习并开考核</button></p>`
           : ""
       }`;
+    panel.querySelectorAll("[data-open-tutorial]").forEach((btn) => {
+      btn.addEventListener("click", () => openTutorial(btn.dataset.openTutorial));
+    });
+    panel.querySelectorAll("[data-skip-assess]").forEach((btn) => {
+      btn.addEventListener("click", () => skipToAssessment([btn.dataset.skipAssess]));
+    });
+    panel.querySelectorAll("[data-goto-assess]").forEach((btn) => {
+      btn.addEventListener("click", () => skipToAssessment([btn.dataset.gotoAssess]));
+    });
+    panel.querySelectorAll("[data-goto-practice]").forEach((btn) => {
+      btn.addEventListener("click", () => switchView("practice"));
+    });
+    const skipAll = $("plan-skip-all");
+    if (skipAll) {
+      skipAll.onclick = () => skipToAssessment([], d.id);
+    }
   }
 
   function showSurvey(survey, ctx) {
@@ -1306,7 +1475,38 @@ async function renderProfile() {
           </tbody>
         </table>
       </div>
+      <div class="card span-12">
+        <h3 style="margin-top:0;font-family:var(--font-display)">成就</h3>
+        <div id="profile-achievements"><p class="muted">加载中…</p></div>
+      </div>
     </div>`;
+  try {
+    const ach = await api("/api/achievements");
+    const box = $("profile-achievements");
+    if (box) {
+      box.innerHTML = `<p class="muted">已解锁 ${ach.unlocked_count || 0} / ${ach.total || 0}</p>
+        <div class="achieve-list">
+          ${(ach.items || [])
+            .map(
+              (it) => `<div class="achieve-item ${it.unlocked ? "on" : "off"}">
+              <strong>${escapeHtml(it.title)}</strong>
+              <p class="muted" style="margin:4px 0 0">${escapeHtml(it.detail)}</p>
+              ${
+                it.unlocked_at
+                  ? `<p class="muted" style="margin:4px 0 0;font-size:0.8rem">${escapeHtml(
+                      String(it.unlocked_at).replace("T", " ")
+                    )}</p>`
+                  : `<p class="muted" style="margin:4px 0 0;font-size:0.8rem">未达成</p>`
+              }
+            </div>`
+            )
+            .join("")}
+        </div>`;
+    }
+  } catch (_) {
+    const box = $("profile-achievements");
+    if (box) box.innerHTML = `<p class="muted">成就列表暂不可用。</p>`;
+  }
 }
 
 function escapeHtml(str) {
@@ -1338,15 +1538,138 @@ function renderFillStemHtml(stem) {
   return { blankCount, html };
 }
 
+function usesMathPad(q) {
+  const sub = String(q?.subject_id || (q?.knowledge_ids || [])[0] || "");
+  return sub === "math" || sub === "physics" || sub.startsWith("math.") || sub.startsWith("physics.");
+}
+
+function mathPadHtml() {
+  const rows = [
+    [
+      ["7", "7"],
+      ["8", "8"],
+      ["9", "9"],
+      ["÷", "÷"],
+      ["⌫", "back"],
+    ],
+    [
+      ["4", "4"],
+      ["5", "5"],
+      ["6", "6"],
+      ["×", "×"],
+      ["√", "√"],
+    ],
+    [
+      ["1", "1"],
+      ["2", "2"],
+      ["3", "3"],
+      ["-", "-"],
+      ["²", "²"],
+    ],
+    [
+      ["0", "0"],
+      [".", "."],
+      ["/", "/"],
+      ["+", "+"],
+      ["³", "³"],
+    ],
+    [
+      ["(", "("],
+      [")", ")"],
+      ["π", "π"],
+      ["±", "±"],
+      ["^", "^"],
+    ],
+  ];
+  const grid = rows
+    .map(
+      (row) =>
+        `<div class="math-pad-row">${row
+          .map(
+            ([lab, val]) =>
+              `<button type="button" class="math-pad-key" data-math-key="${escapeHtml(
+                val
+              )}">${escapeHtml(lab)}</button>`
+          )
+          .join("")}</div>`
+    )
+    .join("");
+  return `<div class="math-pad" id="pr-math-pad">
+    <p class="muted" style="margin:0 0 6px;font-size:0.8rem">数学符号键盘（点空格后再点符号）</p>
+    ${grid}
+  </div>`;
+}
+
+function insertAtCursor(el, text) {
+  if (!el) return;
+  el.focus();
+  const value = el.value || "";
+  const start = el.selectionStart == null ? value.length : el.selectionStart;
+  const end = el.selectionEnd == null ? value.length : el.selectionEnd;
+  el.value = value.slice(0, start) + text + value.slice(end);
+  const pos = start + text.length;
+  if (el.setSelectionRange) el.setSelectionRange(pos, pos);
+}
+
+function bindMathPad(stage) {
+  const pad = stage.querySelector("#pr-math-pad");
+  if (!pad) return;
+  let target = stage.querySelector(".blank-input, #pr-fill");
+  stage.querySelectorAll(".blank-input, #pr-fill").forEach((el) => {
+    el.addEventListener("focus", () => {
+      target = el;
+    });
+  });
+  pad.querySelectorAll("[data-math-key]").forEach((btn) => {
+    btn.addEventListener("mousedown", (ev) => ev.preventDefault());
+    btn.addEventListener("click", () => {
+      const el = target || stage.querySelector(".blank-input, #pr-fill");
+      if (!el) return;
+      const key = btn.dataset.mathKey || "";
+      if (key === "back") {
+        const value = el.value || "";
+        const start = el.selectionStart == null ? value.length : el.selectionStart;
+        const end = el.selectionEnd == null ? value.length : el.selectionEnd;
+        if (start !== end) {
+          el.value = value.slice(0, start) + value.slice(end);
+          if (el.setSelectionRange) el.setSelectionRange(start, start);
+        } else if (start > 0) {
+          el.value = value.slice(0, start - 1) + value.slice(start);
+          if (el.setSelectionRange) el.setSelectionRange(start - 1, start - 1);
+        }
+        el.focus();
+        return;
+      }
+      insertAtCursor(el, key);
+    });
+  });
+}
+
 function renderKatex(root) {
   if (!window.renderMathInElement || !root) return;
-  window.renderMathInElement(root, {
-    delimiters: [
-      { left: "$$", right: "$$", display: true },
-      { left: "$", right: "$", display: false },
-    ],
-    throwOnError: false,
-  });
+  try {
+    window.renderMathInElement(root, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "$", right: "$", display: false },
+      ],
+      ignoredTags: [
+        "script",
+        "noscript",
+        "style",
+        "textarea",
+        "pre",
+        "code",
+        "option",
+        "input",
+        "button",
+      ],
+      throwOnError: false,
+    });
+  } catch (_) {
+    /* 公式渲染失败不阻断做题 */
+  }
 }
 
 let practiceState = {
@@ -1360,21 +1683,124 @@ let practiceState = {
   startedAt: 0,
   finished: false,
   summary: null,
+  surface: "practice", // practice | assessment
+  reportNotice: null,
 };
 
+function formatDetailedExplanation(exp, answerKey) {
+  let t = String(exp || "").trim();
+  const key = String(answerKey || "").trim();
+  if (!t) return "";
+  t = t.replace(/^[A-D对错][.。、．]?\s*/, "");
+  if (!t || t === key) return "";
+  return t;
+}
+
+function isPracticePaperId(paperId, theme) {
+  const id = String(paperId || "");
+  const th = String(theme || "");
+  return id.startsWith("drill-") || th.includes("drill");
+}
+
+function practiceStage() {
+  return $(practiceState.surface === "assessment" ? "as-stage" : "pr-stage");
+}
+
+function setSurfaceFromPaper(paperId, theme) {
+  practiceState.surface = isPracticePaperId(paperId, theme) ? "practice" : "assessment";
+}
+
+async function renderCalc() {
+  const root = $("view-calc");
+  if (!root) return;
+  const topics = await api("/api/calc-drills").catch(() => []);
+  root.innerHTML = `
+    <div class="grid">
+      <div class="card span-12">
+        <p style="margin:0">选一个专题，系统会用<strong>不同数字</strong>出同一类计算题（仿可汗学院）。准确率从<strong>第一次练习</strong>开始累计。若验算后确认标准答案错了，可点「报错」：系统立刻重算修正，该题不计入正确率，刷新后可再做。</p>
+      </div>
+      ${(topics || [])
+        .map((t) => {
+          const tot = Number(t.total || 0);
+          const ok = Number(t.correct || 0);
+          const pct = tot ? Math.round((ok / tot) * 100) : null;
+          const voided = Number(t.voided_count || 0);
+          const recs = t.records || [];
+          const recHtml = recs.length
+            ? `<table class="calc-records">
+                <thead><tr><th>时间</th><th>计入</th><th>报错</th></tr></thead>
+                <tbody>
+                  ${recs
+                    .map(
+                      (r) => `<tr>
+                        <td>${escapeHtml(String(r.started_at || "").replace("T", " "))}</td>
+                        <td>${r.correct}/${r.total}</td>
+                        <td>${r.voided ? r.voided : "—"}</td>
+                      </tr>`
+                    )
+                    .join("")}
+                </tbody>
+              </table>`
+            : `<p class="muted" style="margin:8px 0 0">还没有练习记录。</p>`;
+          return `<div class="card span-4">
+          <h3 style="margin-top:0;font-family:var(--font-display)">${escapeHtml(t.title)}</h3>
+          <p class="muted">${escapeHtml(t.blurb || "")}</p>
+          <p class="calc-acc">${
+            pct == null
+              ? "尚未练习"
+              : `计算准确率 <strong>${pct}%</strong> <span class="muted">（${ok}/${tot}）</span>`
+          }</p>
+          ${
+            voided
+              ? `<p class="muted" style="margin:4px 0 0;font-size:0.85rem">另有 ${voided} 题报错未计入</p>`
+              : ""
+          }
+          <p class="mono muted">${escapeHtml(t.knowledge_id || "")}</p>
+          <button type="button" class="btn-primary" data-calc="${escapeHtml(t.id)}">开始 8 题</button>
+          <h4 style="margin:14px 0 6px;font-size:0.9rem">练习记录</h4>
+          ${recHtml}
+        </div>`;
+        })
+        .join("")}
+    </div>`;
+  root.querySelectorAll("[data-calc]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      btn.disabled = true;
+      try {
+        const session = await api("/api/calc-drills/start", {
+          method: "POST",
+          body: JSON.stringify({ topic_id: btn.dataset.calc, count: 8 }),
+        });
+        cache.pendingPracticePaperId = session.paper_id;
+        switchView("practice");
+      } catch (err) {
+        alert(err.message || "无法开始计算专题");
+        btn.disabled = false;
+      }
+    });
+  });
+}
+
 async function renderPractice() {
-  const [papers, policyWrap, actives] = await Promise.all([
+  const root = $("view-practice");
+  if (root) {
+    root.innerHTML = `<div class="card"><p class="muted">正在加载练习…</p></div>`;
+  }
+  const [allPapers, policyWrap, actives] = await Promise.all([
     api("/api/practice/papers"),
     api("/api/mastery-policy").catch(() => null),
     api("/api/practice/sessions/active").catch(() => []),
   ]);
+  const papers = (allPapers || []).filter((p) => p.paper_kind === "practice");
   practiceState.papers = papers;
-  const root = $("view-practice");
+  practiceState.surface = "practice";
   const pmax = policyWrap?.practice_max_level || "L2";
-  const apass = Math.round((policyWrap?.assessment_pass_rate || 0.8) * 100);
   const ppass = Math.round((policyWrap?.practice_pass_rate || 0.75) * 100);
+  const practiceActives = (actives || []).filter((a) =>
+    isPracticePaperId(a.paper_id, a.theme)
+  );
   const activeByPaper = {};
-  (actives || []).forEach((a) => {
+  practiceActives.forEach((a) => {
     if (a.paper_id) activeByPaper[a.paper_id] = a;
   });
   root.innerHTML = `
@@ -1387,25 +1813,21 @@ async function renderPractice() {
               ${subjectOptions("")}
             </select>
           </label>
-          <label>类型
-            <select id="pr-kind">
-              <option value="">全部</option>
-              <option value="practice">练习</option>
-              <option value="assessment">考核</option>
-            </select>
-          </label>
         </div>
         <p class="muted" style="font-size:0.85rem;margin:0 0 10px">
-          练习上限 <strong>${pmax}</strong>（通过线约 ${ppass}%）；
-          考核通过线 <strong>${apass}%</strong>。进度自动留档，刷新/退出后可继续。
+          练习最高升到 <strong>${pmax}</strong>（通过线约 ${ppass}%）。
+          已达 ${pmax} 的知识点免练，请到「考核」冲更高档。也可跳过练习直接考核进阶。
+        </p>
+        <p style="margin:0 0 10px">
+          <button type="button" class="chip" id="pr-skip-assess">跳过练习，直接考核</button>
         </p>
         <div id="pr-active-banner"></div>
         <div class="paper-pick" id="pr-papers"></div>
       </div>
       <div class="practice-stage" id="pr-stage">
         <div class="summary-box">
-          <p class="stat-label">选择左侧试卷开始</p>
-          <p class="muted">卷面标题已标注可提升等级 / 通过线。答完后有晋级小结；已完成或免练卷会从列表消失，记录留在「做题记录」。</p>
+          <p class="stat-label">选择左侧练习卷开始</p>
+          <p class="muted">练习用于打基础，最高到 ${pmax}。冲更高熟练度请用侧栏「考核」。</p>
           <p class="muted" id="pr-llm-hint" style="margin-top:8px"></p>
         </div>
       </div>
@@ -1413,10 +1835,9 @@ async function renderPractice() {
 
   async function refreshPapers() {
     const subject = $("pr-subject").value;
-    const kind = $("pr-kind").value;
     const params = subject ? `?subject=${encodeURIComponent(subject)}` : "";
     let list = await api(`/api/practice/papers${params}`);
-    if (kind) list = list.filter((p) => p.paper_kind === kind);
+    list = (list || []).filter((p) => p.paper_kind === "practice");
     practiceState.papers = list;
     $("pr-papers").innerHTML = list.length
       ? list
@@ -1429,23 +1850,30 @@ async function renderPractice() {
               act ? "has-progress" : ""
             }" data-id="${p.id}">
             <strong>${escapeHtml(p.display_title || p.level_label || p.theme || p.id)}</strong>
-            <div class="muted">${subjectNames[p.subject_id] || p.subject_id || "—"} · ${
-              p.paper_kind === "practice" ? "练习" : "考核"
-            } · ${p.date || ""} · ${p.question_count} 题${
-              p.target_level ? ` · 目标 ${p.target_level}` : ""
+            <div class="muted">${subjectNames[p.subject_id] || p.subject_id || "—"} · 练习 · ${
+              p.date || ""
+            } · ${p.question_count} 题${
+              p.goal_level ? ` · 可升 ${p.goal_level}` : ""
             }${p.exempt ? " · 免练" : ""}${prog}</div>
             <div class="mono muted" style="margin-top:6px">${p.id}</div>
           </button>`;
           })
           .join("")
-      : `<p class="muted">暂无试卷。请先同步考核 Markdown。</p>`;
+      : `<p class="muted">暂无练习卷。请先完成日计划或到「学习」生成巩固练习。</p>`;
     $("pr-papers").querySelectorAll(".paper-card").forEach((btn) => {
       btn.addEventListener("click", () => startPractice(btn.dataset.id));
     });
   }
 
   $("pr-subject").onchange = refreshPapers;
-  $("pr-kind").onchange = refreshPapers;
+  const skipBtn = $("pr-skip-assess");
+  if (skipBtn) {
+    skipBtn.onclick = async () => {
+      const kids = (practiceState.papers || []).flatMap((p) => p.knowledge_ids || []);
+      const plan = await api("/api/plan").catch(() => null);
+      await skipToAssessment(kids, plan?.today_plan?.id || null);
+    };
+  }
   await refreshPapers();
   try {
     const st = await api("/api/practice/llm-status");
@@ -1459,10 +1887,20 @@ async function renderPractice() {
     /* ignore */
   }
 
-  await restoreActivePractice(actives || []);
+  await restoreActivePractice(practiceActives, "practice");
+  if (cache.pendingPracticePaperId) {
+    const paperId = cache.pendingPracticePaperId;
+    cache.pendingPracticePaperId = null;
+    if (isPracticePaperId(paperId)) {
+      await startPractice(paperId);
+    } else {
+      cache.pendingPracticePaperId = paperId;
+      switchView("assessments");
+    }
+  }
 }
 
-async function restoreActivePractice(actives) {
+async function restoreActivePractice(actives, kind = "practice") {
   // 若本页已有进行中会话挂载，不重复打断
   if (practiceState.sessionId && !practiceState.finished && $("pr-check")) {
     savePracticeProgress();
@@ -1470,35 +1908,34 @@ async function restoreActivePractice(actives) {
   }
   let target = null;
   const local = loadPracticeProgressLocal();
-  const list = actives && actives.length ? actives : await api("/api/practice/sessions/active").catch(() => []);
+  const wantPractice = kind === "practice";
+  const list = (actives && actives.length
+    ? actives
+    : await api("/api/practice/sessions/active").catch(() => [])
+  ).filter((a) => isPracticePaperId(a.paper_id, a.theme) === wantPractice);
   if (local?.sessionId) {
     target = (list || []).find((a) => a.session_id === local.sessionId) || null;
   }
   if (!target && list?.length) {
     target = list[0];
   }
-  const banner = $("pr-active-banner");
+  const banner = $(kind === "assessment" ? "as-active-banner" : "pr-active-banner");
   if (!target) {
-    clearPracticeProgressLocal();
     if (banner) banner.innerHTML = "";
     return;
   }
   if (banner) {
+    const btnId = kind === "assessment" ? "as-continue-btn" : "pr-continue-btn";
+    const label = kind === "assessment" ? "继续考核" : "继续练习";
     banner.innerHTML = `
       <div class="active-progress-banner">
         <span>未完成：已作答 <strong>${target.answered_count || 0}/${
           target.total_questions
         }</strong>，可继续第 ${(target.resume_index || 0) + 1} 题</span>
-        <button type="button" class="chip active" id="pr-continue-btn">继续练习</button>
+        <button type="button" class="chip active" id="${btnId}">${label}</button>
       </div>`;
-    $("pr-continue-btn").onclick = () => startPractice(target.paper_id);
+    $(btnId).onclick = () => startPractice(target.paper_id);
   }
-  // 自动恢复到做题区（刷新后直接接着做）
-  applySessionToState(target);
-  document.querySelectorAll(".paper-card").forEach((el) => {
-    el.classList.toggle("active", el.dataset.id === target.paper_id);
-  });
-  await showPracticeQuestion(practiceState.index);
 }
 
 const PRACTICE_ACTIVE_KEY = "yuki_practice_active_v1";
@@ -1547,6 +1984,7 @@ function clearPracticeProgressLocal() {
 }
 
 function applySessionToState(session) {
+  setSurfaceFromPaper(session.paper_id, session.theme);
   practiceState.sessionId = session.session_id;
   practiceState.paperId = session.paper_id;
   practiceState.total = session.total_questions;
@@ -1566,18 +2004,31 @@ function applySessionToState(session) {
 }
 
 async function startPractice(paperId, options = {}) {
+  setSurfaceFromPaper(paperId);
   const forceNew = !!options.forceNew;
-  const session = await api("/api/practice/sessions", {
-    method: "POST",
-    body: JSON.stringify({ paper_id: paperId, force_new: forceNew }),
-  });
+  let session;
+  try {
+    session = await api("/api/practice/sessions", {
+      method: "POST",
+      body: JSON.stringify({ paper_id: paperId, force_new: forceNew }),
+    });
+  } catch (err) {
+    const msg = err.message || "无法开始练习";
+    const stage = practiceStage();
+    if (stage) {
+      stage.innerHTML = `<div class="feedback-panel bad">${escapeHtml(msg)}</div>`;
+    } else {
+      alert(msg);
+    }
+    return;
+  }
   applySessionToState(session);
   document.querySelectorAll(".paper-card").forEach((el) => {
     el.classList.toggle("active", el.dataset.id === paperId);
   });
   await showPracticeQuestion(practiceState.index);
   if (session.resumed) {
-    const stage = $("pr-stage");
+    const stage = practiceStage();
     if (stage && !$("pr-resume-banner")) {
       const tip = document.createElement("p");
       tip.className = "muted";
@@ -1601,7 +2052,7 @@ async function showPracticeQuestion(index) {
   practiceState.startedAt = Date.now();
   savePracticeProgress();
   const q = data.question;
-  const stage = $("pr-stage");
+  const stage = practiceStage();
   const dots = Array.from({ length: data.total }, (_, i) => {
     const qid = practiceState.questionIds[i];
     const st = practiceState.results[qid] || "";
@@ -1660,15 +2111,33 @@ async function showPracticeQuestion(index) {
     </div>
     ${stemHtml}
     ${answerArea}
+    ${usesMathPad(q) && (q.qtype === "fill" || q.qtype === "short") ? mathPadHtml() : ""}
+    ${
+      practiceState.reportNotice && practiceState.reportNotice.qid === q.id
+        ? `<div class="feedback-panel pending" id="pr-report-banner">${escapeHtml(
+            practiceState.reportNotice.detail || ""
+          )}</div>`
+        : ""
+    }
     <div id="pr-feedback"></div>
     <div class="practice-actions">
       <button type="button" class="btn-primary" id="pr-check">检查答案</button>
       <button type="button" class="btn-ghost btn-dont-know" id="pr-dont-know">不会</button>
+      ${
+        data.can_report
+          ? `<button type="button" class="btn-ghost btn-report" id="pr-report">报错</button>`
+          : ""
+      }
       <button type="button" class="btn-ghost" id="pr-next" disabled>下一题</button>
       <button type="button" class="btn-ghost" id="pr-finish">结束并查看总结</button>
     </div>`;
 
   renderKatex(stage);
+  bindMathPad(stage);
+  if (data.excluded_from_stats) {
+    const nxt = $("pr-next");
+    if (nxt) nxt.disabled = false;
+  }
 
   let selected = "";
   stage.querySelectorAll(".option-btn").forEach((btn) => {
@@ -1763,9 +2232,15 @@ async function showPracticeQuestion(index) {
     practiceState.results[q.id] =
       res.is_correct === true ? "ok" : res.is_correct === false ? "bad" : "pending";
     savePracticeProgress();
+    const explainText = formatDetailedExplanation(res.explanation, res.answer_key);
     $("pr-feedback").innerHTML = `
       <div class="feedback-panel ${cls}">
         <strong>${escapeHtml(res.feedback || "")}</strong>
+        ${
+          res.excluded_from_stats
+            ? `<div class="muted" style="margin-top:6px;font-size:0.85rem">本题已报错，不计入正确率</div>`
+            : ""
+        }
         ${
           res.dont_know
             ? `<div class="muted" style="margin-top:6px;font-size:0.85rem">已按错误计入正确率</div>`
@@ -1788,17 +2263,16 @@ async function showPracticeQuestion(index) {
         }
         ${
           res.answer_key
-            ? `<div style="margin-top:8px">参考答案：<span id="pr-ans">${escapeHtml(
+            ? `<div class="answer-key">参考答案：<span id="pr-ans">${escapeHtml(
                 res.answer_key
               )}</span></div>`
             : ""
         }
         ${
-          res.explanation
-            ? `<div style="margin-top:8px" id="pr-exp">${escapeHtml(res.explanation).replace(
-                /\n/g,
-                "<br>"
-              )}</div>`
+          explainText
+            ? `<div class="answer-explain" id="pr-exp"><span class="label">详细解析</span>${escapeHtml(
+                explainText
+              ).replace(/\n/g, "<br>")}</div>`
             : ""
         }
       </div>`;
@@ -1817,6 +2291,39 @@ async function showPracticeQuestion(index) {
 
   $("pr-check").onclick = () => submitCurrent(false);
   $("pr-dont-know").onclick = () => submitCurrent(true);
+  const reportBtn = $("pr-report");
+  if (reportBtn) {
+    reportBtn.onclick = async () => {
+      if (
+        !window.confirm(
+          "确认已经反复验算、标准答案仍然错了？系统会立刻按题面重算。若确实出错，本题不计入正确率。"
+        )
+      ) {
+        return;
+      }
+      reportBtn.disabled = true;
+      try {
+        const res = await api(
+          `/api/practice/sessions/${practiceState.sessionId}/report-error`,
+          {
+            method: "POST",
+            body: JSON.stringify({ question_id: q.id }),
+          }
+        );
+        practiceState.reportNotice = { qid: q.id, detail: res.detail || "" };
+        if (res.excluded) {
+          delete practiceState.results[q.id];
+          savePracticeProgress();
+        }
+        await showPracticeQuestion(practiceState.index);
+      } catch (err) {
+        reportBtn.disabled = false;
+        $("pr-feedback").innerHTML = `<div class="feedback-panel bad">${escapeHtml(
+          err.message || "报错失败"
+        )}</div>`;
+      }
+    };
+  }
 
   $("pr-next").onclick = () => {
     if (practiceState.index + 1 >= practiceState.total) {
@@ -1830,14 +2337,20 @@ async function showPracticeQuestion(index) {
 
 async function finishPractice() {
   if (!practiceState.sessionId) return;
+  unlockAchieveAudio();
   const summary = await api(`/api/practice/sessions/${practiceState.sessionId}/finish`, {
     method: "POST",
   });
   practiceState.finished = true;
   practiceState.summary = summary;
   clearPracticeProgressLocal();
-  const ok = summary.correct_count || 0;
-  const total = summary.total_questions || practiceState.total;
+  const ok =
+    summary.score_correct != null ? summary.score_correct : summary.correct_count || 0;
+  const total =
+    summary.score_total != null
+      ? summary.score_total
+      : summary.total_questions || practiceState.total;
+  const voidedN = summary.voided_count || 0;
   const prog = summary.progression || {};
   const items = prog.items || prog.per_knowledge || [];
   const next = prog.next_paper;
@@ -1886,14 +2399,15 @@ async function finishPractice() {
        <button type="button" class="btn-primary" id="pr-next-paper">去做新考核</button>`
     : "";
   const retiredN = prog.retired_practice_count || 0;
+  const listName = isAssess ? "考核列表" : "练习列表";
   const listNote = summary.removed_from_list
-    ? `<p class="muted" style="margin-top:8px">本卷已从练习列表移除，记录已写入「做题记录」。</p>`
+    ? `<p class="muted" style="margin-top:8px">本卷已从${listName}移除，记录已写入「做题记录」。</p>`
     : summary.fully_done === false
-      ? `<p class="muted" style="margin-top:8px">尚未答完全部题目，本卷仍留在练习列表。</p>`
+      ? `<p class="muted" style="margin-top:8px">尚未答完全部题目，本卷仍留在${listName}。</p>`
       : "";
   const retiredNote =
     retiredN > 0
-      ? `<p class="muted">因考核通过/超练习上限，已取消 ${retiredN} 份练习卷（不再出现在列表）。</p>`
+      ? `<p class="muted">因考核通过/超练习上限，已取消 ${retiredN} 份练习卷（不再出现在练习列表）。</p>`
       : "";
   const packs = summary.unknown_followups || (summary.unknown_followup ? [summary.unknown_followup] : []);
   const unknownKids = summary.unknown_knowledge_ids || [];
@@ -1924,16 +2438,23 @@ async function finishPractice() {
     unknownHtml = `
       <div class="unknown-followup-box">
         <h4 style="margin:16px 0 6px;font-family:var(--font-display)">不会专学（按知识点分开）</h4>
-        <p class="muted">本场标记「不会」共 ${unknownKids.length || packs.length} 个知识点，请逐个学习并做对应巩固。</p>
+        <p class="muted">本场有 ${unknownKids.length || packs.length} 个知识点未达合格线且为 L0，已合并进不会专学。巩固通过线约 ${Math.round(
+          (summary.consolidation_pass_rate || 0.75) * 100
+        )}%。</p>
         ${cards}
       </div>`;
   } else if (unknownKids.length) {
     unknownHtml = `<p class="muted">有不会标记，但专学包生成失败，请到「学习」页查看。</p>`;
   }
-  $("pr-stage").innerHTML = `
+  const stage = practiceStage();
+  if (!stage) return;
+  stage.innerHTML = `
     <div class="summary-box">
       <p class="stat-label">${isAssess ? "本场考核完成" : "本场练习完成"}</p>
       <p class="stat-value">${ok}<span class="muted" style="font-size:1.2rem"> / ${total}</span></p>
+      <p class="muted">计入正确率（报错题已排除）${
+        total ? Math.round((ok / total) * 100) : 0
+      }%${voidedN ? ` · ${voidedN} 题报错未计入` : ""}</p>
       <p class="muted">练习上限 ${summary.practice_max_level || "L2"}（通过线约 ${Math.round(
         (summary.practice_pass_rate || 0.75) * 100
       )}%）；考核通过线 ${Math.round((summary.assessment_pass_rate || 0.8) * 100)}%</p>
@@ -1944,30 +2465,37 @@ async function finishPractice() {
       ${unknownHtml}
       ${nextHtml}
       <div class="practice-actions" style="justify-content:center;margin-top:20px">
-        <button type="button" class="btn-primary" id="pr-to-list">返回练习列表</button>
+        <button type="button" class="btn-primary" id="pr-to-list">返回${listName}</button>
         <button type="button" class="btn-ghost" id="pr-to-history">查看做题记录</button>
       </div>
     </div>`;
   $("pr-to-list").onclick = () => {
-    switchView("practice");
+    switchView(isAssess ? "assessments" : "practice");
   };
   $("pr-to-history").onclick = () => switchView("history");
   const np = $("pr-next-paper");
   if (np && next?.id) {
-    np.onclick = () => startPractice(next.id);
+    np.onclick = () => {
+      cache.pendingPracticePaperId = next.id;
+      switchView("assessments");
+    };
   }
-  $("pr-stage").querySelectorAll("[data-open-tutorial]").forEach((btn) => {
+  stage.querySelectorAll("[data-open-tutorial]").forEach((btn) => {
     btn.addEventListener("click", () => openTutorial(btn.dataset.openTutorial));
   });
-  $("pr-stage").querySelectorAll("[data-consol]").forEach((btn) => {
-    btn.addEventListener("click", () => startPractice(btn.dataset.consol));
-  });
-  $("pr-stage").querySelectorAll("[data-pack]").forEach((btn) => {
+  stage.querySelectorAll("[data-consol]").forEach((btn) => {
     btn.addEventListener("click", () => {
-      cache.openFollowupId = btn.dataset.pack;
-      switchView("learn");
+      cache.pendingPracticePaperId = btn.dataset.consol;
+      switchView("practice");
     });
   });
+  stage.querySelectorAll("[data-pack]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      cache.openFollowupId = btn.dataset.pack;
+      switchView("learn", { pack: btn.dataset.pack });
+    });
+  });
+  showAchievementCelebration(summary.new_achievements || []);
 }
 
 async function renderHistory() {
@@ -2033,50 +2561,107 @@ async function renderHistory() {
     </div>`;
 }
 
-document.querySelectorAll(".nav-item").forEach((btn) => {
-  btn.addEventListener("click", () => switchView(btn.dataset.view));
-});
+let achieveAudioCtx = null;
 
-$("btn-sync").addEventListener("click", async () => {
-  $("sync-status").textContent = "同步中…";
-  try {
-    const stats = await api("/api/sync", { method: "POST" });
-    $("sync-status").textContent = `同步完成：题 ${stats.questions ?? 0}，记录 ${stats.attempts ?? 0}`;
-    const active = document.querySelector(".nav-item.active")?.dataset.view || "overview";
-    switchView(active);
-  } catch (err) {
-    $("sync-status").textContent = `同步失败：${err.message}`;
+function unlockAchieveAudio() {
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC) return null;
+  if (!achieveAudioCtx) achieveAudioCtx = new AC();
+  if (achieveAudioCtx.state === "suspended") {
+    achieveAudioCtx.resume();
   }
-});
+  return achieveAudioCtx;
+}
 
-$("edit-form").addEventListener("submit", async (e) => {
-  const submitter = e.submitter;
-  if (!submitter || submitter.value !== "save") {
+function playAchieveChime() {
+  const ctx = unlockAchieveAudio();
+  if (!ctx) return;
+  const now = ctx.currentTime;
+  [523.25, 659.25, 783.99].forEach((freq, i) => {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = "sine";
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.exponentialRampToValueAtTime(0.12, now + 0.02 + i * 0.09);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.5 + i * 0.09);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now + i * 0.09);
+    osc.stop(now + 0.65 + i * 0.09);
+  });
+}
+
+function showAchievementCelebration(items) {
+  const list = (items || []).filter((x) => x && x.title);
+  if (!list.length) return;
+  playAchieveChime();
+  let idx = 0;
+  const host = document.createElement("div");
+  host.className = "achieve-overlay";
+  document.body.appendChild(host);
+
+  function renderOne() {
+    const it = list[idx];
+    host.innerHTML = `
+      <div class="achieve-card">
+        <p class="stat-label">成就解锁</p>
+        <h2>${escapeHtml(it.title)}</h2>
+        <p>${escapeHtml(it.detail || "")}</p>
+        <p class="muted">${idx + 1} / ${list.length}</p>
+        <button type="button" class="btn-primary" id="achieve-next">${
+          idx + 1 < list.length ? "下一项" : "继续学习"
+        }</button>
+      </div>`;
+    const btn = host.querySelector("#achieve-next");
+    if (btn) {
+      btn.onclick = () => {
+        idx += 1;
+        if (idx < list.length) {
+          playAchieveChime();
+          renderOne();
+        } else {
+          host.remove();
+        }
+      };
+    }
+  }
+  renderOne();
+}
+
+function bindEditForm() {
+  const form = $("edit-form");
+  if (!form || form.dataset.bound === "1") return;
+  form.dataset.bound = "1";
+  form.addEventListener("submit", async (e) => {
+    const submitter = e.submitter;
+    if (!submitter || submitter.value !== "save") {
+      editingKid = null;
+      return;
+    }
+    e.preventDefault();
+    if (!editingKid) return;
+    await api(`/api/mastery/${encodeURIComponent(editingKid)}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        level: $("edit-level").value,
+        wrong_count: Number($("edit-wrong").value || 0),
+        notes: $("edit-notes").value,
+        write_back_yaml: true,
+      }),
+    });
+    $("edit-dialog").close();
     editingKid = null;
-    return;
-  }
-  e.preventDefault();
-  if (!editingKid) return;
-  await api(`/api/mastery/${encodeURIComponent(editingKid)}`, {
-    method: "PATCH",
-    body: JSON.stringify({
-      level: $("edit-level").value,
-      wrong_count: Number($("edit-wrong").value || 0),
-      notes: $("edit-notes").value,
-      write_back_yaml: true,
-    }),
+    renderMastery();
   });
-  $("edit-dialog").close();
-  editingKid = null;
-  renderMastery();
-});
+}
 
-// 启动
-api("/api/subjects")
-  .then((subjects) => {
-    cache.subjects = subjects;
-    switchView("overview");
-  })
-  .catch((err) => {
-    $("view-overview").innerHTML = `<div class="card"><p>无法连接后端：${err.message}</p></div>`;
-  });
+export {
+  titles,
+  navItems,
+  viewLoaders,
+  cache,
+  api,
+  switchView,
+  bindEditForm,
+};

@@ -1,0 +1,108 @@
+{
+  "id": "6eb548e5-0943-4930-a0ed-ba69887d0e17",
+  "paper_id": "drill-2026-08-18-chemistry_basic_valence",
+  "mode": "paper",
+  "subject_id": "chemistry",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-18T16:05:00",
+  "finished_at": "2026-08-18T16:05:27",
+  "total_questions": 5,
+  "correct_count": 4,
+  "attempt_count": 5,
+  "current_index": 4,
+  "latest_by_question": {
+    "drill-2026-08-18-chemistry_basic_valence__113831_q01": {
+      "id": "b7282654-6488-4758-bc9e-e06de7418065",
+      "question_id": "drill-2026-08-18-chemistry_basic_valence__113831_q01",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:05:03"
+    },
+    "drill-2026-08-18-chemistry_basic_valence__113831_q02": {
+      "id": "8db35adf-fd61-4bd2-aef0-1acd62d866fc",
+      "question_id": "drill-2026-08-18-chemistry_basic_valence__113831_q02",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:05:06"
+    },
+    "drill-2026-08-18-chemistry_basic_valence__113831_q03": {
+      "id": "c0eeb751-1872-4e20-8c13-923dfa7af22c",
+      "question_id": "drill-2026-08-18-chemistry_basic_valence__113831_q03",
+      "user_answer": "氢气",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:05:14"
+    },
+    "drill-2026-08-18-chemistry_basic_valence__113831_q04": {
+      "id": "c18fccbc-26f0-4154-ac47-cc22d9eb50e3",
+      "question_id": "drill-2026-08-18-chemistry_basic_valence__113831_q04",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:05:19"
+    },
+    "drill-2026-08-18-chemistry_basic_valence__113831_q05": {
+      "id": "505eb7d0-29d5-4562-b13d-7fc95e2d5f43",
+      "question_id": "drill-2026-08-18-chemistry_basic_valence__113831_q05",
+      "user_answer": "H2O",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:05:26"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "b7282654-6488-4758-bc9e-e06de7418065",
+      "question_id": "drill-2026-08-18-chemistry_basic_valence__113831_q01",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:05:03"
+    },
+    {
+      "id": "8db35adf-fd61-4bd2-aef0-1acd62d866fc",
+      "question_id": "drill-2026-08-18-chemistry_basic_valence__113831_q02",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:05:06"
+    },
+    {
+      "id": "c0eeb751-1872-4e20-8c13-923dfa7af22c",
+      "question_id": "drill-2026-08-18-chemistry_basic_valence__113831_q03",
+      "user_answer": "氢气",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:05:14"
+    },
+    {
+      "id": "c18fccbc-26f0-4154-ac47-cc22d9eb50e3",
+      "question_id": "drill-2026-08-18-chemistry_basic_valence__113831_q04",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:05:19"
+    },
+    {
+      "id": "505eb7d0-29d5-4562-b13d-7fc95e2d5f43",
+      "question_id": "drill-2026-08-18-chemistry_basic_valence__113831_q05",
+      "user_answer": "H2O",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:05:26"
+    }
+  ]
+}

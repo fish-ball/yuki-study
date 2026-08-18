@@ -22,8 +22,24 @@ def load_policy() -> dict[str, Any]:
                 "max_step_up": 1,
                 "auto_refresh_next": True,
                 "next_level_step": 1,
+                "allow_skip_practice": True,
+                "vary_on_upgrade": True,
             },
             "practice_exempt_when_above_max": True,
+            "plan": {
+                "daily_knowledge_min": 2,
+                "daily_knowledge_max": 4,
+                "intensity_add_knowledge": True,
+            },
+            "unknown_followup": {
+                "trigger_only_when_l0": True,
+                "require_below_pass": True,
+                "consolidation_pass_rate": 0.75,
+                "consolidation_min_questions": 3,
+                "remove_on_pass": True,
+                "allow_level_up": True,
+                "level_up_cap": "L1",
+            },
             "labels": {},
             "basics": [],
         }
@@ -76,6 +92,20 @@ def is_assessment_at_cap(current_level: str | None) -> bool:
     return level_index(current_level) >= level_index("L4")
 
 
+def allow_skip_practice(policy: dict[str, Any] | None = None) -> bool:
+    """是否允许跳过练习、直接用考核晋级。"""
+    p = policy or load_policy()
+    return bool((p.get("assessment") or {}).get("allow_skip_practice", True))
+
+
+def assessment_target_for_level(current_level: str | None) -> str:
+    """跳过练习或考核进阶时，本场目标档（当前 +1，上限 L4）。"""
+    cur = current_level or "L0"
+    if is_assessment_at_cap(cur):
+        return "L4"
+    return next_level(cur, 1)
+
+
 def practice_goal_level(current_level: str | None, policy: dict[str, Any] | None = None) -> str:
     """练习本场可冲的目标等级（不超过练习上限，且相对当前 +1）。"""
     p = policy or load_policy()
@@ -86,6 +116,60 @@ def practice_goal_level(current_level: str | None, policy: dict[str, Any] | None
     if level_index(cur) >= level_index(pmax):
         return pmax
     return clamp_level(next_level(cur, 1), pmax)
+
+
+def unknown_followup_cfg(policy: dict[str, Any] | None = None) -> dict[str, Any]:
+    p = policy or load_policy()
+    return dict(p.get("unknown_followup") or {})
+
+
+def consolidation_pass_rate(policy: dict[str, Any] | None = None) -> float:
+    cfg = unknown_followup_cfg(policy)
+    if cfg.get("consolidation_pass_rate") is not None:
+        return float(cfg["consolidation_pass_rate"])
+    return practice_pass_rate(policy)
+
+
+def apply_consolidation_level_ups(
+    per_kid_stats: dict[str, dict[str, Any]],
+    policy: dict[str, Any] | None = None,
+) -> list[dict[str, Any]]:
+    """不会巩固：按通过线判定；通过可将 L0 升到基础档（默认 L1）。"""
+    p = policy or load_policy()
+    cfg = unknown_followup_cfg(p)
+    rate_need = consolidation_pass_rate(p)
+    min_q_cfg = int(cfg.get("consolidation_min_questions") or 3)
+    cap = str(cfg.get("level_up_cap") or "L1")
+    allow_up = bool(cfg.get("allow_level_up", True))
+    results = []
+    for kid, st in per_kid_stats.items():
+        total = int(st.get("total") or 0)
+        correct = int(st.get("correct") or 0)
+        cur = st.get("current_level") or "L0"
+        rate = correct / total if total else 0
+        min_q = min(min_q_cfg, total) if total else min_q_cfg
+        passed = total >= min_q and rate >= rate_need
+        to = cur
+        changed = False
+        if passed and allow_up and level_index(cur) < level_index(cap):
+            to = next_level(cur, 1)
+            if level_index(to) > level_index(cap):
+                to = cap
+            changed = level_index(to) > level_index(cur)
+        results.append(
+            {
+                "knowledge_id": kid,
+                "changed": changed,
+                "passed": passed,
+                "reason": "pass" if passed else ("too_few" if total < min_q else "below_pass"),
+                "from": cur,
+                "to": to,
+                "rate": rate,
+                "need": rate_need,
+                "subject_id": st.get("subject_id"),
+            }
+        )
+    return results
 
 
 def format_practice_label(

@@ -1,0 +1,90 @@
+{
+  "id": "2c5de4e5-d9e4-4df6-93e2-18b30666f35e",
+  "paper_id": "2026-08-18-chemistry-exam-refresh-l3-155257",
+  "mode": "paper",
+  "subject_id": "chemistry",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-18T15:53:02",
+  "finished_at": "2026-08-18T15:53:43",
+  "total_questions": 4,
+  "correct_count": 3,
+  "attempt_count": 4,
+  "current_index": 3,
+  "latest_by_question": {
+    "2026-08-18-chemistry-exam-refresh-l3-155257__q01": {
+      "id": "66c011b3-a36b-4ebf-88ef-19527d195e2f",
+      "question_id": "2026-08-18-chemistry-exam-refresh-l3-155257__q01",
+      "user_answer": "B",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:53:07"
+    },
+    "2026-08-18-chemistry-exam-refresh-l3-155257__q02": {
+      "id": "ea10bde5-c386-48ab-8cf2-5411f5ddc622",
+      "question_id": "2026-08-18-chemistry-exam-refresh-l3-155257__q02",
+      "user_answer": "原子；原子",
+      "is_correct": 0,
+      "feedback": "第 1 空不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:53:23"
+    },
+    "2026-08-18-chemistry-exam-refresh-l3-155257__q03": {
+      "id": "30efd0b0-2f81-4aab-8279-a5f3978bda5d",
+      "question_id": "2026-08-18-chemistry-exam-refresh-l3-155257__q03",
+      "user_answer": "H2O；2；1",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:53:38"
+    },
+    "2026-08-18-chemistry-exam-refresh-l3-155257__q04": {
+      "id": "4ddd09c9-7fc9-44bb-9fb0-5adfb40b9f33",
+      "question_id": "2026-08-18-chemistry-exam-refresh-l3-155257__q04",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:53:43"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "66c011b3-a36b-4ebf-88ef-19527d195e2f",
+      "question_id": "2026-08-18-chemistry-exam-refresh-l3-155257__q01",
+      "user_answer": "B",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:53:07"
+    },
+    {
+      "id": "ea10bde5-c386-48ab-8cf2-5411f5ddc622",
+      "question_id": "2026-08-18-chemistry-exam-refresh-l3-155257__q02",
+      "user_answer": "原子；原子",
+      "is_correct": 0,
+      "feedback": "第 1 空不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:53:23"
+    },
+    {
+      "id": "30efd0b0-2f81-4aab-8279-a5f3978bda5d",
+      "question_id": "2026-08-18-chemistry-exam-refresh-l3-155257__q03",
+      "user_answer": "H2O；2；1",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:53:38"
+    },
+    {
+      "id": "4ddd09c9-7fc9-44bb-9fb0-5adfb40b9f33",
+      "question_id": "2026-08-18-chemistry-exam-refresh-l3-155257__q04",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:53:43"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "id": "drill-unknown-2026-08-18-160710-02-math_geometry_circle_angle",
+  "path": "practice/papers/drill-unknown-2026-08-18-160710-02-math_geometry_circle_angle.json",
+  "subject_id": "math",
+  "theme": "不会巩固 · 圆周角与圆心角",
+  "date": "2026-08-18",
+  "minutes": 20,
+  "target_level": "L2",
+  "status": "ready",
+  "note": "单知识点巩固；来源会话 a03c6877-e27f-471b-9089-c21c98a5544f；math.geometry.circle.angle",
+  "questions": [
+    {
+      "id": "drill-unknown-2026-08-18-160710-02-math_geometry_circle_angle__160809_q01",
+      "qtype": "fill",
+      "stem": "半圆（或直径）所对圆周角等于 ______°。",
+      "score": 2.0,
+      "sort_order": 1,
+      "explanation": "90",
+      "answer_key": "90",
+      "answer_accept": [
+        "90",
+        "90°"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.circle.angle"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-18-160710-02-math_geometry_circle_angle__160809_q02",
+      "qtype": "choice",
+      "stem": "直径所对的圆周角是（　　）",
+      "score": 4.0,
+      "sort_order": 2,
+      "explanation": "B。直径所对圆周角是直角。",
+      "answer_key": "B",
+      "answer_accept": [
+        "B"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "锐角",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "直角",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "钝角",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "平角",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.geometry.circle.angle"
+      ]
+    },
+    {
+      "id": "drill-unknown-2026-08-18-160710-02-math_geometry_circle_angle__160809_q03",
+      "qtype": "fill",
+      "stem": "若圆心角是 80°，则它所对的圆周角是 ______°。",
+      "score": 2.0,
+      "sort_order": 3,
+      "explanation": "40",
+      "answer_key": "40",
+      "answer_accept": [
+        "40",
+        "40°"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.geometry.circle.angle"
+      ]
+    }
+  ]
+}

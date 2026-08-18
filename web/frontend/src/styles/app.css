@@ -62,10 +62,15 @@ body {
   cursor: pointer;
 }
 .nav-item:hover { background: rgba(15, 110, 86, 0.06); color: var(--ink); }
-.nav-item.active {
+.nav-item.active,
+a.nav-item.router-link-exact-active {
   background: var(--accent-soft);
   color: var(--accent);
   font-weight: 600;
+}
+a.nav-item {
+  display: block;
+  text-decoration: none;
 }
 
 .sidebar-foot { margin-top: auto; }
@@ -102,6 +107,8 @@ body {
 
 .view { display: none; }
 .view.active { display: block; animation: rise 0.35s ease; }
+/* Vue Router 每次只挂载当前页，默认显示 */
+#app .view { display: block; animation: rise 0.35s ease; }
 @keyframes rise {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
@@ -497,6 +504,7 @@ textarea.plan-editor {
 }
 .plan-item-body { display: grid; gap: 4px; }
 .plan-item-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+.plan-item-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
 
 .survey-box {
   margin-top: 14px;
@@ -702,6 +710,24 @@ textarea.plan-editor {
   background: #eef2f6;
   color: var(--ink);
 }
+.answer-key {
+  margin-top: 10px;
+  font-weight: 650;
+}
+.answer-explain {
+  margin-top: 10px;
+  padding: 10px 12px;
+  background: rgba(255, 253, 248, 0.72);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+.answer-explain .label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
 .summary-box {
   text-align: center;
   padding: 40px 20px;
@@ -816,11 +842,33 @@ button.linkish:hover strong { color: var(--accent); text-decoration: underline; 
   font-size: 0.9rem;
 }
 
+.btn-dont-know {
   border-color: var(--warn);
   color: var(--warn);
 }
 .btn-dont-know:hover {
   background: var(--warn-soft);
+}
+.btn-report {
+  border-color: var(--warn);
+  color: var(--warn);
+}
+.btn-report:hover {
+  background: var(--warn-soft);
+}
+.calc-acc {
+  margin: 8px 0 4px;
+  font-size: 0.95rem;
+}
+.calc-records {
+  width: 100%;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+.calc-records th,
+.calc-records td {
+  padding: 4px 6px;
+  text-align: left;
 }
 .unknown-kid-card {
   margin: 10px 0;
@@ -830,6 +878,7 @@ button.linkish:hover strong { color: var(--accent); text-decoration: underline; 
   background: #fff;
 }
 
+.paper-card.exempt {
   opacity: 0.72;
   border-style: dashed;
 }
@@ -852,6 +901,79 @@ button.linkish:hover strong { color: var(--accent); text-decoration: underline; 
 .learn-path-pill.exempt {
   background: #eee;
   color: var(--muted);
+}
+
+.math-pad {
+  margin: 10px 0 0;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  max-width: 320px;
+}
+.math-pad-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.math-pad-row:last-child {
+  margin-bottom: 0;
+}
+.math-pad-key {
+  font: inherit;
+  min-height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  cursor: pointer;
+}
+.math-pad-key:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.achieve-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(28, 36, 48, 0.45);
+  padding: 24px;
+}
+.achieve-card {
+  width: min(420px, 100%);
+  padding: 28px 24px;
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.achieve-card h2 {
+  margin: 8px 0 10px;
+  font-family: var(--font-display);
+  color: var(--accent);
+}
+.achieve-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+.achieve-item {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+.achieve-item.on {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.achieve-item.off {
+  opacity: 0.7;
 }
 
 @media (max-width: 960px) {

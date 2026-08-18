@@ -1,0 +1,33 @@
+{
+  "id": "unknown-2026-08-18-160705-01-math_equation_quadratic",
+  "created_at": "2026-08-18T16:07:39",
+  "session_id": "a03c6877-e27f-471b-9089-c21c98a5544f",
+  "source_paper_id": "drill-unknown-2026-08-17-182243",
+  "subject_id": "math",
+  "knowledge_id": "math.equation.quadratic",
+  "knowledge_ids": [
+    "math.equation.quadratic"
+  ],
+  "tutorials": [
+    {
+      "knowledge_id": "math.equation.quadratic",
+      "title": "一元二次方程",
+      "subject_id": "math",
+      "path": "knowledge/math/tutorials/math.equation.quadratic.md",
+      "has_tutorial": true
+    }
+  ],
+  "consolidation_paper": {
+    "id": "drill-unknown-2026-08-18-160705-01-math_equation_quadratic",
+    "theme": "不会巩固 · 一元二次方程",
+    "question_count": 5,
+    "knowledge_ids": [
+      "math.equation.quadratic"
+    ],
+    "knowledge_id": "math.equation.quadratic",
+    "label": "巩固 · 一元二次方程 · 5 题"
+  },
+  "title": "不会专学 · 一元二次方程",
+  "status": "merged",
+  "canonical_id": "unknown-math_equation_quadratic"
+}

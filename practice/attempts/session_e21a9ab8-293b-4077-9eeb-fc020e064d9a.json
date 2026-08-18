@@ -1,0 +1,108 @@
+{
+  "id": "e21a9ab8-293b-4077-9eeb-fc020e064d9a",
+  "paper_id": "drill-2026-08-18-chemistry_basic_equation",
+  "mode": "paper",
+  "subject_id": "chemistry",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-18T16:06:25",
+  "finished_at": "2026-08-18T16:06:54",
+  "total_questions": 5,
+  "correct_count": 5,
+  "attempt_count": 5,
+  "current_index": 4,
+  "latest_by_question": {
+    "drill-2026-08-18-chemistry_basic_equation__160549_q01": {
+      "id": "2b83bed8-a04c-49c3-a0b7-59e737fc4833",
+      "question_id": "drill-2026-08-18-chemistry_basic_equation__160549_q01",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:06:29"
+    },
+    "drill-2026-08-18-chemistry_basic_equation__160549_q02": {
+      "id": "bceb9b3e-6a80-4aa0-9b3b-57b3621234af",
+      "question_id": "drill-2026-08-18-chemistry_basic_equation__160549_q02",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:06:33"
+    },
+    "drill-2026-08-18-chemistry_basic_equation__160549_q03": {
+      "id": "eadb992d-840f-4711-8ea9-d22ce44ae9ef",
+      "question_id": "drill-2026-08-18-chemistry_basic_equation__160549_q03",
+      "user_answer": "氮气",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:06:39"
+    },
+    "drill-2026-08-18-chemistry_basic_equation__160549_q04": {
+      "id": "16190811-644a-4707-bcf0-cd81b4a47dc0",
+      "question_id": "drill-2026-08-18-chemistry_basic_equation__160549_q04",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:06:44"
+    },
+    "drill-2026-08-18-chemistry_basic_equation__160549_q05": {
+      "id": "75c081f9-9a48-4dcf-b11b-37c7bc15be7c",
+      "question_id": "drill-2026-08-18-chemistry_basic_equation__160549_q05",
+      "user_answer": "H2O",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:06:53"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "2b83bed8-a04c-49c3-a0b7-59e737fc4833",
+      "question_id": "drill-2026-08-18-chemistry_basic_equation__160549_q01",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:06:29"
+    },
+    {
+      "id": "bceb9b3e-6a80-4aa0-9b3b-57b3621234af",
+      "question_id": "drill-2026-08-18-chemistry_basic_equation__160549_q02",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:06:33"
+    },
+    {
+      "id": "eadb992d-840f-4711-8ea9-d22ce44ae9ef",
+      "question_id": "drill-2026-08-18-chemistry_basic_equation__160549_q03",
+      "user_answer": "氮气",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:06:39"
+    },
+    {
+      "id": "16190811-644a-4707-bcf0-cd81b4a47dc0",
+      "question_id": "drill-2026-08-18-chemistry_basic_equation__160549_q04",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:06:44"
+    },
+    {
+      "id": "75c081f9-9a48-4dcf-b11b-37c7bc15be7c",
+      "question_id": "drill-2026-08-18-chemistry_basic_equation__160549_q05",
+      "user_answer": "H2O",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T16:06:53"
+    }
+  ]
+}

@@ -5,10 +5,10 @@
   "title": "二 08-18",
   "focus_text": "化学：化合价与化学式",
   "review_text": "复习分子原子区别",
-  "status": "pending",
+  "status": "in_progress",
   "completed_at": null,
   "base_item_count": 1,
-  "updated_at": "2026-08-17T22:32:00",
+  "updated_at": "2026-08-18T22:01:56",
   "items": [
     {
       "id": 92,
@@ -16,10 +16,98 @@
       "knowledge_id": "chemistry.basic.valence",
       "role": "main",
       "sort_order": 0,
+      "done": 1,
+      "done_at": "2026-08-18T16:05:27",
+      "name": "化合价与化学式",
+      "level": "L4"
+    },
+    {
+      "id": 104,
+      "day_plan_id": "day_2026-08-18",
+      "knowledge_id": "chemistry.basic.equation",
+      "role": "main",
+      "sort_order": 1,
+      "done": 1,
+      "done_at": "2026-08-18T16:06:54",
+      "name": "化学方程式书写与配平",
+      "level": "L4"
+    },
+    {
+      "id": 153,
+      "day_plan_id": "day_2026-08-18",
+      "knowledge_id": "chemistry.basic.molecule",
+      "role": "main",
+      "sort_order": 2,
+      "done": 1,
+      "done_at": "2026-08-18T17:46:13",
+      "name": "分子原子离子",
+      "level": "L4"
+    },
+    {
+      "id": 154,
+      "day_plan_id": "day_2026-08-18",
+      "knowledge_id": "math.geometry.similar",
+      "role": "main",
+      "sort_order": 3,
+      "done": 1,
+      "done_at": "2026-08-18T17:48:13",
+      "name": "相似三角形",
+      "level": "L3"
+    },
+    {
+      "id": 167,
+      "day_plan_id": "day_2026-08-18",
+      "knowledge_id": "math.integrated.geometry_hard",
+      "role": "main",
+      "sort_order": 4,
+      "done": 1,
+      "done_at": "2026-08-18T17:52:41",
+      "name": "几何压轴",
+      "level": "L3"
+    },
+    {
+      "id": 168,
+      "day_plan_id": "day_2026-08-18",
+      "knowledge_id": "chemistry.air_water.air",
+      "role": "main",
+      "sort_order": 5,
+      "done": 1,
+      "done_at": "2026-08-18T17:51:10",
+      "name": "空气成分",
+      "level": "L4"
+    },
+    {
+      "id": 301,
+      "day_plan_id": "day_2026-08-18",
+      "knowledge_id": "chemistry.acid_base.fertilizer",
+      "role": "main",
+      "sort_order": 6,
       "done": 0,
       "done_at": null,
-      "name": "化合价与化学式",
+      "name": "化学肥料",
       "level": "L0"
+    },
+    {
+      "id": 302,
+      "day_plan_id": "day_2026-08-18",
+      "knowledge_id": "chemistry.acid_base.ion",
+      "role": "main",
+      "sort_order": 7,
+      "done": 0,
+      "done_at": null,
+      "name": "酸碱盐与电离初步",
+      "level": "L0"
+    },
+    {
+      "id": 303,
+      "day_plan_id": "day_2026-08-18",
+      "knowledge_id": "chemistry.acid_base.neutral",
+      "role": "main",
+      "sort_order": 8,
+      "done": 1,
+      "done_at": "2026-08-18T21:54:59",
+      "name": "中和反应与 pH",
+      "level": "L2"
     }
   ]
 }

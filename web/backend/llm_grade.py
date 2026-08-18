@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import re
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -117,6 +118,118 @@ def grade_short_with_llm(
     if correct:
         feedback = feedback if "正确" in feedback or "可以" in feedback else f"要点达标。{feedback}"
     return correct, feedback
+
+
+def needs_detailed_explanation(explanation: str | None, answer_key: str | None) -> bool:
+    """答案只有字母/对错或一两句时，需要补详细解析。"""
+    exp = (explanation or "").strip()
+    key = (answer_key or "").strip()
+    if not exp:
+        return True
+    body = re.sub(r"^[A-D对错][.。、．]?\s*", "", exp).strip()
+    if not body or body == key:
+        return True
+    if "【考点】" in exp and "【思路】" in exp and len(exp) >= 40:
+        return False
+    if "解析" in exp and len(body) >= 48:
+        return False
+    return len(body) < 48
+
+
+def explain_question(
+    *,
+    stem: str,
+    qtype: str,
+    answer_key: str,
+    options: list[dict[str, str]] | None = None,
+    existing_explanation: str = "",
+    subject_id: str | None = None,
+    knowledge_ids: list[str] | None = None,
+) -> str | None:
+    """为参考答案生成详细解析（考点/思路/易错）。配置缺失或调用失败时返回 None。"""
+    cfg = load_llm_config()
+    if not cfg:
+        return None
+
+    system = (
+        "你是广东佛山顺德初三中考辅导老师，负责给参考答案配详细解析。"
+        "必须只输出一个 JSON 对象，不要 Markdown，不要其它文字。"
+        '格式：{"explanation": "中文解析正文"}。'
+        "explanation 必须含三部分，用换行分隔："
+        "【考点】……"
+        "【思路】……（写出关键步骤或公式；选择题说明为何该项对，其余项错在哪）"
+        "【易错】……"
+        "面向初三学生，简体中文，不要 emoji，不要只重复答案字母或「对/错」。"
+        "解析必须与给定参考答案一致。"
+    )
+    user_payload = {
+        "subject_id": subject_id,
+        "knowledge_ids": knowledge_ids or [],
+        "qtype": qtype,
+        "stem": stem,
+        "options": options or [],
+        "reference_answer": answer_key,
+        "existing_hint": existing_explanation or "",
+    }
+    messages = [
+        {"role": "system", "content": system},
+        {
+            "role": "user",
+            "content": "请为下列题目的参考答案写详细解析，并严格输出 JSON：\n"
+            + json.dumps(user_payload, ensure_ascii=False),
+        },
+    ]
+    try:
+        raw = _chat_completion(cfg, messages)
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, ValueError):
+        logger.exception("LLM 生成解析失败")
+        return None
+
+    text = str(raw.get("explanation") or "").strip()
+    return text or None
+
+
+def generate_unknown_focus_lesson(
+    *,
+    knowledge_name: str,
+    knowledge_id: str,
+    questions: list[dict[str, Any]],
+    existing_lesson: str = "",
+) -> str | None:
+    """针对不会/做错的原题写更细的专学讲解（题型、考法、变式）。"""
+    cfg = load_llm_config()
+    if not cfg or not questions:
+        return None
+    system = (
+        "你是广东佛山顺德初三中考辅导老师，正在写「不会专学」针对性讲解。"
+        "必须只输出一个 JSON 对象，不要 Markdown 围栏，不要其它文字。"
+        '格式：{"lesson_md": "完整中文 Markdown"}。'
+        "lesson_md 必须比普通教程更细，紧扣学生不会的那几道题："
+        "包含二级标题：## 你卡住的题、## 这题在考什么、## 一步一步怎么做、## 同类题还会怎么变、## 对照易错。"
+        "要讲清题型（判断/选择/填空）、其它常见考法与变式，步骤写全，面向初三，不要 emoji。"
+        "不要只复述参考答案字母。"
+    )
+    payload = {
+        "knowledge_id": knowledge_id,
+        "knowledge_name": knowledge_name,
+        "missed_questions": questions,
+        "existing_lesson": existing_lesson or "",
+    }
+    messages = [
+        {"role": "system", "content": system},
+        {
+            "role": "user",
+            "content": "请根据下列错题写针对性专学讲解，并严格输出 JSON：\n"
+            + json.dumps(payload, ensure_ascii=False),
+        },
+    ]
+    try:
+        raw = _chat_completion(cfg, messages)
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, ValueError):
+        logger.exception("LLM 生成不会专学讲解失败")
+        return None
+    text = str(raw.get("lesson_md") or raw.get("explanation") or "").strip()
+    return text or None
 
 
 def _chat_completion(cfg: dict[str, Any], messages: list[dict[str, str]]) -> dict[str, Any]:

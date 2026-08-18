@@ -1,0 +1,72 @@
+{
+  "id": "4c153b07-96a2-43c9-94b8-bf2c7f27994d",
+  "paper_id": "drill-unknown-2026-08-18-160710-02-math_geometry_circle_angle",
+  "mode": "paper",
+  "subject_id": "math",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-18T17:01:03",
+  "finished_at": "2026-08-18T17:45:57",
+  "total_questions": 3,
+  "correct_count": 3,
+  "attempt_count": 3,
+  "current_index": 2,
+  "latest_by_question": {
+    "drill-unknown-2026-08-18-160710-02-math_geometry_circle_angle__160809_q01": {
+      "id": "a5f0ea27-b0ab-4c0b-94e2-ac0151d8906f",
+      "question_id": "drill-unknown-2026-08-18-160710-02-math_geometry_circle_angle__160809_q01",
+      "user_answer": "90",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:45:34"
+    },
+    "drill-unknown-2026-08-18-160710-02-math_geometry_circle_angle__160809_q02": {
+      "id": "1a5bc9de-4df9-45b3-b740-5b7dc845f61b",
+      "question_id": "drill-unknown-2026-08-18-160710-02-math_geometry_circle_angle__160809_q02",
+      "user_answer": "B",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:45:44"
+    },
+    "drill-unknown-2026-08-18-160710-02-math_geometry_circle_angle__160809_q03": {
+      "id": "a61f5e99-ce80-4a33-89a9-126301d955e5",
+      "question_id": "drill-unknown-2026-08-18-160710-02-math_geometry_circle_angle__160809_q03",
+      "user_answer": "40",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:45:55"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "a5f0ea27-b0ab-4c0b-94e2-ac0151d8906f",
+      "question_id": "drill-unknown-2026-08-18-160710-02-math_geometry_circle_angle__160809_q01",
+      "user_answer": "90",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:45:34"
+    },
+    {
+      "id": "1a5bc9de-4df9-45b3-b740-5b7dc845f61b",
+      "question_id": "drill-unknown-2026-08-18-160710-02-math_geometry_circle_angle__160809_q02",
+      "user_answer": "B",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:45:44"
+    },
+    {
+      "id": "a61f5e99-ce80-4a33-89a9-126301d955e5",
+      "question_id": "drill-unknown-2026-08-18-160710-02-math_geometry_circle_angle__160809_q03",
+      "user_answer": "40",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:45:55"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "id": "2026-08-18-chemistry-exam-refresh-l3-155257",
+  "path": "assessments/2026-08-18-chemistry-exam-refresh-l3-155257.md",
+  "subject_id": "chemistry",
+  "theme": "exam-refresh-l3",
+  "date": "2026-08-18",
+  "minutes": 25,
+  "target_level": "L3",
+  "status": "ready",
+  "note": "考核 · 冲 L3 · 通过线 80%",
+  "questions": [
+    {
+      "id": "2026-08-18-chemistry-exam-refresh-l3-155257__q01",
+      "qtype": "choice",
+      "stem": "氧分子（O₂）与氧原子（O）的关系，说法正确的是（冲L3·选）（　　）",
+      "score": 4.0,
+      "sort_order": 1,
+      "explanation": "B。O₂ 由 2 个 O 构成；分子与原子是不同层次的粒子",
+      "answer_key": "B",
+      "answer_accept": [
+        "B"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "一个氧分子就是一个氧原子",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "一个氧分子由两个氧原子构成",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "氧分子和氧原子化学性质完全相同",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "氧原子不能构成氧分子",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.molecule"
+      ]
+    },
+    {
+      "id": "2026-08-18-chemistry-exam-refresh-l3-155257__q02",
+      "qtype": "fill",
+      "stem": "【L3】保持水的化学性质的最小粒子是 ______；电解水时不能再分的粒子是 ______。",
+      "score": 4.0,
+      "sort_order": 2,
+      "explanation": "水分子；原子",
+      "answer_key": "水分子；原子",
+      "answer_accept": [
+        "水分子",
+        "原子"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.molecule"
+      ]
+    },
+    {
+      "id": "2026-08-18-chemistry-exam-refresh-l3-155257__q03",
+      "qtype": "fill",
+      "stem": "【L3】水分子用符号 ______ 表示；一个水分子由 ______ 个氢原子和 ______ 个氧原子构成。",
+      "score": 4.0,
+      "sort_order": 3,
+      "explanation": "H2O；2；1。H2O（或 H₂O）；2；1",
+      "answer_key": "H2O；2；1",
+      "answer_accept": [
+        "H2O",
+        "2",
+        "1"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.molecule"
+      ]
+    },
+    {
+      "id": "2026-08-18-chemistry-exam-refresh-l3-155257__q04",
+      "qtype": "choice",
+      "stem": "下列关于分子、原子的说法正确的是（冲L3·选）（　　）",
+      "score": 4.0,
+      "sort_order": 4,
+      "explanation": "C。A 错（如汞原子可大于氢分子）；B 错（原子由原子核和电子构成）；D 错（同种原子构成单质分子，如 O₂）",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "分子一定比原子大",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "原子在任何情况下都不能再分",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "化学变化中分子可分，原子不可分",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "同种原子构成的分子一定是化合物分子",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.molecule"
+      ]
+    }
+  ]
+}

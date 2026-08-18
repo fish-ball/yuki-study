@@ -1,5 +1,217 @@
-updated_at: '2026-08-17'
+updated_at: '2026-08-18'
 items:
+- id: 2026-08-18-chemistry-exam-refresh-l3-220156
+  path: assessments/2026-08-18-chemistry-exam-refresh-l3-220156.md
+  subject: chemistry
+  theme: exam-refresh-l3
+  date: '2026-08-18'
+  minutes: 25
+  target_level: L3
+  knowledge_ids:
+  - chemistry.acid_base.neutral
+  status: ready
+  note: 考核 · 冲 L3 · 通过线 80%
+- id: 2026-08-18-math-exam-refresh-l4-180256
+  path: assessments/2026-08-18-math-exam-refresh-l4-180256.md
+  subject: math
+  theme: exam-refresh-l4
+  date: '2026-08-18'
+  minutes: 25
+  target_level: L4
+  knowledge_ids:
+  - math.geometry.similar
+  - math.integrated.geometry_hard
+  status: ready
+  note: 考核 · 冲 L4 · 通过线 80%
+- id: 2026-08-18-chemistry-exam-refresh-l4-175419
+  path: assessments/2026-08-18-chemistry-exam-refresh-l4-175419.md
+  subject: chemistry
+  theme: exam-refresh-l4
+  date: '2026-08-18'
+  minutes: 25
+  target_level: L4
+  knowledge_ids:
+  - chemistry.air_water.air
+  status: ready
+  note: 考核 · 冲 L4 · 通过线 80%
+- id: 2026-08-18-math-exam-refresh-l4-175241
+  path: assessments/2026-08-18-math-exam-refresh-l4-175241.md
+  subject: math
+  theme: exam-refresh-l4
+  date: '2026-08-18'
+  minutes: 25
+  target_level: L4
+  knowledge_ids:
+  - math.integrated.geometry_hard
+  status: ready
+  note: 考核 · 冲 L4 · 通过线 80%
+- id: 2026-08-18-chemistry-exam-refresh-l3-175112
+  path: assessments/2026-08-18-chemistry-exam-refresh-l3-175112.md
+  subject: chemistry
+  theme: exam-refresh-l3
+  date: '2026-08-18'
+  minutes: 25
+  target_level: L3
+  knowledge_ids:
+  - chemistry.air_water.air
+  status: ready
+  note: 考核 · 冲 L3 · 通过线 80%
+- id: 2026-08-18-math-exam-refresh-l3-175014
+  path: assessments/2026-08-18-math-exam-refresh-l3-175014.md
+  subject: math
+  theme: exam-refresh-l3
+  date: '2026-08-18'
+  minutes: 25
+  target_level: L3
+  knowledge_ids:
+  - math.integrated.geometry_hard
+  status: ready
+  note: 考核 · 冲 L3 · 通过线 80%
+- id: 2026-08-18-math-exam-refresh-l4-174812
+  path: assessments/2026-08-18-math-exam-refresh-l4-174812.md
+  subject: math
+  theme: exam-refresh-l4
+  date: '2026-08-18'
+  minutes: 25
+  target_level: L4
+  knowledge_ids:
+  - math.geometry.similar
+  status: ready
+  note: 考核 · 冲 L4 · 通过线 80%
+- id: 2026-08-18-math-exam-refresh-l3-174615
+  path: assessments/2026-08-18-math-exam-refresh-l3-174615.md
+  subject: math
+  theme: exam-refresh-l3
+  date: '2026-08-18'
+  minutes: 25
+  target_level: L3
+  knowledge_ids:
+  - math.geometry.similar
+  status: ready
+  note: 考核 · 冲 L3 · 通过线 80%
+- id: 2026-08-18-chemistry-exam-refresh-l4-161629
+  path: assessments/2026-08-18-chemistry-exam-refresh-l4-161629.md
+  subject: chemistry
+  theme: exam-refresh-l4
+  date: '2026-08-18'
+  minutes: 25
+  target_level: L4
+  knowledge_ids:
+  - chemistry.basic.molecule
+  status: ready
+  note: 考核 · 冲 L4 · 通过线 80%
+- id: 2026-08-18-chemistry-exam-refresh-l3-161427
+  path: assessments/2026-08-18-chemistry-exam-refresh-l3-161427.md
+  subject: chemistry
+  theme: exam-refresh-l3
+  date: '2026-08-18'
+  minutes: 25
+  target_level: L3
+  knowledge_ids:
+  - chemistry.basic.molecule
+  status: ready
+  note: 考核 · 冲 L3 · 通过线 80%
+- id: 2026-08-18-chemistry-exam-refresh-l4-161209
+  path: assessments/2026-08-18-chemistry-exam-refresh-l4-161209.md
+  subject: chemistry
+  theme: exam-refresh-l4
+  date: '2026-08-18'
+  minutes: 25
+  target_level: L4
+  knowledge_ids:
+  - chemistry.basic.valence
+  - chemistry.basic.equation
+  status: ready
+  note: 考核 · 冲 L4 · 通过线 80%
+- id: 2026-08-18-chemistry-exam-refresh-l3-161127
+  path: assessments/2026-08-18-chemistry-exam-refresh-l3-161127.md
+  subject: chemistry
+  theme: exam-refresh-l3
+  date: '2026-08-18'
+  minutes: 25
+  target_level: L3
+  knowledge_ids:
+  - chemistry.basic.molecule
+  - chemistry.basic.valence
+  - chemistry.basic.equation
+  status: ready
+  note: 考核 · 冲 L3 · 通过线 80%
+- id: 2026-08-18-chemistry-exam-refresh-l3-155257
+  path: assessments/2026-08-18-chemistry-exam-refresh-l3-155257.md
+  subject: chemistry
+  theme: exam-refresh-l3
+  date: '2026-08-18'
+  minutes: 25
+  target_level: L3
+  knowledge_ids:
+  - chemistry.basic.molecule
+  status: ready
+  note: 考核 · 冲 L3 · 通过线 80%
+- id: 2026-08-18-chemistry-exam-refresh-l2-155232
+  path: assessments/2026-08-18-chemistry-exam-refresh-l2-155232.md
+  subject: chemistry
+  theme: exam-refresh-l2
+  date: '2026-08-18'
+  minutes: 25
+  target_level: L2
+  knowledge_ids:
+  - chemistry.basic.molecule
+  status: ready
+  note: 考核 · 冲 L2 · 通过线 80%
+- id: 2026-08-18-math-exam-refresh-l4-154817
+  path: assessments/2026-08-18-math-exam-refresh-l4-154817.md
+  subject: math
+  theme: exam-refresh-l4
+  date: '2026-08-18'
+  minutes: 25
+  target_level: L4
+  knowledge_ids:
+  - math.stats.probability
+  - math.number.factor
+  - math.equation.ineq
+  - math.function.quadratic.graph
+  status: ready
+  note: 考核 · 冲 L4 · 通过线 80%
+- id: 2026-08-18-math-exam-refresh-l3-115159
+  path: assessments/2026-08-18-math-exam-refresh-l3-115159.md
+  subject: math
+  theme: exam-refresh-l3
+  date: '2026-08-18'
+  minutes: 25
+  target_level: L3
+  knowledge_ids:
+  - math.number.radical
+  - math.equation.quadratic
+  - math.function.linear
+  - math.geometry.circle.angle
+  - math.stats.probability
+  - math.number.factor
+  - math.equation.ineq
+  - math.function.quadratic.graph
+  - math.geometry.similar
+  - math.integrated.geometry_hard
+  status: ready
+  note: 考核 · 冲 L3 · 通过线 80%
+- id: 2026-08-18-math-exam-refresh-l3-114429
+  path: assessments/2026-08-18-math-exam-refresh-l3-114429.md
+  subject: math
+  theme: exam-refresh-l3
+  date: '2026-08-18'
+  minutes: 25
+  target_level: L3
+  knowledge_ids:
+  - math.number.radical
+  - math.equation.quadratic
+  - math.function.linear
+  - math.geometry.circle.angle
+  - math.stats.probability
+  - math.number.factor
+  - math.equation.ineq
+  - math.function.quadratic.graph
+  - math.geometry.similar
+  - math.integrated.geometry_hard
+  status: ready
+  note: 考核 · 冲 L3 · 通过线 80%
 - id: 2026-08-17-chemistry-exam-refresh-l4-222242
   path: assessments/2026-08-17-chemistry-exam-refresh-l4-222242.md
   subject: chemistry

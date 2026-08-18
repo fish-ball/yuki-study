@@ -1,0 +1,288 @@
+{
+  "id": "11afc4a6-6fa9-4c4c-9b9c-10fd1621b3da",
+  "paper_id": "2026-08-16-chemistry-preview-basic1",
+  "mode": "paper",
+  "subject_id": "chemistry",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-17T00:25:47",
+  "finished_at": "2026-08-18T15:52:32",
+  "total_questions": 15,
+  "correct_count": 14,
+  "attempt_count": 15,
+  "current_index": 14,
+  "latest_by_question": {
+    "2026-08-16-chemistry-preview-basic1__q01": {
+      "id": "07e10919-1d4f-4a77-9fae-0a32e9353a5e",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q01",
+      "user_answer": "错",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:49:15"
+    },
+    "2026-08-16-chemistry-preview-basic1__q02": {
+      "id": "a8d90454-4556-434f-ad27-e3fb4a0b3640",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q02",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:49:19"
+    },
+    "2026-08-16-chemistry-preview-basic1__q03": {
+      "id": "066725a6-df13-4be1-9aaa-9df8e232bb98",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q03",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:49:29"
+    },
+    "2026-08-16-chemistry-preview-basic1__q04": {
+      "id": "258e8068-786f-4aee-b95b-cfafa8e6178d",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q04",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:49:32"
+    },
+    "2026-08-16-chemistry-preview-basic1__q05": {
+      "id": "37c0297f-64ed-4cc0-b82b-5b62bac07f7b",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q05",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:49:38"
+    },
+    "2026-08-16-chemistry-preview-basic1__q06": {
+      "id": "a091e155-c7ff-4e48-9d3d-a3b65e0b8ebe",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q06",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:49:41"
+    },
+    "2026-08-16-chemistry-preview-basic1__q07": {
+      "id": "9661b974-cea3-4baf-b190-499db849ae1c",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q07",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:49:44"
+    },
+    "2026-08-16-chemistry-preview-basic1__q08": {
+      "id": "23b0af95-a180-41e8-a748-973715e5c2dc",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q08",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:49:49"
+    },
+    "2026-08-16-chemistry-preview-basic1__q09": {
+      "id": "783d55ff-ec4b-41e3-bc93-6e5367253365",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q09",
+      "user_answer": "D",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:49:55"
+    },
+    "2026-08-16-chemistry-preview-basic1__q10": {
+      "id": "5ec78729-754d-470c-93f2-96db044c9af9",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q10",
+      "user_answer": "新物质",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:50:01"
+    },
+    "2026-08-16-chemistry-preview-basic1__q11": {
+      "id": "14c786ba-b2d6-4279-b35d-70f3f7e66bc4",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q11",
+      "user_answer": "H；C；N；Fe；Cu",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:50:20"
+    },
+    "2026-08-16-chemistry-preview-basic1__q12": {
+      "id": "2a9a410c-b0f2-44d4-8d1e-1ab9e9ab61c9",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q12",
+      "user_answer": "钠；硫；磷；钾；氦",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:51:17"
+    },
+    "2026-08-16-chemistry-preview-basic1__q13": {
+      "id": "af60d9b9-7a38-4356-818b-227a2f818cd4",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q13",
+      "user_answer": "H2O；2；1",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:51:27"
+    },
+    "2026-08-16-chemistry-preview-basic1__q14": {
+      "id": "28a0b1e5-9dd4-4ed7-b958-44af3a615200",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q14",
+      "user_answer": "分子；原子",
+      "is_correct": 0,
+      "feedback": "第 1 空不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:51:41"
+    },
+    "2026-08-16-chemistry-preview-basic1__q15": {
+      "id": "4b61d733-bbc3-4cd8-81bb-dba05c812620",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q15",
+      "user_answer": "纸撕开是物理变化，因为没有产生新物质；石蜡燃烧是化学变化，因为产生了新物质",
+      "is_correct": 1,
+      "feedback": "作答完全正确。准确区分了物理变化（无新物质）和化学变化（有新物质），且例子恰当，依据说明清晰。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:52:31"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "07e10919-1d4f-4a77-9fae-0a32e9353a5e",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q01",
+      "user_answer": "错",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:49:15"
+    },
+    {
+      "id": "a8d90454-4556-434f-ad27-e3fb4a0b3640",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q02",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:49:19"
+    },
+    {
+      "id": "066725a6-df13-4be1-9aaa-9df8e232bb98",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q03",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:49:29"
+    },
+    {
+      "id": "258e8068-786f-4aee-b95b-cfafa8e6178d",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q04",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:49:32"
+    },
+    {
+      "id": "37c0297f-64ed-4cc0-b82b-5b62bac07f7b",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q05",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:49:38"
+    },
+    {
+      "id": "a091e155-c7ff-4e48-9d3d-a3b65e0b8ebe",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q06",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:49:41"
+    },
+    {
+      "id": "9661b974-cea3-4baf-b190-499db849ae1c",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q07",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:49:44"
+    },
+    {
+      "id": "23b0af95-a180-41e8-a748-973715e5c2dc",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q08",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:49:49"
+    },
+    {
+      "id": "783d55ff-ec4b-41e3-bc93-6e5367253365",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q09",
+      "user_answer": "D",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:49:55"
+    },
+    {
+      "id": "5ec78729-754d-470c-93f2-96db044c9af9",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q10",
+      "user_answer": "新物质",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:50:01"
+    },
+    {
+      "id": "14c786ba-b2d6-4279-b35d-70f3f7e66bc4",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q11",
+      "user_answer": "H；C；N；Fe；Cu",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:50:20"
+    },
+    {
+      "id": "2a9a410c-b0f2-44d4-8d1e-1ab9e9ab61c9",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q12",
+      "user_answer": "钠；硫；磷；钾；氦",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:51:17"
+    },
+    {
+      "id": "af60d9b9-7a38-4356-818b-227a2f818cd4",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q13",
+      "user_answer": "H2O；2；1",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:51:27"
+    },
+    {
+      "id": "28a0b1e5-9dd4-4ed7-b958-44af3a615200",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q14",
+      "user_answer": "分子；原子",
+      "is_correct": 0,
+      "feedback": "第 1 空不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:51:41"
+    },
+    {
+      "id": "4b61d733-bbc3-4cd8-81bb-dba05c812620",
+      "question_id": "2026-08-16-chemistry-preview-basic1__q15",
+      "user_answer": "纸撕开是物理变化，因为没有产生新物质；石蜡燃烧是化学变化，因为产生了新物质",
+      "is_correct": 1,
+      "feedback": "作答完全正确。准确区分了物理变化（无新物质）和化学变化（有新物质），且例子恰当，依据说明清晰。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T15:52:31"
+    }
+  ]
+}

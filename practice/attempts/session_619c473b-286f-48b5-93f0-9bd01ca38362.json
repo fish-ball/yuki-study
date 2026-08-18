@@ -1,0 +1,126 @@
+{
+  "id": "619c473b-286f-48b5-93f0-9bd01ca38362",
+  "paper_id": "2026-08-18-math-exam-refresh-l3-174615",
+  "mode": "paper",
+  "subject_id": "math",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-18T17:46:15",
+  "finished_at": "2026-08-18T17:48:12",
+  "total_questions": 6,
+  "correct_count": 5,
+  "attempt_count": 6,
+  "current_index": 5,
+  "latest_by_question": {
+    "2026-08-18-math-exam-refresh-l3-174615__q01": {
+      "id": "f2ffc219-9c7a-471f-a616-acbbe0d7e23a",
+      "question_id": "2026-08-18-math-exam-refresh-l3-174615__q01",
+      "user_answer": "k",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:47:06"
+    },
+    "2026-08-18-math-exam-refresh-l3-174615__q02": {
+      "id": "2405dda8-704d-4b29-ac9a-0e377b0e2c25",
+      "question_id": "2026-08-18-math-exam-refresh-l3-174615__q02",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:47:15"
+    },
+    "2026-08-18-math-exam-refresh-l3-174615__q03": {
+      "id": "44327e15-0f4e-4df2-bd37-e28d6b305e8f",
+      "question_id": "2026-08-18-math-exam-refresh-l3-174615__q03",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:47:32"
+    },
+    "2026-08-18-math-exam-refresh-l3-174615__q04": {
+      "id": "a367b2eb-e68c-40f6-8329-e35a22449d78",
+      "question_id": "2026-08-18-math-exam-refresh-l3-174615__q04",
+      "user_answer": "1:4",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:47:47"
+    },
+    "2026-08-18-math-exam-refresh-l3-174615__q05": {
+      "id": "546fa9e0-fc28-47ff-8fa4-77a952616274",
+      "question_id": "2026-08-18-math-exam-refresh-l3-174615__q05",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:48:08"
+    },
+    "2026-08-18-math-exam-refresh-l3-174615__q06": {
+      "id": "06c94f85-ef76-4af2-b9e0-1ddf277027e6",
+      "question_id": "2026-08-18-math-exam-refresh-l3-174615__q06",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:48:12"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "f2ffc219-9c7a-471f-a616-acbbe0d7e23a",
+      "question_id": "2026-08-18-math-exam-refresh-l3-174615__q01",
+      "user_answer": "k",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:47:06"
+    },
+    {
+      "id": "2405dda8-704d-4b29-ac9a-0e377b0e2c25",
+      "question_id": "2026-08-18-math-exam-refresh-l3-174615__q02",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:47:15"
+    },
+    {
+      "id": "44327e15-0f4e-4df2-bd37-e28d6b305e8f",
+      "question_id": "2026-08-18-math-exam-refresh-l3-174615__q03",
+      "user_answer": "A",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:47:32"
+    },
+    {
+      "id": "a367b2eb-e68c-40f6-8329-e35a22449d78",
+      "question_id": "2026-08-18-math-exam-refresh-l3-174615__q04",
+      "user_answer": "1:4",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:47:47"
+    },
+    {
+      "id": "546fa9e0-fc28-47ff-8fa4-77a952616274",
+      "question_id": "2026-08-18-math-exam-refresh-l3-174615__q05",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:48:08"
+    },
+    {
+      "id": "06c94f85-ef76-4af2-b9e0-1ddf277027e6",
+      "question_id": "2026-08-18-math-exam-refresh-l3-174615__q06",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:48:12"
+    }
+  ]
+}

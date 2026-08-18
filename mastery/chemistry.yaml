@@ -1,5 +1,5 @@
 subject: chemistry
-updated_at: '2026-08-17'
+updated_at: '2026-08-18'
 items:
 - knowledge_id: chemistry.acid_base
   level: L0
@@ -27,10 +27,10 @@ items:
   wrong_count: 0
   notes: ''
 - knowledge_id: chemistry.acid_base.neutral
-  level: L0
-  last_assessed: null
+  level: L2
+  last_assessed: '2026-08-18'
   wrong_count: 0
-  notes: ''
+  notes: 练习达标晋级
 - knowledge_id: chemistry.acid_base.salt
   level: L0
   last_assessed: null
@@ -42,10 +42,10 @@ items:
   wrong_count: 0
   notes: ''
 - knowledge_id: chemistry.air_water.air
-  level: L0
-  last_assessed: null
-  wrong_count: 0
-  notes: ''
+  level: L4
+  last_assessed: '2026-08-18'
+  wrong_count: 2
+  notes: 练习达标晋级
 - knowledge_id: chemistry.air_water.hydrogen
   level: L0
   last_assessed: null
@@ -73,23 +73,23 @@ items:
   notes: 预习小测全对；能用「新物质」判断变化类型
 - knowledge_id: chemistry.basic.element
   level: L4
-  last_assessed: '2026-08-17'
-  wrong_count: 4
+  last_assessed: '2026-08-18'
+  wrong_count: 5
   notes: 预习小测全对；常见符号读写正确
 - knowledge_id: chemistry.basic.equation
-  level: L0
-  last_assessed: null
+  level: L4
+  last_assessed: '2026-08-18'
   wrong_count: 0
-  notes: ''
+  notes: 练习达标晋级
 - knowledge_id: chemistry.basic.molecule
-  level: L2
-  last_assessed: '2026-08-17'
-  wrong_count: 6
+  level: L4
+  last_assessed: '2026-08-18'
+  wrong_count: 8
   notes: 下一课预习目标：先冲 L1
 - knowledge_id: chemistry.basic.valence
-  level: L0
-  last_assessed: '2026-08-17'
-  wrong_count: 1
+  level: L4
+  last_assessed: '2026-08-18'
+  wrong_count: 2
   notes: 考核正确率偏低
 - knowledge_id: chemistry.calc
   level: L0

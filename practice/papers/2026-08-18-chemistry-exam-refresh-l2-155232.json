@@ -1,0 +1,68 @@
+{
+  "id": "2026-08-18-chemistry-exam-refresh-l2-155232",
+  "path": "assessments/2026-08-18-chemistry-exam-refresh-l2-155232.md",
+  "subject_id": "chemistry",
+  "theme": "exam-refresh-l2",
+  "date": "2026-08-18",
+  "minutes": 25,
+  "target_level": "L2",
+  "status": "ready",
+  "note": "考核 · 冲 L2 · 通过线 80%",
+  "questions": [
+    {
+      "id": "2026-08-18-chemistry-exam-refresh-l2-155232__q01",
+      "qtype": "choice",
+      "stem": "氧分子（O₂）与氧原子（O）的关系，说法正确的是（　　）",
+      "score": 4.0,
+      "sort_order": 1,
+      "explanation": "B。O₂ 由 2 个 O 构成；分子与原子是不同层次的粒子",
+      "answer_key": "B",
+      "answer_accept": [
+        "B"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "一个氧分子就是一个氧原子",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "一个氧分子由两个氧原子构成",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "氧分子和氧原子化学性质完全相同",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "氧原子不能构成氧分子",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.basic.molecule"
+      ]
+    },
+    {
+      "id": "2026-08-18-chemistry-exam-refresh-l2-155232__q02",
+      "qtype": "judge",
+      "stem": "离子是带电的原子或原子团。",
+      "score": 2.0,
+      "sort_order": 2,
+      "explanation": "对。预习阶段先记住「带电粒子」即可",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.basic.molecule"
+      ]
+    }
+  ]
+}

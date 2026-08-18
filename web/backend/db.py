@@ -179,6 +179,26 @@ CREATE TABLE IF NOT EXISTS tutorials (
 );
 
 CREATE INDEX IF NOT EXISTS idx_tutorials_subject ON tutorials(subject_id);
+
+CREATE TABLE IF NOT EXISTS student_achievements (
+  id TEXT PRIMARY KEY,
+  title TEXT NOT NULL,
+  detail TEXT NOT NULL DEFAULT '',
+  unlocked_at TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS calc_answer_reports (
+  id TEXT PRIMARY KEY,
+  session_id TEXT,
+  question_id TEXT NOT NULL,
+  paper_id TEXT,
+  old_answer TEXT NOT NULL DEFAULT '',
+  new_answer TEXT NOT NULL DEFAULT '',
+  fixed INTEGER NOT NULL DEFAULT 0,
+  excluded INTEGER NOT NULL DEFAULT 0,
+  detail TEXT NOT NULL DEFAULT '',
+  created_at TEXT NOT NULL
+);
 """
 
 
@@ -200,5 +220,14 @@ def init_db(conn: sqlite3.Connection) -> None:
         "knowledge_nodes",
         "children_json",
         "children_json TEXT NOT NULL DEFAULT '[]'",
+    )
+    _ensure_column(
+        conn, "attempt_records", "voided", "voided INTEGER NOT NULL DEFAULT 0"
+    )
+    _ensure_column(
+        conn,
+        "attempt_records",
+        "void_reason",
+        "void_reason TEXT NOT NULL DEFAULT ''",
     )
     conn.commit()

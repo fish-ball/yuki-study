@@ -1,0 +1,126 @@
+{
+  "id": "5c90d56b-1d26-41e6-8404-4a59d2007189",
+  "paper_id": "2026-08-18-math-exam-refresh-l3-175014",
+  "mode": "paper",
+  "subject_id": "math",
+  "knowledge_id": null,
+  "status": "completed",
+  "started_at": "2026-08-18T17:51:15",
+  "finished_at": "2026-08-18T17:52:41",
+  "total_questions": 6,
+  "correct_count": 5,
+  "attempt_count": 6,
+  "current_index": 5,
+  "latest_by_question": {
+    "2026-08-18-math-exam-refresh-l3-175014__q01": {
+      "id": "28fe2dff-c90e-4f39-b33f-9367b329b4aa",
+      "question_id": "2026-08-18-math-exam-refresh-l3-175014__q01",
+      "user_answer": "45",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:51:25"
+    },
+    "2026-08-18-math-exam-refresh-l3-175014__q02": {
+      "id": "343f8380-5010-4d70-8040-e45f22c2c442",
+      "question_id": "2026-08-18-math-exam-refresh-l3-175014__q02",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:51:42"
+    },
+    "2026-08-18-math-exam-refresh-l3-175014__q03": {
+      "id": "eed96fd0-4aff-4096-95e2-b5d7ff1e3999",
+      "question_id": "2026-08-18-math-exam-refresh-l3-175014__q03",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:51:49"
+    },
+    "2026-08-18-math-exam-refresh-l3-175014__q04": {
+      "id": "c974cfcb-8913-4fbe-a2b1-70eb58de4a22",
+      "question_id": "2026-08-18-math-exam-refresh-l3-175014__q04",
+      "user_answer": "5倍根号2",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:52:14"
+    },
+    "2026-08-18-math-exam-refresh-l3-175014__q05": {
+      "id": "55de592b-0b73-4c3e-90fb-2a6e7c8e1746",
+      "question_id": "2026-08-18-math-exam-refresh-l3-175014__q05",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:52:36"
+    },
+    "2026-08-18-math-exam-refresh-l3-175014__q06": {
+      "id": "0b559d16-825c-42b1-81b0-e1d54c8d9a0b",
+      "question_id": "2026-08-18-math-exam-refresh-l3-175014__q06",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:52:39"
+    }
+  },
+  "attempt_records": [
+    {
+      "id": "28fe2dff-c90e-4f39-b33f-9367b329b4aa",
+      "question_id": "2026-08-18-math-exam-refresh-l3-175014__q01",
+      "user_answer": "45",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:51:25"
+    },
+    {
+      "id": "343f8380-5010-4d70-8040-e45f22c2c442",
+      "question_id": "2026-08-18-math-exam-refresh-l3-175014__q02",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:51:42"
+    },
+    {
+      "id": "eed96fd0-4aff-4096-95e2-b5d7ff1e3999",
+      "question_id": "2026-08-18-math-exam-refresh-l3-175014__q03",
+      "user_answer": "C",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:51:49"
+    },
+    {
+      "id": "c974cfcb-8913-4fbe-a2b1-70eb58de4a22",
+      "question_id": "2026-08-18-math-exam-refresh-l3-175014__q04",
+      "user_answer": "5倍根号2",
+      "is_correct": 0,
+      "feedback": "不正确，请对照解析再试。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:52:14"
+    },
+    {
+      "id": "55de592b-0b73-4c3e-90fb-2a6e7c8e1746",
+      "question_id": "2026-08-18-math-exam-refresh-l3-175014__q05",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:52:36"
+    },
+    {
+      "id": "0b559d16-825c-42b1-81b0-e1d54c8d9a0b",
+      "question_id": "2026-08-18-math-exam-refresh-l3-175014__q06",
+      "user_answer": "对",
+      "is_correct": 1,
+      "feedback": "回答正确。",
+      "attempt_no": 1,
+      "created_at": "2026-08-18T17:52:39"
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "id": "2026-08-18-chemistry-exam-refresh-l3-175112",
+  "path": "assessments/2026-08-18-chemistry-exam-refresh-l3-175112.md",
+  "subject_id": "chemistry",
+  "theme": "exam-refresh-l3",
+  "date": "2026-08-18",
+  "minutes": 25,
+  "target_level": "L3",
+  "status": "ready",
+  "note": "考核 · 冲 L3 · 通过线 80%",
+  "questions": [
+    {
+      "id": "2026-08-18-chemistry-exam-refresh-l3-175112__q01",
+      "qtype": "fill",
+      "stem": "水的化学式是 ________。",
+      "score": 4.0,
+      "sort_order": 1,
+      "explanation": "H2O",
+      "answer_key": "H2O",
+      "answer_accept": [
+        "H2O"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.air_water.air"
+      ]
+    },
+    {
+      "id": "2026-08-18-chemistry-exam-refresh-l3-175112__q02",
+      "qtype": "judge",
+      "stem": "下列说法是否正确（易错）：化学变化的本质是有新物质生成。",
+      "score": 2.0,
+      "sort_order": 2,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.air_water.air"
+      ]
+    },
+    {
+      "id": "2026-08-18-chemistry-exam-refresh-l3-175112__q03",
+      "qtype": "fill",
+      "stem": "空气中含量最多的气体是 ________。",
+      "score": 4.0,
+      "sort_order": 3,
+      "explanation": "氮气",
+      "answer_key": "氮气",
+      "answer_accept": [
+        "氮气"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.air_water.air"
+      ]
+    },
+    {
+      "id": "2026-08-18-chemistry-exam-refresh-l3-175112__q04",
+      "qtype": "choice",
+      "stem": "关于「空气成分」，不正确的是（　　）",
+      "score": 4.0,
+      "sort_order": 4,
+      "explanation": "C。A。 本题改为选错误项",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "先辨清概念，再联系实验或实例",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "不用区分物理变化和化学变化",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "化学式与元素符号完全一样",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "概念可以随便替换",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "chemistry.air_water.air"
+      ]
+    },
+    {
+      "id": "2026-08-18-chemistry-exam-refresh-l3-175112__q05",
+      "qtype": "judge",
+      "stem": "判断（变式）：「空气成分」相关概念要以教材定义为准。",
+      "score": 2.0,
+      "sort_order": 5,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.air_water.air"
+      ]
+    },
+    {
+      "id": "2026-08-18-chemistry-exam-refresh-l3-175112__q06",
+      "qtype": "judge",
+      "stem": "下列说法是否正确（易错）：「空气成分」相关概念要以教材定义为准。",
+      "score": 2.0,
+      "sort_order": 6,
+      "explanation": "对",
+      "answer_key": "对",
+      "answer_accept": [
+        "对"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "chemistry.air_water.air"
+      ]
+    }
+  ]
+}

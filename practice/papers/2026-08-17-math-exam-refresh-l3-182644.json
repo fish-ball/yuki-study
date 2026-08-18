@@ -6,8 +6,8 @@
   "date": "2026-08-17",
   "minutes": 25,
   "target_level": "L3",
-  "status": "ready",
-  "note": "考核 · 冲 L3 · 通过线 80%",
+  "status": "retired",
+  "note": "考核 · 冲 L3 · 通过线 80%；元题目已下架",
   "questions": [
     {
       "id": "2026-08-17-math-exam-refresh-l3-182644__q01",
@@ -15,7 +15,7 @@
       "stem": "「二次根式」属于中考相关考点，需要结合例题巩固。",
       "score": 2.0,
       "sort_order": 1,
-      "explanation": "对。（冲L3）",
+      "explanation": "对",
       "answer_key": "对",
       "answer_accept": [
         "对"
@@ -32,7 +32,7 @@
       "stem": "【L3】用一句话概括「二次根式」的核心（可写关键词）：______。",
       "score": 4.0,
       "sort_order": 2,
-      "explanation": "二次根式。关键词围绕「二次根式」的定义与判别。（冲L3）",
+      "explanation": "二次根式。关键词围绕「二次根式」的定义与判别",
       "answer_key": "二次根式",
       "answer_accept": [
         "二次根式"
@@ -49,7 +49,7 @@
       "stem": "关于「二次根式」，正确的学习态度是（冲L3·选）（　　）",
       "score": 4.0,
       "sort_order": 3,
-      "explanation": "A。定义 + 练习 + 订正。（冲L3）",
+      "explanation": "A。定义 + 练习 + 订正",
       "answer_key": "A",
       "answer_accept": [
         "A"
@@ -87,7 +87,7 @@
       "stem": "【L3】本课主攻知识点「二次根式」的 knowledge_id 是 ______。",
       "score": 4.0,
       "sort_order": 4,
-      "explanation": "math.number.radical。对应 id：math.number.radical。（冲L3）",
+      "explanation": "math.number.radical。对应 id：math.number.radical",
       "answer_key": "math.number.radical",
       "answer_accept": [
         "math.number.radical"
@@ -104,7 +104,7 @@
       "stem": "学习「二次根式」时，既要记住结论，也要能用自己的话解释含义。",
       "score": 2.0,
       "sort_order": 5,
-      "explanation": "对。理解才能应对变式。（冲L3）",
+      "explanation": "对。理解才能应对变式",
       "answer_key": "对",
       "answer_accept": [
         "对"
@@ -121,7 +121,7 @@
       "stem": "「一元二次方程」属于中考相关考点，需要结合例题巩固。",
       "score": 2.0,
       "sort_order": 6,
-      "explanation": "对。（冲L3）",
+      "explanation": "对",
       "answer_key": "对",
       "answer_accept": [
         "对"
@@ -138,7 +138,7 @@
       "stem": "【L3】用一句话概括「一元二次方程」的核心（可写关键词）：______。",
       "score": 4.0,
       "sort_order": 7,
-      "explanation": "一元二次方程。关键词围绕「一元二次方程」的定义与判别。（冲L3）",
+      "explanation": "一元二次方程。关键词围绕「一元二次方程」的定义与判别",
       "answer_key": "一元二次方程",
       "answer_accept": [
         "一元二次方程"
@@ -155,7 +155,7 @@
       "stem": "关于「一元二次方程」，正确的学习态度是（冲L3·选）（　　）",
       "score": 4.0,
       "sort_order": 8,
-      "explanation": "A。定义 + 练习 + 订正。（冲L3）",
+      "explanation": "A。定义 + 练习 + 订正",
       "answer_key": "A",
       "answer_accept": [
         "A"
@@ -193,7 +193,7 @@
       "stem": "【L3】本课主攻知识点「一元二次方程」的 knowledge_id 是 ______。",
       "score": 4.0,
       "sort_order": 9,
-      "explanation": "math.equation.quadratic。对应 id：math.equation.quadratic。（冲L3）",
+      "explanation": "math.equation.quadratic。对应 id：math.equation.quadratic",
       "answer_key": "math.equation.quadratic",
       "answer_accept": [
         "math.equation.quadratic"
@@ -210,7 +210,7 @@
       "stem": "学习「一元二次方程」时，既要记住结论，也要能用自己的话解释含义。",
       "score": 2.0,
       "sort_order": 10,
-      "explanation": "对。理解才能应对变式。（冲L3）",
+      "explanation": "对。理解才能应对变式",
       "answer_key": "对",
       "answer_accept": [
         "对"
@@ -227,7 +227,7 @@
       "stem": "「一次函数」属于中考相关考点，需要结合例题巩固。",
       "score": 2.0,
       "sort_order": 11,
-      "explanation": "对。（冲L3）",
+      "explanation": "对",
       "answer_key": "对",
       "answer_accept": [
         "对"
@@ -244,7 +244,7 @@
       "stem": "【L3】用一句话概括「一次函数」的核心（可写关键词）：______。",
       "score": 4.0,
       "sort_order": 12,
-      "explanation": "一次函数。关键词围绕「一次函数」的定义与判别。（冲L3）",
+      "explanation": "一次函数。关键词围绕「一次函数」的定义与判别",
       "answer_key": "一次函数",
       "answer_accept": [
         "一次函数"
@@ -261,7 +261,7 @@
       "stem": "关于「一次函数」，正确的学习态度是（冲L3·选）（　　）",
       "score": 4.0,
       "sort_order": 13,
-      "explanation": "A。定义 + 练习 + 订正。（冲L3）",
+      "explanation": "A。定义 + 练习 + 订正",
       "answer_key": "A",
       "answer_accept": [
         "A"
@@ -299,7 +299,7 @@
       "stem": "【L3】本课主攻知识点「一次函数」的 knowledge_id 是 ______。",
       "score": 4.0,
       "sort_order": 14,
-      "explanation": "math.function.linear。对应 id：math.function.linear。（冲L3）",
+      "explanation": "math.function.linear。对应 id：math.function.linear",
       "answer_key": "math.function.linear",
       "answer_accept": [
         "math.function.linear"
@@ -316,7 +316,7 @@
       "stem": "学习「一次函数」时，既要记住结论，也要能用自己的话解释含义。",
       "score": 2.0,
       "sort_order": 15,
-      "explanation": "对。理解才能应对变式。（冲L3）",
+      "explanation": "对。理解才能应对变式",
       "answer_key": "对",
       "answer_accept": [
         "对"
@@ -333,7 +333,7 @@
       "stem": "「圆周角与圆心角」属于中考相关考点，需要结合例题巩固。",
       "score": 2.0,
       "sort_order": 16,
-      "explanation": "对。（冲L3）",
+      "explanation": "对",
       "answer_key": "对",
       "answer_accept": [
         "对"
@@ -350,7 +350,7 @@
       "stem": "【L3】用一句话概括「圆周角与圆心角」的核心（可写关键词）：______。",
       "score": 4.0,
       "sort_order": 17,
-      "explanation": "圆周角与圆心角。关键词围绕「圆周角与圆心角」的定义与判别。（冲L3）",
+      "explanation": "圆周角与圆心角。关键词围绕「圆周角与圆心角」的定义与判别",
       "answer_key": "圆周角与圆心角",
       "answer_accept": [
         "圆周角与圆心角"
@@ -367,7 +367,7 @@
       "stem": "关于「圆周角与圆心角」，正确的学习态度是（冲L3·选）（　　）",
       "score": 4.0,
       "sort_order": 18,
-      "explanation": "A。定义 + 练习 + 订正。（冲L3）",
+      "explanation": "A。定义 + 练习 + 订正",
       "answer_key": "A",
       "answer_accept": [
         "A"

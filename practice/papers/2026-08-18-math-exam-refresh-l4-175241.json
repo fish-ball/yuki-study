@@ -1,0 +1,89 @@
+{
+  "id": "2026-08-18-math-exam-refresh-l4-175241",
+  "path": "assessments/2026-08-18-math-exam-refresh-l4-175241.md",
+  "subject_id": "math",
+  "theme": "exam-refresh-l4",
+  "date": "2026-08-18",
+  "minutes": 25,
+  "target_level": "L4",
+  "status": "completed",
+  "note": "考核 · 冲 L4 · 通过线 80%",
+  "questions": [
+    {
+      "id": "2026-08-18-math-exam-refresh-l4-175241__q01",
+      "qtype": "choice",
+      "stem": "解决综合几何题较稳妥的第一步通常是（易错）（　　）",
+      "score": 4.0,
+      "sort_order": 1,
+      "explanation": "C。A。先梳理条件再选方法",
+      "answer_key": "C",
+      "answer_accept": [
+        "C"
+      ],
+      "auto_gradable": true,
+      "options": [
+        {
+          "label": "A",
+          "content": "只看最后一问",
+          "sort_order": 0
+        },
+        {
+          "label": "B",
+          "content": "直接猜答案",
+          "sort_order": 1
+        },
+        {
+          "label": "C",
+          "content": "标已知、找等量与相似/全等关系",
+          "sort_order": 2
+        },
+        {
+          "label": "D",
+          "content": "放弃辅助线",
+          "sort_order": 3
+        }
+      ],
+      "knowledge_ids": [
+        "math.integrated.geometry_hard"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l4-175241__q02",
+      "qtype": "fill",
+      "stem": "直角三角形中，若两直角边为 2、3，则斜边是 ______。",
+      "score": 4.0,
+      "sort_order": 2,
+      "explanation": "【考点】勾股定理。\n【思路】2²+3²=13，化简得 √13。\n【易错】不要硬写成 5；能化简的根式要化简。",
+      "answer_key": "√13",
+      "answer_accept": [
+        "√13",
+        "sqrt13",
+        "\\sqrt{13}"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.integrated.geometry_hard"
+      ]
+    },
+    {
+      "id": "2026-08-18-math-exam-refresh-l4-175241__q03",
+      "qtype": "fill",
+      "stem": "直角三角形中，若两直角边为 1、2，则斜边是 ______。",
+      "score": 4.0,
+      "sort_order": 3,
+      "explanation": "【考点】勾股定理。\n【思路】1²+2²=5，化简得 √5。\n【易错】不要硬写成 5；能化简的根式要化简。",
+      "answer_key": "√5",
+      "answer_accept": [
+        "√5",
+        "sqrt5",
+        "\\sqrt{5}"
+      ],
+      "auto_gradable": true,
+      "options": [],
+      "knowledge_ids": [
+        "math.integrated.geometry_hard"
+      ]
+    }
+  ]
+}
